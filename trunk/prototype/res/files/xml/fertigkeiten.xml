@@ -1,0 +1,89 @@
+<!DOCTYPE fertigkeit SYSTEM "dtd/fertigkeit.dtd">
+<fertigkeiten>
+  <fertigkeit codename="aufmerksamkeit">
+         <name>Aufmerksamkeit</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="ausweichen">
+         <name>Ausweichen</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="bogen_und_armbrust">
+         <name>Bogen und Armbrust</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="handel">
+         <name>Handel</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="hiebwaffen">
+         <name>Hiebwaffen</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="klingenwaffen">
+         <name>Klingenwaffen</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="koerperbeherrschung">
+         <name>Koerperbeherrschung</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="menschenkenntnis">
+         <name>Menschenkenntnis</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="messer_und_dolche">
+         <name>Messer und Dolche</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="schleichen">
+         <name>Schleichen</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="schloesser_knacken">
+         <name>Schloesser knacken</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="sich_verstecken">
+         <name>Sich verstecken</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="suchen">
+         <name>Suchen</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="ueberreden">
+         <name>Ueberreden</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="verbergen">
+         <name>Verbergen</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="waffenloser_kampf">
+         <name>Waffenloser Kampf</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+  
+  <fertigkeit codename="wunden_heilen">
+         <name>Wunden heilen</name>
+         <text>Hier Text einfuegen</text>
+  </fertigkeit>
+</fertigkeiten>
+  
+  

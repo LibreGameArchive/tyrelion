@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xmi:id="_VKYvUDFDEd2KnqHISt2_pw" type="Class" name="Gamemaster.dnx">
+  <children xmi:id="_a9CqcDFDEd2KnqHISt2_pw">
+    <children xmi:id="_a9bE8DFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_a9bE8TFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_a9hLkDFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_a9hLkTFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_a9hLkjFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_a9hLkzFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_a9hLlDFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_a9hLlTFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_a9hLljFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_a9O3sDFDEd2KnqHISt2_pw" fillColor="10265827" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=GameMaster%5Bjcu%5Ename=GameMaster.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_a9O3sTFDEd2KnqHISt2_pw" x="7608" y="1268"/>
+  </children>
+  <children xmi:id="_evb-ADFDEd2KnqHISt2_pw">
+    <children xmi:id="_evb-AzFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_evb-BDFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_evb-BTFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_evb-BjFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_evb-BzFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_eviEoDFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_eviEoTFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_eviEojFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_eviEozFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_evb-ATFDEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Animations%5Bjcu%5Ename=Animations.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_evb-AjFDEd2KnqHISt2_pw" x="14582" y="1268"/>
+  </children>
+  <children xmi:id="_jQVWUDFDEd2KnqHISt2_pw">
+    <children xmi:id="_jQbc8DFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_jQbc8TFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_jQbc8jFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_jQbc8zFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_jQhjkDFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_jQhjkTFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_jQhjkjFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_jQhjkzFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_jQhjlDFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_jQVWUTFDEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Dialogs%5Bjcu%5Ename=Dialogs.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jQVWUjFDEd2KnqHISt2_pw" x="5706" y="7608"/>
+  </children>
+  <children xmi:id="_pfEJcDFDEd2KnqHISt2_pw">
+    <children xmi:id="_pfEJczFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_pfEJdDFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_pfEJdTFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_pfEJdjFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_pfKQEDFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_pfKQETFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_pfKQEjFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_pfKQEzFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_pfKQFDFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_pfEJcTFDEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=SoundEffects%5Bjcu%5Ename=SoundEffects.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pfEJcjFDEd2KnqHISt2_pw" x="951" y="7608"/>
+  </children>
+  <children xmi:id="_t_r08DFDEd2KnqHISt2_pw">
+    <children xmi:id="_t_r08zFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_t_r09DFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_t_r09TFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_t_r09jFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_t_r09zFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_t_r0-DFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_t_r0-TFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_t_r0-jFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_t_r0-zFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_t_r08TFDEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jbintype%5Ename=org.newdawn.slick.Music%5Bproject%5Eid=Tales%20of%20Lavankor%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_t_r08jFDEd2KnqHISt2_pw" x="951" y="4438"/>
+  </children>
+  <children xmi:id="_yEgVQDFDEd2KnqHISt2_pw">
+    <children xmi:id="_yEgVQzFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_yEgVRDFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_yEgVRTFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_yEgVRjFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_yEgVRzFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_yEgVSDFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yEgVSTFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_yEgVSjFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yEgVSzFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_yEgVQTFDEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Control%5Bjcu%5Ename=Control.java%5Bjpack%5Ename=lavankor.control%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yEgVQjFDEd2KnqHISt2_pw" x="951" y="1268"/>
+  </children>
+  <children xmi:id="_yH2kMDFDEd2KnqHISt2_pw">
+    <children xmi:id="_yH2kMzFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_yH2kNDFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_yH2kNTFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_yH2kNjFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_yH2kNzFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_yH2kODFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yH2kOTFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_yH2kOjFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yH2kOzFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_yH2kMTFDEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=ItemDB%5Bjcu%5Ename=ItemDB.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yH2kMjFDEd2KnqHISt2_pw" x="10144" y="7608"/>
+  </children>
+  <children xmi:id="_yJeU0DFDEd2KnqHISt2_pw">
+    <children xmi:id="_yJeU0zFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_yJeU1DFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_yJeU1TFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_yJeU1jFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_yJeU1zFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_yJkbcDFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yJkbcTFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_yJkbcjFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yJkbczFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_yJeU0TFDEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Player%5Bjcu%5Ename=Player.java%5Bjpack%5Ename=lavankor.avatar%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yJeU0jFDEd2KnqHISt2_pw" x="14899" y="4121"/>
+  </children>
+  <children xmi:id="_yNlYwDFDEd2KnqHISt2_pw">
+    <children xmi:id="_yNlYwzFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_yNlYxDFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_yNrfYDFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_yNrfYTFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_yNrfYjFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_yNrfYzFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yNrfZDFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_yNrfZTFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yNrfZjFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_yNlYwTFDEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=LavankorMap%5Bjcu%5Ename=LavankorMap.java%5Bjpack%5Ename=lavankor.map%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yNlYwjFDEd2KnqHISt2_pw" x="14265" y="7608"/>
+  </children>
+  <children xmi:id="_8v79MDFDEd2KnqHISt2_pw">
+    <children xmi:id="_8v79MzFDEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_8v79NDFDEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_8v79NTFDEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_8v79NjFDEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_8v79NzFDEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_8v79ODFDEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_8v79OTFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_8v79OjFDEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_8v79OzFDEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_8v79MTFDEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Dialog%5Bjcu%5Ename=Dialog.java%5Bjpack%5Ename=lavankor.dialog%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8v79MjFDEd2KnqHISt2_pw" x="5706" y="10778"/>
+  </children>
+  <children xmi:id="_CndxQDFEEd2KnqHISt2_pw">
+    <children xmi:id="_CndxQzFEEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_CndxRDFEEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_CndxRTFEEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_CndxRjFEEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_CndxRzFEEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_CndxSDFEEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_CndxSTFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_Cnj34DFEEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_Cnj34TFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_CndxQTFEEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Answer%5Bjcu%5Ename=Answer.java%5Bjpack%5Ename=lavankor.dialog%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CndxQjFEEd2KnqHISt2_pw" x="5706" y="14265"/>
+  </children>
+  <children xmi:id="_RRadMDFEEd2KnqHISt2_pw">
+    <children xmi:id="_RRadMzFEEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_RRadNDFEEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_RRadNTFEEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_RRadNjFEEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_RRadNzFEEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_RRadODFEEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_RRadOTFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_RRadOjFEEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_RRadOzFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_RRadMTFEEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Character%5Bjcu%5Ename=Character.java%5Bjpack%5Ename=lavankor.character%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RRadMjFEEd2KnqHISt2_pw" x="22190" y="4121"/>
+  </children>
+  <children xmi:id="_XOYx8DFEEd2KnqHISt2_pw">
+    <children xmi:id="_XOYx8zFEEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_XOYx9DFEEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_XOYx9TFEEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_XOYx9jFEEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_XOYx9zFEEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_XOYx-DFEEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_XOYx-TFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_XOYx-jFEEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_XOYx-zFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_XOYx8TFEEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jbintype%5Ename=org.newdawn.slick.Animation%5Bproject%5Eid=Tales%20of%20Lavankor%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XOYx8jFEEd2KnqHISt2_pw" x="22190" y="1268"/>
+  </children>
+  <children xmi:id="_bIB9ADFEEd2KnqHISt2_pw">
+    <children xmi:id="_bIIDoDFEEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_bIIDoTFEEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_bIIDojFEEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_bIIDozFEEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_bIIDpDFEEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_bIIDpTFEEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_bIIDpjFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_bIIDpzFEEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_bIIDqDFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_bIB9ATFEEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Item%5Bjcu%5Ename=Item.java%5Bjpack%5Ename=lavankor.itemsystem%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bIB9AjFEEd2KnqHISt2_pw" x="10144" y="10778"/>
+  </children>
+  <children xmi:id="_f_wg8DFEEd2KnqHISt2_pw">
+    <children xmi:id="_f_2nkDFEEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_f_2nkTFEEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_f_2nkjFEEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_f_2nkzFEEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_f_2nlDFEEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_f_2nlTFEEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_f_2nljFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_f_2nlzFEEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_f_2nmDFEEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_f_wg8TFEEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jbintype%5Ename=org.newdawn.slick.Sound%5Bproject%5Eid=Tales%20of%20Lavankor%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f_wg8jFEEd2KnqHISt2_pw" x="951" y="10778"/>
+  </children>
+  <children xmi:id="_yjRqADFFEd2KnqHISt2_pw">
+    <children xmi:id="_yjRqAzFFEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_yjRqBDFFEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_yjRqBTFFEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_yjRqBjFFEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_yjRqBzFFEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_yjRqCDFFEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yjRqCTFFEd2KnqHISt2_pw"/>
+    </children>
+    <children xmi:id="_yjRqCjFFEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yjRqCzFFEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_yjRqATFFEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=ItemMap%5Bjcu%5Ename=ItemMap.java%5Bjpack%5Ename=lavankor.map%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yjRqAjFFEd2KnqHISt2_pw" x="14265" y="10778"/>
+  </children>
+  <children xmi:id="_yk5aoDFFEd2KnqHISt2_pw">
+    <children xmi:id="_yk5aozFFEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_yk5apDFFEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_yk5apTFFEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_yk5apjFFEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_yk5apzFFEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_yk5aqDFFEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yk5aqTFFEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_yk5aqjFFEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_yk5aqzFFEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_yk5aoTFFEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=NpcMap%5Bjcu%5Ename=NpcMap.java%5Bjpack%5Ename=lavankor.map%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yk5aojFFEd2KnqHISt2_pw" x="18386" y="10778"/>
+  </children>
+  <children xmi:id="_ymhyUDFFEd2KnqHISt2_pw">
+    <children xmi:id="_ymhyUzFFEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_ymhyVDFFEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_ymhyVTFFEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="_ymhyVjFFEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="_ymhyVzFFEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="_ymhyWDFFEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_ymhyWTFFEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="_ymhyWjFFEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_ymhyWzFFEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_ymhyUTFFEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jbintype%5Ename=org.newdawn.slick.tiled.TiledMap%5Bproject%5Eid=Tales%20of%20Lavankor%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ymhyUjFFEd2KnqHISt2_pw" x="22190" y="10778"/>
+  </children>
+  <children xmi:id="__lCQIDFFEd2KnqHISt2_pw">
+    <children xmi:id="__lCQIzFFEd2KnqHISt2_pw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="__lCQJDFFEd2KnqHISt2_pw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="__lCQJTFFEd2KnqHISt2_pw" type="Stereotype"/>
+    <children xmi:id="__lCQJjFFEd2KnqHISt2_pw" type="Name"/>
+    <children xmi:id="__lCQJzFFEd2KnqHISt2_pw" type="Parent"/>
+    <children xmi:id="__lCQKDFFEd2KnqHISt2_pw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="__lCQKTFFEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <children xmi:id="__lIWwDFFEd2KnqHISt2_pw" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="__lIWwTFFEd2KnqHISt2_pw" collapsed="true"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="__lCQITFFEd2KnqHISt2_pw" showStereotype="Label"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=NPC%5Bjcu%5Ename=NPC.java%5Bjpack%5Ename=lavankor.avatar%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="__lCQIjFFEd2KnqHISt2_pw" x="18386" y="14265"/>
+  </children>
+  <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_VKYvUTFDEd2KnqHISt2_pw"/>
+  <element xsi:nil="true"/>
+  <edges xmi:id="_g3VeoDFDEd2KnqHISt2_pw" source="_a9CqcDFDEd2KnqHISt2_pw" target="_evb-ADFDEd2KnqHISt2_pw">
+    <children xmi:id="_g3VeozFDEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_g3VepTFDEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_g3VepDFDEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_g3VepjFDEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_g3VeqDFDEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_g3VepzFDEd2KnqHISt2_pw" x="-556" y="-418"/>
+    </children>
+    <children xmi:id="_g3VeqTFDEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_g3VeqzFDEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_g3VeqjFDEd2KnqHISt2_pw" x="-1088" y="-240"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_g3VeoTFDEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=animations%5Bjsrctype%5Ename=GameMaster%5Bjcu%5Ename=GameMaster.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_g3VeojFDEd2KnqHISt2_pw" points="[97, -7, -310, 22]$[277, -20, -130, 9]"/>
+  </edges>
+  <edges xmi:id="_mH_f8DFDEd2KnqHISt2_pw" source="_a9CqcDFDEd2KnqHISt2_pw" target="_jQVWUDFDEd2KnqHISt2_pw">
+    <children xmi:id="_mH_f8zFDEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_mH_f9TFDEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_mH_f9DFDEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_mH_f9jFDEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_mH_f-DFDEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_mH_f9zFDEd2KnqHISt2_pw" x="35" y="-797"/>
+    </children>
+    <children xmi:id="_mH_f-TFDEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_mH_f-zFDEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_mH_f-jFDEd2KnqHISt2_pw" x="-84" y="597"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_mH_f8TFDEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=dialogs%5Bjsrctype%5Ename=GameMaster%5Bjcu%5Ename=GameMaster.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_mH_f8jFDEd2KnqHISt2_pw" points="[9, 89, -14, -131]$[20, 191, -3, -29]"/>
+  </edges>
+  <edges xmi:id="_rc2EwDFDEd2KnqHISt2_pw" source="_a9CqcDFDEd2KnqHISt2_pw" target="_pfEJcDFDEd2KnqHISt2_pw">
+    <children xmi:id="_rc2EwzFDEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_rc8LYDFDEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rc2ExDFDEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_rc8LYTFDEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_rc8LYzFDEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rc8LYjFDEd2KnqHISt2_pw" x="-1253" y="-279"/>
+    </children>
+    <children xmi:id="_rc8LZDFDEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_rc8LZjFDEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rc8LZTFDEd2KnqHISt2_pw" x="-1042" y="304"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_rc2EwTFDEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=soundEffects%5Bjsrctype%5Ename=GameMaster%5Bjcu%5Ename=GameMaster.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rc2EwjFDEd2KnqHISt2_pw" points="[-94, -14, 239, 37]$[-269, -41, 64, 10]"/>
+  </edges>
+  <edges xmi:id="_uAWjUDFDEd2KnqHISt2_pw" source="_a9CqcDFDEd2KnqHISt2_pw" target="_t_r08DFDEd2KnqHISt2_pw">
+    <children xmi:id="_uAWjUzFDEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_uAWjVTFDEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_uAWjVDFDEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_uAWjVjFDEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_uAWjWDFDEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_uAWjVzFDEd2KnqHISt2_pw" y="-397"/>
+    </children>
+    <children xmi:id="_uAWjWTFDEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_uAWjWzFDEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_uAWjWjFDEd2KnqHISt2_pw" x="-473" y="-295"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_uAWjUTFDEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=music%5Bjsrctype%5Ename=GameMaster%5Bjcu%5Ename=GameMaster.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_uAWjUjFDEd2KnqHISt2_pw" points="[-73, -21, 336, 98]$[-409, -119, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_yHqW8DFDEd2KnqHISt2_pw" source="_a9CqcDFDEd2KnqHISt2_pw" target="_yEgVQDFDEd2KnqHISt2_pw">
+    <children xmi:id="_yHqW8zFDEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_yHqW9TFDEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yHqW9DFDEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_yHqW9jFDEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_yHqW-DFDEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yHqW9zFDEd2KnqHISt2_pw" y="-397"/>
+    </children>
+    <children xmi:id="_yHqW-TFDEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_yHqW-zFDEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yHqW-jFDEd2KnqHISt2_pw" y="-186"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_yHqW8TFDEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=keySet%5Bjsrctype%5Ename=GameMaster%5Bjcu%5Ename=GameMaster.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yHqW8jFDEd2KnqHISt2_pw" points="[-73, -20, 336, 91]$[-409, -111, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_yJYOMDFDEd2KnqHISt2_pw" source="_a9CqcDFDEd2KnqHISt2_pw" target="_yH2kMDFDEd2KnqHISt2_pw">
+    <children xmi:id="_yJYOMzFDEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_yJYONTFDEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yJYONDFDEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_yJYONjFDEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_yJYOODFDEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yJYONzFDEd2KnqHISt2_pw" y="-397"/>
+    </children>
+    <children xmi:id="_yJYOOTFDEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_yJYOOzFDEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yJYOOjFDEd2KnqHISt2_pw" x="174" y="324"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_yJYOMTFDEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=items%5Bjsrctype%5Ename=GameMaster%5Bjcu%5Ename=GameMaster.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yJYOMjFDEd2KnqHISt2_pw" points="[-73, -20, 336, 91]$[-409, -111, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_yNG3oDFDEd2KnqHISt2_pw" source="_a9CqcDFDEd2KnqHISt2_pw" target="_yJeU0DFDEd2KnqHISt2_pw">
+    <children xmi:id="_yNG3ozFDEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_yNG3pTFDEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yNG3pDFDEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_yNG3pjFDEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_yNG3qDFDEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yNG3pzFDEd2KnqHISt2_pw" y="-397"/>
+    </children>
+    <children xmi:id="_yNG3qTFDEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_yNG3qzFDEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yNG3qjFDEd2KnqHISt2_pw" y="-186"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_yNG3oTFDEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=player%5Bjsrctype%5Ename=GameMaster%5Bjcu%5Ename=GameMaster.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yNG3ojFDEd2KnqHISt2_pw" points="[-73, -20, 336, 91]$[-409, -111, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_yQimIDFDEd2KnqHISt2_pw" source="_a9CqcDFDEd2KnqHISt2_pw" target="_yNlYwDFDEd2KnqHISt2_pw">
+    <children xmi:id="_yQimIzFDEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_yQimJTFDEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yQimJDFDEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_yQimJjFDEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_yQimKDFDEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yQimJzFDEd2KnqHISt2_pw" y="-397"/>
+    </children>
+    <children xmi:id="_yQimKTFDEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_yQimKzFDEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yQimKjFDEd2KnqHISt2_pw" y="-186"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_yQimITFDEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=map%5Bjsrctype%5Ename=GameMaster%5Bjcu%5Ename=GameMaster.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yQimIjFDEd2KnqHISt2_pw" points="[-73, -20, 336, 91]$[-409, -111, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_CqnL4DFEEd2KnqHISt2_pw" source="_8v79MDFDEd2KnqHISt2_pw" target="_CndxQDFEEd2KnqHISt2_pw">
+    <children xmi:id="_CqnL4zFEEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_CqnL5TFEEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_CqnL5DFEEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_CqnL5jFEEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_CqnL6DFEEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_CqnL5zFEEd2KnqHISt2_pw" x="-476" y="-723"/>
+    </children>
+    <children xmi:id="_CqnL6TFEEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_CqnL6zFEEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_CqnL6jFEEd2KnqHISt2_pw" x="-444" y="-157"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_CqnL4TFEEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=answers%5Bjsrctype%5Ename=Dialog%5Bjcu%5Ename=Dialog.java%5Bjpack%5Ename=lavankor.dialog%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CqnL4jFEEd2KnqHISt2_pw" points="[-96, -113, 372, 438]$[-468, -551, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_EavFsDFEEd2KnqHISt2_pw" source="_jQVWUDFDEd2KnqHISt2_pw" target="_8v79MDFDEd2KnqHISt2_pw">
+    <children xmi:id="_EavFszFEEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_EavFtTFEEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_EavFtDFEEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_EavFtjFEEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_EavFuDFEEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_EavFtzFEEd2KnqHISt2_pw" x="-201" y="-618"/>
+    </children>
+    <children xmi:id="_EavFuTFEEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_EavFuzFEEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_EavFujFEEd2KnqHISt2_pw" x="-280" y="-395"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_EavFsTFEEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=dialogs%5Bjsrctype%5Ename=Dialogs%5Bjcu%5Ename=Dialogs.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_EavFsjFEEd2KnqHISt2_pw" points="[-10, 73, 14, -111]$[-6, 48, 18, -136]"/>
+  </edges>
+  <edges xmi:id="_RX0AIDFEEd2KnqHISt2_pw" source="_yJeU0DFDEd2KnqHISt2_pw" target="_RRadMDFEEd2KnqHISt2_pw">
+    <children xmi:id="_RX0AIzFEEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_RX0AJTFEEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_RX0AJDFEEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_RX0AJjFEEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_RX0AKDFEEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_RX0AJzFEEd2KnqHISt2_pw" x="-195" y="-775"/>
+    </children>
+    <children xmi:id="_RX0AKTFEEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_RX0AKzFEEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_RX0AKjFEEd2KnqHISt2_pw" x="-274" y="586"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_RX0AITFEEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=character%5Bjsrctype%5Ename=Player%5Bjcu%5Ename=Player.java%5Bjpack%5Ename=lavankor.avatar%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RX0AIjFEEd2KnqHISt2_pw" points="[-104, -37, 707, 250]$[-811, -287, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_XPPtkDFEEd2KnqHISt2_pw" source="_evb-ADFDEd2KnqHISt2_pw" target="_XOYx8DFEEd2KnqHISt2_pw">
+    <children xmi:id="_XPPtkzFEEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_XPPtlTFEEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_XPPtlDFEEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_XPPtljFEEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_XPPtmDFEEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_XPPtlzFEEd2KnqHISt2_pw" x="-1965" y="394"/>
+    </children>
+    <children xmi:id="_XPPtmTFEEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_XPPtmzFEEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_XPPtmjFEEd2KnqHISt2_pw" y="-186"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_XPPtkTFEEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=animations%5Bjsrctype%5Ename=Animations%5Bjcu%5Ename=Animations.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_XPPtkjFEEd2KnqHISt2_pw" points="[-130, -16, 707, 87]$[-837, -103, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_bK_xcDFEEd2KnqHISt2_pw" source="_yH2kMDFDEd2KnqHISt2_pw" target="_bIB9ADFEEd2KnqHISt2_pw">
+    <children xmi:id="_bK_xczFEEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_bK_xdTFEEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_bK_xdDFEEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_bK_xdjFEEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_bK_xeDFEEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_bK_xdzFEEd2KnqHISt2_pw" x="-201" y="-756"/>
+    </children>
+    <children xmi:id="_bK_xeTFEEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_bK_xezFEEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_bK_xejFEEd2KnqHISt2_pw" x="-280" y="-5"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_bK_xcTFEEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=itemMap%5Bjsrctype%5Ename=ItemDB%5Bjcu%5Ename=ItemDB.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bK_xcjFEEd2KnqHISt2_pw" points="[-60, -64, 271, 287]$[-331, -351, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_gBMrYDFEEd2KnqHISt2_pw" source="_pfEJcDFDEd2KnqHISt2_pw" target="_f_wg8DFEEd2KnqHISt2_pw">
+    <children xmi:id="_gBMrYzFEEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_gBMrZTFEEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_gBMrZDFEEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_gBMrZjFEEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_gBMraDFEEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_gBMrZzFEEd2KnqHISt2_pw" x="-201" y="-883"/>
+    </children>
+    <children xmi:id="_gBSyADFEEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_gBSyAjFEEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_gBSyATFEEd2KnqHISt2_pw" x="-280" y="-330"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_gBMrYTFEEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=soundMap%5Bjsrctype%5Ename=SoundEffects%5Bjcu%5Ename=SoundEffects.java%5Bjpack%5Ename=lavankor%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_gBMrYjFEEd2KnqHISt2_pw" points="[-85, -56, 71, 47]$[-156, -103, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_pesgkDFEEd2KnqHISt2_pw" id="(0.36077482,0.957782)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_uWDmMDFGEd2KnqHISt2_pw" id="(0.46005404,0.010712035)"/>
+  </edges>
+  <edges xmi:id="_yknGwDFFEd2KnqHISt2_pw" source="_yNlYwDFDEd2KnqHISt2_pw" target="_yjRqADFFEd2KnqHISt2_pw">
+    <children xmi:id="_yknGwzFFEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_yknGxTFFEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yknGxDFFEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_yknGxjFFEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_yknGyDFFEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yknGxzFFEd2KnqHISt2_pw" x="-273" y="-609"/>
+    </children>
+    <children xmi:id="_yknGyTFFEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_yknGyzFFEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yknGyjFFEd2KnqHISt2_pw" y="-186"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_yknGwTFFEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=itemMap%5Bjsrctype%5Ename=LavankorMap%5Bjcu%5Ename=LavankorMap.java%5Bjpack%5Ename=lavankor.map%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yknGwjFFEd2KnqHISt2_pw" points="[-88, -56, 528, 335]$[-616, -391, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u87Y8DFGEd2KnqHISt2_pw" id="(0.36713076,0.9407687)"/>
+  </edges>
+  <edges xmi:id="_ymbrsDFFEd2KnqHISt2_pw" source="_yNlYwDFDEd2KnqHISt2_pw" target="_yk5aoDFFEd2KnqHISt2_pw">
+    <children xmi:id="_ymbrszFFEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_ymbrtTFFEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ymbrtDFFEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_ymbrtjFFEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_ymbruDFFEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ymbrtzFFEd2KnqHISt2_pw" x="185" y="-579"/>
+    </children>
+    <children xmi:id="_ymbruTFFEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_ymbruzFFEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ymbrujFFEd2KnqHISt2_pw" y="-186"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_ymbrsTFFEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=npcMap%5Bjsrctype%5Ename=LavankorMap%5Bjcu%5Ename=LavankorMap.java%5Bjpack%5Ename=lavankor.map%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ymbrsjFFEd2KnqHISt2_pw" points="[-88, -56, 528, 335]$[-616, -391, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_yqP0sDFFEd2KnqHISt2_pw" source="_yNlYwDFDEd2KnqHISt2_pw" target="_ymhyUDFFEd2KnqHISt2_pw">
+    <children xmi:id="_yqP0szFFEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_yqP0tTFFEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yqP0tDFFEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_yqP0tjFFEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_yqP0uDFFEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yqP0tzFFEd2KnqHISt2_pw" y="-397"/>
+    </children>
+    <children xmi:id="_yqP0uTFFEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_yqP0uzFFEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yqP0ujFFEd2KnqHISt2_pw" y="-186"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_yqP0sTFFEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=map%5Bjsrctype%5Ename=LavankorMap%5Bjcu%5Ename=LavankorMap.java%5Bjpack%5Ename=lavankor.map%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yqP0sjFFEd2KnqHISt2_pw" points="[-88, -56, 528, 335]$[-616, -391, 0, 0]"/>
+  </edges>
+  <edges xmi:id="_4b8tkDFFEd2KnqHISt2_pw" source="_yjRqADFFEd2KnqHISt2_pw" target="_bIB9ADFEEd2KnqHISt2_pw">
+    <children xmi:id="_4b8tkzFFEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="_4cC0MDFFEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_4b8tlDFFEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="_4cC0MTFFEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="_4cC0MzFFEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_4cC0MjFFEd2KnqHISt2_pw" x="-583" y="-379"/>
+    </children>
+    <children xmi:id="_4cC0NDFFEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="_4cC0NjFFEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_4cC0NTFFEd2KnqHISt2_pw" x="-6" y="361"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_4b8tkTFFEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=matrix%5Bjsrctype%5Ename=ItemMap%5Bjcu%5Ename=ItemMap.java%5Bjpack%5Ename=lavankor.map%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4b8tkjFFEd2KnqHISt2_pw" points="[-51, -9, 265, 0]$[-265, 0, 51, 9]"/>
+  </edges>
+  <edges xmi:id="__oFkIDFFEd2KnqHISt2_pw" source="_yk5aoDFFEd2KnqHISt2_pw" target="__lCQIDFFEd2KnqHISt2_pw">
+    <children xmi:id="__oFkIzFFEd2KnqHISt2_pw" type="FromMultiplicityLabel">
+      <children xmi:id="__oFkJTFFEd2KnqHISt2_pw" type="FromMultiplicity"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="__oFkJDFFEd2KnqHISt2_pw" y="396"/>
+    </children>
+    <children xmi:id="__oFkJjFFEd2KnqHISt2_pw" type="FromRoleLabel">
+      <children xmi:id="__oFkKDFFEd2KnqHISt2_pw" type="FromRole"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="__oFkJzFFEd2KnqHISt2_pw" x="-300" y="-593"/>
+    </children>
+    <children xmi:id="__oFkKTFFEd2KnqHISt2_pw" type="associationTypeLabel">
+      <children xmi:id="__oFkKzFFEd2KnqHISt2_pw" type="associationTypeCompartment"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="__oFkKjFFEd2KnqHISt2_pw" x="-284" y="292"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="__oFkITFFEd2KnqHISt2_pw" showStereotype="Text"/>
+    <element xmi:type="uml:Property" href="mmi:///#jfield%5Ename=matrix%5Bjsrctype%5Ename=NpcMap%5Bjcu%5Ename=NpcMap.java%5Bjpack%5Ename=lavankor.map%5Bjsrcroot%5Esrcfolder=src%5Bproject%5Eid=Tales%20of%20Lavankor%5D%5D%5D%5D%5D$uml.Property"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="__oFkIjFFEd2KnqHISt2_pw" points="[-49, -32, 647, 425]$[-696, -457, 0, 0]"/>
+  </edges>
+</notation:Diagram>

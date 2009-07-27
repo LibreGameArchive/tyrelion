@@ -1,0 +1,47 @@
+<!DOCTYPE attribut SYSTEM "dtd/attribut.dtd">
+<attribute>
+  <attribut kuerzel="BI">
+         <name>Bildung</name>
+         <text>Hier Text einfuegen</text>
+  </attribut>
+  
+  <attribut kuerzel="CH">
+         <name>Charisma</name>
+         <text>Hier Text einfuegen</text>
+  </attribut>
+  
+  <attribut kuerzel="FF">
+         <name>Fingerfertigkeit</name>
+         <text>Hier Text einfuegen</text>
+  </attribut>
+  
+  <attribut kuerzel="KL">
+         <name>Klugheit</name>
+         <text>Hier Text einfuegen</text>
+  </attribut>
+  
+  <attribut kuerzel="GW">
+         <name>Gewandtheit</name>
+         <text>Hier Text einfuegen</text>
+  </attribut>
+  
+  <attribut kuerzel="KK">
+         <name>Koerperkraft</name>
+         <text>Hier Text einfuegen</text>
+  </attribut>
+  
+  <attribut kuerzel="KO">
+         <name>Konstitution</name>
+         <text>Hier Text einfuegen</text>
+  </attribut>
+  
+  <attribut kuerzel="SI">
+         <name>Sinnesschaerfe</name>
+         <text>Hier Text einfuegen</text>
+  </attribut>
+  
+  <attribut kuerzel="WI">
+         <name>Willenskraft</name>
+         <text>Hier Text einfuegen</text>
+  </attribut>
+</attribute>

@@ -1,0 +1,98 @@
+<!DOCTYPE nahkampfwaffen SYSTEM "dtd/items.dtd">
+<nahkampfwaffen>
+  <nahkampfwaffe id='2'>
+                 <name>Degen</name>
+                 <text>Eine leichte, sehr elegante Stichwaffe.</text>
+                 <tp>6</tp>
+                 <kk>5/4</kk>
+                 <haende>EH</haende>
+                 <at>0</at>
+                 <pa>-1</pa>
+                 <ini>2</ini>
+                 <preis>60</preis>
+                 <bild>res/images/items/weapons/dolch.bmp</bild>
+                 <icon>res/images/items/weapons/dolch_icon.bmp</icon>
+                 <hoehe>4</hoehe>
+                 <breite>1</breite>
+  </nahkampfwaffe>
+  
+  <nahkampfwaffe id='3'>
+                 <name>Dolch</name>
+                 <text>Dolch</text>
+                 <tp>5</tp>
+                 <kk>5/4</kk>
+                 <haende>EH</haende>
+                 <at>0</at>
+                 <pa>-1</pa>
+                 <ini>1</ini>
+                 <preis>20</preis>
+                 <bild>res/images/items/weapons/dolch.bmp</bild>
+                 <icon>res/images/items/weapons/dolch_icon.bmp</icon>
+                 <hoehe>2</hoehe>
+                 <breite>1</breite>
+  </nahkampfwaffe>
+  
+  <nahkampfwaffe id='5'>
+                 <name>Kriegsbeil</name>
+                 <text>Ein maechtiges, nur fuer den Kampf gebautes Beil.</text>
+                 <tp>5</tp>
+                 <kk>4/1</kk>
+                 <haende>EH</haende>
+                 <at>0</at>
+                 <pa>-1</pa>
+                 <ini>0</ini>
+                 <preis>60</preis>
+                 <bild>res/images/items/weapons/dolch.bmp</bild>
+                 <icon>res/images/items/weapons/dolch_icon.bmp</icon>
+                 <hoehe>3</hoehe>
+                 <breite>2</breite>
+  </nahkampfwaffe>
+  
+  <nahkampfwaffe id='7'>
+                 <name>Langschwert</name>
+                 <text>Eine elegante und vielseitig einsetzbare Klingenwaffe.</text>
+                 <tp>8</tp>
+                 <kk>5/3</kk>
+                 <haende>EH</haende>
+                 <at>0</at>
+                 <pa>0</pa>
+                 <ini>0</ini>
+                 <preis>80</preis>
+                 <bild>res/images/items/weapons/dolch.bmp</bild>
+                 <icon>res/images/items/weapons/dolch_icon.bmp</icon>
+                 <hoehe>4</hoehe>
+                 <breite>1</breite>
+  </nahkampfwaffe>
+  
+  <nahkampfwaffe id='14'>
+                 <name>Pike</name>
+                 <text>Eine lange, speeraehnliche Stosswaffe.</text>
+                 <tp>10</tp>
+                 <kk>7/2</kk>
+                 <haende>ZH</haende>
+                 <at>-1</at>
+                 <pa>-2</pa>
+                 <ini>-2</ini>
+                 <preis>50</preis>
+                 <bild>res/images/items/weapons/dolch.bmp</bild>
+                 <icon>res/images/items/weapons/dolch_icon.bmp</icon>
+                 <hoehe>5</hoehe>
+                 <breite>2</breite>
+  </nahkampfwaffe>
+  
+  <nahkampfwaffe id='15'>
+                 <name>Zweihaender</name>
+                 <text>Ein maechtiges aber trotzdem elegantes zweihaendig gefuehrtes Schwert.</text>
+                 <tp>12</tp>
+                 <kk>8/2</kk>
+                 <haende>ZH</haende>
+                 <at>0</at>
+                 <pa>-1</pa>
+                 <ini>-1</ini>
+                 <preis>80</preis>
+                 <bild>res/images/items/weapons/dolch.bmp</bild>
+                 <icon>res/images/items/weapons/dolch_icon.bmp</icon>
+                 <hoehe>4</hoehe>
+                 <breite>2</breite>
+  </nahkampfwaffe>
+</nahkampfwaffen>

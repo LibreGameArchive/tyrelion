@@ -1,0 +1,100 @@
+dreckloch_groﬂ.bmp
+{
+	dreckloch_gro1
+	0
+	0
+	32
+	32
+	0
+	0
+	0
+	0
+}
+{
+	dreckloch_gro2
+	32
+	0
+	32
+	32
+	0
+	0
+	0
+	0
+}
+{
+	dreckloch_gro3
+	0
+	32
+	32
+	32
+	0
+	0
+	0
+	0
+}
+{
+	dreckloch_gro5
+	64
+	0
+	32
+	32
+	0
+	0
+	0
+	0
+}
+{
+	dreckloch_gro4
+	32
+	32
+	32
+	32
+	0
+	0
+	0
+	0
+}
+{
+	dreckloch_gro6
+	0
+	64
+	32
+	32
+	0
+	0
+	0
+	0
+}
+{
+	dreckloch_gro7
+	96
+	0
+	32
+	32
+	0
+	0
+	0
+	0
+}
+{
+	dreckloch_gro8
+	64
+	32
+	32
+	32
+	0
+	0
+	0
+	0
+}
+{
+	dreckloch_gro9
+	32
+	64
+	32
+	32
+	0
+	0
+	0
+	0
+}
