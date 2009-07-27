@@ -1,0 +1,23 @@
+<!ELEMENT character (rasse, kultur, BI, CH, KL, FF, GW, KK, KO, SI, WI, (fertigkeit)*, (abgAttribut)*, (manoever)*, (vor_nachteil)*)>
+<!ELEMENT rasse (#PCDATA)>
+<!ELEMENT kultur (#PCDATA)>
+<!ELEMENT BI (#PCDATA)>
+<!ELEMENT CH (#PCDATA)>
+<!ELEMENT KL (#PCDATA)>
+<!ELEMENT FF (#PCDATA)>
+<!ELEMENT GW (#PCDATA)>
+<!ELEMENT KK (#PCDATA)>
+<!ELEMENT KO (#PCDATA)>
+<!ELEMENT SI (#PCDATA)>
+<!ELEMENT WI (#PCDATA)>
+<!ELEMENT fertigkeit (#PCDATA)>
+<!ATTLIST fertigkeit codename CDATA #REQUIRED>
+<!ELEMENT abgAttribut (#PCDATA)>
+<!ATTLIST abgAttribut name CDATA #REQUIRED>
+<!ELEMENT manoever (#PCDATA)>
+<!ELEMENT vor_nachteil (#PCDATA)>
+<!ELEMENT queststatus (#PCDATA)>
+<!ATTLIST character name CDATA #REQUIRED>
+<!ATTLIST character akt_map CDATA #REQUIRED>
+<!ATTLIST character akt_x CDATA #REQUIRED>
+<!ATTLIST character akt_y CDATA #REQUIRED>

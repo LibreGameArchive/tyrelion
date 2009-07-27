@@ -1,0 +1,36 @@
+<!ELEMENT nahkampfwaffen (nahkampfwaffe)*>
+<!ELEMENT nahkampfwaffe (name, text, tp, kk, haende, at, pa, ini, preis, bild, hoehe, breite)>
+<!ATTLIST nahkampfwaffe id ID #REQUIRED>
+<!ELEMENT fernkampfwaffen (fernkampfwaffe)*>
+<!ELEMENT fernkampfwaffe (name, text, tp, laden, haende, at, ini, preis, bild, hoehe, breite)>
+<!ATTLIST fernkampfwaffe id ID #REQUIRED>
+<!ELEMENT ruestungen (ruestung)*>
+<!ELEMENT ruestung (name, text, zone, KO, TO, BA, AR, BE, preis, bild, hoehe, breite)>
+<!ATTLIST ruestung id ID #REQUIRED>
+<!ELEMENT traenke (trank)*>
+<!ELEMENT trank (name, text, art, quali, preis, bild, hoehe, breite)>
+<!ATTLIST trank id ID #REQUIRED>
+<!ELEMENT questitems (questitem)*>
+<!ELEMENT questitem (name, text, (preis)?, bild, hoehe, breite)>
+<!ATTLIST questitem id ID #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+<!ELEMENT tp (#PCDATA)>
+<!ELEMENT kk (#PCDATA)>
+<!ELEMENT haende (#PCDATA)>
+<!ELEMENT at (#PCDATA)>
+<!ELEMENT pa (#PCDATA)>
+<!ELEMENT ini (#PCDATA)>
+<!ELEMENT preis (#PCDATA)>
+<!ELEMENT bild (#PCDATA)>
+<!ELEMENT hoehe (#PCDATA)>
+<!ELEMENT breite (#PCDATA)>
+<!ELEMENT laden (#PCDATA)>
+<!ELEMENT zone (#PCDATA)>
+<!ELEMENT KO (#PCDATA)>
+<!ELEMENT TO (#PCDATA)>
+<!ELEMENT BA (#PCDATA)>
+<!ELEMENT AR (#PCDATA)>
+<!ELEMENT BE (#PCDATA)>
+<!ELEMENT art (#PCDATA)>
+<!ELEMENT quali (#PCDATA)>

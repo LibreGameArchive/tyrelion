@@ -1,0 +1,15 @@
+<!DOCTYPE npcs SYSTEM "dtd/npc.dtd">
+<npcs>
+  <npc id='1'>
+          <name>Ruwen</name>
+          <art>Dialog</art>
+          <x>16</x>
+          <y>17</y>
+  </npc>
+  <npc id='2'>
+          <name>Ragnar</name>
+          <art>Haendler</art>
+          <x>16</x>
+          <y>17</y>
+  </npc>
+</npcs>

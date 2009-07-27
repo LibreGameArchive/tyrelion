@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<map version="0.99b" orientation="orthogonal" width="48" height="48" tilewidth="32" tileheight="32">
+ <tileset name="Texturen" firstgid="1" tilewidth="32" tileheight="32">
+  <image source="tiles.bmp"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="false"/>
+    <property name="type" value="stone"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="blocked" value="true"/>
+    <property name="type" value="wood"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="blocked" value="true"/>
+    <property name="type" value="wood"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="blocked" value="false"/>
+    <property name="type" value="grass"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Ebene 0" width="48" height="48">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAAO3XsQ6AIAwEUBT+/5t1cCAECLbItXjDjZQXUgumEEJalOPJqv1mmvOgTVI72iO1oy0aP9oR75wDiRv5LfWOxo+27+AvM9IbFvy1e+dt6Nf7tWtb38tMa632LH9sZKa/Vpt++qV+7QzJ19OP6x8r/nxel/O7NtPR/d87f4t+zf1lwd/rYe1a+rH+Fe+3nsH7+3lFEP0j2R/pH/mHf9vfnv3ez5/+f/W/tz3op99qbfrHa3t/v3n1MwzDfJ0LfPkXGAAkAAA=
+  </data>
+ </layer>
+</map>

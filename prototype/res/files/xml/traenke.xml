@@ -1,0 +1,35 @@
+<!DOCTYPE traenke SYSTEM "dtd/items.dtd">
+<traenke>
+<trank id='4'>
+               <name>Kleiner Heiltrank</name>
+               <text>Regeneriert einige verlorene Lebenspunkte.</text>
+               <art>LE</art>
+               <quali>10</quali>
+               <preis>5</preis>
+               <bild>res/images/potions/kleiner_heiltrank.jpg</bild>
+               <hoehe>1</hoehe>
+               <breite>1</breite>
+</trank>
+
+<trank id='20'>
+               <name>Mittlerer Heiltrank</name>
+               <text>Regeneriert einige verlorene Lebenspunkte.</text>
+               <art>LE</art>
+               <quali>20</quali>
+               <preis>10</preis>
+               <bild>res/images/potions/mittlerer_heiltrank.jpg</bild>
+               <hoehe>1</hoehe>
+               <breite>1</breite>
+</trank>
+
+<trank id='21'>
+               <name>Grosser Heiltrank</name>
+               <text>Regeneriert einige verlorene Lebenspunkte.</text>
+               <art>LE</art>
+               <quali>30</quali>
+               <preis>15</preis>
+               <bild>res/images/potions/grosser_heiltrank.jpg</bild>
+               <hoehe>1</hoehe>
+               <breite>1</breite>
+</trank>
+</traenke>

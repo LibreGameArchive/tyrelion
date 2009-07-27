@@ -1,0 +1,57 @@
+<!DOCTYPE character SYSTEM "dtd/character.dtd">
+
+<character name="Alrik" akt_map="chapter_0" akt_x="13" akt_y="19">
+       <rasse>Mensch</rasse>
+       <kultur>Tarlagan</kultur>
+       <BI>12</BI>
+       <CH>13</CH>
+       <KL>11</KL>
+       <FF>12</FF>
+       <GW>14</GW>
+       <KK>11</KK>
+       <KO>12</KO>
+       <SI>13</SI>
+       <WI>15</WI>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <fertigkeit codename="name">5</fertigkeit>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <abgAttribut name="name">4</abgAttribut>
+       <manoever>Manoevername</manoever>
+       <manoever>Manoevername</manoever>
+       <manoever>Manoevername</manoever>
+       <vor_nachteil>Vorteil</vor_nachteil>
+       <vor_nachteil>Vorteil</vor_nachteil>
+       <vor_nachteil>Nachteil</vor_nachteil>
+       <queststatus>Queststatus</queststatus>
+</character>

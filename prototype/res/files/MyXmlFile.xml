@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!-- MyXmlFile.xml -->
+
+<GUI-Description>
+
+    <Button size="normal" x="70" y="80">
+      <Title>Mein erster Button</Title>
+      <Action>call Fct1</Action>
+      <Comment/>
+    </Button>
+
+    <Button size="small">
+      <Title>Mein zweiter Button</Title>
+      <Action>call Fct2</Action>
+    </Button>
+
+    <Button size="big">
+      <Action>call Fct3</Action>
+      <Title>Mein dritter Button</Title>
+      <Comment>Dies ist <b>HTML</b>-<i>Text</i>.</Comment>
+    </Button>
+
+</GUI-Description>
