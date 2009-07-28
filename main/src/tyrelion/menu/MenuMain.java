@@ -5,12 +5,19 @@ package tyrelion.menu;
 
 import java.io.IOException;
 
+import mdes.slick.sui.Container;
+import mdes.slick.sui.Display;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
+import org.newdawn.slick.gui.AbstractComponent;
+import org.newdawn.slick.gui.ComponentListener;
+import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.loading.DeferredResource;
 import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.state.BasicGameState;
@@ -20,14 +27,28 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author jahudi
  *
  */
-public class MenuMain extends BasicGameState {
+public class MenuMain extends BasicGameState  implements ComponentListener{
 
 	public static final int ID = 1;
 	
 	private StateBasedGame game;
+	private GameContainer gameContainer;
+	
+	/** Hintergrundgrafik des Ladebildschirm (Spielstart). */
 	private Image loading;
+	/** Hintergrundgrafik des Hauptmenüs. */
 	private Image background;
-	private Image button_field;
+	/** Hintergrundgrafik des Buttonbereichs. */
+	private Image button_field_background;
+	
+	/** Darstellungsebene für das Hauptmenü */
+	private Display mainmenu;
+	/** Area für den Button "Neues Spie" */
+	private MouseOverArea btn_new;
+	private MouseOverArea btn_load;
+	private MouseOverArea btn_set;
+	private MouseOverArea btn_cred;
+	private MouseOverArea btn_quit;
 	
 	/** Die Ressource, die als nächstes geladen werden soll. */
 	private DeferredResource nextResource;
@@ -47,27 +68,28 @@ public class MenuMain extends BasicGameState {
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
 	 */
-	@Override
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
 		
 		this.game = game;
+		this.gameContainer = container;
 		
+		mainmenu = new Display(container);
+				
 		LoadingList.setDeferredLoading(true);
 		
-		container.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
+		gameContainer.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
 		
 		loading = new Image("res/img/menu/main/loading.jpg");
 		background = new Image("res/img/menu/main/mainmenu_bg.png");
-		button_field = new Image("res/img/menu/main/mainmenu_box.png");
+	
+		initButtonField();
 		
-        
-	}
+      	}
 
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
 	 */
-	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
 		
@@ -92,7 +114,9 @@ public class MenuMain extends BasicGameState {
 		if (started) {		
 			g.clear();
 			g.drawImage(background, 0, 0);
-			g.drawImage(button_field, 410, 360);
+			
+			renderButtonField(container, g);
+			
 			
 		}
 		
@@ -101,7 +125,6 @@ public class MenuMain extends BasicGameState {
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
 	 */
-	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 		
@@ -124,18 +147,61 @@ public class MenuMain extends BasicGameState {
 
 	}
 	
-	@Override
 	public void keyReleased(int i, char c) {
 		
 		switch (i) {			
 			case Input.KEY_ESCAPE:
-				game.getContainer().exit();
+				gameContainer.exit();
 				break;
 	
 			default:
 				break;
 		}
 		
+	}
+	
+	private void initButtonField() throws SlickException{
+		button_field_background = new Image("res/img/menu/main/mainmenu_box.png");
+		
+        btn_new = new MouseOverArea(gameContainer, new Image("res/img/menu/main/buttons/mainmenu_button_new_1.png"), 430, 405, 400, 50, this);
+        btn_new.setMouseOverImage(new Image("res/img/menu/main/buttons/mainmenu_button_new_2.png"));
+        
+        btn_load = new MouseOverArea(gameContainer, new Image("res/img/menu/main/buttons/mainmenu_button_load_1.png"), 430, 455, 400, 50, this);
+        btn_load.setMouseOverImage(new Image("res/img/menu/main/buttons/mainmenu_button_load_2.png"));
+        
+        btn_set = new MouseOverArea(gameContainer, new Image("res/img/menu/main/buttons/mainmenu_button_opt_1.png"), 430, 505, 400, 50, this);
+        btn_set.setMouseOverImage(new Image("res/img/menu/main/buttons/mainmenu_button_opt_2.png"));
+        
+        btn_cred = new MouseOverArea(gameContainer, new Image("res/img/menu/main/buttons/mainmenu_button_cred_1.png"), 430, 555, 400, 50, this);
+        btn_cred.setMouseOverImage(new Image("res/img/menu/main/buttons/mainmenu_button_cred_2.png"));
+        
+        btn_quit = new MouseOverArea(gameContainer, new Image("res/img/menu/main/buttons/mainmenu_button_quit_1.png"), 430, 605, 400, 50, this);
+        btn_quit.setMouseOverImage(new Image("res/img/menu/main/buttons/mainmenu_button_quit_2.png"));
+	}
+	
+	private void renderButtonField(GameContainer container, Graphics g){
+		g.drawImage(button_field_background, 410, 360);
+		
+		btn_new.render(container, g);
+		btn_load.render(container, g);
+		btn_set.render(container, g);
+		btn_cred.render(container, g);
+		btn_quit.render(container, g);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.gui.ComponentListener#componentActivated(org.newdawn.slick.gui.AbstractComponent)
+	 */
+	public void componentActivated(AbstractComponent source) {
+		if (source == btn_new) gameContainer.exit();
+				
+		if (source == btn_load) game.enterState(MenuLoad.ID);
+		
+		if (source == btn_set) game.enterState(MenuSettings.ID);
+		
+		if (source == btn_cred) game.enterState(MenuCredits.ID);
+		
+		if (source == btn_quit) gameContainer.exit();
 	}
 
 }

@@ -23,7 +23,6 @@ public class MenuControls extends BasicGameState {
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
 	 */
-	@Override
 	public int getID() {
 		return ID;
 	}
@@ -31,7 +30,6 @@ public class MenuControls extends BasicGameState {
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
 	 */
-	@Override
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
 		this.game = game;
@@ -41,7 +39,6 @@ public class MenuControls extends BasicGameState {
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
 	 */
-	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
 		g.drawString("Menu Controls", 50, 50);
@@ -50,14 +47,12 @@ public class MenuControls extends BasicGameState {
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
 	 */
-	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 		// TODO Auto-generated method stub
 
 	}
 	
-	@Override
 	public void keyReleased(int i, char c) {
 		if (i == Input.KEY_ESCAPE) {
 			game.enterState(MenuMain.ID);
