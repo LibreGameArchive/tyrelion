@@ -5,16 +5,12 @@ package tyrelion.menu;
 
 import java.io.IOException;
 
-import mdes.slick.sui.Container;
-import mdes.slick.sui.Display;
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.Sound;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
@@ -41,13 +37,15 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	/** Hintergrundgrafik des Buttonbereichs. */
 	private Image button_field_background;
 	
-	/** Darstellungsebene für das Hauptmenü */
-	private Display mainmenu;
-	/** Area für den Button "Neues Spie" */
+	/** MOA für den Button "Neues Spiel" */
 	private MouseOverArea btn_new;
+	/** MOA für den Button "Alten Spielstand laden" */
 	private MouseOverArea btn_load;
+	/** MOA für den Button "Einstellungen" */
 	private MouseOverArea btn_set;
+	/** MOA für den Button "Mitwirkende" */
 	private MouseOverArea btn_cred;
+	/** MOA für den Button "Spiel beenden" */
 	private MouseOverArea btn_quit;
 	
 	/** Die Ressource, die als nächstes geladen werden soll. */
@@ -73,8 +71,6 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 		
 		this.game = game;
 		this.gameContainer = container;
-		
-		mainmenu = new Display(container);
 				
 		LoadingList.setDeferredLoading(true);
 		
@@ -161,8 +157,10 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	}
 	
 	private void initButtonField() throws SlickException{
+		//Hintergrund Grafik für den Button-Bereich festlegen
 		button_field_background = new Image("res/img/menu/main/mainmenu_box.png");
 		
+		//Jeweils Zuweisung von MOAs und Rollover-Images für die Buttons
         btn_new = new MouseOverArea(gameContainer, new Image("res/img/menu/main/buttons/mainmenu_button_new_1.png"), 430, 405, 400, 50, this);
         btn_new.setMouseOverImage(new Image("res/img/menu/main/buttons/mainmenu_button_new_2.png"));
         
@@ -180,8 +178,10 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	}
 	
 	private void renderButtonField(GameContainer container, Graphics g){
+		//Rendern des HIntergrundes für die Buttons
 		g.drawImage(button_field_background, 410, 360);
 		
+		//Rendern der Buttons
 		btn_new.render(container, g);
 		btn_load.render(container, g);
 		btn_set.render(container, g);
@@ -193,14 +193,11 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	 * @see org.newdawn.slick.gui.ComponentListener#componentActivated(org.newdawn.slick.gui.AbstractComponent)
 	 */
 	public void componentActivated(AbstractComponent source) {
+		//Abfrage des aktivierten Buttons und ausführen der zugehörigen Aktion
 		if (source == btn_new) gameContainer.exit();
-				
 		if (source == btn_load) game.enterState(MenuLoad.ID);
-		
 		if (source == btn_set) game.enterState(MenuSettings.ID);
-		
 		if (source == btn_cred) game.enterState(MenuCredits.ID);
-		
 		if (source == btn_quit) gameContainer.exit();
 	}
 
