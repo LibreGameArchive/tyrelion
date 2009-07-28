@@ -1,36 +1,56 @@
+/**
+ * 
+ */
 package tyrelion;
 
-import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.AppGameContainer; 
+import org.newdawn.slick.state.StateBasedGame;
 
-public class Main extends BasicGame {
+import tyrelion.menu.*;
 
-	public Main() {
-		super("Test"); 
+
+/**
+ * @author jahudi
+ *
+ */
+public class Main extends StateBasedGame {
+
+	/**
+	 * @param name
+	 */
+	public Main(String name) {
+		super(name);
 	}
-	
-	@Override 
-	public void init(GameContainer container) throws SlickException {}
-	
+
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.state.StateBasedGame#initStatesList(org.newdawn.slick.GameContainer)
+	 */
 	@Override
-	public void update(GameContainer container, int delta) throws SlickException {}
-	
-	@Override 
-	public void render(GameContainer container, Graphics g) throws SlickException {
-		g.drawString("This will be 'Tales of Tyrelion' once!", 0, 100); 
+	public void initStatesList(GameContainer container) throws SlickException {
+		addState(new MenuMain());
+		addState(new MenuLoad());
+		addState(new MenuSettings());
+		addState(new MenuControls());
+		addState(new MenuCredits());
 	}
-	
+
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		try {
-			AppGameContainer app = new AppGameContainer(new Main());
-			app.start();
-			} catch (SlickException e) {
-				e.printStackTrace();
-				} 
-			
-	} 
+			AppGameContainer container = new AppGameContainer(new Main("Tales of Tyrelion"));
+			container.setDisplayMode(1024, 768, false);
+			container.setShowFPS(false);
+			container.setTargetFrameRate(40);
+			container.start();
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 
 }
