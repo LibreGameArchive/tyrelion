@@ -51,7 +51,7 @@ public class MenuCredits extends BasicGameState implements ComponentListener{
 		
 		background = new Image("res/img/menu/credits/credits_bg.png");
 	
-		initButtonField();
+		initGUI();
 
 	}
 
@@ -63,7 +63,7 @@ public class MenuCredits extends BasicGameState implements ComponentListener{
 		g.clear();
 		g.drawImage(background, 0, 0);
 		
-		renderButtonField(container, g);
+		renderGUI(container, g);
 	}
 
 	/* (non-Javadoc)
@@ -81,13 +81,13 @@ public class MenuCredits extends BasicGameState implements ComponentListener{
 		}
 	}
 	
-	private void initButtonField() throws SlickException{		
+	private void initGUI() throws SlickException{		
 		//Jeweils Zuweisung von MOAs und Rollover-Images für die Buttons        
         btn_back = new MouseOverArea(gameContainer, new Image("res/img/menu/main/buttons/mainmenu_button_back_1.png"), 590, 700, 400, 50, this);
         btn_back.setMouseOverImage(new Image("res/img/menu/main/buttons/mainmenu_button_back_2.png"));
 	}
 	
-	private void renderButtonField(GameContainer container, Graphics g){
+	private void renderGUI(GameContainer container, Graphics g){
 		//Rendern der Buttons
 		btn_back.render(container, g);
 	}
