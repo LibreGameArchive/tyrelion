@@ -11,6 +11,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
@@ -29,6 +31,8 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	
 	private StateBasedGame game;
 	private GameContainer gameContainer;
+	
+	private UnicodeFont font_head;
 	
 	/** Hintergrundgrafik des Ladebildschirm (Spielstart). */
 	private Image loading;
@@ -72,11 +76,15 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 		this.game = game;
 		this.gameContainer = container;
 				
+		font_head = new UnicodeFont("/res/fonts/vinque.ttf", 30, false, false);
+		font_head.getEffects().add(new ColorEffect(java.awt.Color.black));
+		
+		loading = new Image("res/img/splashscreens/loadingscreen.png");
+		
 		LoadingList.setDeferredLoading(true);
 		
 		gameContainer.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
 		
-		loading = new Image("res/img/menu/main/loading.jpg");
 		background = new Image("res/img/menu/main/mainmenu_bg.png");
 	
 		initButtonField();
@@ -90,32 +98,19 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 			throws SlickException {
 		
 		if (nextResource != null) {
-			// Ladebildschirm anzeigen
-			g.drawImage(loading, 0, 0);
-			g.setColor(new Color(70, 20, 0));
-			// Anzeigen, welche Ressource momentan geladen wird
-			g.drawString("Loading: "+nextResource.getDescription(), 255, 683);
-			
-			// Die Dimensionen des Ladebalkens berechnen
-			int total = LoadingList.get().getTotalResources();
-			int segment = 537/total;
-			int loaded = segment * (LoadingList.get().getTotalResources() - LoadingList.get().getRemainingResources());
-			
-			// Den Ladebalken anzeigen
-			g.fillRoundRect(244, 704, loaded, 14, 10);
-			g.drawRoundRect(244, 704, 537, 14, 10);
+			showLoading(container, g);
 		}
 
 		// Wenn alles geladen wurde, den eigentlichen State starten
-		if (started) {		
+		if (started) {	
+			
 			g.clear();
 			g.drawImage(background, 0, 0);
 			
 			renderButtonField(container, g);
-			
-			
 		}
 		
+		font_head.addGlyphs("abcdefghijklmnopqrstovwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöü.");
 	}
 
 	/* (non-Javadoc)
@@ -140,6 +135,8 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 				started = true;
 			}
 		}
+		
+		font_head.loadGlyphs(1000);
 
 	}
 	
@@ -154,6 +151,25 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 				break;
 		}
 		
+	}
+	
+	private void showLoading(GameContainer container, Graphics g){
+		// Ladebildschirm anzeigen
+		g.drawImage(loading, 0, 0);
+		g.setColor(Color.black);
+		
+		// Fortschritt berechnen
+		int total = LoadingList.get().getTotalResources();
+		int segment = total/6;
+		int status = (LoadingList.get().getTotalResources() - LoadingList.get().getRemainingResources());
+		
+		// Aktuellen "Pseudo"-Status anzeigen
+		font_head.drawString(620, 300, "Eisen wird geschmolzen...");
+		if (status > segment) font_head.drawString(585, 350, "Weltenform wird gegossen...");
+		if (status > 2*segment) font_head.drawString(625, 400, "Gebirge werden geformt...");
+		if (status > 3*segment) font_head.drawString(600, 450, "Meere werden ausgehoben...");
+		if (status > 4*segment) font_head.drawString(610, 500, "Wälder werden gepflanzt...");
+		if (status > 5*segment) font_head.drawString(537, 550, "Leben wird in die Welt gesetzt...");
 	}
 	
 	private void initButtonField() throws SlickException{
