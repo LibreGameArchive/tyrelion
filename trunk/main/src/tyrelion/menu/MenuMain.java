@@ -89,7 +89,7 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 		
 		background = new Image("res/img/menu/main/mainmenu_bg.png");
 	
-		initButtonField();
+		initGUI();
 		
       	}
 
@@ -109,7 +109,7 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 			g.clear();
 			g.drawImage(background, 0, 0);
 			
-			renderButtonField(container, g);
+			renderGUI(container, g);
 		}
 		
 		font_head.addGlyphs("abcdefghijklmnopqrstovwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöü.");
@@ -175,7 +175,7 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 		if (status > 5*segment) font_head.drawString(537, 550, "Leben wird in die Welt gesetzt...");
 	}
 	
-	private void initButtonField() throws SlickException{
+	private void initGUI() throws SlickException{
 		//Hintergrund Grafik für den Button-Bereich festlegen
 		button_field_background = new Image("res/img/menu/main/mainmenu_box.png");
 		
@@ -196,7 +196,7 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
         btn_quit.setMouseOverImage(new Image("res/img/menu/main/buttons/mainmenu_button_quit_2.png"));
 	}
 	
-	private void renderButtonField(GameContainer container, Graphics g){
+	private void renderGUI(GameContainer container, Graphics g){
 		//Rendern des HIntergrundes für die Buttons
 		g.drawImage(button_field_background, 410, 360);
 		

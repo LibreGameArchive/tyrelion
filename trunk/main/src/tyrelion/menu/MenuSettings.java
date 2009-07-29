@@ -29,24 +29,26 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 	
 	private StateBasedGame game;
 	private GameContainer gameContainer;
+	private Display display;
 	
 	/** Hintergrundgrafik des Hauptmenüs. */
 	private Image background;
 	/** Hintergrundgrafik des Buttonbereichs. */
 	private Image button_field_background;
-	/** Überschrift des Buttonbereichs. */
+	/** Heading for the button field. */
 	private Image button_field_header;
-	/** Überschrift der Lautstärkeregelung. */
+	/** Heading for the Volumecontrol */
 	private Image volume_header;
 	
-	/** MOA für den Button "Tastaturbelegung" */
+	/** MOA for "Controls"-Button */
 	private MouseOverArea btn_keys;
 	
-	/** MOA für den Button "zurück" */
+	/** MOA for "Back to main"-Button  */
 	private MouseOverArea btn_back;
 	
-	private Slider slider;
-	private Display display;
+	/** Volumecontrol */
+	private Slider volume_slider;
+
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -69,7 +71,7 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 	
 		display = new Display(container);
 		
-		initButtonField();
+		initGUI();
 		
 
 	}
@@ -82,7 +84,7 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 		g.clear();
 		g.drawImage(background, 0, 0);
 		
-		renderButtonField(container, g);
+		renderGUI(container, g);
 	}
 
 	/* (non-Javadoc)
@@ -100,7 +102,7 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 		}
 	}
 	
-	private void initButtonField() throws SlickException{		
+	private void initGUI() throws SlickException{		
 		//Hintergrund Grafik für den Button-Bereich festlegen
 		button_field_background = new Image("res/img/menu/main/mainmenu_box.png");
 		
@@ -120,21 +122,21 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
         content.setSize(250, 10);
         content.setLocation(505, 530);
         
-        slider = new Slider(Slider.HORIZONTAL);
-        slider.setLocation(0, 0);
-        slider.setHeight(10);
-        slider.setWidth(250);
-        slider.setOpaque(true);
-        slider.setBackground(new Color(0x00762900));
-        slider.setForeground(new Color(0x00461800));
-        slider.setValue(0.5f);
+        volume_slider = new Slider(Slider.HORIZONTAL);
+        volume_slider.setLocation(0, 0);
+        volume_slider.setHeight(10);
+        volume_slider.setWidth(250);
+        volume_slider.setOpaque(true);
+        volume_slider.setBackground(new Color(0x00762900));
+        volume_slider.setForeground(new Color(0x00461800));
+        volume_slider.setValue(0.5f);
         
-        content.add(slider);
+        content.add(volume_slider);
        
         display.add(content);
 	}
 	
-	private void renderButtonField(GameContainer container, Graphics g){
+	private void renderGUI(GameContainer container, Graphics g){
 		//Rendern des HIntergrundes für die Buttons
 		g.drawImage(button_field_background, 410, 360);
 		
