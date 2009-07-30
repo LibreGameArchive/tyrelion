@@ -24,7 +24,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import tyrelion.music.MusicManager;
 
 /**
- * @author jahudi
+ * @author jahudi, daennart
  *
  */
 public class MenuMain extends BasicGameState  implements ComponentListener{
