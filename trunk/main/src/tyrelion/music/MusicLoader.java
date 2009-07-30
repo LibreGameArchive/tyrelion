@@ -8,21 +8,29 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 /**
  * @author jahudi
- *
+ * This class checks the "music" folder for its contents. It creates a list of categories and a map
+ * of the detected tracks ordered by the categories.
  */
 public class MusicLoader {
 	
 	/**
-	 * A lift of all detected categories (subdirectories of "music"). 
+	 * A list of all detected categories (subdirectories of "music"). 
 	 */
 	private String[] categories;
-	private HashMap<String, ArrayList<Music>> musicMap;
+	
+	/**
+	 * Map of the detected Tracks ordered by the detected categories. Each array of Musics can be
+	 * via its category as key.
+	 */
+	private HashMap<String, ArrayList<TyrelionMusic>> musicMap;
 
+	/**
+	 * Creates an new MusicLoader an initializes the categories and music.
+	 */
 	public MusicLoader() {
 		initCategories();
 		initMusic();
@@ -39,14 +47,16 @@ public class MusicLoader {
 			}
 		};
 		File root = new File("res/music");
-		setCategories(root.list(filter));
+		categories = root.list(filter);
+		//setCategories(root.list(filter));
 	}
 	
 	/**
-	 * Fills the "musicMap" with all the music files in the "music" directory ordered by categories.
+	 * Fills the "musicMap" with all the music files in the "music" directory ordered by categories. The
+	 * categories are used as key.
 	 */
 	public void initMusic() {
-		musicMap = new HashMap<String, ArrayList<Music>>();
+		musicMap = new HashMap<String, ArrayList<TyrelionMusic>>();
 		for (String elem : categories) {
 			musicMap.put(elem, scanMusic(elem));
 		}
@@ -55,9 +65,9 @@ public class MusicLoader {
 	
 	/**
 	 * @param category the name of the category to scan for music
-	 * @return an ArrayList of Music objects of the specified category
+	 * @return an ArrayList of TyrelionMusic objects of the specified category
 	 */
-	public ArrayList<Music> scanMusic(String category) {
+	public ArrayList<TyrelionMusic> scanMusic(String category) {
 		FilenameFilter filter = new FilenameFilter() {
 			public boolean accept(File file, String name) {
 				return name.endsWith(".ogg");
@@ -65,10 +75,10 @@ public class MusicLoader {
 		};
 		File dir = new File("res/music/"+category);
 		File[] files = dir.listFiles(filter);
-		ArrayList<Music> musics = new ArrayList<Music>();
+		ArrayList<TyrelionMusic> musics = new ArrayList<TyrelionMusic>();
 		for (File elem : files) {
 			try {
-				musics.add(new Music(elem.getAbsolutePath(), true));
+				musics.add(new TyrelionMusic(elem.getAbsolutePath(), category, true));
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -77,11 +87,12 @@ public class MusicLoader {
 		return musics;
 	}
 
+
 	/**
-	 * @param categories the categories to set
+	 * @return the musicMap
 	 */
-	public void setCategories(String[] categories) {
-		this.categories = categories;
+	public HashMap<String, ArrayList<TyrelionMusic>> getMusicMap() {
+		return musicMap;
 	}
 
 	/**
@@ -89,20 +100,6 @@ public class MusicLoader {
 	 */
 	public String[] getCategories() {
 		return categories;
-	}
-
-	/**
-	 * @return the musicMap
-	 */
-	public HashMap<String, ArrayList<Music>> getMusicMap() {
-		return musicMap;
-	}
-
-	/**
-	 * @param musicMap the musicMap to set
-	 */
-	public void setMusicMap(HashMap<String, ArrayList<Music>> musicMap) {
-		this.musicMap = musicMap;
 	}
 	
 }
