@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import org.newdawn.slick.Music;
-
 /**
  * @author jahudi
  *
@@ -18,11 +16,14 @@ public class MusicManager {
 	private static MusicManager instance = null;
 	
 	private MusicLoader loader;
-	private HashMap<String, ArrayList<Music>> musicMap;
+	private HashMap<String, ArrayList<TyrelionMusic>> musicMap;
+	private TyrelionMusic activeTrack;
+	private float volume;
 	
 	public MusicManager() {
 		loader = new MusicLoader();
 		musicMap = loader.getMusicMap();
+		volume = 1.0f;
 	}
 	
 	public static MusicManager getInstance() {
@@ -33,15 +34,36 @@ public class MusicManager {
 		}
 	}
 	
-	public Music pickRandom(String category) {
+	public TyrelionMusic pickRandom(String category) {
 		Random r = new Random();
-		ArrayList<Music> selectedCategory = musicMap.get(category);
+		ArrayList<TyrelionMusic> selectedCategory = musicMap.get(category);
 		return selectedCategory.get(r.nextInt(selectedCategory.size()));
 	}
 	
 	public void play(String category) {
-		Music title = pickRandom(category);
-		title.play();
+		if (activeTrack != null && activeTrack.playing()) {
+			activeTrack.stop();
+		}
+		activeTrack = pickRandom(category);
+		activeTrack.setVolume(volume);
+		activeTrack.play();
 	}
 	
+	public void loop(String category) {
+		if (activeTrack != null && activeTrack.playing()) {
+			activeTrack.stop();
+		}
+		activeTrack = pickRandom(category);
+		activeTrack.addListener(new MusicListener());
+		activeTrack.setVolume(volume);
+		activeTrack.play();
+	}
+	
+	public void setVolume(Float volume) {
+		this.volume = volume;
+		if (activeTrack != null) {
+			activeTrack.setVolume(volume);
+		}
+	}
+		
 }

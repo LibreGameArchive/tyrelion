@@ -59,6 +59,8 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	/** True, wenn alle Ressourcen geladen und das Rendering gestartet wurde. */
 	private boolean started;
 	
+	private MusicManager musicManager;
+	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
 	 */
@@ -89,6 +91,8 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 		
 		background = new Image("res/img/menu/main/mainmenu_bg.png");
 	
+		musicManager = MusicManager.getInstance();
+		
 		initGUI();
 		
       	}
@@ -105,10 +109,8 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 
 		// Wenn alles geladen wurde, den eigentlichen State starten
 		if (started) {	
-			
 			g.clear();
 			g.drawImage(background, 0, 0);
-			
 			renderGUI(container, g);
 		}
 		
@@ -130,11 +132,12 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 			}
 			nextResource = null;
 		}
+		
 		if (LoadingList.get().getRemainingResources() > 0) {
 			nextResource = LoadingList.get().getNext();
 		} else {
 			if (!started) {
-				MusicManager.getInstance().play("menu");
+				musicManager.loop("menu");
 				started = true;
 			}
 		}
