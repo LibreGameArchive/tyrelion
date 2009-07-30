@@ -4,8 +4,10 @@
 package tyrelion.music;
 
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +27,11 @@ public class MusicLoaderTest {
 	
 	@Test
 	public void testMusicLoader() {
-		String[] result = { "menu" };
+		ArrayList<String> result = new ArrayList<String>();
+		result.add("menu");
 		MusicLoader loader = new MusicLoader();
 		loader.initCategories();
-		assertArrayEquals(result, loader.getCategories());
+		assertEquals(result, loader.getCategories());
 		loader.initMusic();
 		assertFalse(loader.getMusicMap().isEmpty());
 		assertFalse(loader.getMusicMap().get("menu").isEmpty());

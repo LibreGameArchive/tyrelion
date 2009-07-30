@@ -20,7 +20,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 /**
- * @author jahudi
+ * @author jahudi, daennart
  *
  */
 public class MenuSettings extends BasicGameState implements ComponentListener{

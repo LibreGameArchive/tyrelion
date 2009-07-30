@@ -6,9 +6,8 @@ package tyrelion.music;
 import org.newdawn.slick.Music;
 
 /**
+ * The MusicManager controls music playback, looping and the playback volume.
  * @author jahudi
- * Implementation of the Slick MusicListener interface. Its purpose is to play the next track if the
- * actual track ended.
  */
 public class MusicListener implements org.newdawn.slick.MusicListener {
 
@@ -17,7 +16,6 @@ public class MusicListener implements org.newdawn.slick.MusicListener {
 	 * track of its category.
 	 * @see org.newdawn.slick.MusicListener#musicEnded(org.newdawn.slick.Music)
 	 */
-	@Override
 	public void musicEnded(Music music) {
 		
 		TyrelionMusic tMusic = (TyrelionMusic) music;
@@ -25,10 +23,10 @@ public class MusicListener implements org.newdawn.slick.MusicListener {
 
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * Not used.
 	 * @see org.newdawn.slick.MusicListener#musicSwapped(org.newdawn.slick.Music, org.newdawn.slick.Music)
 	 */
-	@Override
 	public void musicSwapped(Music music, Music newMusic) {
 		// TODO Auto-generated method stub
 

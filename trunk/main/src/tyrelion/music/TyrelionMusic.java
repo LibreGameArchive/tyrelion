@@ -7,9 +7,9 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 /**
- * @author jahudi
  * This is an extension of the original Slick Music class. It does nothing more than adding a
  * String variable for the category the music belongs to.
+ * @author jahudi
  */
 public class TyrelionMusic extends Music {
 
@@ -19,6 +19,7 @@ public class TyrelionMusic extends Music {
 	private String category;
 	
 	/**
+	 * Creates a new TyrelionMusic object. Sets the category ans calls the super constructor.
 	 * @see org.newdawn.slick.Music
 	 * @param category The category this TyrelionMusic belongs to.
 	 */
@@ -29,17 +30,10 @@ public class TyrelionMusic extends Music {
 	}
 
 	/**
-	 * @return the category
+	 * @return The category of this TyrelionMusic.
 	 */
 	public String getCategory() {
 		return category;
-	}
-
-	/**
-	 * @param category the category to set
-	 */
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 }

@@ -11,16 +11,16 @@ import java.util.HashMap;
 import org.newdawn.slick.SlickException;
 
 /**
- * @author jahudi
  * This class checks the "music" folder for its contents. It creates a list of categories and a map
  * of the detected tracks ordered by the categories.
+ * @author jahudi
  */
 public class MusicLoader {
 	
 	/**
 	 * A list of all detected categories (subdirectories of "music"). 
 	 */
-	private String[] categories;
+	private ArrayList<String> categories;
 	
 	/**
 	 * Map of the detected Tracks ordered by the detected categories. Each array of Musics can be
@@ -41,14 +41,16 @@ public class MusicLoader {
 	 * of the "music" directory.
 	 */
 	public void initCategories() {
-		FilenameFilter filter = new FilenameFilter() {
-			public boolean accept(File file, String name) {
-				return file.isDirectory();
-			}
-		};
 		File root = new File("res/music");
-		categories = root.list(filter);
-		//setCategories(root.list(filter));
+		File[] files = root.listFiles();
+		if (files != null) {
+			for (File elem : files) {
+				if (elem.isDirectory()) {
+					categories = new ArrayList<String>();
+					categories.add(elem.getName());
+				}
+			}
+		}
 	}
 	
 	/**
@@ -98,7 +100,7 @@ public class MusicLoader {
 	/**
 	 * @return the categories
 	 */
-	public String[] getCategories() {
+	public ArrayList<String> getCategories() {
 		return categories;
 	}
 	
