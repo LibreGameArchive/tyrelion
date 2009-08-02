@@ -19,6 +19,8 @@ import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import tyrelion.music.MusicManager;
+
 /**
  * @author jahudi, daennart
  *
@@ -31,7 +33,7 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 	private GameContainer gameContainer;
 	private Display display;
 	
-	/** Hintergrundgrafik des Hauptmenüs. */
+	/** Backgroundimage for settings-menu */
 	private Image background;
 	/** Hintergrundgrafik des Buttonbereichs. */
 	private Image button_field_background;
@@ -92,8 +94,8 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 	 */
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
-		// TODO Auto-generated method stub
-
+		//Transmit slider-position to MusicManager
+		MusicManager.getInstance().setVolume(volume_slider.getValue());
 	}
 	
 	public void keyReleased(int i, char c) {
