@@ -82,7 +82,7 @@ public class MapTest extends BasicGameState {
 		
 		tiles.addActor(tile);
 		
-		ImageLayer back = new ImageLayer(new Image("res/maps/test.png"));
+		ImageLayer back = new ImageLayer(new Image(2304, 2304));
 		ParallaxLayer parallax = new ParallaxLayer(2304, 2304);
 		parallax.addBackgroundLayer(back);
 		
