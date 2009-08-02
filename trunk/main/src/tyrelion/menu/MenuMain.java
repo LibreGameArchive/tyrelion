@@ -14,6 +14,8 @@ import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import tyrelion.music.MusicManager;
+
 /**
  * @author jahudi, daennart
  *
@@ -91,6 +93,12 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 		switch (i) {			
 			case Input.KEY_ESCAPE:
 				gameContainer.exit();
+				break;
+			case Input.KEY_ADD:
+				MusicManager.getInstance().setVolume(1f);
+				break;
+			case Input.KEY_SUBTRACT:
+				MusicManager.getInstance().setVolume(0.1f);
 				break;
 			default:
 				break;
