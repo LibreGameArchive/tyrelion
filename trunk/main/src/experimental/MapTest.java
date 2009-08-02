@@ -109,7 +109,8 @@ public class MapTest extends BasicGameState {
 		
 		drawPlayer(g, playerX, playerY);
 		// draw other entities here if there were any
-		
+		g.drawString("playerX: " + Float.toString(playerX), 0, 0);
+		g.drawString("playerY: " + Float.toString(playerY), 0, 0);
 		g.resetTransform();
 		
 	}
