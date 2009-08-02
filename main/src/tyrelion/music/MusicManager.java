@@ -51,10 +51,9 @@ public class MusicManager {
 	 */
 	public static MusicManager getInstance() {
 		if (instance == null) {
-			return new MusicManager();
-		} else {
-			return instance;
+			instance = new MusicManager();
 		}
+		return instance;
 	}
 	
 	/**
@@ -105,6 +104,10 @@ public class MusicManager {
 		if (activeTrack != null) {
 			activeTrack.setVolume(volume);
 		}
+	}
+	
+	public TyrelionMusic getActive() {
+		return activeTrack;
 	}
 		
 }
