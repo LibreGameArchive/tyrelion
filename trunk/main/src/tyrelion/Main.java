@@ -8,6 +8,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import experimental.MapTest;
+
 import tyrelion.menu.*;
 
 
@@ -35,6 +37,7 @@ public class Main extends StateBasedGame {
 		addState(new MenuSettings());
 		addState(new MenuControls());
 		addState(new MenuCredits());
+		addState(new MapTest());
 	}
 
 	/**

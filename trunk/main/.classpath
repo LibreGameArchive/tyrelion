@@ -12,10 +12,14 @@
 			<attribute name="javadoc_location" value="file:/usr/lib/slick/javadoc/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/sui.jar"/>
-	<classpathentry kind="lib" path="lib/thingle.jar"/>
 	<classpathentry kind="lib" path="lib/jogg-0.0.7.jar"/>
 	<classpathentry kind="lib" path="lib/jorbis-0.0.15.jar"/>
+	<classpathentry kind="lib" path="lib/sui.jar"/>
+	<classpathentry kind="lib" path="lib/slickset0.4.jar" sourcepath="/usr/lib/slickset/slickset-0.4/src">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/usr/lib/slickset/slickset-0.4/javadoc/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
