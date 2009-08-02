@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
-<map version="1.0" orientation="orthogonal" width="48" height="48" tilewidth="48" tileheight="48">
- <properties>
-  <property name="title" value="test map"/>
- </properties>
- <tileset name="Unbenannt" firstgid="1" tilewidth="48" tileheight="48" spacing="3" margin="2">
-  <image source="RPG_Tiles_05.png"/>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="48" tileheight="48">
+ <tileset name="Unbenannt" firstgid="1" tilewidth="48" tileheight="48" spacing="2" margin="4">
+  <image source="testTiles.png"/>
  </tileset>
- <layer name="ground" width="48" height="48">
+ <layer name="ground" width="32" height="32">
   <properties>
    <property name="blocked" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAAO3DAQkAAAwEoetf9wssx0DBVVNVVVVVVVVVVV8+AwsKBQAkAAA=
+   H4sIAAAAAAAAABNnYGAQH8UjGjMCMRMQMyOJcQAxJ5H6SVGLDfMCsSwQ8yOJiQCxKJH6SVFLrP30xLSwn5Q4kQRiKSCWpqL9lMbJYMKUpu/RsBze8YbLHnrFG7XsGU3no2E0Gl5D0w9DwY2DHY+G4SgeaRgAuo1y+QAQAAA=
   </data>
  </layer>
- <layer name="trees" width="48" height="48">
+ <layer name="trees" width="32" height="32">
   <properties>
    <property name="blocked" value="true"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAAO2ZSwrAIAxEpaft/U9QXAhu2mo+TEbmgTujL1EUtDUhBIL7qjVej18dY/TdiYmc/89ptd9b88xvJdLf4hGV/058lj8ify+RNUDhzQHtPztUcLHC7i+EEF8wnm3sdwu7f4fZvQrs+0D+WDLdWWsyYF7XTtR7SoaTpT+j/xxTyb+Ci5VK+8HCCWuQCXttTvFnfDOcPTx3DRJv/T05IM+myH+PKmu5Q9T/CxJ2fyEQPHgeYM8AJAAA
-  </data>
- </layer>
- <layer name="castle" width="48" height="48">
-  <properties>
-   <property name="blocked" value="true"/>
-  </properties>
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAAO3VwQkAMAgDQOn+/27QObtCoaIIdxMETDACAABgvr26E/w5w/N3c38q6RvT6CzUsTcAXvkZAGS7kDKlgwAkAAA=
+   H4sIAAAAAAAAAO3TuQ0AQAjEQGrg+u+VnAbOrDwZEc+KKonlfe7fq6bNQ5F2l7R9EhAzIc4kpfC/bjAn6bYBpkMOfQAQAAA=
   </data>
  </layer>
 </map>
