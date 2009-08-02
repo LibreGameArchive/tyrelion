@@ -46,7 +46,8 @@ public class MusicManager {
 	}
 	
 	/**
-	 * Singleton pattern
+	 * This method ensures, that there always will be just one object of MusicManager as long as this method is
+	 * used to create them.
 	 * @return The one and only instance of the MusicManager.
 	 */
 	public static MusicManager getInstance() {
@@ -104,10 +105,6 @@ public class MusicManager {
 		if (activeTrack != null) {
 			activeTrack.setVolume(volume);
 		}
-	}
-	
-	public TyrelionMusic getActive() {
-		return activeTrack;
 	}
 		
 }
