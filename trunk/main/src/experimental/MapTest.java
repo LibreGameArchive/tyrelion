@@ -3,6 +3,7 @@
  */
 package experimental;
 
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -11,17 +12,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-
-import com.slickset.ActorGroup;
-import com.slickset.Camera;
-import com.slickset.CollisionManager;
-import com.slickset.Scene;
-import com.slickset.collision.Circle;
-import com.slickset.collision.PairwiseStrategy;
-import com.slickset.layer.ImageLayer;
-import com.slickset.layer.ParallaxLayer;
-import com.slickset.layer.TileLayer;
-import com.slickset.tile.Tile;
+import org.newdawn.slick.tiled.TiledMap;
 
 /**
  * @author jahudi
@@ -30,12 +21,34 @@ import com.slickset.tile.Tile;
 public class MapTest extends BasicGameState {
 
 	public static final int ID = 6;
+
+	/** The size of the tank sprite - used for finding the centre */
+	private static final int PLAYER_SIZE = 48;
+	/** The size of the tiles - used to determine the amount to draw */
+	private static final int TILE_SIZE = 48;
+	/** The speed the tank moves at */
+	private static final float PLAYER_MOVE_SPEED = 0.003f;
 	
-	ActorGroup players;
-	ActorGroup tiles;
-	PlayerTest player;
-	Scene scene;
-	Camera cam;
+	/** The player's x position in tiles */
+	private float playerX = 15;
+	/** The player's y position in tiles */
+	private float playerY = 15;
+	
+	/** The width of the display in tiles */
+	private int widthInTiles;
+	/** The height of the display in tiles */
+	private int heightInTiles;
+	
+	/** The offset from the centre of the screen to the top edge in tiles */
+	private int topOffsetInTiles;
+	/** The offset from the centre of the screen to the left edge in tiles */
+	private int leftOffsetInTiles;
+	
+	/** The map that we're going to drive around */
+	private TiledMap map;
+	
+	/** The animation representing the player's tank */
+	private Animation player;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -51,51 +64,19 @@ public class MapTest extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
 		
-		Animation up = new Animation();
-		up.addFrame(new Image("res/anim/test_anim/up/up.png", new Color(0x00cc00ff)), 1000);
+		map = new TiledMap("res/maps/testmap.tmx", "res/maps");
 		
-		Animation down = new Animation();
-		down.addFrame(new Image("res/anim/test_anim/down/down.png", new Color(0x00cc00ff)), 1000);
+		// caculate some layout values for rendering the tilemap. How many tiles
+		// do we need to render to fill the screen in each dimension and how far is
+		// it from the centre of the screen
+		widthInTiles = container.getWidth() / TILE_SIZE;
+		heightInTiles = container.getHeight() / TILE_SIZE;
+		topOffsetInTiles = heightInTiles / 2;
+		leftOffsetInTiles = widthInTiles / 2;
 		
-		Animation left = new Animation();
-		left.addFrame(new Image("res/anim/test_anim/left/left.png", new Color(0x00cc00ff)), 1000);
+		player = new Animation();
+		player.addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
 		
-		Animation right = new Animation();
-		right.addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1000);
-		
-		Animation[] anims = new Animation[4];
-		anims[PlayerTest.ANIM_DOWN] = down;
-		anims[PlayerTest.ANIM_UP] = up;
-		anims[PlayerTest.ANIM_LEFT] = left;
-		anims[PlayerTest.ANIM_RIGHT] = right;
-		
-		
-		players = new ActorGroup("players");
-		player = new PlayerTest(anims, 0, 0, new Circle(24), 1f, false);
-		players.addActor(player);
-		
-		tiles = new ActorGroup("tiles");
-		
-		Tile tile = new Tile(new Image("res/anim/test_anim/left/left.png", new Color(0x00cc00ff)), new Circle(24));
-		TileLayer tLayer = new TileLayer(48, 48, 48);
-		tLayer.getData().setTile(tile, 6, 6);
-		
-		tiles.addActor(tile);
-		
-		ImageLayer back = new ImageLayer(new Image(2304, 2304));
-		ParallaxLayer parallax = new ParallaxLayer(2304, 2304);
-		parallax.addBackgroundLayer(back);
-		
-		scene = new Scene(game);
-		scene.setLayer(tLayer);
-		scene.setLayer(parallax);
-		scene.addGroup(players);
-		scene.addGroup(tiles);
-		cam = new Camera();
-		scene.setCamera(cam);
-		
-		CollisionManager col = new CollisionManager(players, tiles, new PairwiseStrategy());
-		scene.addCollisionManager(col);
 	}
 
 	/* (non-Javadoc)
@@ -103,7 +84,34 @@ public class MapTest extends BasicGameState {
 	 */
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {		
-		scene.render(g);
+
+		// draw the appropriate section of the tilemap based on the centre (hence the -(PLAYER_SIZE/2)) of
+		// the player
+		int playerTileX = (int) playerX;
+		int playerTileY = (int) playerY;
+		
+		// caculate the offset of the player from the edge of the tile. As the player moves around this
+		// varies and this tells us how far to offset the tile based rendering to give the smooth
+		// motion of scrolling
+		int playerTileOffsetX = (int) ((playerTileX - playerX) * TILE_SIZE);
+		int playerTileOffsetY = (int) ((playerTileY - playerY) * TILE_SIZE);
+		
+		// render the section of the map that should be visible. Notice the -1 and +3 which renders
+		// a little extra map around the edge of the screen to cope with tiles scrolling on and off
+		// the screen
+		map.render(playerTileOffsetX - (PLAYER_SIZE / 2), playerTileOffsetY - (PLAYER_SIZE / 2), 
+				   playerTileX - leftOffsetInTiles - 1, 
+				   playerTileY - topOffsetInTiles - 1,
+				   widthInTiles + 3, heightInTiles + 3);
+		
+		// draw entities relative to the player that must appear in the centre of the screen
+		g.translate(512 - (int) (playerX * 48), 368 - (int) (playerY * 48));
+		
+		drawPlayer(g, playerX, playerY);
+		// draw other entities here if there were any
+		
+		g.resetTransform();
+		
 	}
 
 	/* (non-Javadoc)
@@ -111,10 +119,36 @@ public class MapTest extends BasicGameState {
 	 */
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
-		scene.getCamera().centerCamera(player);
-		scene.update(game, delta);
-		player.update(game, delta);
 
+		if (container.getInput().isKeyDown(Keyboard.KEY_UP)) {
+			playerY += -delta * PLAYER_MOVE_SPEED;
+		}
+		if (container.getInput().isKeyDown(Keyboard.KEY_DOWN)) {
+			playerY += delta * PLAYER_MOVE_SPEED;
+		}
+		if (container.getInput().isKeyDown(Keyboard.KEY_RIGHT)) {
+			playerX += delta * PLAYER_MOVE_SPEED;
+		}
+		if (container.getInput().isKeyDown(Keyboard.KEY_LEFT)) {
+			playerX += -delta * PLAYER_MOVE_SPEED;
+		}
+		
+	}
+	
+	/**
+	 * Draw a single tank to the game
+	 *  
+	 * @param g The graphics context on which we're drawing
+	 * @param xpos The x coordinate in tiles the tank is at
+	 * @param ypos The y coordinate in tiles the tank is at
+	 * @param rot The rotation of the tank
+	 */
+	public void drawPlayer(Graphics g, float xpos, float ypos) {
+		// work out the centre of the tank in rendering coordinates and then
+		// spit onto the screen
+		int cx = (int) (xpos * 48);
+		int cy = (int) (ypos * 48);
+		player.draw(cx-24,cy-24);
 	}
 
 }
