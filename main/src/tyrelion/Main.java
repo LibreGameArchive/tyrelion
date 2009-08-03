@@ -35,14 +35,13 @@ public class Main extends StateBasedGame {
 	 */
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
-		addState(new GUILayer());
-		//addState(new PreLoading());
+		addState(new PreLoading());
 		addState(new MenuMain());
 		addState(new MenuLoad());
 		addState(new MenuSettings());
 		addState(new MenuControls());
 		addState(new MenuCredits());
-		//addState(new MapTest());
+		addState(new MapTest());
 	}
 
 	/**
@@ -51,7 +50,7 @@ public class Main extends StateBasedGame {
 	public static void main(String[] args) {
 		try {
 			AppGameContainer container = new AppGameContainer(new Main("Tales of Tyrelion"));
-			container.setDisplayMode(1024, 768, true);
+			container.setDisplayMode(1024, 768, false);
 			container.setShowFPS(false);
 			container.setTargetFrameRate(40);
 			container.start();

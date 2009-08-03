@@ -3,18 +3,18 @@
  */
 package experimental;
 
-import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
-import com.slickset.collision.Circle;
+import tyrelion.gui.GUILayer;
 
 /**
  * @author jahudi
@@ -32,9 +32,9 @@ public class MapTest extends BasicGameState {
 	private static final float PLAYER_MOVE_SPEED = 0.003f;
 	
 	/** The player's x position in tiles */
-	private float playerX;
+	private float playerX = 15;
 	/** The player's y position in tiles */
-	private float playerY;
+	private float playerY = 15;
 	
 	/** The width of the display in tiles */
 	private int widthInTiles;
@@ -52,7 +52,7 @@ public class MapTest extends BasicGameState {
 	/** The animation representing the player's tank */
 	private Animation player;
 	
-	private PlayerTest playerTest;
+	private GUILayer guiLayer;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -81,9 +81,7 @@ public class MapTest extends BasicGameState {
 		player = new Animation();
 		player.addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
 		
-		Animation[] anims = {player,player,player,player};
-		
-		playerTest = new PlayerTest(anims, 480, 480, new Circle(24), 1f, false);
+		guiLayer = new GUILayer(container);
 		
 	}
 
@@ -91,10 +89,7 @@ public class MapTest extends BasicGameState {
 	 * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
 	 */
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
-			throws SlickException {		
-
-		playerX = playerTest.getPlayerX();
-		playerY = playerTest.getPlayerY();
+			throws SlickException {
 		
 		// draw the appropriate section of the tilemap based on the centre (hence the -(PLAYER_SIZE/2)) of
 		// the player
@@ -115,10 +110,13 @@ public class MapTest extends BasicGameState {
 				   playerTileY - topOffsetInTiles - 1,
 				   widthInTiles + 3, heightInTiles + 3);
 		
+		guiLayer.render(container, g);
+		
 		// draw entities relative to the player that must appear in the centre of the screen
 		g.translate(512 - (int) (playerX * 48), 368 - (int) (playerY * 48));
 		
-		playerTest.render(g, playerX*48-24, playerY * 48-24);
+		drawPlayer(g, playerX, playerY);
+		
 		
 		// draw other entities here if there were any
 		g.resetTransform();
@@ -127,12 +125,8 @@ public class MapTest extends BasicGameState {
 		g.drawString("playerY: " + Float.toString(playerY), 0, 15);
 		g.drawString("playerTileX: " + Integer.toString(playerTileX), 0, 30);
 		g.drawString("playerTileY: " + Integer.toString(playerTileY), 0, 45);
-		g.drawString("widthInTiles: " + Integer.toString(widthInTiles), 0, 60);
-		g.drawString("heightInTiles: " + Integer.toString(heightInTiles), 0, 75);
-		g.drawString("leftOffsetInTiles: " + Integer.toString(leftOffsetInTiles), 0, 90);
-		g.drawString("topOffsetInTiles: " + Integer.toString(topOffsetInTiles), 0, 105);
-		g.drawString("playerTileOffsetX: " + Integer.toString(playerTileOffsetX), 0, 120);
-		g.drawString("playerTileOffsetY: " + Integer.toString(playerTileOffsetY), 0, 135);
+		g.drawString("playerTileOffsetX: " + Integer.toString(playerTileOffsetX), 0, 60);
+		g.drawString("playerTileOffsetY: " + Integer.toString(playerTileOffsetY), 0, 75);
 	}
 
 	/* (non-Javadoc)
@@ -141,8 +135,25 @@ public class MapTest extends BasicGameState {
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 
-		playerTest.update(game, delta);
+		if (container.getInput().isKeyDown(Input.KEY_LEFT)) {
+			playerX += -delta * PLAYER_MOVE_SPEED;
+		}
+		if (container.getInput().isKeyDown(Input.KEY_RIGHT)) {
+			playerX += delta * PLAYER_MOVE_SPEED;
+		}
+		if (container.getInput().isKeyDown(Input.KEY_UP)) {
+			playerY += -delta * PLAYER_MOVE_SPEED;
+		}
+		if (container.getInput().isKeyDown(Input.KEY_DOWN)) {
+			playerY += delta * PLAYER_MOVE_SPEED;
+		}
 		
+	}
+	
+	public void drawPlayer(Graphics g, float xpos, float ypos) {
+		int cx = (int) (xpos * 48);
+		int cy = (int) (ypos * 48);
+		player.draw(cx-24,cy-24);
 	}
 	
 }
