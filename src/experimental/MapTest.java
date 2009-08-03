@@ -3,7 +3,6 @@
  */
 package experimental;
 
-import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -12,7 +11,6 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.tiled.Layer;
 import org.newdawn.slick.tiled.TiledMap;
 
 import com.slickset.ActorGroup;
@@ -21,8 +19,6 @@ import com.slickset.CollisionManager;
 import com.slickset.Scene;
 import com.slickset.collision.Circle;
 import com.slickset.collision.PairwiseStrategy;
-import com.slickset.layer.ColorLayer;
-import com.slickset.layer.ParallaxLayer;
 import com.slickset.layer.TileLayer;
 import com.slickset.tile.Tile;
 
@@ -41,7 +37,6 @@ public class MapTest extends BasicGameState {
 	private PlayerTest player;
 	private Scene scene;
 	private Camera cam;
-	private TiledLayer back;
 	
 	/** The width of the display in tiles */
 	private int widthInTiles;
@@ -102,15 +97,9 @@ public class MapTest extends BasicGameState {
 		tLayer.getData().setTile(tile2, 7, 15);
 		tLayer.getData().setTile(tile3, 15, 10);
 		
-		back = new TiledLayer(1536, 1536, 48, map);
-				
-		ParallaxLayer parallax = new ParallaxLayer(1536, 1536);
-		parallax.addBackgroundLayer(back);
-		parallax.addForegroundLayer(tLayer);
-		
 		scene = new Scene(game);
 		
-		scene.setLayer(parallax);
+		scene.setLayer(tLayer);
 		scene.addGroup(tiles);
 		scene.addGroup(players);
 		
@@ -142,8 +131,9 @@ public class MapTest extends BasicGameState {
 		int playerTileOffsetX = (int) ((playerTileX - (player.getX()/48)) * 48);
 		int playerTileOffsetY = (int) ((playerTileY - (player.getY()/48)) * 48);
 		
-		back.render(playerTileOffsetX-24, playerTileOffsetY-24, playerTileX-leftOffsetInTiles-1, playerTileY-topOffsetInTiles-1,
+		map.render(playerTileOffsetX-24, playerTileOffsetY-24, playerTileX-leftOffsetInTiles-1, playerTileY-topOffsetInTiles-1,
 				widthInTiles+3, heightInTiles+3);
+		player.render(g);
 		scene.render(g);
 		
 	}
