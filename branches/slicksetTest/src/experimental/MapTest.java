@@ -12,9 +12,19 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.tiled.Layer;
 import org.newdawn.slick.tiled.TiledMap;
 
+import com.slickset.ActorGroup;
+import com.slickset.Camera;
+import com.slickset.CollisionManager;
+import com.slickset.Scene;
 import com.slickset.collision.Circle;
+import com.slickset.collision.PairwiseStrategy;
+import com.slickset.layer.ColorLayer;
+import com.slickset.layer.ParallaxLayer;
+import com.slickset.layer.TileLayer;
+import com.slickset.tile.Tile;
 
 /**
  * @author jahudi
@@ -24,17 +34,14 @@ public class MapTest extends BasicGameState {
 
 	public static final int ID = 6;
 
-	/** The size of the tank sprite - used for finding the centre */
-	private static final int PLAYER_SIZE = 48;
-	/** The size of the tiles - used to determine the amount to draw */
-	private static final int TILE_SIZE = 48;
-	/** The speed the tank moves at */
-	private static final float PLAYER_MOVE_SPEED = 0.003f;
+	private TiledMap map;
 	
-	/** The player's x position in tiles */
-	private float playerX;
-	/** The player's y position in tiles */
-	private float playerY;
+	private ActorGroup players;
+	private ActorGroup tiles;
+	private PlayerTest player;
+	private Scene scene;
+	private Camera cam;
+	private TiledLayer back;
 	
 	/** The width of the display in tiles */
 	private int widthInTiles;
@@ -45,14 +52,6 @@ public class MapTest extends BasicGameState {
 	private int topOffsetInTiles;
 	/** The offset from the centre of the screen to the left edge in tiles */
 	private int leftOffsetInTiles;
-	
-	/** The map that we're going to drive around */
-	private TiledMap map;
-	
-	/** The animation representing the player's tank */
-	private Animation player;
-	
-	private PlayerTest playerTest;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -70,20 +69,64 @@ public class MapTest extends BasicGameState {
 		
 		map = new TiledMap("res/maps/testmap.tmx", "res/maps");
 		
+		players = new ActorGroup("player");
+		tiles = new ActorGroup("tiles");
+		
+		Animation[] animations = new Animation[4];
+		
+		Animation down = new Animation();
+		down.addFrame(new Image("res/anim/test_anim/down/down.png", new Color(0x00cc00ff)), 1);
+		Animation left = new Animation();
+		left.addFrame(new Image("res/anim/test_anim/left/left.png", new Color(0x00cc00ff)), 1);
+		Animation right = new Animation();
+		right.addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
+		Animation up = new Animation();
+		up.addFrame(new Image("res/anim/test_anim/up/up.png", new Color(0x00cc00ff)), 1);
+				
+		animations[PlayerTest.ANIM_DOWN] = down;
+		animations[PlayerTest.ANIM_LEFT] = left;
+		animations[PlayerTest.ANIM_RIGHT] = right;
+		animations[PlayerTest.ANIM_UP] = up;
+			
+		player = new PlayerTest(animations, 720, 576, new Circle(24), 1f, false);
+		players.addActor(player);
+		
+		Tile tile1 = new Tile(new Image("res/anim/test_anim/left/left.png", new Color(0x00cc00ff)), new Circle(24));
+		Tile tile2 = new Tile(new Image("res/anim/test_anim/left/left.png", new Color(0x00cc00ff)), new Circle(24));
+		Tile tile3 = new Tile(new Image("res/anim/test_anim/left/left.png", new Color(0x00cc00ff)), new Circle(24));
+		tiles.addActor(tile1);
+		tiles.addActor(tile2);
+		tiles.addActor(tile3);
+		TileLayer tLayer = new TileLayer(32, 32, 48);
+		tLayer.getData().setTile(tile1, 5, 5);
+		tLayer.getData().setTile(tile2, 7, 15);
+		tLayer.getData().setTile(tile3, 15, 10);
+		
+		back = new TiledLayer(1536, 1536, 48, map);
+				
+		ParallaxLayer parallax = new ParallaxLayer(1536, 1536);
+		parallax.addBackgroundLayer(back);
+		parallax.addForegroundLayer(tLayer);
+		
+		scene = new Scene(game);
+		
+		scene.setLayer(parallax);
+		scene.addGroup(tiles);
+		scene.addGroup(players);
+		
+		cam = new Camera(0, 0);
+		scene.setCamera(cam);
+		
+		CollisionManager col = new CollisionManager(players, tiles, new PairwiseStrategy());
+		scene.addCollisionManager(col);
+		
 		// caculate some layout values for rendering the tilemap. How many tiles
 		// do we need to render to fill the screen in each dimension and how far is
 		// it from the centre of the screen
-		widthInTiles = container.getWidth() / TILE_SIZE;
-		heightInTiles = container.getHeight() / TILE_SIZE;
+		widthInTiles = container.getWidth() / 48;
+		heightInTiles = container.getHeight() / 48;
 		topOffsetInTiles = heightInTiles / 2;
 		leftOffsetInTiles = widthInTiles / 2;
-		
-		player = new Animation();
-		player.addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
-		
-		Animation[] anims = {player,player,player,player};
-		
-		playerTest = new PlayerTest(anims, 480, 480, new Circle(24), 1f, false);
 		
 	}
 
@@ -92,47 +135,17 @@ public class MapTest extends BasicGameState {
 	 */
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {		
-
-		playerX = playerTest.getPlayerX();
-		playerY = playerTest.getPlayerY();
 		
-		// draw the appropriate section of the tilemap based on the centre (hence the -(PLAYER_SIZE/2)) of
-		// the player
-		int playerTileX = (int) playerX;
-		int playerTileY = (int) playerY;
+		int playerTileX = (int)(player.getX()/48);
+		int playerTileY = (int)(player.getY()/48);
 		
-		// caculate the offset of the player from the edge of the tile. As the player moves around this
-		// varies and this tells us how far to offset the tile based rendering to give the smooth
-		// motion of scrolling
-		int playerTileOffsetX = (int) ((playerTileX - playerX) * TILE_SIZE);
-		int playerTileOffsetY = (int) ((playerTileY - playerY) * TILE_SIZE);
+		int playerTileOffsetX = (int) ((playerTileX - (player.getX()/48)) * 48);
+		int playerTileOffsetY = (int) ((playerTileY - (player.getY()/48)) * 48);
 		
-		// render the section of the map that should be visible. Notice the -1 and +3 which renders
-		// a little extra map around the edge of the screen to cope with tiles scrolling on and off
-		// the screen
-		map.render(playerTileOffsetX - (PLAYER_SIZE / 2), playerTileOffsetY - (PLAYER_SIZE / 2), 
-				   playerTileX - leftOffsetInTiles - 1, 
-				   playerTileY - topOffsetInTiles - 1,
-				   widthInTiles + 3, heightInTiles + 3);
+		back.render(playerTileOffsetX-24, playerTileOffsetY-24, playerTileX-leftOffsetInTiles-1, playerTileY-topOffsetInTiles-1,
+				widthInTiles+3, heightInTiles+3);
+		scene.render(g);
 		
-		// draw entities relative to the player that must appear in the centre of the screen
-		g.translate(512 - (int) (playerX * 48), 368 - (int) (playerY * 48));
-		
-		playerTest.render(g, playerX*48-24, playerY * 48-24);
-		
-		// draw other entities here if there were any
-		g.resetTransform();
-		g.setColor(Color.red);
-		g.drawString("playerX: " + Float.toString(playerX), 0, 0);
-		g.drawString("playerY: " + Float.toString(playerY), 0, 15);
-		g.drawString("playerTileX: " + Integer.toString(playerTileX), 0, 30);
-		g.drawString("playerTileY: " + Integer.toString(playerTileY), 0, 45);
-		g.drawString("widthInTiles: " + Integer.toString(widthInTiles), 0, 60);
-		g.drawString("heightInTiles: " + Integer.toString(heightInTiles), 0, 75);
-		g.drawString("leftOffsetInTiles: " + Integer.toString(leftOffsetInTiles), 0, 90);
-		g.drawString("topOffsetInTiles: " + Integer.toString(topOffsetInTiles), 0, 105);
-		g.drawString("playerTileOffsetX: " + Integer.toString(playerTileOffsetX), 0, 120);
-		g.drawString("playerTileOffsetY: " + Integer.toString(playerTileOffsetY), 0, 135);
 	}
 
 	/* (non-Javadoc)
@@ -140,8 +153,8 @@ public class MapTest extends BasicGameState {
 	 */
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
-
-		playerTest.update(game, delta);
+		scene.getCamera().centerCamera(player);
+		scene.update(game, delta);
 		
 	}
 	
