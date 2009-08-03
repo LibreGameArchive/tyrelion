@@ -14,6 +14,8 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
+import com.slickset.collision.Circle;
+
 /**
  * @author jahudi
  *
@@ -30,9 +32,9 @@ public class MapTest extends BasicGameState {
 	private static final float PLAYER_MOVE_SPEED = 0.003f;
 	
 	/** The player's x position in tiles */
-	private float playerX = 15;
+	private float playerX;
 	/** The player's y position in tiles */
-	private float playerY = 15;
+	private float playerY;
 	
 	/** The width of the display in tiles */
 	private int widthInTiles;
@@ -49,6 +51,8 @@ public class MapTest extends BasicGameState {
 	
 	/** The animation representing the player's tank */
 	private Animation player;
+	
+	private PlayerTest playerTest;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -77,6 +81,10 @@ public class MapTest extends BasicGameState {
 		player = new Animation();
 		player.addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
 		
+		Animation[] anims = {player,player,player,player};
+		
+		playerTest = new PlayerTest(anims, 480, 480, new Circle(24), 1f, false);
+		
 	}
 
 	/* (non-Javadoc)
@@ -85,6 +93,9 @@ public class MapTest extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {		
 
+		playerX = playerTest.getPlayerX();
+		playerY = playerTest.getPlayerY();
+		
 		// draw the appropriate section of the tilemap based on the centre (hence the -(PLAYER_SIZE/2)) of
 		// the player
 		int playerTileX = (int) playerX;
@@ -107,12 +118,21 @@ public class MapTest extends BasicGameState {
 		// draw entities relative to the player that must appear in the centre of the screen
 		g.translate(512 - (int) (playerX * 48), 368 - (int) (playerY * 48));
 		
-		drawPlayer(g, playerX, playerY);
-		// draw other entities here if there were any
-		g.drawString("playerX: " + Float.toString(playerX), 0, 0);
-		g.drawString("playerY: " + Float.toString(playerY), 0, 0);
-		g.resetTransform();
+		playerTest.render(g, playerX*48-24, playerY * 48-24);
 		
+		// draw other entities here if there were any
+		g.resetTransform();
+		g.setColor(Color.red);
+		g.drawString("playerX: " + Float.toString(playerX), 0, 0);
+		g.drawString("playerY: " + Float.toString(playerY), 0, 15);
+		g.drawString("playerTileX: " + Integer.toString(playerTileX), 0, 30);
+		g.drawString("playerTileY: " + Integer.toString(playerTileY), 0, 45);
+		g.drawString("widthInTiles: " + Integer.toString(widthInTiles), 0, 60);
+		g.drawString("heightInTiles: " + Integer.toString(heightInTiles), 0, 75);
+		g.drawString("leftOffsetInTiles: " + Integer.toString(leftOffsetInTiles), 0, 90);
+		g.drawString("topOffsetInTiles: " + Integer.toString(topOffsetInTiles), 0, 105);
+		g.drawString("playerTileOffsetX: " + Integer.toString(playerTileOffsetX), 0, 120);
+		g.drawString("playerTileOffsetY: " + Integer.toString(playerTileOffsetY), 0, 135);
 	}
 
 	/* (non-Javadoc)
@@ -121,35 +141,8 @@ public class MapTest extends BasicGameState {
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 
-		if (container.getInput().isKeyDown(Keyboard.KEY_UP)) {
-			playerY += -delta * PLAYER_MOVE_SPEED;
-		}
-		if (container.getInput().isKeyDown(Keyboard.KEY_DOWN)) {
-			playerY += delta * PLAYER_MOVE_SPEED;
-		}
-		if (container.getInput().isKeyDown(Keyboard.KEY_RIGHT)) {
-			playerX += delta * PLAYER_MOVE_SPEED;
-		}
-		if (container.getInput().isKeyDown(Keyboard.KEY_LEFT)) {
-			playerX += -delta * PLAYER_MOVE_SPEED;
-		}
+		playerTest.update(game, delta);
 		
 	}
 	
-	/**
-	 * Draw a single tank to the game
-	 *  
-	 * @param g The graphics context on which we're drawing
-	 * @param xpos The x coordinate in tiles the tank is at
-	 * @param ypos The y coordinate in tiles the tank is at
-	 * @param rot The rotation of the tank
-	 */
-	public void drawPlayer(Graphics g, float xpos, float ypos) {
-		// work out the centre of the tank in rendering coordinates and then
-		// spit onto the screen
-		int cx = (int) (xpos * 48);
-		int cy = (int) (ypos * 48);
-		player.draw(cx-24,cy-24);
-	}
-
 }
