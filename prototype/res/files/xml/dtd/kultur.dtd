@@ -1,4 +1,0 @@
-<!ELEMENT kulturen (kultur)*>
-<!ELEMENT kultur (name,text)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT text (#PCDATA)>

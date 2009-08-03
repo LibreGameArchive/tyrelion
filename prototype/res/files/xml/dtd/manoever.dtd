@@ -1,4 +1,0 @@
-<!ELEMENT manoevers (manoever)*>
-<!ELEMENT manoever (name,text)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT text (#PCDATA)>

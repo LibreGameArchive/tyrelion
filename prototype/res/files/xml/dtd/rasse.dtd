@@ -1,4 +1,0 @@
-<!ELEMENT rassen (rasse)*>
-<!ELEMENT rasse (name,text)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT text (#PCDATA)>
