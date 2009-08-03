@@ -6,16 +6,16 @@ package tyrelion.gui;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import tyrelion.menu.MenuCredits;
+import tyrelion.menu.MenuLoad;
 import tyrelion.menu.MenuMain;
-import tyrelion.music.MusicManager;
+import tyrelion.menu.MenuSettings;
 
 /**
  * @author jahudi, daennart
@@ -134,12 +134,12 @@ public class GUILayer implements ComponentListener{
 	public void componentActivated(AbstractComponent source) {
 		//Abfrage des aktivierten Buttons und ausführen der zugehörigen Aktion
 		if (source == gui_btn_menu) isShowMenu=!isShowMenu;
-		if (source == gui_btn_questlog) game.enterState(MenuMain.ID);
+	//	if (source == gui_btn_questlog) game.enterState(MenuMain.ID);
 		if (source == gui_btn_back) isShowMenu=false;
-		if (source == gui_btn_save) game.enterState(MenuMain.ID);
-		if (source == gui_btn_load) game.enterState(MenuMain.ID);
-		if (source == gui_btn_settings) game.enterState(MenuMain.ID);
-		if (source == gui_btn_quit) gameContainer.exit();
+		if (source == gui_btn_save) game.enterState(MenuCredits.ID);
+		if (source == gui_btn_load) game.enterState(MenuLoad.ID);
+		if (source == gui_btn_settings) game.enterState(MenuSettings.ID);
+		if (source == gui_btn_quit) game.enterState(MenuMain.ID);
 	}
 
 }
