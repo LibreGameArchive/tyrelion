@@ -47,7 +47,7 @@ public class Main extends StateBasedGame {
 		try {
 			AppGameContainer container = new AppGameContainer(new Main("Tales of Tyrelion"));
 			container.setDisplayMode(1024, 768, false);
-			container.setShowFPS(false);
+			container.setShowFPS(true);
 			container.setTargetFrameRate(40);
 			container.start();
 		} catch (SlickException e) {
