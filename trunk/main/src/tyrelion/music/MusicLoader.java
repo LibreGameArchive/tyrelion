@@ -44,9 +44,9 @@ public class MusicLoader {
 		File root = new File("res/music");
 		File[] files = root.listFiles();
 		if (files != null) {
+			categories = new ArrayList<String>();
 			for (File elem : files) {
 				if (elem.isDirectory()) {
-					categories = new ArrayList<String>();
 					categories.add(elem.getName());
 				}
 			}

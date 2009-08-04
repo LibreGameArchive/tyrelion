@@ -34,7 +34,7 @@ public class MusicManager {
 	/**
 	 * The volume represented by a float value between 0 and 1.
 	 */
-	private float volume;
+	private float volume = 0.5f;
 	
 	/**
 	 * Creates a MusicManager object, calls the MusicLoader and initializes the musicMap and volume.
@@ -42,7 +42,6 @@ public class MusicManager {
 	public MusicManager() {
 		loader = new MusicLoader();
 		musicMap = loader.getMusicMap();
-		volume = 1.0f;
 	}
 	
 	/**
@@ -91,8 +90,8 @@ public class MusicManager {
 			activeTrack.stop();
 		}
 		activeTrack = pickRandom(category);
-		activeTrack.addListener(new MusicListener());
 		activeTrack.setVolume(volume);
+		activeTrack.addListener(new MusicListener());
 		activeTrack.play();
 	}
 	
