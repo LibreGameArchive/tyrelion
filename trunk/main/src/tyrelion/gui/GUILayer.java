@@ -81,9 +81,9 @@ public class GUILayer implements ComponentListener{
 			throws SlickException {
 		//Render images
 		g.drawImage(gui_avatar, 10, 0);
-		g.drawImage(gui_quickslots, 450, 699);
-		g.drawImage(gui_minimap, 725, 512);
-		g.drawImage(gui_infobox, 15, 620);
+		g.drawImage(gui_quickslots, 578, 795);
+		g.drawImage(gui_minimap, 853, 608);
+		g.drawImage(gui_infobox, 15, 716);
 		
 		//Render buttons
 		gui_btn_menu.render(container, g);
@@ -92,7 +92,7 @@ public class GUILayer implements ComponentListener{
 		//Display location
 		font_head.addGlyphs("abcdefghijklmnopqrstovwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöü.");
 		font_head.loadGlyphs(1000);
-		font_head.drawString(790, 550, "Arthlet");
+		font_head.drawString(918, 646, "Arthlet");
 		
 		//Check if menu should be drawn and render it
 		if (isShowMenu) showMenu(container, g);
@@ -108,10 +108,10 @@ public class GUILayer implements ComponentListener{
 		gui_infobox = new Image("res/img/gui/gui_infobox.png");
 		
 		//button initialisation
-		gui_btn_menu = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_menu_1.png"), 808, 525, 29, 27, this);
+		gui_btn_menu = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_menu_1.png"), 936, 621, 29, 27, this);
 		gui_btn_menu.setMouseOverImage(new Image("res/img/gui/gui_btn_menu_2.png"));
         
-		gui_btn_questlog = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_questlog_1.png"), 380, 672, 195, 96, this);
+		gui_btn_questlog = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_questlog_1.png"), 508, 768, 195, 96, this);
 		gui_btn_questlog.setMouseOverImage(new Image("res/img/gui/gui_btn_questlog_2.png"));
 		
 		initMenu();
@@ -119,24 +119,24 @@ public class GUILayer implements ComponentListener{
 	
 	private void initMenu() throws SlickException{
 		//Jeweils Zuweisung von MOAs und Rollover-Images für die Buttons
-		gui_btn_back = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_back_1.png"), 855, 200, 160, 30, this);
+		gui_btn_back = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_back_1.png"), 983, 296, 160, 30, this);
 		gui_btn_back.setMouseOverImage(new Image("res/img/gui/gui_btn_back_2.png"));
 		
-		gui_btn_save = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_save_1.png"), 855, 230, 160, 30, this);
+		gui_btn_save = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_save_1.png"), 983, 326, 160, 30, this);
 		gui_btn_save.setMouseOverImage(new Image("res/img/gui/gui_btn_save_2.png"));
         
-		gui_btn_load = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_load_1.png"), 855, 260, 160, 30, this);
+		gui_btn_load = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_load_1.png"), 983, 356, 160, 30, this);
 		gui_btn_load.setMouseOverImage(new Image("res/img/gui/gui_btn_load_2.png"));
 		
-		gui_btn_settings = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_settings_1.png"), 855, 290, 160, 30, this);
+		gui_btn_settings = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_settings_1.png"), 983, 386, 160, 30, this);
 		gui_btn_settings.setMouseOverImage(new Image("res/img/gui/gui_btn_settings_2.png"));
 		
-		gui_btn_quit = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_quit_1.png"), 855, 320, 160, 30, this);
+		gui_btn_quit = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_quit_1.png"), 983, 416, 160, 30, this);
 		gui_btn_quit.setMouseOverImage(new Image("res/img/gui/gui_btn_quit_2.png"));
 	}
 	
 	private void showMenu(GameContainer container, Graphics g){
-		g.drawImage(gui_menu, 819, 150);
+		g.drawImage(gui_menu, 947, 246);
 		
 		gui_btn_back.render(container, g);
 		gui_btn_save.render(container, g);

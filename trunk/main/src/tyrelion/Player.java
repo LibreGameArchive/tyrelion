@@ -17,7 +17,7 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author jahudi
  *
  */
-public class PlayerTest {
+public class Player {
 
 	public static final int ANIM_UP = 0;
 	public static final int ANIM_DOWN = 1;
@@ -41,7 +41,7 @@ public class PlayerTest {
 	private int tileOffsetY;
 	
 	
-	public PlayerTest() throws SlickException{
+	public Player() throws SlickException{
 		animations = new Animation[4];
 		Animation up = new Animation();
 		up.addFrame(new Image("res/anim/test_anim/up/up.png", new Color(0x00cc00ff)), 1);
@@ -52,21 +52,21 @@ public class PlayerTest {
 		Animation right = new Animation();
 		right.addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
 		
-		animations[PlayerTest.ANIM_UP] = up;
-		animations[PlayerTest.ANIM_DOWN] = down;
-		animations[PlayerTest.ANIM_LEFT] = left;
-		animations[PlayerTest.ANIM_RIGHT] = right;
-		setAnimation(ANIM_UP);
+		animations[Player.ANIM_UP] = up;
+		animations[Player.ANIM_DOWN] = down;
+		animations[Player.ANIM_LEFT] = left;
+		animations[Player.ANIM_RIGHT] = right;
+		setAnimation(ANIM_RIGHT);
 	}
 	
-	public void render(Graphics g) {
+	public void render() {
 		animations[currentAnimation].draw(x*48-24, y*48-24);
 	}
 	
 	public void update(StateBasedGame game, int delta) {
 		
-		tileX = (int) x;
-		tileY = (int) y;
+		tileX = Math.round(x);
+		tileY = Math.round(y);
 		
 		tileOffsetX = (int) ((tileX - x) * TyrelionMap.TILE_SIZE);
 		tileOffsetY = (int) ((tileY - y) * TyrelionMap.TILE_SIZE);
