@@ -3,10 +3,15 @@
  */
 package tyrelion.gui;
 
+
+import java.awt.Color;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
@@ -25,6 +30,9 @@ public class GUILayer implements ComponentListener{
 	
 	private StateBasedGame game;
 	private GameContainer gameContainer;
+	
+	/** Font for headings. */
+	private UnicodeFont font_head;	
 	
 	/** Background for avatar-area */
 	private Image gui_avatar;
@@ -62,6 +70,9 @@ public class GUILayer implements ComponentListener{
 		this.game = game;
 		this.gameContainer = container;	
 		
+		font_head = new UnicodeFont("/res/fonts/vinque.ttf", 48, false, false);
+		font_head.getEffects().add(new ColorEffect(new Color(0x00461800)));
+		
 		initGUI();
 		
       }
@@ -77,6 +88,11 @@ public class GUILayer implements ComponentListener{
 		//Render buttons
 		gui_btn_menu.render(container, g);
 		gui_btn_questlog.render(container, g);
+		
+		//Display location
+		font_head.addGlyphs("abcdefghijklmnopqrstovwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöü.");
+		font_head.loadGlyphs(1000);
+		font_head.drawString(790, 550, "Arthlet");
 		
 		//Check if menu should be drawn and render it
 		if (isShowMenu) showMenu(container, g);
