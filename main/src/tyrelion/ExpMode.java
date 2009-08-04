@@ -17,7 +17,7 @@ import tyrelion.music.MusicManager;
  * @author jahudi
  *
  */
-public class MapTest extends BasicGameState {
+public class ExpMode extends BasicGameState {
 
 	public static final int ID = 6;
 	
@@ -25,7 +25,7 @@ public class MapTest extends BasicGameState {
 	private TyrelionMap map;
 	
 	/** The animation representing the player's tank */
-	private PlayerTest player;
+	private Player player;
 	
 	private GUILayer guiLayer;
 	
@@ -43,9 +43,9 @@ public class MapTest extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
 		
-		player = new PlayerTest();
+		player = new Player();
 		
-		map = new TyrelionMap("res/maps/testmap.tmx", "res/maps", player, container);
+		map = new TyrelionMap("res/maps/testmap.tmx", container);
 		
 		guiLayer = new GUILayer(container, game);
 		
@@ -57,21 +57,21 @@ public class MapTest extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
 		
-		map.render(container, game, g);
+		map.render(player);
 		
 		guiLayer.render(container, g);
 		
 		// draw entities relative to the player that must appear in the centre of the screen
-		g.translate(512 - (int) (player.getX() * 48), 368 - (int) (player.getY() * 48));
+		g.translate(576 - (int) (player.getX() * 48), 432 - (int) (player.getY() * 48));
 		
-		player.render(g);
+		player.render();
 		
 		
 		// draw other entities here if there were any
 		g.resetTransform();
 		g.setColor(Color.red);
-		g.drawString("playerX: " + Float.toString(player.getX()*48), 25, 632);
-		g.drawString("playerY: " + Float.toString(player.getY()*48), 25, 647);
+		g.drawString("playerX: " + Float.toString(player.getX()), 25, 632);
+		g.drawString("playerY: " + Float.toString(player.getY()), 25, 647);
 		g.drawString("playerTileX: " + Integer.toString(player.getTileX()), 25, 662);
 		g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 677);
 		g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 692);

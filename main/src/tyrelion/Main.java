@@ -39,7 +39,8 @@ public class Main extends StateBasedGame {
 		addState(new MenuSettings());
 		addState(new MenuControls());
 		addState(new MenuCredits());
-		addState(new MapTest());
+		addState(new ExpMode());
+		addState(new CollisionTest());
 	}
 
 	/**
@@ -48,7 +49,7 @@ public class Main extends StateBasedGame {
 	public static void main(String[] args) {
 		try {
 			AppGameContainer container = new AppGameContainer(new Main("Tales of Tyrelion"));
-			container.setDisplayMode(1024, 768, false);
+			container.setDisplayMode(1152, 864, false);
 			container.setShowFPS(false);
 			container.setTargetFrameRate(40);
 			container.start();
