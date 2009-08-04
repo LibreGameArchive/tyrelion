@@ -146,7 +146,7 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	 */
 	public void componentActivated(AbstractComponent source) {
 		//Abfrage des aktivierten Buttons und ausführen der zugehörigen Aktion
-		if (source == btn_new) game.enterState(MapTest.ID);
+		if (source == btn_new) {MusicManager.getInstance().loop("expNormal"); game.enterState(MapTest.ID);}
 		if (source == btn_load) game.enterState(MenuLoad.ID);
 		if (source == btn_set) game.enterState(MenuSettings.ID);
 		if (source == btn_cred) game.enterState(MenuCredits.ID);
