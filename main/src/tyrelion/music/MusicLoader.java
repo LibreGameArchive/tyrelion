@@ -46,7 +46,7 @@ public class MusicLoader {
 		if (files != null) {
 			categories = new ArrayList<String>();
 			for (File elem : files) {
-				if (elem.isDirectory()) {
+				if (elem.isDirectory() && !elem.isHidden()) {
 					categories.add(elem.getName());
 				}
 			}
