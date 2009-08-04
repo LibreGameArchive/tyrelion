@@ -108,12 +108,12 @@ public class PreLoading extends BasicGameState {
 		int status = (LoadingList.get().getTotalResources() - LoadingList.get().getRemainingResources());
 		
 		// Aktuellen "Pseudo"-Status anzeigen
-		font_head.drawString(620, 300, "Eisen wird geschmolzen...");
-		if (status > segment) font_head.drawString(585, 350, "Weltenform wird gegossen...");
-		if (status > 2*segment) font_head.drawString(625, 400, "Gebirge werden geformt...");
-		if (status > 3*segment) font_head.drawString(600, 450, "Meere werden ausgehoben...");
-		if (status > 4*segment) font_head.drawString(610, 500, "Wälder werden gepflanzt...");
-		if (status > 5*segment) font_head.drawString(537, 550, "Leben wird in die Welt gesetzt...");
+		font_head.drawString(760, 360, "Eisen wird geschmolzen...");
+		if (status > segment) font_head.drawString(725, 410, "Weltenform wird gegossen...");
+		if (status > 2*segment) font_head.drawString(765, 460, "Gebirge werden geformt...");
+		if (status > 3*segment) font_head.drawString(740, 510, "Meere werden ausgehoben...");
+		if (status > 4*segment) font_head.drawString(750, 560, "Wälder werden gepflanzt...");
+		if (status > 5*segment) font_head.drawString(677, 610, "Leben wird in die Welt gesetzt...");
 	}
 
 }
