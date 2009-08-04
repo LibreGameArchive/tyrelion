@@ -121,12 +121,12 @@ public class MapTest extends BasicGameState {
 		// draw other entities here if there were any
 		g.resetTransform();
 		g.setColor(Color.red);
-		g.drawString("playerX: " + Float.toString(playerX), 0, 0);
-		g.drawString("playerY: " + Float.toString(playerY), 0, 15);
-		g.drawString("playerTileX: " + Integer.toString(playerTileX), 0, 30);
-		g.drawString("playerTileY: " + Integer.toString(playerTileY), 0, 45);
-		g.drawString("playerTileOffsetX: " + Integer.toString(playerTileOffsetX), 0, 60);
-		g.drawString("playerTileOffsetY: " + Integer.toString(playerTileOffsetY), 0, 75);
+		g.drawString("playerX: " + Float.toString(playerX), 25, 632);
+		g.drawString("playerY: " + Float.toString(playerY), 25, 647);
+		g.drawString("playerTileX: " + Integer.toString(playerTileX), 25, 662);
+		g.drawString("playerTileY: " + Integer.toString(playerTileY), 25, 677);
+		g.drawString("playerTileOffsetX: " + Integer.toString(playerTileOffsetX), 25, 692);
+		g.drawString("playerTileOffsetY: " + Integer.toString(playerTileOffsetY), 25, 707);
 	}
 
 	/* (non-Javadoc)
