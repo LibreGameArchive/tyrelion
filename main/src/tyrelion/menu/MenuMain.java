@@ -6,7 +6,6 @@ package tyrelion.menu;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
@@ -14,9 +13,8 @@ import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import experimental.MapTest;
-
 import tyrelion.music.MusicManager;
+import experimental.MapTest;
 
 /**
  * @author jahudi, daennart
@@ -44,6 +42,8 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	private MouseOverArea btn_cred;
 	/** MOA für den Button "Spiel beenden" */
 	private MouseOverArea btn_quit;
+	
+	private boolean menuStarted = false;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -78,7 +78,7 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 		
 		g.clear();
 		g.drawImage(background, 0, 0);
-		renderGUI(container, g);
+		renderGUI(container, g);	
 		
 	}
 
@@ -87,25 +87,6 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	 */
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
-
-	}
-	
-	public void keyReleased(int i, char c) {
-		
-		switch (i) {			
-			case Input.KEY_ESCAPE:
-				gameContainer.exit();
-				break;
-			case Input.KEY_ADD:
-				MusicManager.getInstance().setVolume(1f);
-				break;
-			case Input.KEY_SUBTRACT:
-				MusicManager.getInstance().setVolume(0.1f);
-				break;
-			default:
-				break;
-		}
-		
 	}
 	
 	private void initGUI() throws SlickException{
@@ -146,11 +127,18 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	 */
 	public void componentActivated(AbstractComponent source) {
 		//Abfrage des aktivierten Buttons und ausführen der zugehörigen Aktion
-		if (source == btn_new) {MusicManager.getInstance().loop("expNormal"); game.enterState(MapTest.ID);}
+		if (source == btn_new) { menuStarted = false; game.enterState(MapTest.ID); }
 		if (source == btn_load) game.enterState(MenuLoad.ID);
 		if (source == btn_set) game.enterState(MenuSettings.ID);
 		if (source == btn_cred) game.enterState(MenuCredits.ID);
 		if (source == btn_quit) gameContainer.exit();
+	}
+	
+	public void enter(GameContainer container, StateBasedGame game) {
+		if (menuStarted == false) {
+			MusicManager.getInstance().loop("menu");
+			menuStarted = true;
+		}
 	}
 
 }

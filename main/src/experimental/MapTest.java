@@ -15,6 +15,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import tyrelion.gui.GUILayer;
+import tyrelion.music.MusicManager;
 
 /**
  * @author jahudi
@@ -154,6 +155,10 @@ public class MapTest extends BasicGameState {
 		int cx = (int) (xpos * 48);
 		int cy = (int) (ypos * 48);
 		player.draw(cx-24,cy-24);
+	}
+	
+	public void enter(GameContainer container, StateBasedGame game) {
+		MusicManager.getInstance().loop("expNormal");
 	}
 	
 }

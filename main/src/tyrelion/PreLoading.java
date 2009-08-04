@@ -91,7 +91,6 @@ public class PreLoading extends BasicGameState {
 		if (LoadingList.get().getRemainingResources() > 0) {
 			nextResource = LoadingList.get().getNext();
 		} else {
-			MusicManager.getInstance().loop("menu");
 			game.enterState(MenuMain.ID);
 		}
 		
