@@ -76,8 +76,8 @@ public class MusicManager {
 			activeTrack.stop();
 		}
 		activeTrack = pickRandom(category);
-		activeTrack.setVolume(volume);
 		activeTrack.play();
+		activeTrack.setVolume(volume);
 	}
 	
 	/**
@@ -90,9 +90,9 @@ public class MusicManager {
 			activeTrack.stop();
 		}
 		activeTrack = pickRandom(category);
-		activeTrack.setVolume(volume);
 		activeTrack.addListener(new MusicListener());
 		activeTrack.play();
+		activeTrack.setVolume(volume);
 	}
 	
 	/**
