@@ -8,13 +8,11 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import tyrelion.gui.GUILayer;
 import tyrelion.menu.MenuControls;
 import tyrelion.menu.MenuCredits;
 import tyrelion.menu.MenuLoad;
 import tyrelion.menu.MenuMain;
 import tyrelion.menu.MenuSettings;
-import experimental.MapTest;
 
 
 /**

@@ -13,8 +13,8 @@ import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import tyrelion.MapTest;
 import tyrelion.music.MusicManager;
-import experimental.MapTest;
 
 /**
  * @author jahudi, daennart

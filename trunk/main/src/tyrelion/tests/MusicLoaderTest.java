@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tests;
+package tyrelion.tests;
 
 
 import static org.junit.Assert.assertEquals;
@@ -31,6 +31,7 @@ public class MusicLoaderTest {
 	public void testMusicLoader() {
 		ArrayList<String> result = new ArrayList<String>();
 		result.add("menu");
+		result.add("expNormal");
 		MusicLoader loader = new MusicLoader();
 		loader.initCategories();
 		assertEquals(result, loader.getCategories());
