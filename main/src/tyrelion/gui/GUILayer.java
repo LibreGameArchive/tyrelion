@@ -56,9 +56,10 @@ public class GUILayer implements ComponentListener{
 	/** Should the menu be drawn */
 	private boolean isShowMenu = false;
 
-	public GUILayer(GameContainer container)
+	public GUILayer(GameContainer container, StateBasedGame game)
 			throws SlickException {
 		
+		this.game = game;
 		this.gameContainer = container;	
 		
 		initGUI();
