@@ -81,7 +81,7 @@ public class MapTest extends BasicGameState {
 		player = new Animation();
 		player.addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
 		
-		guiLayer = new GUILayer(container);
+		guiLayer = new GUILayer(container, game);
 		
 	}
 
