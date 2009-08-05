@@ -11,6 +11,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import tyrelion.gui.GUILayer;
+import tyrelion.gui.Infobox;
 import tyrelion.music.MusicManager;
 
 /**
@@ -28,6 +29,8 @@ public class ExpMode extends BasicGameState {
 	private Player player;
 	
 	private GUILayer guiLayer;
+	
+	private Infobox infobox;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -49,6 +52,8 @@ public class ExpMode extends BasicGameState {
 		
 		guiLayer = new GUILayer(container, game);
 		
+		infobox = new Infobox(container, game);
+		
 	}
 
 	/* (non-Javadoc)
@@ -60,6 +65,8 @@ public class ExpMode extends BasicGameState {
 		map.render(player);
 		
 		guiLayer.render(container, g);
+		
+		infobox.render(container, g, 15, 716);
 		
 		// draw entities relative to the player that must appear in the centre of the screen
 		g.translate(576 - (int) (player.getX() * 48), 432 - (int) (player.getY() * 48));

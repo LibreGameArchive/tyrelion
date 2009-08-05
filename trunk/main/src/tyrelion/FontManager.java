@@ -34,7 +34,7 @@ public class FontManager{
 		for (UnicodeFont elem : fonts.values()) {
 			elem.getEffects().add(new ColorEffect(Color.black));
 			elem.addGlyphs("abcdefghijklmnopqrstovwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöü.");
-			elem.loadGlyphs(1000);
+			elem.loadGlyphs(1500);
 		}
 	}
 	
