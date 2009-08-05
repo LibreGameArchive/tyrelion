@@ -48,8 +48,7 @@ public class PreLoading extends BasicGameState {
 	public void init(GameContainer gameContainer, StateBasedGame game)
 			throws SlickException {
 		
-		font_head = new UnicodeFont("/res/fonts/vinque.ttf", 30, false, false);
-		font_head.getEffects().add(new ColorEffect(java.awt.Color.black));
+		font_head = FontManager.getInstance().getFont(FontManager.FANCY);
 		
 		loading = new Image("res/img/splashscreens/loadingscreen.png");
 		LoadingList.setDeferredLoading(true);
@@ -67,7 +66,7 @@ public class PreLoading extends BasicGameState {
 			showLoading(container, g);
 		}
 		
-		font_head.addGlyphs("abcdefghijklmnopqrstovwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöü.");
+	//	font_head.addGlyphs("abcdefghijklmnopqrstovwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöü.");
 
 	}
 
@@ -92,8 +91,6 @@ public class PreLoading extends BasicGameState {
 		} else {
 			game.enterState(MenuMain.ID);
 		}
-		
-		font_head.loadGlyphs(1000);
 
 	}
 	
