@@ -42,8 +42,6 @@ public class GUILayer implements ComponentListener{
 	private Image gui_minimap;
 	/** Background for avatar-area */
 	private Image gui_quickslots;
-	/** Background for the infobox */
-	private Image gui_infobox;
 	
 	/** MOA for ingame-menu-button */
 	private MouseOverArea gui_btn_menu;
@@ -83,7 +81,6 @@ public class GUILayer implements ComponentListener{
 		g.drawImage(gui_avatar, 10, 0);
 		g.drawImage(gui_quickslots, 578, 795);
 		g.drawImage(gui_minimap, 853, 608);
-		g.drawImage(gui_infobox, 15, 716);
 		
 		//Render buttons
 		gui_btn_menu.render(container, g);
@@ -105,7 +102,7 @@ public class GUILayer implements ComponentListener{
 		gui_menu = new Image("res/img/gui/gui_menu.png");
 		gui_minimap = new Image("res/img/gui/gui_minimap.png");
 		gui_quickslots = new Image("res/img/gui/gui_quickslots.png");
-		gui_infobox = new Image("res/img/gui/gui_infobox.png");
+		
 		
 		//button initialisation
 		gui_btn_menu = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_menu_1.png"), 936, 621, 29, 27, this);

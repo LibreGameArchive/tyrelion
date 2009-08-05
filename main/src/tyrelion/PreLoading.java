@@ -29,7 +29,7 @@ public class PreLoading extends BasicGameState {
 
 	private Image loading;
 	
-	private UnicodeFont font_head;	
+	private UnicodeFont font;	
 	
 	/** Die Ressource, die als nächstes geladen werden soll. */
 	private DeferredResource nextResource;
@@ -48,7 +48,7 @@ public class PreLoading extends BasicGameState {
 	public void init(GameContainer gameContainer, StateBasedGame game)
 			throws SlickException {
 		
-		font_head = FontManager.getInstance().getFont(FontManager.FANCY);
+		font = FontManager.getInstance().getFont(FontManager.FANCY);
 		
 		loading = new Image("res/img/splashscreens/loadingscreen.png");
 		LoadingList.setDeferredLoading(true);
@@ -105,12 +105,12 @@ public class PreLoading extends BasicGameState {
 		int status = (LoadingList.get().getTotalResources() - LoadingList.get().getRemainingResources());
 		
 		// Aktuellen "Pseudo"-Status anzeigen
-		font_head.drawString(760, 360, "Eisen wird geschmolzen...");
-		if (status > segment) font_head.drawString(725, 410, "Weltenform wird gegossen...");
-		if (status > 2*segment) font_head.drawString(765, 460, "Gebirge werden geformt...");
-		if (status > 3*segment) font_head.drawString(740, 510, "Meere werden ausgehoben...");
-		if (status > 4*segment) font_head.drawString(750, 560, "Wälder werden gepflanzt...");
-		if (status > 5*segment) font_head.drawString(677, 610, "Leben wird in die Welt gesetzt...");
+		font.drawString(760, 360, "Eisen wird geschmolzen...");
+		if (status > segment) font.drawString(725, 410, "Weltenform wird gegossen...");
+		if (status > 2*segment) font.drawString(765, 460, "Gebirge werden geformt...");
+		if (status > 3*segment) font.drawString(740, 510, "Meere werden ausgehoben...");
+		if (status > 4*segment) font.drawString(750, 560, "Wälder werden gepflanzt...");
+		if (status > 5*segment) font.drawString(677, 610, "Leben wird in die Welt gesetzt...");
 	}
 
 }
