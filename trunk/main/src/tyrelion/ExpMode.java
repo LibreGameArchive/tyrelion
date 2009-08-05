@@ -7,6 +7,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -46,7 +47,7 @@ public class ExpMode extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
 		
-		player = new Player();
+		player = new Player(0, 0);
 		
 		map = new TyrelionMap("res/maps/testmap.tmx", container);
 		
@@ -71,8 +72,14 @@ public class ExpMode extends BasicGameState {
 		// draw entities relative to the player that must appear in the centre of the screen
 		g.translate(576 - (int) (player.getX() * 48), 432 - (int) (player.getY() * 48));
 		
-		player.render();
+		player.render(g);
 		
+
+		
+		for (Shape elem : CollisionManager.getInstance().getTiles()) {
+			g.draw(elem);
+		}
+
 		
 		// draw other entities here if there were any
 		g.resetTransform();
@@ -83,6 +90,13 @@ public class ExpMode extends BasicGameState {
 		g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 677);
 		g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 692);
 		g.drawString("playerTileOffsetY: " + Integer.toString(player.getTileOffsetY()), 25, 707);
+		
+		g.drawString(Float.toString(player.getCircle().getCenterX()/48), 25, 750);
+		g.drawString(Float.toString(player.getCircle().getX()/48), 25, 765);
+		
+
+
+
 	}
 
 	/* (non-Javadoc)
@@ -91,7 +105,7 @@ public class ExpMode extends BasicGameState {
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 
-		player.update(game, delta);
+		CollisionManager.getInstance().update(game, delta);
 		
 	}
 	

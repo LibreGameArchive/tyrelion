@@ -3,10 +3,12 @@
  */
 package tyrelion;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.tiled.TiledMap;
 
 
@@ -40,6 +42,7 @@ public class TyrelionMap extends TiledMap {
 		heightInTiles = container.getHeight() / TILE_SIZE;
 		topOffsetInTiles = heightInTiles / 2;
 		leftOffsetInTiles = widthInTiles / 2;
+		initCollisionBoxes();
 	}
 	
 	public void render(Player player) {
@@ -50,6 +53,23 @@ public class TyrelionMap extends TiledMap {
 				player.getTileY() - topOffsetInTiles,
 				widthInTiles + 3, heightInTiles + 3);
 
+	}
+	
+	public void initCollisionBoxes(){
+		
+		ArrayList<Shape> tiles = new ArrayList<Shape>();
+		
+		for (int i = 0; i < super.getWidth(); i++) {
+			for (int j = 0; j < super.getHeight(); j++){
+				int tileID = super.getTileId(i, j, 1);
+				String value = super.getTileProperty(tileID, "blocked", "false");
+				if ("true".equals(value)) {
+					tiles.add(new Rectangle(i*48-24, j*48-24, 48, 48));
+				}
+			}
+		}
+		CollisionManager.getInstance().setTiles(tiles);
+		
 	}
 
 }

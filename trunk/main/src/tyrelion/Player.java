@@ -3,14 +3,12 @@
  */
 package tyrelion;
 
-import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.geom.Circle;
 
 
 /**
@@ -33,15 +31,20 @@ public class Player {
 	
 	private Animation[] animations;
 	
-	private float x = 0;
-	private float y = 0;
+	private Circle circle;
+	
+	private float playerX;
+	private float playerY;
 	private int tileX;
 	private int tileY;
 	private int tileOffsetX;
 	private int tileOffsetY;
 	
 	
-	public Player() throws SlickException{
+	public Player(float x, float y) throws SlickException{
+		circle = new Circle(x*48, y*48, 24);
+		this.playerX = x;
+		this.playerY = y;
 		animations = new Animation[4];
 		Animation up = new Animation();
 		up.addFrame(new Image("res/anim/test_anim/up/up.png", new Color(0x00cc00ff)), 1);
@@ -57,41 +60,23 @@ public class Player {
 		animations[Player.ANIM_LEFT] = left;
 		animations[Player.ANIM_RIGHT] = right;
 		setAnimation(ANIM_RIGHT);
+		
+		CollisionManager.getInstance().setPlayer(this);
 	}
 	
-	public void render() {
-		animations[currentAnimation].draw(x*48-24, y*48-24);
+	public void render(Graphics g) {
+		animations[currentAnimation].draw(playerX*48-24, playerY*48-24);
+		g.setColor(Color.red);
+		g.draw(circle);
 	}
 	
-	public void update(StateBasedGame game, int delta) {
+	public void update() {
 		
-		tileX = Math.round(x);
-		tileY = Math.round(y);
+		tileX = Math.round(playerX);
+		tileY = Math.round(playerY);
 		
-		tileOffsetX = (int) ((tileX - x) * TyrelionMap.TILE_SIZE);
-		tileOffsetY = (int) ((tileY - y) * TyrelionMap.TILE_SIZE);
-		
-		Input input = game.getContainer().getInput();
-		  
-		if(input.isKeyDown(Keyboard.KEY_LEFT) || input.isControllerLeft(0)) {	
-			x += -delta * WALK_SPEED;
-			setAnimation(ANIM_LEFT);
-		}
-		  
-		if(input.isKeyDown(Keyboard.KEY_RIGHT) || input.isControllerRight(0)) {
-			x += delta * WALK_SPEED;
-			setAnimation(ANIM_RIGHT);
-		}
-		  
-		if(input.isKeyDown(Keyboard.KEY_UP) || input.isControllerUp(0)){
-			y += -delta * WALK_SPEED;
-			setAnimation(ANIM_UP);
-		}
-		  
-		if(input.isKeyDown(Keyboard.KEY_DOWN) || input.isControllerDown(0)){
-			y += delta * WALK_SPEED;
-			setAnimation(ANIM_DOWN);
-		}
+		tileOffsetX = (int) ((tileX - playerX) * TyrelionMap.TILE_SIZE);
+		tileOffsetY = (int) ((tileY - playerY) * TyrelionMap.TILE_SIZE);
 
 	}
 
@@ -103,14 +88,14 @@ public class Player {
 	 * @return the playerX
 	 */
 	public float getX() {
-		return x;
+		return playerX;
 	}
 
 	/**
 	 * @return the playerY
 	 */
 	public float getY() {
-		return y;
+		return playerY;
 	}
 
 	/**
@@ -139,6 +124,41 @@ public class Player {
 	 */
 	public int getTileOffsetY() {
 		return tileOffsetY;
+	}
+
+	/**
+	 * @return the circle
+	 */
+	public Circle getCircle() {
+		return circle;
+	}
+
+	/**
+	 * @return the playerX
+	 */
+	public float getPlayerX() {
+		return playerX;
+	}
+
+	/**
+	 * @param playerX the playerX to set
+	 */
+	public void setPlayerX(float playerX) {
+		this.playerX = playerX;
+	}
+
+	/**
+	 * @return the playerY
+	 */
+	public float getPlayerY() {
+		return playerY;
+	}
+
+	/**
+	 * @param playerY the playerY to set
+	 */
+	public void setPlayerY(float playerY) {
+		this.playerY = playerY;
 	}
 
 }
