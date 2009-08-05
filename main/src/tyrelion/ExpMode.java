@@ -55,6 +55,14 @@ public class ExpMode extends BasicGameState {
 		
 		infobox = new Infobox(container, game);
 		
+		
+		infobox.print("Test", 1);
+		infobox.print("Hallo", 2);
+		infobox.print("Hey wie gehts?", 3);
+		infobox.print("Hey wie gehts?", 3);
+		infobox.print("Hey wie gehts?", 3);
+		infobox.print("Hey wie gehts?", 3);
+		
 	}
 
 	/* (non-Javadoc)

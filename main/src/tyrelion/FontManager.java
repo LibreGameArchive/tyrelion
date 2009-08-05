@@ -18,7 +18,7 @@ public class FontManager{
 	
 	public static String FANCY = "vinque_30";
 	
-	public static String SIMPLE = "garamond_11";
+	public static String SIMPLE = "garamond_14";
 	
 	private static FontManager instance = null;
 	
@@ -29,7 +29,7 @@ public class FontManager{
 		fonts = new HashMap<String, UnicodeFont>();
 		
 		fonts.put("vinque_30", new UnicodeFont("res/fonts/vinque.ttf", 30, false, false));
-		fonts.put("garamond_11", new UnicodeFont("res/fonts/jGara/jGara2.ttf", 11, false, false));
+		fonts.put("garamond_14", new UnicodeFont("res/fonts/jGara/jGara2.ttf", 14, false, false));
 		
 		for (UnicodeFont elem : fonts.values()) {
 			elem.getEffects().add(new ColorEffect(Color.black));
@@ -53,7 +53,7 @@ public class FontManager{
 			try {
 				tempFont = new UnicodeFont(getFont(font).getFontFile(), size, false, false);
 			} catch (SlickException e) {
-				return fonts.get("garamond_11");
+				return fonts.get("garamond_14");
 			}
 
 		tempFont.getEffects().add(new ColorEffect(color));
@@ -70,7 +70,7 @@ public class FontManager{
 			try {
 				tempFont = new UnicodeFont(getFont(font).getFontFile(), size, false, false);
 			} catch (SlickException e) {
-				return fonts.get("garamond_11");
+				return fonts.get("garamond_14");
 			}
 		
 		return tempFont;
@@ -85,7 +85,7 @@ public class FontManager{
 			try {
 				tempFont = new UnicodeFont(getFont(font).getFontFile(), getFont(font).getFont().getSize(), false, false);
 			} catch (SlickException e) {
-				return fonts.get("garamond_11");
+				return fonts.get("garamond_14");
 			}
 
 		tempFont.getEffects().add(new ColorEffect(color));
@@ -100,7 +100,7 @@ public class FontManager{
 		if (fonts.containsKey(font))
 			return fonts.get(font); 
 		else
-			return fonts.get("garamond_11");
+			return fonts.get("garamond_14");
 		
 	}
 	
