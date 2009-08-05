@@ -14,6 +14,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import tyrelion.ExpMode;
+import tyrelion.FontManager;
 import tyrelion.music.MusicManager;
 
 /**
@@ -120,6 +121,13 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 		btn_set.render(container, g);
 		btn_cred.render(container, g);
 		btn_quit.render(container, g);
+		
+		try {
+			FontManager.getInstance().getFont("vinque_30").drawString(50, 50, "Test");
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/* (non-Javadoc)
