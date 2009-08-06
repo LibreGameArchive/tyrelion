@@ -77,7 +77,7 @@ public class CollisionManager {
 			}
 		}
 		
-		player.update();
+		player.update(container);
 		
 	}
 	

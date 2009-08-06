@@ -6,6 +6,7 @@ package tyrelion;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.BasicGameState;
@@ -111,11 +112,17 @@ public class ExpMode extends BasicGameState {
 			throws SlickException {
 
 		CollisionManager.getInstance().update(container, delta);
-		
+				
 	}
 	
 	public void enter(GameContainer container, StateBasedGame game) {
 		MusicManager.getInstance().loop("expNormal");
+	}
+	
+	public void keyReleased(int i, char c) {
+		if (i == Input.KEY_T) {
+			SoundManager.getInstance().play("ambience", "thunder");
+		}
 	}
 	
 }

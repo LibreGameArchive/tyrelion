@@ -5,8 +5,10 @@ package tyrelion;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Circle;
 
@@ -69,7 +71,7 @@ public class Player {
 		g.setColor(Color.red);
 	}
 	
-	public void update() {
+	public void update(GameContainer container) {
 		
 		tileX = Math.round(playerX);
 		tileY = Math.round(playerY);
@@ -77,6 +79,14 @@ public class Player {
 		tileOffsetX = (int) ((tileX - playerX) * TyrelionMap.TILE_SIZE);
 		tileOffsetY = (int) ((tileY - playerY) * TyrelionMap.TILE_SIZE);
 
+		Input input = container.getInput();
+		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_DOWN) ||
+				input.isKeyDown(Input.KEY_LEFT) ||input.isKeyDown(Input.KEY_RIGHT)) {
+			SoundManager.getInstance().playOnce("player", "walk");
+		} else {
+
+		}
+		
 	}
 	
 	public void renderShape(Graphics g) {
