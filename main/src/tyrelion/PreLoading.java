@@ -5,12 +5,10 @@ package tyrelion;
 
 import java.io.IOException;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.loading.DeferredResource;
 import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.state.BasicGameState;
@@ -104,12 +102,12 @@ public class PreLoading extends BasicGameState {
 		FontManager fm = FontManager.getInstance();
 		
 		// Aktuellen "Pseudo"-Status anzeigen
-		fm.drawString(g, 760, 360, "Eisen wird geschmolzen...", FontManager.FANCY, FontManager.LARGE);
-		if (status > segment) fm.drawString(g, 725, 410, "Weltenform wird gegossen...", FontManager.FANCY, FontManager.LARGE);
-		if (status > 2*segment) fm.drawString(g, 765, 460, "Gebirge werden geformt...", FontManager.FANCY, FontManager.LARGE);
-		if (status > 3*segment) fm.drawString(g, 740, 510, "Meere werden ausgehoben...", FontManager.FANCY, FontManager.LARGE);
-		if (status > 4*segment) fm.drawString(g, 750, 560, "Wälder werden gepflanzt...", FontManager.FANCY, FontManager.LARGE);
-		if (status > 5*segment) fm.drawString(g, 677, 610, "Leben wird in die Welt gesetzt...", FontManager.FANCY, FontManager.LARGE);
+		fm.drawString(g, 726, 360, "Eisen wird geschmolzen...", FontManager.FANCY, FontManager.LARGE);
+		if (status > segment) fm.drawString(g, 687, 410, "Weltenform wird gegossen...", FontManager.FANCY, FontManager.LARGE);
+		if (status > 2*segment) fm.drawString(g, 735, 460, "Gebirge werden geformt...", FontManager.FANCY, FontManager.LARGE);
+		if (status > 3*segment) fm.drawString(g, 703, 510, "Meere werden ausgehoben...", FontManager.FANCY, FontManager.LARGE);
+		if (status > 4*segment) fm.drawString(g, 716, 560, "Wälder werden gepflanzt...", FontManager.FANCY, FontManager.LARGE);
+		if (status > 5*segment) fm.drawString(g, 634, 610, "Leben wird in die Welt gesetzt...", FontManager.FANCY, FontManager.LARGE);
 	}
 
 }

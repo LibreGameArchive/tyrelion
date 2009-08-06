@@ -14,11 +14,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
-import org.newdawn.slick.state.StateBasedGame;
 
 import tyrelion.FontManager;
 
@@ -130,7 +128,6 @@ public class Infobox implements ComponentListener{
 	
 	private ArrayList<Message> transform(ArrayList<Message> messages){
 		ArrayList<Message> transformedMessages = new ArrayList<Message>();
-		String tempString;
 		for (Message elem : messages) {
 			if (elem.getText().length()<maxLength) {
 				transformedMessages.add(elem);
