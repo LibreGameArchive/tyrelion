@@ -87,28 +87,20 @@ public class ExpMode extends BasicGameState {
 		
 		player.render(g);
 		
-
-		
 		for (Shape elem : CollisionManager.getInstance().getTiles()) {
 			g.draw(elem);
 		}
-
+		player.renderShape(g);
 		
 		// draw other entities here if there were any
 		g.resetTransform();
 		g.setColor(Color.red);
+		
 		g.drawString("playerX: " + Float.toString(player.getX()), 25, 532);
 		g.drawString("playerY: " + Float.toString(player.getY()), 25, 547);
 		g.drawString("playerTileX: " + Integer.toString(player.getTileX()), 25, 562);
 		g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 577);
 		g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 592);
-		g.drawString("playerTileOffsetY: " + Integer.toString(player.getTileOffsetY()), 25, 607);
-		
-		g.drawString(Float.toString(player.getCircle().getCenterX()/48), 25, 650);
-		g.drawString(Float.toString(player.getCircle().getX()/48), 25, 665);
-		
-
-
 
 	}
 
@@ -118,7 +110,7 @@ public class ExpMode extends BasicGameState {
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 
-		CollisionManager.getInstance().update(game, delta);
+		CollisionManager.getInstance().update(container, delta);
 		
 	}
 	

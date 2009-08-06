@@ -31,7 +31,7 @@ public class Player {
 	
 	private Animation[] animations;
 	
-	private Circle circle;
+	private Circle shape;
 	
 	private float playerX;
 	private float playerY;
@@ -42,7 +42,7 @@ public class Player {
 	
 	
 	public Player(float x, float y) throws SlickException{
-		circle = new Circle(x*48, y*48, 24);
+		shape = new Circle(x*48, y*48, 24);
 		this.playerX = x;
 		this.playerY = y;
 		animations = new Animation[4];
@@ -67,7 +67,6 @@ public class Player {
 	public void render(Graphics g) {
 		animations[currentAnimation].draw(playerX*48-24, playerY*48-24);
 		g.setColor(Color.red);
-		g.draw(circle);
 	}
 	
 	public void update() {
@@ -78,6 +77,10 @@ public class Player {
 		tileOffsetX = (int) ((tileX - playerX) * TyrelionMap.TILE_SIZE);
 		tileOffsetY = (int) ((tileY - playerY) * TyrelionMap.TILE_SIZE);
 
+	}
+	
+	public void renderShape(Graphics g) {
+		g.draw(shape);
 	}
 
 	public void setAnimation(int i) {
@@ -129,8 +132,8 @@ public class Player {
 	/**
 	 * @return the circle
 	 */
-	public Circle getCircle() {
-		return circle;
+	public Circle getShape() {
+		return shape;
 	}
 
 	/**
