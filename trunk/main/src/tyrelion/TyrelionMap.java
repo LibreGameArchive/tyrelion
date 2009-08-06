@@ -59,15 +59,24 @@ public class TyrelionMap extends TiledMap {
 		
 		ArrayList<Shape> tiles = new ArrayList<Shape>();
 		
-		for (int i = 0; i < super.getWidth(); i++) {
-			for (int j = 0; j < super.getHeight(); j++){
-				int tileID = super.getTileId(i, j, 1);
+		for (int x = 0; x < super.getWidth(); x++) {
+			tiles.add(new Rectangle(x * 48 -24, -1 *48 -24, 48, 48));
+			tiles.add(new Rectangle(x * 48 -24, super.getHeight() * 48 -24, 48, 48));
+			for (int y = 0; y < super.getHeight(); y++){
+				tiles.add(new Rectangle(-1 * 48 -24, y * 48 -24, 48, 48));
+				tiles.add(new Rectangle(super.getWidth() * 48 -24, y * 48 -24, 48, 48));
+				int tileID = super.getTileId(x, y, 1);
 				String value = super.getTileProperty(tileID, "blocked", "false");
 				if ("true".equals(value)) {
-					tiles.add(new Rectangle(i*48-24, j*48-24, 48, 48));
+					tiles.add(new Rectangle(x*48-24, y*48-24, 48, 48));
 				}
 			}
 		}
+		
+		for (int y = 0; y < super.getHeight(); y++) {
+	
+		}
+		
 		CollisionManager.getInstance().setTiles(tiles);
 		
 	}
