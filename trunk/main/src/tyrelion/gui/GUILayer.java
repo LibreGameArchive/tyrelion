@@ -4,6 +4,7 @@
 package tyrelion.gui;
 
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -13,6 +14,7 @@ import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.StateBasedGame;
 
+import tyrelion.FontManager;
 import tyrelion.ExpMode;
 import tyrelion.menu.MenuCredits;
 import tyrelion.menu.MenuLoad;
@@ -26,7 +28,7 @@ import tyrelion.menu.MenuSettings;
 public class GUILayer implements ComponentListener{
 	
 	private StateBasedGame game;
-	private GameContainer gameContainer;
+	private GameContainer gameContainer;	
 	
 	/** Background for avatar-area */
 	private Image gui_avatar;
@@ -81,8 +83,7 @@ public class GUILayer implements ComponentListener{
 		gui_btn_questlog.render(container, g);
 		
 		//Display location
-	//	font_head.loadGlyphs();
-	//	font_head.drawString(918, 646, "Arthlet");
+		FontManager.getInstance().drawString(g, 945, 650, "Arthlet", FontManager.FANCY, FontManager.LARGE, new Color(0x00762900));
 		
 		//Check if menu should be drawn and render it
 		if (isShowMenu) showMenu(container, g);

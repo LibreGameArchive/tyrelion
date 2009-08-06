@@ -17,6 +17,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import tyrelion.gui.GUILayer;
 import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
+import tyrelion.gui.Minimap;
 import tyrelion.music.MusicManager;
 import tyrelion.sfx.SoundManager;
 
@@ -38,7 +39,10 @@ public class ExpMode extends BasicGameState {
 	
 	private Infobox infobox;
 	
+	private Minimap minimap;
+
 	private boolean debug = false;
+
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -59,6 +63,8 @@ public class ExpMode extends BasicGameState {
 		map = new TyrelionMap("res/maps/testmap.tmx", container);
 		
 		guiLayer = new GUILayer(container, game);
+		
+		minimap = new Minimap(container, map, player);
 		
 		infobox = new Infobox(container);
 		
@@ -82,6 +88,8 @@ public class ExpMode extends BasicGameState {
 			throws SlickException {
 		
 		map.render(player);
+		
+		minimap.render(g);
 		
 		guiLayer.render(container, g);
 		
