@@ -16,6 +16,7 @@ import tyrelion.gui.GUILayer;
 import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
 import tyrelion.music.MusicManager;
+import tyrelion.sfx.SoundManager;
 
 /**
  * @author jahudi
