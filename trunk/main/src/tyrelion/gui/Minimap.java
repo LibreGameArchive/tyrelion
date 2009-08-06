@@ -106,7 +106,7 @@ public class Minimap {
 			x++;
 		}
 		
-		Rectangle player = new Rectangle(posX+playerX*partSize-3,posY+playerY*partSize-3,partSize+4,partSize+4);
+		Rectangle player = new Rectangle(posX+playerX*partSize-3,posY+playerY*partSize,partSize+4,partSize+4);
 		g.setColor(PLAYER);
 		g.fill(player);
 	}
