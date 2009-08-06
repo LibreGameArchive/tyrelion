@@ -7,9 +7,9 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="tales_of_tyrelion/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/slick.jar" sourcepath="/usr/lib/slick/src">
+	<classpathentry kind="lib" path="lib/slick.jar" sourcepath="/Slick/src">
 		<attributes>
-			<attribute name="javadoc_location" value="file:/usr/lib/slick/javadoc/"/>
+			<attribute name="javadoc_location" value="file:/Developer/workspace/slick_roh/javadoc/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/jogg-0.0.7.jar"/>

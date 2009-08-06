@@ -9,6 +9,7 @@ import java.util.HashMap;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
+import org.newdawn.slick.font.effects.ShadowEffect;
 
 /**
  * @author imladriel
@@ -33,8 +34,6 @@ public class FontManager{
 		
 		for (UnicodeFont elem : fonts.values()) {
 			elem.getEffects().add(new ColorEffect(Color.black));
-			elem.addGlyphs("abcdefghijklmnopqrstovwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöü.");
-			elem.loadGlyphs(1500);
 		}
 	}
 	
@@ -48,13 +47,7 @@ public class FontManager{
 	/** Returns requested font in specified color and size.*/
 	public UnicodeFont getFont(String font, Color color, int size){
 		
-		UnicodeFont tempFont;
-		
-			try {
-				tempFont = new UnicodeFont(getFont(font).getFontFile(), size, false, false);
-			} catch (SlickException e) {
-				return fonts.get("garamond_14");
-			}
+		UnicodeFont tempFont = getFont(font, size);
 
 		tempFont.getEffects().add(new ColorEffect(color));
 		
