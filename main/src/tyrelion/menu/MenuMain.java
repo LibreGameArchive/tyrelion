@@ -3,10 +3,14 @@
  */
 package tyrelion.menu;
 
+import java.awt.Color;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
@@ -46,6 +50,8 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 	
 	private boolean menuStarted = false;
 	
+	private UnicodeFont font;
+	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
 	 */
@@ -79,7 +85,7 @@ public class MenuMain extends BasicGameState  implements ComponentListener{
 		
 		g.clear();
 		g.drawImage(background, 0, 0);
-		renderGUI(container, g);	
+		renderGUI(container, g);
 		
 	}
 

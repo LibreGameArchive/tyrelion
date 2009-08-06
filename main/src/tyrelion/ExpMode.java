@@ -13,6 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import tyrelion.gui.GUILayer;
 import tyrelion.gui.Infobox;
+import tyrelion.gui.Message;
 import tyrelion.music.MusicManager;
 
 /**
@@ -55,13 +56,17 @@ public class ExpMode extends BasicGameState {
 		
 		infobox = new Infobox(container, game);
 		
+		infobox.print("Dies ist eine Systemmeldung!", Message.SYSTEM);
+		infobox.print("Du hast ein Item erhalten!", Message.ITEM);
+		infobox.print("Du hast eine Quest bestanden!", Message.QUEST);
+		infobox.print("Du hast für einen Ork 50 Schadenspunkte zugefügt und ihn damit getötet!", Message.FIGHT);
+		infobox.print("Du hast 250 EP erhalten!", Message.EXPERIENCE);
+		infobox.print("Enim ad minim veniam quis nostrud exerci tation. Me lius quod ii legunt saepius claritas est etiam processus dynamicus qui sequitur mutationem consuetudium lectorum.", Message.SYSTEM);
+		infobox.print("Leider konntest du die Quest nicht beenden...", Message.QUEST);
+		infobox.print("Das ist eine Meldung die nirgend wo hinein passte!", Message.MISC);
+		infobox.print("Du hast einen rostigen Dolch gefunden!", Message.ITEM);
+		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
 		
-		infobox.print("Test", 1);
-		infobox.print("Hallo", 2);
-		infobox.print("Hey wie gehts?", 3);
-		infobox.print("Hey wie gehts?", 3);
-		infobox.print("Hey wie gehts?", 3);
-		infobox.print("Hey wie gehts?", 3);
 		
 	}
 
@@ -92,15 +97,15 @@ public class ExpMode extends BasicGameState {
 		// draw other entities here if there were any
 		g.resetTransform();
 		g.setColor(Color.red);
-		g.drawString("playerX: " + Float.toString(player.getX()), 25, 632);
-		g.drawString("playerY: " + Float.toString(player.getY()), 25, 647);
-		g.drawString("playerTileX: " + Integer.toString(player.getTileX()), 25, 662);
-		g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 677);
-		g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 692);
-		g.drawString("playerTileOffsetY: " + Integer.toString(player.getTileOffsetY()), 25, 707);
+		g.drawString("playerX: " + Float.toString(player.getX()), 25, 532);
+		g.drawString("playerY: " + Float.toString(player.getY()), 25, 547);
+		g.drawString("playerTileX: " + Integer.toString(player.getTileX()), 25, 562);
+		g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 577);
+		g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 592);
+		g.drawString("playerTileOffsetY: " + Integer.toString(player.getTileOffsetY()), 25, 607);
 		
-		g.drawString(Float.toString(player.getCircle().getCenterX()/48), 25, 750);
-		g.drawString(Float.toString(player.getCircle().getX()/48), 25, 765);
+		g.drawString(Float.toString(player.getCircle().getCenterX()/48), 25, 650);
+		g.drawString(Float.toString(player.getCircle().getX()/48), 25, 665);
 		
 
 
