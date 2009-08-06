@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tyrelion;
+package tyrelion.sfx;
 
 import java.util.HashMap;
 

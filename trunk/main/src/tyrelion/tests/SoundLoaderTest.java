@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import tyrelion.SoundLoader;
+import tyrelion.sfx.SoundLoader;
 
 
 /**

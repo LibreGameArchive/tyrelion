@@ -18,6 +18,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import tyrelion.menu.MenuMain;
 import tyrelion.music.MusicManager;
+import tyrelion.sfx.SoundManager;
 
 /**
  * @author jahudi

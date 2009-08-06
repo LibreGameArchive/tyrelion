@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tyrelion;
+package tyrelion.sfx;
 
 import java.io.File;
 import java.io.FilenameFilter;
