@@ -3,13 +3,15 @@
  */
 package tyrelion;
 
-import java.awt.Color;
+
+
 import java.util.HashMap;
 
+import org.newdawn.slick.AngelCodeFont;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.UnicodeFont;
-import org.newdawn.slick.font.effects.ColorEffect;
-import org.newdawn.slick.font.effects.ShadowEffect;
 
 /**
  * @author imladriel
@@ -17,24 +19,30 @@ import org.newdawn.slick.font.effects.ShadowEffect;
  */
 public class FontManager{
 	
-	public static String FANCY = "vinque_30";
+	public static int FANCY = 1;
 	
-	public static String SIMPLE = "garamond_14";
+	public static int SIMPLE = 2;
+	
+	public static float SMALL = 1;
+	public static float MEDIUM = 2;
+	public static float LARGE = 3;
+	
+	private int defaultStyle = SIMPLE;
+	
+	private Color defaultColor = Color.black;
+	
+	private float defaultSize = MEDIUM;
 	
 	private static FontManager instance = null;
 	
-	private HashMap<String, UnicodeFont> fonts;
+	private HashMap<Integer, AngelCodeFont> fancy_fonts;
+	private HashMap<Integer, AngelCodeFont> simple_fonts;
 	
 	public FontManager() throws SlickException{
 		
-		fonts = new HashMap<String, UnicodeFont>();
-		
-		fonts.put("vinque_30", new UnicodeFont("res/fonts/vinque.ttf", 30, false, false));
-		fonts.put("garamond_14", new UnicodeFont("res/fonts/jGara/jGara2.ttf", 14, false, false));
-		
-		for (UnicodeFont elem : fonts.values()) {
-			elem.getEffects().add(new ColorEffect(Color.black));
-		}
+		fancy_fonts = new HashMap<Integer, AngelCodeFont>();
+		simple_fonts = new HashMap<Integer, AngelCodeFont>();
+		initFonts();
 	}
 	
 	public static FontManager getInstance() throws SlickException{
@@ -44,62 +52,80 @@ public class FontManager{
 		return instance;
 	}
 	
-	/** Returns requested font in specified color and size.*/
-	public UnicodeFont getFont(String font, Color color, int size){
+	private void initFonts() throws SlickException{
+		fancy_fonts.put(1, new AngelCodeFont("res/fonts/fancy18.fnt","res/fonts/fancy18.png"));
+		fancy_fonts.put(2, new AngelCodeFont("res/fonts/fancy24.fnt","res/fonts/fancy24.png"));
+		fancy_fonts.put(3, new AngelCodeFont("res/fonts/fancy36.fnt","res/fonts/fancy36.png"));
 		
-		UnicodeFont tempFont = getFont(font, size);
-
-		tempFont.getEffects().add(new ColorEffect(color));
-		
-		return tempFont;
-		
+		simple_fonts.put(1, new AngelCodeFont("res/fonts/simple11.fnt","res/fonts/simple11_0.png"));
+		simple_fonts.put(2, new AngelCodeFont("res/fonts/simple14.fnt","res/fonts/simple14_0.png"));
+		simple_fonts.put(3, new AngelCodeFont("res/fonts/simple18.fnt","res/fonts/simple18_0.png"));
 	}
 	
-	/** Returns requested font in specified size.*/
-	public UnicodeFont getFont(String font, int size){
+	/** Draws String. */
+	public void drawString(Graphics g, float x, float y, String text, int style, float size, Color color){
+		Font oldFont = g.getFont();
+		Color oldColor = g.getColor();
 		
-		UnicodeFont tempFont;
+		Font newFont = chooseFonts(style).get((int) size);
 		
-			try {
-				tempFont = new UnicodeFont(getFont(font).getFontFile(), size, false, false);
-			} catch (SlickException e) {
-				return fonts.get("garamond_14");
-			}
+		g.setFont(newFont);
+		g.setColor(color);
 		
-		return tempFont;
+		g.drawString(text, x, y);
 		
+		g.setFont(oldFont);
+		g.setColor(oldColor);
 	}
 	
-	/** Returns requested font in specified color.*/
-	public UnicodeFont getFont(String font, Color color){
-		
-		UnicodeFont tempFont;
-		
-			try {
-				tempFont = new UnicodeFont(getFont(font).getFontFile(), getFont(font).getFont().getSize(), false, false);
-			} catch (SlickException e) {
-				return fonts.get("garamond_14");
-			}
-
-		tempFont.getEffects().add(new ColorEffect(color));
-		
-		return tempFont;
-		
+	public void drawString(Graphics g, float x, float y, String text, int style, float size){
+		drawString(g, x, y, text, style, size, defaultColor);
 	}
 	
-	/** Returns requested font in black.*/
-	public UnicodeFont getFont(String font){
-		
-		if (fonts.containsKey(font))
-			return fonts.get(font); 
-		else
-			return fonts.get("garamond_14");
-		
+	public void drawString(Graphics g, float x, float y, String text, int style, Color color){
+		drawString(g, x, y, text, style, defaultStyle, color);
+	}
+	
+	public void drawString(Graphics g, float x, float y, String text, float size, Color color){
+		drawString(g, x, y, text, defaultStyle, size, color);
+	}
+	
+	public void drawString(Graphics g, float x, float y, String text, int style){
+		drawString(g, x, y, text, style, defaultSize, defaultColor);
+	}
+	
+	public void drawString(Graphics g, float x, float y, String text, float size){
+		drawString(g, x, y, text, defaultStyle, size, defaultColor);
+	}
+	
+	public void drawString(Graphics g, float x, float y, String text, Color color){
+		drawString(g, x, y, text, defaultStyle, defaultSize, color);
+	}
+	
+	public void drawString(Graphics g, float x, float y, String text){
+		drawString(g, x, y, text, defaultStyle, defaultSize, defaultColor);
+	}
+	
+	/** Returns requested TrueTypeFont.*/
+	public Font getFont(int style, float size){
+		return chooseFonts(style).get(size);
 	}
 	
 	/** Adds a font to the font.database */
-	public void addFont(String key, UnicodeFont font){
-		fonts.put(key, font);
+	public void addFont(int style, AngelCodeFont font, int size){
+		chooseFonts(style).put(size, font);
+	}
+	
+	/** Chooses requested fontmap.*/
+	private HashMap<Integer, AngelCodeFont> chooseFonts(int style){
+		switch (style){
+		case 1:
+			return fancy_fonts;
+		case 2:
+			return simple_fonts;
+		default:
+			return simple_fonts;
+		}
 	}
 	
 }

@@ -6,16 +6,15 @@ package tyrelion.gui;
 
 
 
-import java.awt.Color;
+
 import java.util.ArrayList;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
-import org.newdawn.slick.font.effects.ColorEffect;
-import org.newdawn.slick.font.effects.ShadowEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
@@ -29,11 +28,7 @@ import tyrelion.FontManager;
  */
 public class Infobox implements ComponentListener{
 	
-	private StateBasedGame game;
 	private GameContainer gameContainer;
-	
-	/** Font for text. */
-	private UnicodeFont font;
 	
 	/** Collection of Messages */
 	private ArrayList<Message> messages;
@@ -58,47 +53,15 @@ public class Infobox implements ComponentListener{
 	
 	private int posX = 0;
 	private int posY = 0;
-	
-	private UnicodeFont font1;
-	private UnicodeFont font2;
-	private UnicodeFont font3;
-	private UnicodeFont font4;
-	private UnicodeFont font5;
-	private UnicodeFont font6;
-	private UnicodeFont fontd;
 
-	public Infobox(GameContainer container, StateBasedGame game)
+	public Infobox(GameContainer container)
 			throws SlickException {
 		
-		this.game = game;
 		this.gameContainer = container;	
-		
-		
 		
 		messages = new ArrayList<Message>();
 		
 		background = new Image("res/img/gui/gui_infobox.png");
-		
-		font1 = new UnicodeFont(FontManager.getInstance().getFont(FontManager.SIMPLE).getFontFile(), 14, false, false);
-		font1.getEffects().add(new ColorEffect(Color.BLACK));
-		
-		font2 = new UnicodeFont(FontManager.getInstance().getFont(FontManager.SIMPLE).getFontFile(), 14, false, false);
-		font2.getEffects().add(new ColorEffect(Color.DARK_GRAY));
-		
-		font3 = new UnicodeFont(FontManager.getInstance().getFont(FontManager.SIMPLE).getFontFile(), 14, false, false);
-		font3.getEffects().add(new ColorEffect(Color.RED));
-		
-		font4 = new UnicodeFont(FontManager.getInstance().getFont(FontManager.SIMPLE).getFontFile(), 14, false, false);
-		font4.getEffects().add(new ColorEffect(new Color(0x00762900)));
-		
-		font5 = new UnicodeFont(FontManager.getInstance().getFont(FontManager.SIMPLE).getFontFile(), 14, false, false);
-		font5.getEffects().add(new ColorEffect(new Color(0x00020657)));
-		
-		font6 = new UnicodeFont(FontManager.getInstance().getFont(FontManager.SIMPLE).getFontFile(), 14, false, false);
-		font6.getEffects().add(new ColorEffect(Color.MAGENTA));
-		
-		fontd = new UnicodeFont(FontManager.getInstance().getFont(FontManager.SIMPLE).getFontFile(), 14, false, false);
-		fontd.getEffects().add(new ColorEffect(Color.MAGENTA));
 		
 		//Jeweils Zuweisung von MOAs und Rollover-Images für die Buttons
         gui_btn_up = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_up_1.png"), posX+200, posY+20, 20, 20, this);
@@ -106,18 +69,17 @@ public class Infobox implements ComponentListener{
         
         gui_btn_down = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_down_1.png"), posX+200, posY+50, 20, 20, this);
         gui_btn_down.setMouseOverImage(new Image("res/img/gui/gui_btn_down_2.png"));
-		
       }
 
 	public void render(GameContainer container, Graphics g, int x, int y)
-			throws SlickException {
+			throws SlickException {		
 		posX = x;
 		posY = y;
 		//Render images
 		g.drawImage(background, posX, posY);
 		//Fit messages in output frame
 		ArrayList<Message> output = transform(messages);
-		//PLace and render buttons
+		//Place and render buttons
 		gui_btn_up.setLocation(posX+220, posY+25);
 		gui_btn_down.setLocation(posX+220, posY+75);
 		if (output.size()>visibleLineCount){
@@ -125,49 +87,45 @@ public class Infobox implements ComponentListener{
 			if (startLine<(output.size()-visibleLineCount)) gui_btn_down.render(container, g);
 		}
 		int pos = visibleLineCount;
+		Color color = Color.black;
 		for (int i=visibleLineCount+startLine;i>startLine;i--){
 			if (output.size()>=i) {
 				switch (output.get(i-1).getCategory()){
 				case 1:		// Systemmessages
-					font1.drawString((float) posX+20,(float) posY+15*(pos), output.get(i-1).getText());
-					font1.loadGlyphs();
+					color = Color.black;
 					break;
 				case 2:		// Questmessages
-					font2.drawString((float) posX+20,(float) posY+15*(pos), output.get(i-1).getText());
-					font2.loadGlyphs();
+					color = Color.darkGray;
 					break;
 				case 3:		// Fightmessages
-					font3.drawString((float) posX+20,(float) posY+15*(pos), output.get(i-1).getText());
-					font3.loadGlyphs();
+					color = Color.red;
 					break;
 				case 4:		// Itemmessages
-					font4.drawString((float) posX+20,(float) posY+15*(pos), output.get(i-1).getText());
-					font4.loadGlyphs();
+					color = new Color(0x00762900);
 					break;
 				case 5:		// Experiencemessages
-					font5.drawString((float) posX+20,(float) posY+15*(pos), output.get(i-1).getText());
-					font5.loadGlyphs();
-					break;
-				case 6:		// Misc. messages
-					font6.drawString((float) posX+20,(float) posY+15*(pos), output.get(i-1).getText());
-					font6.loadGlyphs();
+					color = new Color(0x00020657);
 					break;
 				default:	// everything else
-					fontd.drawString((float) posX+20,(float) posY+15*(pos), output.get(i-1).getText());
-					fontd.loadGlyphs();
+					color = Color.magenta;
 				}
-				pos--;
+				FontManager.getInstance().drawString(g, (float) posX+20,(float) posY+15*(pos), output.get(i-1).getText(), FontManager.SMALL, color);
 			}
+			pos--;
 		}
-	}
-	
-	public void print(String text, int category){
-		messages.add(new Message(text, category));
-		if (transform(messages).size()>visibleLineCount) startLine=transform(messages).size()-visibleLineCount;
 	}
 	
 	public void print(Message message){
 		messages.add(message);
+		if (transform(messages).size()>visibleLineCount) startLine=transform(messages).size()-visibleLineCount;
+	}
+	
+	public void print(String text, int category){
+		print(new Message(text, category));
+	}
+	
+	public void print(String text){
+		print(text, Message.MISC);
 	}
 	
 	private ArrayList<Message> transform(ArrayList<Message> messages){

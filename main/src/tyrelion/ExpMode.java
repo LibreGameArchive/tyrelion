@@ -3,6 +3,9 @@
  */
 package tyrelion;
 
+
+
+import org.newdawn.slick.AngelCodeFont;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -36,6 +39,8 @@ public class ExpMode extends BasicGameState {
 	
 	private Infobox infobox;
 	
+	private AngelCodeFont test;
+	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
 	 */
@@ -56,19 +61,18 @@ public class ExpMode extends BasicGameState {
 		
 		guiLayer = new GUILayer(container, game);
 		
-		infobox = new Infobox(container, game);
+		infobox = new Infobox(container);
 		
 		infobox.print("Dies ist eine Systemmeldung!", Message.SYSTEM);
 		infobox.print("Du hast ein Item erhalten!", Message.ITEM);
 		infobox.print("Du hast eine Quest bestanden!", Message.QUEST);
-		infobox.print("Du hast für einen Ork 50 Schadenspunkte zugefügt und ihn damit getötet!", Message.FIGHT);
+		infobox.print("Du hast für einem Ork 50 Schadenspunkte zugefügt und ihn damit getötet!", Message.FIGHT);
 		infobox.print("Du hast 250 EP erhalten!", Message.EXPERIENCE);
 		infobox.print("Enim ad minim veniam quis nostrud exerci tation. Me lius quod ii legunt saepius claritas est etiam processus dynamicus qui sequitur mutationem consuetudium lectorum.", Message.SYSTEM);
 		infobox.print("Leider konntest du die Quest nicht beenden...", Message.QUEST);
 		infobox.print("Das ist eine Meldung die nirgend wo hinein passte!", Message.MISC);
 		infobox.print("Du hast einen rostigen Dolch gefunden!", Message.ITEM);
 		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
-		
 		
 	}
 

@@ -68,8 +68,8 @@ public class GUILayer implements ComponentListener{
 		this.game = game;
 		this.gameContainer = container;	
 		
-		font_head = new UnicodeFont("/res/fonts/vinque.ttf", 48, false, false);
-		font_head.getEffects().add(new ColorEffect(new Color(0x00461800)));
+	//	font_head = new UnicodeFont("/res/fonts/vinque.ttf", 48, false, false);
+	//	font_head.getEffects().add(new ColorEffect(new Color(0x00461800)));
 		
 		initGUI();
 		
@@ -87,9 +87,8 @@ public class GUILayer implements ComponentListener{
 		gui_btn_questlog.render(container, g);
 		
 		//Display location
-		font_head.addGlyphs("abcdefghijklmnopqrstovwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöü.");
-		font_head.loadGlyphs(1000);
-		font_head.drawString(918, 646, "Arthlet");
+	//	font_head.loadGlyphs();
+	//	font_head.drawString(918, 646, "Arthlet");
 		
 		//Check if menu should be drawn and render it
 		if (isShowMenu) showMenu(container, g);

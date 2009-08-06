@@ -30,8 +30,6 @@ public class PreLoading extends BasicGameState {
 
 	private Image loading;
 	
-	private UnicodeFont font;	
-	
 	/** Die Ressource, die als nächstes geladen werden soll. */
 	private DeferredResource nextResource;
 	
@@ -47,11 +45,7 @@ public class PreLoading extends BasicGameState {
 	 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
 	 */
 	public void init(GameContainer gameContainer, StateBasedGame game)
-			throws SlickException {
-		
-		font = FontManager.getInstance().getFont(FontManager.FANCY);
-		
-		loading = new Image("res/img/splashscreens/loadingscreen.png");
+			throws SlickException {loading = new Image("res/img/splashscreens/loadingscreen.png");
 		LoadingList.setDeferredLoading(true);
 		gameContainer.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
 		MusicManager.getInstance();
@@ -98,23 +92,24 @@ public class PreLoading extends BasicGameState {
 
 	}
 	
-	private void showLoading(GameContainer container, Graphics g){
+	private void showLoading(GameContainer container, Graphics g) throws SlickException{
 		// Ladebildschirm anzeigen
 		g.drawImage(loading, 0, 0);
-		g.setColor(Color.black);
 		
 		// Fortschritt berechnen
 		int total = LoadingList.get().getTotalResources();
 		int segment = total/6;
 		int status = (LoadingList.get().getTotalResources() - LoadingList.get().getRemainingResources());
 		
+		FontManager fm = FontManager.getInstance();
+		
 		// Aktuellen "Pseudo"-Status anzeigen
-		font.drawString(760, 360, "Eisen wird geschmolzen...");
-		if (status > segment) font.drawString(725, 410, "Weltenform wird gegossen...");
-		if (status > 2*segment) font.drawString(765, 460, "Gebirge werden geformt...");
-		if (status > 3*segment) font.drawString(740, 510, "Meere werden ausgehoben...");
-		if (status > 4*segment) font.drawString(750, 560, "Wälder werden gepflanzt...");
-		if (status > 5*segment) font.drawString(677, 610, "Leben wird in die Welt gesetzt...");
+		fm.drawString(g, 760, 360, "Eisen wird geschmolzen...", FontManager.FANCY, FontManager.LARGE);
+		if (status > segment) fm.drawString(g, 725, 410, "Weltenform wird gegossen...", FontManager.FANCY, FontManager.LARGE);
+		if (status > 2*segment) fm.drawString(g, 765, 460, "Gebirge werden geformt...", FontManager.FANCY, FontManager.LARGE);
+		if (status > 3*segment) fm.drawString(g, 740, 510, "Meere werden ausgehoben...", FontManager.FANCY, FontManager.LARGE);
+		if (status > 4*segment) fm.drawString(g, 750, 560, "Wälder werden gepflanzt...", FontManager.FANCY, FontManager.LARGE);
+		if (status > 5*segment) fm.drawString(g, 677, 610, "Leben wird in die Welt gesetzt...", FontManager.FANCY, FontManager.LARGE);
 	}
 
 }
