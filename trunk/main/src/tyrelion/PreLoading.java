@@ -17,6 +17,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import tyrelion.menu.MenuMain;
+import tyrelion.music.MusicManager;
 
 /**
  * @author jahudi
@@ -52,6 +53,9 @@ public class PreLoading extends BasicGameState {
 		loading = new Image("res/img/splashscreens/loadingscreen.png");
 		LoadingList.setDeferredLoading(true);
 		gameContainer.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
+		MusicManager.getInstance();
+		SoundManager.getInstance();
+		CollisionManager.getInstance();
 
 	}
 
