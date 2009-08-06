@@ -5,7 +5,6 @@ package tyrelion;
 
 
 
-import org.newdawn.slick.AngelCodeFont;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -39,7 +38,7 @@ public class ExpMode extends BasicGameState {
 	
 	private Infobox infobox;
 	
-	private AngelCodeFont test;
+	private boolean debug = false;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -93,20 +92,24 @@ public class ExpMode extends BasicGameState {
 		
 		player.render(g);
 		
-		for (Shape elem : CollisionManager.getInstance().getTiles()) {
-			g.draw(elem);
+		if (debug) {
+			for (Shape elem : CollisionManager.getInstance().getTiles()) {
+				g.draw(elem);
+			}
+			player.renderShape(g);
+			
+			// draw other entities here if there were any
+			g.resetTransform();
+			g.setColor(Color.red);
+			
+			g.drawString("playerX: " + Float.toString(player.getX()), 25, 532);
+			g.drawString("playerY: " + Float.toString(player.getY()), 25, 547);
+			g.drawString("playerTileX: " + Integer.toString(player.getTileX()), 25, 562);
+			g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 577);
+			g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 592);
+			g.drawString("playerTileOffsetY: " + Integer.toString(player.getTileOffsetY()), 25, 607);
 		}
-		player.renderShape(g);
-		
-		// draw other entities here if there were any
 		g.resetTransform();
-		g.setColor(Color.red);
-		
-		g.drawString("playerX: " + Float.toString(player.getX()), 25, 532);
-		g.drawString("playerY: " + Float.toString(player.getY()), 25, 547);
-		g.drawString("playerTileX: " + Integer.toString(player.getTileX()), 25, 562);
-		g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 577);
-		g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 592);
 
 	}
 
@@ -128,6 +131,20 @@ public class ExpMode extends BasicGameState {
 		if (i == Input.KEY_T) {
 			SoundManager.getInstance().play("ambience", "thunder");
 		}
+	}
+
+	/**
+	 * @return the debug
+	 */
+	public boolean isDebug() {
+		return debug;
+	}
+
+	/**
+	 * @param debug the debug to set
+	 */
+	public void setDebug(boolean debug) {
+		this.debug = debug;
 	}
 	
 }

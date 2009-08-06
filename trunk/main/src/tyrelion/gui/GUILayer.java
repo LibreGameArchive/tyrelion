@@ -4,19 +4,16 @@
 package tyrelion.gui;
 
 
-import java.awt.Color;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.UnicodeFont;
-import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.StateBasedGame;
 
+import tyrelion.ExpMode;
 import tyrelion.menu.MenuCredits;
 import tyrelion.menu.MenuLoad;
 import tyrelion.menu.MenuMain;
@@ -30,9 +27,6 @@ public class GUILayer implements ComponentListener{
 	
 	private StateBasedGame game;
 	private GameContainer gameContainer;
-	
-	/** Font for headings. */
-	private UnicodeFont font_head;	
 	
 	/** Background for avatar-area */
 	private Image gui_avatar;
@@ -147,7 +141,14 @@ public class GUILayer implements ComponentListener{
 	public void componentActivated(AbstractComponent source) {
 		//Abfrage des aktivierten Buttons und ausführen der zugehörigen Aktion
 		if (source == gui_btn_menu) isShowMenu=!isShowMenu;
-	//	if (source == gui_btn_questlog) game.enterState(MenuMain.ID);
+		if (source == gui_btn_questlog) {
+			ExpMode expMode = (ExpMode)game.getState(ExpMode.ID);
+			if (!expMode.isDebug()) {
+				expMode.setDebug(true);
+			} else {
+				expMode.setDebug(false);
+			}	
+		}
 		if (source == gui_btn_back) isShowMenu=false;
 		if (source == gui_btn_save) game.enterState(MenuCredits.ID);
 		if (source == gui_btn_load) game.enterState(MenuLoad.ID);
