@@ -60,7 +60,7 @@ public class ExpMode extends BasicGameState {
 		
 		player = new Player(0, 0);
 		
-		map = new TyrelionMap("res/maps/testmap.tmx", container);
+		map = new TyrelionMap("res/maps/arthlet.tmx", container);
 		
 		guiLayer = new GUILayer(container, game);
 		

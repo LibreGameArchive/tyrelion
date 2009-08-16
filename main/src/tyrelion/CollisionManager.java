@@ -1,6 +1,3 @@
-/**
- * 
- */
 package tyrelion;
 
 import java.util.ArrayList;
