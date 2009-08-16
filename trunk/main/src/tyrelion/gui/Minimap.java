@@ -7,7 +7,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.tiled.TiledMap;
 
 import tyrelion.Player;
 import tyrelion.TyrelionMap;
@@ -17,8 +16,6 @@ import tyrelion.TyrelionMap;
  *
  */
 public class Minimap {
-	
-	private GameContainer gameContainer;
 	
 	private int posX = 1052;
 	private int posY = 784;
@@ -32,16 +29,19 @@ public class Minimap {
 	private int partSize = 5;
 
 	private String[][] types;
+	private Color[][] minimap;
 	private static Color PLAYER = new Color(200,10,10);
 	private static Color NOTHING = Color.black;
 	private static Color GRASS = new Color(0x00125804);
 	private static Color TREE = new Color(0x0065280b);
+	private static Color HOUSE = Color.darkGray;
+	private static Color MUD = new Color(0x007f3f00);
+	private static Color STONE = new Color(0x00a1876e);
 	
 	private TyrelionMap map;
 	private Player player;
 	
 	public Minimap(GameContainer gameContainer, TyrelionMap map, Player player){
-		this.gameContainer = gameContainer;
 		
 		this.map = map;
 		mapWidth = map.getWidth();
@@ -53,6 +53,8 @@ public class Minimap {
 		minimapHeight = 50;
 		
 		readTypes();
+		
+		generateMinimap();
 	}
 	
 	
@@ -60,19 +62,44 @@ public class Minimap {
 		types = new String[mapWidth][mapHeight];
 		for (int x=0;x<mapWidth;x++){
 			for (int y=0;y<mapHeight;y++){
+				String type = "";
 				// Tile Properties auslesen
-				
-				int tileID = map.getTileId(x, y, 0);
-				String type = map.getTileProperty(tileID, "type", "grass");
-				// Array einstellen
-				types[x][y] = type;
-				
-				int blockedTileID = map.getTileId(x, y, 1);
-				String value = map.getTileProperty(blockedTileID, "blocked", "false");
-				// Array einstellen
-				if (value.equals("true")) types[x][y] = "tree";
+				for (int i=0;i<7;i++){
+					int tileID = map.getTileId(x, y, i);
+					type = map.getTileProperty(tileID, "type", "failure");
+					// Array einstellen
+					if (type!="failure") types[x][y] = type;
+				}
+				if (type == "") types[x][y] = "nothing";
 			}
 		}
+	}
+	
+	public void generateMinimap(){
+		minimap = new Color[types.length][types[0].length];
+		for (int x=0; x < types.length; x++){
+			for (int y=0; y < types[x].length; y++){
+				if (types[x][y].equals("tree")){
+					minimap[x][y] = TREE;
+				}
+				if (types[x][y].equals("grass")){
+					minimap[x][y] = GRASS;
+				}	
+				if (types[x][y].equals("house")){
+					minimap[x][y] = HOUSE;
+				}	
+				if (types[x][y].equals("mud")){
+					minimap[x][y] = MUD;
+				}	
+				if (types[x][y].equals("stone")){
+					minimap[x][y] = STONE;
+				}	
+				if (types[x][y].equals("nothing")){
+					minimap[x][y] = NOTHING;
+				}
+			}
+		}
+		
 	}
 	
 	
@@ -86,22 +113,15 @@ public class Minimap {
 				Rectangle temp = new Rectangle(posX+x*partSize,posY+y*partSize,partSize+1,partSize+1);
 				if (j>=0 && i>=0 && i<mapWidth && j<mapHeight) {
 					
-					if (types[i][j].equals("tree")){
-						g.setColor(TREE);
-					}
-					if (types[i][j].equals("grass")){
-						g.setColor(GRASS);
-					}					
-					if (types[i][j].equals("nothing")){
-						g.setColor(NOTHING);
-					}
+					g.setColor(minimap[i][j]);
+
 					if (player.getTileX()==i && player.getTileY()==j) { 
 						playerX=x;playerY=y;
 					}
-					 
-				
-				} else { g.setColor(NOTHING); }
-				y++; g.fill(temp);
+					
+					g.fill(temp);
+				}
+				y++;
 			}
 			x++;
 		}

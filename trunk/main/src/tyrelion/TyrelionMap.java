@@ -65,11 +65,17 @@ public class TyrelionMap extends TiledMap {
 			for (int y = 0; y < super.getHeight(); y++){
 				tiles.add(new Rectangle(-1 * 48 -24, y * 48 -24, 48, 48));
 				tiles.add(new Rectangle(super.getWidth() * 48 -24, y * 48 -24, 48, 48));
-				int tileID = super.getTileId(x, y, 1);
-				String value = super.getTileProperty(tileID, "blocked", "false");
-				if ("true".equals(value)) {
-					tiles.add(new Rectangle(x*48-24, y*48-24, 48, 48));
+				boolean isBlocked = false;
+				for (int i=0;i<7;i++){
+					int tileID = super.getTileId(x, y, i);
+					String value = super.getTileProperty(tileID, "blocked", "false");
+					if ("true".equals(value)) {
+						if (!isBlocked) tiles.add(new Rectangle(x*48-24, y*48-24, 48, 48));
+						isBlocked = true;
+					}
 				}
+				
+				
 			}
 		}
 		

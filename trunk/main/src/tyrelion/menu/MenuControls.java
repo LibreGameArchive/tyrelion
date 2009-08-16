@@ -55,7 +55,7 @@ public class MenuControls extends BasicGameState {
 	
 	public void keyReleased(int i, char c) {
 		if (i == Input.KEY_ESCAPE) {
-			game.enterState(MenuMain.ID);
+			game.enterState(MenuSettings.ID);
 		}
 	}
 

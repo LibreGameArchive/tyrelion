@@ -151,7 +151,7 @@ public class GUILayer implements ComponentListener{
 			}	
 		}
 		if (source == gui_btn_back) isShowMenu=false;
-		if (source == gui_btn_save) game.enterState(MenuCredits.ID);
+		//if (source == gui_btn_save) game.enterState(MenuCredits.ID);
 		if (source == gui_btn_load) game.enterState(MenuLoad.ID);
 		if (source == gui_btn_settings) game.enterState(MenuSettings.ID);
 		if (source == gui_btn_quit) game.enterState(MenuMain.ID);
