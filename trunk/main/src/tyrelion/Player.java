@@ -11,6 +11,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 
 import tyrelion.sfx.SoundManager;
 
@@ -35,7 +37,7 @@ public class Player {
 	
 	private Animation[] animations;
 	
-	private Circle shape;
+	private Shape shape;
 	
 	private float playerX;
 	private float playerY;
@@ -46,7 +48,8 @@ public class Player {
 	
 	
 	public Player(float x, float y) throws SlickException{
-		shape = new Circle(x*48, y*48, 24);
+		//shape = new Circle(x*48, y*48, 24);
+		shape = new Rectangle(x*48+10, y*48+20, 40, 40);
 		this.playerX = x;
 		this.playerY = y;
 		animations = new Animation[4];
@@ -144,7 +147,7 @@ public class Player {
 	/**
 	 * @return the circle
 	 */
-	public Circle getShape() {
+	public Shape getShape() {
 		return shape;
 	}
 
