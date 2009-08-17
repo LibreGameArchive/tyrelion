@@ -41,7 +41,13 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 	private Image button_field_header;
 	/** Heading for the Volumecontrol */
 	private Image volume_header;
+	/** Heading for the Fullscreen */
+	private Image fullscreen_header;
 	
+	/** MOA for "Fullscreen"-Button toggled on */
+	private MouseOverArea btn_fs_on;
+	/** MOA for "Fullscreen"-Button toggled off */
+	private MouseOverArea btn_fs_off;
 	/** MOA for "Controls"-Button */
 	private MouseOverArea btn_keys;
 	
@@ -50,6 +56,9 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 	
 	/** Volumecontrol */
 	private Slider volume_slider;
+	
+	/** Fullscreen-Mode (should be outsourced in future)*/
+	private boolean isFullscreen = false;
 
 	
 	/* (non-Javadoc)
@@ -108,21 +117,27 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 		//Hintergrund Grafik für den Button-Bereich festlegen
 		button_field_background = new Image("res/img/menu/main/mainmenu_box.png");
 		
-		//Hintergrund Grafik für den Button-Bereich festlegen
+		//Überschrift für den Button-Bereich festlegen
 		button_field_header = new Image("res/img/menu/settings/settings_header.png");
 		
-		//Hintergrund Grafik für den Button-Bereich festlegen
+		//Volume heading
 		volume_header = new Image("res/img/menu/settings/settings_volume.png");
+		//Fullscreen heading
+		fullscreen_header = new Image("res/img/menu/settings/settings_fs.png");
 		
 		//Jeweils Zuweisung von MOAs und Rollover-Images für die Buttons
+		btn_fs_on = new MouseOverArea(gameContainer, new Image("res/img/menu/settings/buttons/settings_fs_off_1.png"), 615, 610, 30, 30, this);
+        btn_fs_on.setMouseOverImage(new Image("res/img/menu/settings/buttons/settings_fs_off_2.png"));
+        btn_fs_off = new MouseOverArea(gameContainer, new Image("res/img/menu/settings/buttons/settings_fs_on_1.png"), 615, 610, 30, 30, this);
+        btn_fs_off.setMouseOverImage(new Image("res/img/menu/settings/buttons/settings_fs_on_2.png"));
         btn_keys = new MouseOverArea(gameContainer, new Image("res/img/menu/settings/buttons/settings_button_controls_1.png"), 430, 605, 400, 50, this);
         btn_keys.setMouseOverImage(new Image("res/img/menu/settings/buttons/settings_button_controls_2.png"));        
         btn_back = new MouseOverArea(gameContainer, new Image("res/img/menu/main/buttons/mainmenu_button_back_1.png"), 590, 700, 400, 50, this);
         btn_back.setMouseOverImage(new Image("res/img/menu/main/buttons/mainmenu_button_back_2.png"));
         
-        Container content = new Container();
-        content.setSize(250, 10);
-        content.setLocation(505, 530);
+        Container slider = new Container();
+        slider.setSize(250, 10);
+        slider.setLocation(575, 575);
         
         volume_slider = new Slider(Slider.HORIZONTAL);
         volume_slider.setLocation(0, 0);
@@ -133,9 +148,9 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
         volume_slider.setForeground(new Color(0x00461800));
         volume_slider.setValue(0.5f);
         
-        content.add(volume_slider);
+        slider.add(volume_slider);
        
-        display.add(content);
+        display.add(slider);
 	}
 	
 	private void renderGUI(GameContainer container, Graphics g){
@@ -145,10 +160,16 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 		//Rendern der Überschriften
 		g.drawImage(button_field_header, 430, 405);
 		g.drawImage(volume_header, 430, 460);
+		g.drawImage(fullscreen_header, 520, 597);
 		
 		//Rendern der Buttons
 		btn_keys.render(container, g);
 		btn_back.render(container, g);
+		if (isFullscreen) {
+			btn_fs_off.render(container, g);
+		} else {
+			btn_fs_on.render(container, g);
+		}
 		
 		display.render(container, g);
 	}
@@ -158,8 +179,14 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 	 */
 	public void componentActivated(AbstractComponent source) {
 		//Abfrage des aktivierten Buttons und ausführen der zugehörigen Aktion
+		if (source == btn_fs_on || source == btn_fs_off) try{toggleFS();} catch (SlickException e) {}
 		if (source == btn_keys) game.enterState(MenuControls.ID);
 		if (source == btn_back) game.enterState(MenuMain.ID);
+	}
+	
+	public void toggleFS() throws SlickException{
+		gameContainer.setFullscreen(!isFullscreen);
+		isFullscreen = !isFullscreen;
 	}
 
 }
