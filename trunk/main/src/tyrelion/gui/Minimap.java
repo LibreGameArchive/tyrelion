@@ -36,6 +36,9 @@ public class Minimap {
 	private static Color TREE = new Color(0x0065280b);
 	private static Color HOUSE = Color.darkGray;
 	private static Color MUD = new Color(0x007f3f00);
+	private static Color WATER = Color.blue;
+	private static Color WOOD = new Color(0x006b2100);
+	private static Color WAGON = new Color(0x00eac9a2);
 	private static Color STONE = new Color(0x00a1876e);
 	
 	private TyrelionMap map;
@@ -64,7 +67,7 @@ public class Minimap {
 			for (int y=0;y<mapHeight;y++){
 				String type = "";
 				// Tile Properties auslesen
-				for (int i=0;i<7;i++){
+				for (int i=0;i<9;i++){
 					int tileID = map.getTileId(x, y, i);
 					type = map.getTileProperty(tileID, "type", "failure");
 					// Array einstellen
@@ -90,7 +93,16 @@ public class Minimap {
 				}	
 				if (types[x][y].equals("mud")){
 					minimap[x][y] = MUD;
-				}	
+				}
+				if (types[x][y].equals("water")){
+					minimap[x][y] = WATER;
+				}
+				if (types[x][y].equals("wood")){
+					minimap[x][y] = WOOD;
+				}
+				if (types[x][y].equals("wagon")){
+					minimap[x][y] = WAGON;
+				}
 				if (types[x][y].equals("stone")){
 					minimap[x][y] = STONE;
 				}	
