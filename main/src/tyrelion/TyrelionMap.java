@@ -66,7 +66,7 @@ public class TyrelionMap extends TiledMap {
 				tiles.add(new Rectangle(-1 * 48 -24, y * 48 -24, 48, 48));
 				tiles.add(new Rectangle(super.getWidth() * 48 -24, y * 48 -24, 48, 48));
 				boolean isBlocked = false;
-				for (int i=0;i<7;i++){
+				for (int i=0;i<9;i++){
 					int tileID = super.getTileId(x, y, i);
 					String value = super.getTileProperty(tileID, "blocked", "false");
 					if ("true".equals(value)) {

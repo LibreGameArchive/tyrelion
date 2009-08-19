@@ -348,6 +348,43 @@
    <property name="type" value="rock"/>
   </properties>
  </tile>
+ <tile id="72">
+  <properties>
+   <property name="type" value="grass"/>
+  </properties>
+ </tile>
+ <tile id="73">
+  <properties>
+   <property name="type" value="water"/>
+  </properties>
+ </tile>
+ <tile id="74">
+  <properties>
+   <property name="type" value="grass"/>
+  </properties>
+ </tile>
+ <tile id="75">
+  <properties>
+   <property name="type" value="water"/>
+  </properties>
+ </tile>
+ <tile id="76">
+  <properties>
+   <property name="type" value="water"/>
+  </properties>
+ </tile>
+ <tile id="78">
+  <properties>
+   <property name="blocked" value="true"/>
+   <property name="type" value="wagon"/>
+  </properties>
+ </tile>
+ <tile id="79">
+  <properties>
+   <property name="blocked" value="true"/>
+   <property name="type" value="wagon"/>
+  </properties>
+ </tile>
  <tile id="80">
   <properties>
    <property name="blocked" value="true"/>
@@ -360,6 +397,51 @@
    <property name="type" value="rock"/>
   </properties>
  </tile>
+ <tile id="82">
+  <properties>
+   <property name="type" value="water"/>
+  </properties>
+ </tile>
+ <tile id="83">
+  <properties>
+   <property name="blocked" value="true"/>
+   <property name="type" value="water"/>
+  </properties>
+ </tile>
+ <tile id="84">
+  <properties>
+   <property name="type" value="water"/>
+  </properties>
+ </tile>
+ <tile id="85">
+  <properties>
+   <property name="blocked" value="true"/>
+   <property name="type" value="water"/>
+  </properties>
+ </tile>
+ <tile id="86">
+  <properties>
+   <property name="blocked" value="true"/>
+   <property name="type" value="water"/>
+  </properties>
+ </tile>
+ <tile id="87">
+  <properties>
+   <property name="type" value="wagon"/>
+  </properties>
+ </tile>
+ <tile id="88">
+  <properties>
+   <property name="blocked" value="true"/>
+   <property name="type" value="wagon"/>
+  </properties>
+ </tile>
+ <tile id="89">
+  <properties>
+   <property name="blocked" value="true"/>
+   <property name="type" value="wagon"/>
+  </properties>
+ </tile>
  <tile id="90">
   <properties>
    <property name="blocked" value="true"/>
@@ -370,6 +452,23 @@
   <properties>
    <property name="blocked" value="true"/>
    <property name="type" value="rock"/>
+  </properties>
+ </tile>
+ <tile id="93">
+  <properties>
+   <property name="type" value="water"/>
+  </properties>
+ </tile>
+ <tile id="97">
+  <properties>
+   <property name="blocked" value="true"/>
+   <property name="type" value="wagon"/>
+  </properties>
+ </tile>
+ <tile id="98">
+  <properties>
+   <property name="blocked" value="true"/>
+   <property name="type" value="wagon"/>
   </properties>
  </tile>
 </tileset>

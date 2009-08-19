@@ -58,7 +58,7 @@ public class ExpMode extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
 		
-		player = new Player(0, 0);
+		player = new Player(2, 14);
 		
 		map = new TyrelionMap("res/maps/arthlet.tmx", container);
 		
