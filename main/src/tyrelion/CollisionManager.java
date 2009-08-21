@@ -45,31 +45,37 @@ public class CollisionManager {
 
 		float playerX = player.getPlayerX();
 		float playerY = player.getPlayerY();
+		float newPlayerX;
+		float newPlayerY;
 		
-		if (!collided(playerX + -delta * Player.WALK_SPEED, playerY)) {
-			if(input.isKeyDown(Keyboard.KEY_LEFT) || input.isControllerLeft(0)) {	
-				player.setPlayerX(playerX + -delta * Player.WALK_SPEED);
+		if(input.isKeyDown(Keyboard.KEY_LEFT) || input.isControllerLeft(0)) {
+			newPlayerX = playerX + -delta * Player.WALK_SPEED;
+			if (!collided(newPlayerX, playerY)) {	
+				player.setPlayerX(newPlayerX);
 				player.setAnimation(Player.ANIM_LEFT);
 			}
 		}
 		  
-		if (!collided(playerX + delta * Player.WALK_SPEED, playerY)) {
-			if(input.isKeyDown(Keyboard.KEY_RIGHT) || input.isControllerRight(0)) {			
-				player.setPlayerX(player.getPlayerX() + delta * Player.WALK_SPEED);
+		if(input.isKeyDown(Keyboard.KEY_RIGHT) || input.isControllerRight(0)) {	
+			newPlayerX = playerX + delta * Player.WALK_SPEED;
+			if (!collided(newPlayerX, playerY)) {		
+				player.setPlayerX(newPlayerX);
 				player.setAnimation(Player.ANIM_RIGHT);
 			}
 		}
 		  
-		if (!collided(playerX, playerY + -delta * Player.WALK_SPEED)) {
-			if(input.isKeyDown(Keyboard.KEY_UP) || input.isControllerUp(0)){
-				player.setPlayerY(player.getPlayerY() + -delta * Player.WALK_SPEED);
+		if(input.isKeyDown(Keyboard.KEY_UP) || input.isControllerUp(0)){
+			newPlayerY = playerY + -delta * Player.WALK_SPEED;
+			if (!collided(playerX, newPlayerY)) {	
+				player.setPlayerY(newPlayerY);
 				player.setAnimation(Player.ANIM_UP);
 			}
 		}
 		  
-		if (!collided(playerX, playerY + delta * Player.WALK_SPEED)) {
-			if(input.isKeyDown(Keyboard.KEY_DOWN) || input.isControllerDown(0)){
-				player.setPlayerY(player.getPlayerY() + delta * Player.WALK_SPEED);
+		if(input.isKeyDown(Keyboard.KEY_DOWN) || input.isControllerDown(0)){
+			newPlayerY = playerY + delta * Player.WALK_SPEED;
+			if (!collided(playerX, newPlayerY)) {
+				player.setPlayerY(newPlayerY);
 				player.setAnimation(Player.ANIM_DOWN);
 			}
 		}

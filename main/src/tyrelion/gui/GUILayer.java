@@ -14,9 +14,8 @@ import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.StateBasedGame;
 
-import tyrelion.FontManager;
 import tyrelion.ExpMode;
-import tyrelion.menu.MenuCredits;
+import tyrelion.FontManager;
 import tyrelion.menu.MenuLoad;
 import tyrelion.menu.MenuMain;
 import tyrelion.menu.MenuSettings;
