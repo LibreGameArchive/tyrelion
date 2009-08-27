@@ -62,6 +62,8 @@ public class ExpMode extends BasicGameState {
 		
 		map = new TyrelionMap("res/maps/arthlet.tmx", container);
 		
+		CollisionManager.getInstance().setMap(map);
+		
 		guiLayer = new GUILayer(container, game);
 		
 		minimap = new Minimap(container, map, player);
@@ -101,8 +103,13 @@ public class ExpMode extends BasicGameState {
 		player.render(g);
 		
 		if (debug) {
-			for (Shape elem : CollisionManager.getInstance().getTiles()) {
-				g.draw(elem);
+			Shape[][] tiles = CollisionManager.getInstance().getTiles();
+			for (int i = 0; i < map.getWidth(); i++) {
+				for (int j = 0; j < map.getHeight(); j++) {
+					if (tiles[i][j] != null) {
+						g.draw(tiles[i][j]);
+					}
+				}
 			}
 			player.renderShape(g);
 			

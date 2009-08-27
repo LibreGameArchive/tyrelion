@@ -3,8 +3,6 @@
  */
 package tyrelion;
 
-import java.util.ArrayList;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
@@ -57,30 +55,18 @@ public class TyrelionMap extends TiledMap {
 	
 	public void initCollisionBoxes(){
 		
-		ArrayList<Shape> tiles = new ArrayList<Shape>();
+		Shape[][] tiles = new Shape[this.getWidth()][this.getHeight()];
 		
-		for (int x = 0; x < super.getWidth(); x++) {
-			tiles.add(new Rectangle(x * 48 -24, -1 *48 -24, 48, 48));
-			tiles.add(new Rectangle(x * 48 -24, super.getHeight() * 48 -24, 48, 48));
-			for (int y = 0; y < super.getHeight(); y++){
-				tiles.add(new Rectangle(-1 * 48 -24, y * 48 -24, 48, 48));
-				tiles.add(new Rectangle(super.getWidth() * 48 -24, y * 48 -24, 48, 48));
-				boolean isBlocked = false;
-				for (int i=0;i<9;i++){
-					int tileID = super.getTileId(x, y, i);
-					String value = super.getTileProperty(tileID, "blocked", "false");
+		for (int i = 0; i < this.getWidth(); i++) {
+			for (int j = 0; j < this.getHeight(); j++) {
+				for (int l = 0; l < this.getLayerCount(); l++) {
+					int tileID = this.getTileId(i, j, l);
+					String value = this.getTileProperty(tileID, "blocked", "false");
 					if ("true".equals(value)) {
-						if (!isBlocked) tiles.add(new Rectangle(x*48-24, y*48-24, 48, 48));
-						isBlocked = true;
+						tiles[i][j] = new Rectangle(i*48-24, j*48-24, 48, 48); 
 					}
 				}
-				
-				
 			}
-		}
-		
-		for (int y = 0; y < super.getHeight(); y++) {
-	
 		}
 		
 		CollisionManager.getInstance().setTiles(tiles);
