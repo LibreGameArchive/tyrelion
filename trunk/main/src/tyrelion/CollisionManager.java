@@ -1,7 +1,5 @@
 package tyrelion;
 
-import java.util.ArrayList;
-
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
@@ -15,9 +13,10 @@ public class CollisionManager {
 	
 	private static CollisionManager instance = null;
 
-	private ArrayList<Shape> tiles;
+	private Shape[][] tiles;
 	private Player player;
-	
+	private TyrelionMap map;
+
 	public static CollisionManager getInstance() {
 		if (instance == null) {
 			instance = new CollisionManager();
@@ -30,13 +29,50 @@ public class CollisionManager {
 		player.getShape().setCenterX(x*48+10);
 		player.getShape().setCenterY(y*48+20);
 		boolean collided = false;
-		for (Shape elem : tiles) {
-			if (player.getShape().intersects(elem)) {
-				collided = true;
-				break;
+		int tileX;
+		int tileY;
+		
+		if (playerOutOfMap(x, y)) {
+			return true;
+		}
+		
+		for (int i = player.getTileX() - 1; i <= player.getTileX() + 1; i++) {
+			for (int j = player.getTileY() - 1; j <= player.getTileY() + 1; j++) {				
+				
+				if (i < 0) {
+					tileX = 0;
+				} else if (i >= map.getWidth()) {
+					tileX = map.getWidth()-1;
+				} else {
+					tileX = i;
+				}
+				
+				if (j < 0) {
+					tileY = 0;
+				} else if (j >= map.getHeight()) {
+					tileY = map.getHeight()-1;
+				} else {
+					tileY = j;
+				}
+				
+				if (tiles[tileX][tileY] != null) {
+					if (player.getShape().intersects(tiles[tileX][tileY])) {
+						collided = true;
+						break;
+					}
+				}
 			}
 		}
+		
 		return collided;
+	}
+	
+	public boolean playerOutOfMap(float x, float y) {
+		if (x + 0.5 < 0 || y + 0.5 < 0 || x > 63 || y + 0.3 > 63) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public void update(GameContainer container, int delta) {
@@ -87,7 +123,7 @@ public class CollisionManager {
 	/**
 	 * @param tiles the tiles to set
 	 */
-	public void setTiles(ArrayList<Shape> tiles) {
+	public void setTiles(Shape[][] tiles) {
 		this.tiles = tiles;
 	}
 
@@ -101,8 +137,15 @@ public class CollisionManager {
 	/**
 	 * @return the tiles
 	 */
-	public ArrayList<Shape> getTiles() {
+	public Shape[][] getTiles() {
 		return tiles;
+	}
+	
+	/**
+	 * @param map the map to set
+	 */
+	public void setMap(TyrelionMap map) {
+		this.map = map;
 	}
 	
 }
