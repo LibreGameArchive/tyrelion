@@ -30,7 +30,7 @@ public class TyrelionMap extends TiledMap {
 	
 	/**
 	 * @param ref
-	 * @param tileSetsLocation
+	 * @param container
 	 * @throws SlickException
 	 */
 	public TyrelionMap(String ref, GameContainer container)
