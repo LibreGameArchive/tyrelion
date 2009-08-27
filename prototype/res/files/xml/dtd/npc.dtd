@@ -1,7 +1,0 @@
-<!ELEMENT npcs (npc)*>
-<!ELEMENT npc (name, art, x, y)>
-<!ATTLIST npc id ID #REQUIRED>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT art (#PCDATA)>
-<!ELEMENT x (#PCDATA)>
-<!ELEMENT y (#PCDATA)>

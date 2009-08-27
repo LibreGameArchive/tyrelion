@@ -1,5 +1,0 @@
-<!ELEMENT attribute (attribut)*>
-<!ELEMENT attribut (name,text)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT text (#PCDATA)>
-<!ATTLIST attribut kuerzel CDATA #REQUIRED>

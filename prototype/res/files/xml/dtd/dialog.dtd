@@ -1,5 +1,0 @@
-<!ELEMENT dialoge (dialog)*>
-<!ELEMENT dialog (npc, text, (answer)+)>
-<!ATTLIST dialog id ID #REQUIRED>
-<!ELEMENT npc (#PCDATA)>
-<!ELEMENT text (#PCDATA)>
