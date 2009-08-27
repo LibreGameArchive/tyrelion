@@ -84,7 +84,7 @@ public class CollisionManager {
 		float newPlayerX;
 		float newPlayerY;
 		
-		if(input.isKeyDown(Keyboard.KEY_LEFT) || input.isControllerLeft(0)) {
+		if(input.isKeyDown(Keyboard.KEY_A) || input.isControllerLeft(0)) {
 			newPlayerX = playerX + -delta * Player.WALK_SPEED;
 			if (!collided(newPlayerX, playerY)) {	
 				player.setPlayerX(newPlayerX);
@@ -92,7 +92,7 @@ public class CollisionManager {
 			}
 		}
 		  
-		if(input.isKeyDown(Keyboard.KEY_RIGHT) || input.isControllerRight(0)) {	
+		if(input.isKeyDown(Keyboard.KEY_D) || input.isControllerRight(0)) {	
 			newPlayerX = playerX + delta * Player.WALK_SPEED;
 			if (!collided(newPlayerX, playerY)) {		
 				player.setPlayerX(newPlayerX);
@@ -100,7 +100,7 @@ public class CollisionManager {
 			}
 		}
 		  
-		if(input.isKeyDown(Keyboard.KEY_UP) || input.isControllerUp(0)){
+		if(input.isKeyDown(Keyboard.KEY_W) || input.isControllerUp(0)){
 			newPlayerY = playerY + -delta * Player.WALK_SPEED;
 			if (!collided(playerX, newPlayerY)) {	
 				player.setPlayerY(newPlayerY);
@@ -108,7 +108,7 @@ public class CollisionManager {
 			}
 		}
 		  
-		if(input.isKeyDown(Keyboard.KEY_DOWN) || input.isControllerDown(0)){
+		if(input.isKeyDown(Keyboard.KEY_S) || input.isControllerDown(0)){
 			newPlayerY = playerY + delta * Player.WALK_SPEED;
 			if (!collided(playerX, newPlayerY)) {
 				player.setPlayerY(newPlayerY);

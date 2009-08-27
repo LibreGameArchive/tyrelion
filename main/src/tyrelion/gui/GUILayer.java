@@ -21,7 +21,7 @@ import tyrelion.menu.MenuMain;
 import tyrelion.menu.MenuSettings;
 
 /**
- * @author jahudi, daennart
+ * @author jahudi, imladriel
  *
  */
 public class GUILayer implements ComponentListener{

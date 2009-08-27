@@ -1,6 +1,3 @@
-/**
- * 
- */
 package tyrelion.gui;
 
 import org.newdawn.slick.Color;
