@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Mon Aug 17 21:21:36 CEST 2009
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=tales_of_tyrelion_fat.jar
+manifest.mergeall=true
+manifest.mainclass=tyrelion.Main
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=<inc|tales_of_tyrelion/res>;<inc|tales_of_tyrelion/lib>
