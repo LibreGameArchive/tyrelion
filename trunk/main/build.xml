@@ -11,13 +11,16 @@
 	<property name="classpath" value="${lib}/slick.jar; ${lib}/lwjgl.jar; ${lib}/jogg-0.0.7.jar; ${lib}/jorbis-0.0.15.jar; ${lib}/sui.jar"/>
 	<property name="classpathJar" value="${lib}/slick.jar ${lib}/lwjgl.jar ${lib}/jogg-0.0.7.jar ${lib}/jorbis-0.0.15.jar ${lib}/sui.jar"/>
 	
+	<!-- Create all needed directories -->
 	<target name="mkdir">
 		<mkdir dir="${dist}"/>
 		<mkdir dir="${dist}/${lib}"/>
 		<mkdir dir="${dist}/${res}"/>
 		<mkdir dir="${dist}/${build}"/>
+		<mkdir dir="${dist}/${doc}"/>
 	</target>
 	
+	<!-- Copy libraries, ressources and start-scripts -->
 	<target name="copy" depends="mkdir">
 		<copy todir="${dist}/${lib}">
 			<fileset dir="${lib}"/>
@@ -31,25 +34,36 @@
 		<move file="${dist}/${lib}/start.bat" todir="${dist}"/>
 	</target>
 	
-	<target name="build" depends="copy">
-		<javac srcdir="${src}" destdir="${dist}/${build}" includes="**/*.java" excludes="tyrelion/tests/*.java" verbose="true" listfiles="true"
-			classpath="${classpath}"/>
+	<!-- Compile the source code -->
+	<target name="compile" depends="copy">
+		<javac 	srcdir="${src}"
+				destdir="${dist}/${build}"
+				includes="**/*.java"
+				excludes="tyrelion/tests/*.java"
+				verbose="true"
+				listfiles="true"
+				classpath="${classpath}"/>
+	</target>
+	
+	<!-- Create executable jar from compiled source code -->
+	<target name="mkjar" depends="compile">
 		<jar destfile="${dist}/ToT.jar" basedir="${dist}/${build}">
-					<include name="**/*.class"/>
-					<manifest>
-						<attribute name="Main-class" value="tyrelion.Main"/>
-						<attribute name="Class-Path" value="${classpathJar}"/>
-					</manifest>
+			<include name="**/*.class"/>
+			<manifest>
+				<attribute name="Main-class" value="tyrelion.Main"/>
+				<attribute name="Class-Path" value="${classpathJar}"/>
+			</manifest>
 		</jar>
 		<delete verbose="true" includeemptydirs="true">
 			<fileset dir="${dist}/${build}"/>
 		</delete>
 	</target>
 	
+	<!-- Generate javadoc API from source -->
 	<target name="javadoc">
 		<javadoc 	packagenames="tyrelion.*"
 					sourcepath="${src}"
-					destdir="${doc}"
+					destdir="${dist}/${doc}"
 					author="true"
 					use="true"
 					windowtitle="Tales of Tyrelion API"
@@ -59,12 +73,12 @@
 		</javadoc>
 	</target>
 	
+	<!-- Remove old distribution -->
 	<target name="clean">
-		<delete verbose="true" includeemptydirs="true">
-			<fileset dir="${dist}"/>
-		</delete>
+		<delete verbose="true" dir="${dist}" includeemptydirs="true"/>
 	</target>
 	
-	<target name="all" depends="build, javadoc"/>
+	<!-- Build the hole project -->
+	<target name="build" depends="clean, mkjar, javadoc"/>
 	
 </project>
