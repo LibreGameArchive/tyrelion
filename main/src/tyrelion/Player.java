@@ -84,8 +84,8 @@ public class Player {
 		tileOffsetY = (int) ((tileY - playerY) * TyrelionMap.TILE_SIZE);
 
 		Input input = container.getInput();
-		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_DOWN) ||
-				input.isKeyDown(Input.KEY_LEFT) ||input.isKeyDown(Input.KEY_RIGHT)) {
+		if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) ||
+				input.isKeyDown(Input.KEY_A) ||input.isKeyDown(Input.KEY_D)) {
 			SoundManager.getInstance().playOnce("player", "walk");
 		} else {
 
