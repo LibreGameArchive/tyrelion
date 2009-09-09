@@ -59,6 +59,7 @@ public class Infobox implements ComponentListener{
 		
 		messages = new ArrayList<Message>();
 		
+		if (container!=null){
 		background = new Image("res/img/gui/gui_infobox.png");
 		
 		//Jeweils Zuweisung von MOAs und Rollover-Images für die Buttons
@@ -67,6 +68,7 @@ public class Infobox implements ComponentListener{
         
         gui_btn_down = new MouseOverArea(gameContainer, new Image("res/img/gui/gui_btn_down_1.png"), posX+200, posY+50, 20, 20, this);
         gui_btn_down.setMouseOverImage(new Image("res/img/gui/gui_btn_down_2.png"));
+		}
       }
 
 	public void render(GameContainer container, Graphics g, int x, int y)
@@ -176,6 +178,11 @@ public class Infobox implements ComponentListener{
 	
 	private void scrollDown(){
 		startLine++;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Message> getMessages(){
+		return (ArrayList<Message>) messages.clone();
 	}
 
 	/* (non-Javadoc)

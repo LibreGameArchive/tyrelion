@@ -1,9 +1,20 @@
 package tyrelion.gui;
 
-import org.newdawn.slick.Color;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsEnvironment;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.opengl.Texture;
+import org.newdawn.slick.util.BufferedImageUtil;
 
 import tyrelion.Player;
 import tyrelion.TyrelionMap;
@@ -14,8 +25,8 @@ import tyrelion.TyrelionMap;
  */
 public class Minimap {
 	
-	private int posX = 1052;
-	private int posY = 784;
+	private int posX = 952;
+	private int posY = 664;
 	
 	private int minimapWidth=40;
 	private int minimapHeight=40;
@@ -27,7 +38,7 @@ public class Minimap {
 
 	private String[][] types;
 	private Color[][] minimap;
-	private static Color PLAYER = new Color(200,10,10);
+	private static org.newdawn.slick.Color PLAYER = new org.newdawn.slick.Color(200,10,10);
 	private static Color NOTHING = Color.black;
 	private static Color GRASS = new Color(0x00125804);
 	private static Color TREE = new Color(0x0065280b);
@@ -40,6 +51,10 @@ public class Minimap {
 	
 	private TyrelionMap map;
 	private Player player;
+	
+	private Image minimapImage;
+	private int completeMapWidth = 0;
+	private int completeMapHeight = 0;
 	
 	public Minimap(GameContainer gameContainer, TyrelionMap map, Player player){
 		
@@ -54,7 +69,87 @@ public class Minimap {
 		
 		readTypes();
 		
-		generateMinimap();
+		completeMapWidth = map.getWidth()*partSize;
+		completeMapHeight = map.getHeight()*partSize;
+		minimapImage = generateMapImage(map);
+		
+	}
+	
+	private Image generateMapImage(TyrelionMap map){
+		BufferedImage bufImg = new BufferedImage(completeMapWidth, completeMapHeight, BufferedImage.TYPE_INT_RGB);
+		java.awt.Graphics g = bufImg.createGraphics();
+		
+		int posX = 0; int posY = 0;
+		
+		for (int tileX=0; tileX < types.length; tileX++){
+			for (int tileY=0; tileY < types[tileX].length; tileY++){
+				posX = tileX * partSize;
+				posY = tileY * partSize;
+				if (types[tileX][tileY].equals("tree")){
+					g.setColor(TREE);
+					g.fillRect(posX, posY, partSize, partSize);
+				}
+				if (types[tileX][tileY].equals("grass")){
+					g.setColor(GRASS);
+					g.fillRect(posX, posY, partSize, partSize);
+				}	
+				if (types[tileX][tileY].equals("house")){
+					g.setColor(HOUSE);
+					g.fillRect(posX, posY, partSize, partSize);
+				}	
+				if (types[tileX][tileY].equals("mud")){
+					g.setColor(MUD);
+					g.fillRect(posX, posY, partSize, partSize);
+				}
+				if (types[tileX][tileY].equals("water")){
+					g.setColor(WATER);
+					g.fillRect(posX, posY, partSize, partSize);
+				}
+				if (types[tileX][tileY].equals("wood")){
+					g.setColor(WOOD);
+					g.fillRect(posX, posY, partSize, partSize);
+				}
+				if (types[tileX][tileY].equals("wagon")){
+					g.setColor(WAGON);
+					g.fillRect(posX, posY, partSize, partSize);
+				}
+				if (types[tileX][tileY].equals("stone")){
+					g.setColor(STONE);
+					g.fillRect(posX, posY, partSize, partSize);
+				}	
+				if (types[tileX][tileY].equals("nothing")){
+					g.setColor(NOTHING);
+					g.fillRect(posX, posY, partSize, partSize);
+				}
+			}
+		}
+		
+		Texture texture = null;
+		Image slickImage = null;
+		try {
+			texture = BufferedImageUtil.getTexture("", bufImg);
+			slickImage = new Image(texture.getImageWidth(), texture.getImageHeight() ); 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		slickImage.setTexture(texture) ;
+		
+		return slickImage;
+	}
+	
+	public Image getPart(){
+		
+		int centerX = player.getTileX();
+		int centerY = player.getTileY();
+		
+		int x = (centerX-(minimapWidth/2))*5;
+		int y = (centerY-(minimapHeight/2))*5;
+		
+		int partWidth = minimapWidth*5;
+		int partHeight = minimapHeight*5;
+		
+		return minimapImage.getSubImage(x, y, partWidth, partHeight);
 	}
 	
 	
@@ -75,68 +170,13 @@ public class Minimap {
 		}
 	}
 	
-	public void generateMinimap(){
-		minimap = new Color[types.length][types[0].length];
-		for (int x=0; x < types.length; x++){
-			for (int y=0; y < types[x].length; y++){
-				if (types[x][y].equals("tree")){
-					minimap[x][y] = TREE;
-				}
-				if (types[x][y].equals("grass")){
-					minimap[x][y] = GRASS;
-				}	
-				if (types[x][y].equals("house")){
-					minimap[x][y] = HOUSE;
-				}	
-				if (types[x][y].equals("mud")){
-					minimap[x][y] = MUD;
-				}
-				if (types[x][y].equals("water")){
-					minimap[x][y] = WATER;
-				}
-				if (types[x][y].equals("wood")){
-					minimap[x][y] = WOOD;
-				}
-				if (types[x][y].equals("wagon")){
-					minimap[x][y] = WAGON;
-				}
-				if (types[x][y].equals("stone")){
-					minimap[x][y] = STONE;
-				}	
-				if (types[x][y].equals("nothing")){
-					minimap[x][y] = NOTHING;
-				}
-			}
-		}
-		
-	}
-	
 	
 	
 	public void render(Graphics g){
-		int playerX = 0; int playerY = 0;
-		int x = -minimapWidth/2; 
-		for (int i=player.getTileX()-minimapWidth/2; i<=player.getTileX()+minimapWidth/2; i++){
-			int y = -minimapHeight/2;	
-			for (int j=player.getTileY()-minimapHeight/2; j<=player.getTileY()+minimapHeight/2; j++){
-				Rectangle temp = new Rectangle(posX+x*partSize,posY+y*partSize,partSize+1,partSize+1);
-				if (j>=0 && i>=0 && i<mapWidth && j<mapHeight) {
-					
-					g.setColor(minimap[i][j]);
-
-					if (player.getTileX()==i && player.getTileY()==j) { 
-						playerX=x;playerY=y;
-					}
-					
-					g.fill(temp);
-				}
-				y++;
-			}
-			x++;
-		}
+		g.drawImage(getPart(), posX, posY);
 		
-		Rectangle player = new Rectangle(posX+playerX*partSize-3,posY+playerY*partSize,partSize+4,partSize+4);
-		g.setColor(PLAYER);
-		g.fill(player);
+		//Circle player = new Circle(posX+(minimapWidth/2)*partSize-1,posY+(minimapHeight/2)*partSize,partSize);
+		//g.setColor(PLAYER);
+		//g.fill(player);
 	}
 }
