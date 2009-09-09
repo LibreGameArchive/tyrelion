@@ -3,8 +3,10 @@
  */
 package tyrelion.tests;
 
-import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import junit.framework.JUnit4TestAdapter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -49,6 +51,7 @@ public class MusicManagerTest {
 	 */
 	@Test
 	public void testPlay() {
+		manager.setVolume(0f);
 		manager.play("menu");
 		assertTrue(manager.getActiveTrack().playing());
 	}
@@ -58,6 +61,7 @@ public class MusicManagerTest {
 	 */
 	@Test
 	public void testLoop() {
+		manager.setVolume(0f);
 		manager.loop("menu");
 		assertTrue(manager.getActiveTrack().playing());
 	}
@@ -67,11 +71,15 @@ public class MusicManagerTest {
 	 */
 	@Test
 	public void testSetVolume() {
-		float volume = 0.7f;
+		float volume = 0f;
 		manager.play("menu");
 		manager.setVolume(volume);
 		assertEquals(volume, manager.getVolume(), 0);
 		assertEquals(volume, manager.getActiveTrack().getVolume(), 0);
+	}
+	
+	public static junit.framework.Test suite() {
+		return new JUnit4TestAdapter(MusicManagerTest.class);
 	}
 
 }

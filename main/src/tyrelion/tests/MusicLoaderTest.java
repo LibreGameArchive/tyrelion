@@ -10,6 +10,8 @@ import static org.junit.Assert.assertFalse;
 import java.io.File;
 import java.util.ArrayList;
 
+import junit.framework.JUnit4TestAdapter;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,6 +53,10 @@ public class MusicLoaderTest {
 		assertFalse(loader.getMusicMap().isEmpty());
 		assertFalse(loader.getMusicMap().get("menu").isEmpty());
 		assertFalse(loader.getMusicMap().get("menu").get(0).equals(null));
+	}
+	
+	public static junit.framework.Test suite() {
+		return new JUnit4TestAdapter(MusicLoaderTest.class);
 	}
 	
 }

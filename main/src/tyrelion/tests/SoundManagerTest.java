@@ -3,10 +3,10 @@
  */
 package tyrelion.tests;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertTrue;
+import junit.framework.JUnit4TestAdapter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,8 +43,13 @@ public class SoundManagerTest {
 	 */
 	@Test
 	public void testPlayOnce() {
+		manager.setVolume(0f);
 		manager.playOnce("ambience", "thunder");
 		assertTrue(manager.getPlayOnce().playing());
+	}
+	
+	public static junit.framework.Test suite() {
+		return new JUnit4TestAdapter(SoundManagerTest.class);
 	}
 	
 }
