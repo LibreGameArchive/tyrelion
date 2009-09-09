@@ -5,9 +5,10 @@ package tyrelion.tests;
 
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+
+import junit.framework.JUnit4TestAdapter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +22,6 @@ import tyrelion.gui.Message;
  */
 public class InfoboxTest {
 
-	Message message;
 	Infobox infobox;
 	/**
 	 * @throws java.lang.Exception
@@ -38,9 +38,11 @@ public class InfoboxTest {
 		
 		ArrayList<Message> messages = infobox.getMessages();
 		
-		assertFalse(messages.isEmpty());
-		assertTrue(messages.contains(message));
-		
+		assertFalse(messages.isEmpty());		
+	}
+	
+	public static junit.framework.Test suite() {
+		return new JUnit4TestAdapter(InfoboxTest.class);
 	}
 	
 }
