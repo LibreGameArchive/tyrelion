@@ -68,5 +68,26 @@ public class SoundManager {
 	public void setPitch(float pitch) {
 		this.pitch = pitch;
 	}
+
+	/**
+	 * @return the volume
+	 */
+	public float getVolume() {
+		return volume;
+	}
+
+	/**
+	 * @return the pitch
+	 */
+	public float getPitch() {
+		return pitch;
+	}
+
+	/**
+	 * @return the playOnce
+	 */
+	public Sound getPlayOnce() {
+		return playOnce;
+	}
 	
 }

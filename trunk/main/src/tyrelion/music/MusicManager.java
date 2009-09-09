@@ -105,5 +105,19 @@ public class MusicManager {
 			activeTrack.setVolume(volume);
 		}
 	}
+
+	/**
+	 * @return the activeTrack
+	 */
+	public TyrelionMusic getActiveTrack() {
+		return activeTrack;
+	}
+
+	/**
+	 * @return the volume
+	 */
+	public float getVolume() {
+		return volume;
+	}
 		
 }
