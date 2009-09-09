@@ -20,12 +20,11 @@ import org.newdawn.slick.SlickException;
 public class FontManager{
 	
 	public static int FANCY = 1;
-	
 	public static int SIMPLE = 2;
 	
-	public static float SMALL = 1;
-	public static float MEDIUM = 2;
-	public static float LARGE = 3;
+	public static int SMALL = 1;
+	public static int MEDIUM = 2;
+	public static int LARGE = 3;
 	
 	private int defaultStyle = SIMPLE;
 	
@@ -106,9 +105,16 @@ public class FontManager{
 		drawString(g, x, y, text, defaultStyle, defaultSize, defaultColor);
 	}
 	
-	/** Returns requested TrueTypeFont.*/
+	/** Returns requested AngelCodeFont.*/
 	public Font getFont(int style, float size){
 		return chooseFonts(style).get(size);
+	}
+	
+	/** Returns all Fonts as a Clone.*/
+	public HashMap<Integer, AngelCodeFont> getFonts(){
+		HashMap<Integer, AngelCodeFont> temp = (HashMap<Integer, AngelCodeFont>) fancy_fonts.clone();
+		temp.putAll(simple_fonts);
+		return temp;
 	}
 	
 	/** Adds a font to the font.database */
