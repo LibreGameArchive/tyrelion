@@ -13,9 +13,7 @@ import tyrelion.WorldObject;
  * @author Basti
  *
  */
-public abstract class Item extends WorldObject{
-
-	public static final int SIZE = 48;
+public abstract class Item {
 	
 	/** the unique ID of the Item */
 	private final int uid;
@@ -32,8 +30,6 @@ public abstract class Item extends WorldObject{
 	/** true if item is stackable */
 	private final boolean stackable;
 
-
-
 	/**
 	 * @param uID
 	 * @param name
@@ -41,17 +37,12 @@ public abstract class Item extends WorldObject{
 	 * @param imageInv
 	 */
 
-	public Item(int x, int y, int uid, String name, Image image_world, Image image_inv, boolean stackable) {
-		super(x, y);
+	public Item(int uid, String name, Image image_world, Image image_inv, boolean stackable) {
 		this.uid = uid;
 		this.name = name;
 		this.image_world = image_world;
 		this.image_inv = image_inv;
 		this.stackable = stackable;
-	}
-	
-	public void render(Graphics g) {
-		image_world.draw(tileX*TyrelionMap.TILE_SIZE-SIZE/2, tileY*TyrelionMap.TILE_SIZE-SIZE/2);
 	}
 	
 	/**

@@ -18,8 +18,8 @@ public class Food extends Item {
 	 * @param imageInv
 	 */
 
-	public Food(int x, int y, int uid, String name, Image imageWorld, Image imageInv, boolean stackable) {
-		super(x, y, uid, name, imageWorld, imageInv, stackable);
+	public Food(int uid, String name, Image imageWorld, Image imageInv, boolean stackable) {
+		super(uid, name, imageWorld, imageInv, stackable);
 	}
 
 }
