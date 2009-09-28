@@ -3,6 +3,7 @@
  */
 package tyrelion.objects;
 
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -10,8 +11,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
 
+import tyrelion.CollisionManager;
 import tyrelion.character.Character;
 import tyrelion.sfx.SoundManager;
 
@@ -48,15 +49,50 @@ public class Player extends Avatar{
 		return instance;
 	}
 	
-	public void update(GameContainer container) {
+	public void update(GameContainer container, int delta) {
 		super.update(container);
 		
 		Input input = container.getInput();
+		CollisionManager col = CollisionManager.getInstance();
+		
 		if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) ||
 				input.isKeyDown(Input.KEY_A) ||input.isKeyDown(Input.KEY_D)) {
 			SoundManager.getInstance().playOnce("player", "walk");
-		} else {
-
+		}
+		
+		float newPlayerX;
+		float newPlayerY;
+		
+		if(input.isKeyDown(Keyboard.KEY_A)) {
+			newPlayerX = posX + -delta * WALK_SPEED;
+			if (!col.collided(newPlayerX, posY)) {	
+				setPosX(newPlayerX);
+				setAnimation(ANIM_LEFT);
+			}
+		}
+		  
+		if(input.isKeyDown(Keyboard.KEY_D)) {	
+			newPlayerX = posX + delta * WALK_SPEED;
+			if (!col.collided(newPlayerX, posY)) {		
+				setPosX(newPlayerX);
+				setAnimation(ANIM_RIGHT);
+			}
+		}
+		  
+		if(input.isKeyDown(Keyboard.KEY_W)){
+			newPlayerY = posY + -delta * WALK_SPEED;
+			if (!col.collided(posX, newPlayerY)) {	
+				setPosY(newPlayerY);
+				setAnimation(ANIM_UP);
+			}
+		}
+		  
+		if(input.isKeyDown(Keyboard.KEY_S)){
+			newPlayerY = posY + delta * WALK_SPEED;
+			if (!col.collided(posX, newPlayerY)) {
+				setPosY(newPlayerY);
+				setAnimation(Player.ANIM_DOWN);
+			}
 		}
 		
 	}
@@ -65,12 +101,6 @@ public class Player extends Avatar{
 		g.draw(shape);
 	}
 
-	/**
-	 * @return the circle
-	 */
-	public Shape getShape() {
-		return shape;
-	}
 	/**
 	 * @return the character
 	 */

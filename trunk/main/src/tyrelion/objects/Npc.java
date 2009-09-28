@@ -7,6 +7,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 
 import tyrelion.FontManager;
 import tyrelion.map.TyrelionMap;
@@ -23,6 +24,8 @@ public class Npc extends Avatar{
 	public Npc(int x, int y) throws SlickException {
 		super(x, y);
 		
+		shape = new Rectangle(x*48-24, y*48-24, 48, 48);
+		
 		helloText = "Seyd gegrüßt!";
 		
 		animations[ANIM_UP].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
@@ -34,6 +37,7 @@ public class Npc extends Avatar{
 	
 	public void render(Graphics g) {
 		super.render(g);
+		g.draw(shape);
 		if (isShowingHello) {
 			try {
 				drawHelloText(g);

@@ -119,4 +119,11 @@ public abstract class Avatar extends WorldObject {
 		this.posY = posY;
 	}
 
+	/**
+	 * @return the shape
+	 */
+	public Shape getShape() {
+		return shape;
+	}
+
 }

@@ -179,7 +179,7 @@ public class ExpMode extends BasicGameState {
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 
-		CollisionManager.getInstance().update(container, delta);
+		player.update(container, delta);
 				
 	}
 	
@@ -225,46 +225,22 @@ public class ExpMode extends BasicGameState {
 	
 	public void mouseMoved(int oldx, int oldy, int newx, int newy){
 		Point p = translateCoordinates(newx, newy);
+		CursorManager cursorManager = CursorManager.getInstance();
 		
 		if(p.x == npc.getTileX() && (p.y == npc.getTileY() || p.y == npc.getTileY()-1)) {
 			if (player.inRange(npc)) {
-				try {
-					container.setMouseCursor("res/img/mouse/cursor_bubble.png", 13, 28);
-				} catch (SlickException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				cursorManager.setCursor(CursorManager.BUBBLE, container);
 			} else {
-				try {
-					container.setMouseCursor("res/img/mouse/cursor_bubble_locked.png", 13, 28);
-				} catch (SlickException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				cursorManager.setCursor(CursorManager.BUBBLE_LOCKED, container);
 			}
 		} else if(p.x == worldApple.getTileX() && p.y == worldApple.getTileY()) {
 			if (player.inRange(worldApple)) {
-				try {
-					container.setMouseCursor("res/img/mouse/cursor_hand.png", 12, 20);
-				} catch (SlickException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				cursorManager.setCursor(CursorManager.HAND, container);
 			} else {
-				try {
-					container.setMouseCursor("res/img/mouse/cursor_hand_locked.png", 12, 20);
-				} catch (SlickException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				cursorManager.setCursor(CursorManager.HAND_LOCKED, container);
 			}
 		} else {
-			try {
-				container.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			cursorManager.setCursor(CursorManager.SWORD, container);
 		}
 
 	}
