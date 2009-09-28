@@ -28,6 +28,9 @@ public abstract class Item extends WorldObject{
 	
 	/** the image for the item rendered in the inventory */
 	private final Image image_inv;
+	
+	/** true if item is stackable */
+	private final boolean stackable;
 
 
 
@@ -37,16 +40,25 @@ public abstract class Item extends WorldObject{
 	 * @param imageWorld
 	 * @param imageInv
 	 */
-	public Item(int x, int y, int uid, String name, Image image_world, Image image_inv) {
+
+	public Item(int x, int y, int uid, String name, Image image_world, Image image_inv, boolean stackable) {
 		super(x, y);
 		this.uid = uid;
 		this.name = name;
 		this.image_world = image_world;
 		this.image_inv = image_inv;
+		this.stackable = stackable;
 	}
 	
 	public void render(Graphics g) {
 		image_world.draw(tileX*TyrelionMap.TILE_SIZE-SIZE/2, tileY*TyrelionMap.TILE_SIZE-SIZE/2);
+	}
+	
+	/**
+	 * @return if item is stackable
+	 */
+	public boolean isStackable(){
+		return stackable;
 	}
 	
 	/**

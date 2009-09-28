@@ -82,7 +82,7 @@ public class FontManager{
 	}
 	
 	public void drawString(Graphics g, float x, float y, String text, int style, Color color){
-		drawString(g, x, y, text, style, defaultStyle, color);
+		drawString(g, x, y, text, style, defaultSize, color);
 	}
 	
 	public void drawString(Graphics g, float x, float y, String text, float size, Color color){
@@ -111,6 +111,7 @@ public class FontManager{
 	}
 	
 	/** Returns all Fonts as a Clone.*/
+	@SuppressWarnings("unchecked") //type is safe
 	public HashMap<Integer, AngelCodeFont> getFonts(){
 		HashMap<Integer, AngelCodeFont> temp = (HashMap<Integer, AngelCodeFont>) fancy_fonts.clone();
 		temp.putAll(simple_fonts);

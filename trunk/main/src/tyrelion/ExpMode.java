@@ -94,7 +94,7 @@ public class ExpMode extends BasicGameState {
 		
 		npc = new Npc(2, 16);
 		apple = new Food(6, 17, 1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
-				new Image("res/img/items/apple_inv.png"));
+				new Image("res/img/items/apple_inv.png"), true);
 		
 	}
 
