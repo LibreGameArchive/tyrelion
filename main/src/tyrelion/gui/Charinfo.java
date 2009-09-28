@@ -7,13 +7,17 @@ package tyrelion.gui;
 
 
 
+import java.util.Observable;
+import java.util.Observer;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.AbstractComponent;
-import org.newdawn.slick.gui.ComponentListener;
 
+import tyrelion.InteractionManager;
 import tyrelion.itemsystem.Food;
 import tyrelion.objects.Player;
 
@@ -21,7 +25,7 @@ import tyrelion.objects.Player;
  * @author daennart
  *
  */
-public class Charinfo implements ComponentListener{
+public class Charinfo implements Observer{
 	
 	private GameContainer gameContainer;
 	
@@ -32,6 +36,8 @@ public class Charinfo implements ComponentListener{
 	
 	private int posX = 0;
 	private int posY = 0;
+	
+	boolean showCharinfo = false;
 
 	public Charinfo(GameContainer container)
 			throws SlickException {
@@ -39,27 +45,40 @@ public class Charinfo implements ComponentListener{
 		this.gameContainer = container;	
 		
 		background = new Image("res/img/gui/gui_charinfo.png");
+		
+		InteractionManager.getInstance().addObserver(this);
 		}
       
 
 	public void render(GameContainer container, Graphics g, int x, int y)
 			throws SlickException {		
-		posX = x;
-		posY = y;
-		//Render images
-		g.drawImage(background, posX, posY);
-		
-		Player.getInstance().getCharacter().getInventory().render(g, posX+577, posY+236);
+		if (showCharinfo){
+			posX = x;
+			posY = y;
+			//Render images
+			g.drawImage(background, posX, posY);
+			
+			Player.getInstance().getCharacter().getInventory().render(g, posX+577, posY+236);
+		}
 	}
 	
 	
+	
+	
+	
+
 
 	/* (non-Javadoc)
-	 * @see org.newdawn.slick.gui.ComponentListener#componentActivated(org.newdawn.slick.gui.AbstractComponent)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
-	public void componentActivated(AbstractComponent source) {
-		//Abfrage des aktivierten Buttons und ausführen der zugehörigen Aktion
-		//if (source == gui_btn_up) scrollUp();
+	public void update(Observable arg0, Object arg1) {
+		InteractionManager im = (InteractionManager) arg0;
+		
+		if ("keyReleased".equals(arg1)){
+			if (im.getKeyReleased_key() == Input.KEY_C) {
+				showCharinfo = !showCharinfo;
+			}
+		}
 	}
 
 }

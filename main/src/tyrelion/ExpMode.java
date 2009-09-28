@@ -52,7 +52,6 @@ public class ExpMode extends BasicGameState {
 	private Minimap minimap;
 	
 	private Charinfo charinfo;
-	private boolean showCharinfo = false;
 
 	private boolean debug = false;
 	
@@ -170,7 +169,7 @@ public class ExpMode extends BasicGameState {
 		
 		infobox.render(container, g, 15, 716);
 		
-		if (showCharinfo) charinfo.render(container, g, 100, 100);
+		charinfo.render(container, g, 100, 100);
 	}
 
 	/* (non-Javadoc)
@@ -188,12 +187,11 @@ public class ExpMode extends BasicGameState {
 	}
 	
 	public void keyReleased(int i, char c) {
+		InteractionManager.getInstance().keyReleased(i, c);
+		
+		
 		if (i == Input.KEY_T) {
 			SoundManager.getInstance().play("ambience", "thunder");
-		}
-		
-		if (i == Input.KEY_C) {
-			showCharinfo = !showCharinfo;
 		}
 		
 		if (i == Input.KEY_M) {
@@ -208,6 +206,8 @@ public class ExpMode extends BasicGameState {
 	}
 	
 	public void mouseClicked(int button, int x, int y, int clickCount) {
+		InteractionManager.getInstance().mouseClicked(button, x, y, clickCount);
+		
 		Point p = translateCoordinates(x, y);
 		
 		if (button == Input.MOUSE_RIGHT_BUTTON && player.inRange(npc)) {
@@ -224,6 +224,8 @@ public class ExpMode extends BasicGameState {
 	}
 	
 	public void mouseMoved(int oldx, int oldy, int newx, int newy){
+		InteractionManager.getInstance().mouseMoved(oldx, oldy, newy, newy);
+		
 		Point p = translateCoordinates(newx, newy);
 		CursorManager cursorManager = CursorManager.getInstance();
 		
