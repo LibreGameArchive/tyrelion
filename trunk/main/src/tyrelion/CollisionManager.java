@@ -79,15 +79,15 @@ public class CollisionManager {
 		
 		Input input = container.getInput();
 
-		float playerX = player.getPlayerX();
-		float playerY = player.getPlayerY();
+		float playerX = player.getPosX();
+		float playerY = player.getPosY();
 		float newPlayerX;
 		float newPlayerY;
 		
 		if(input.isKeyDown(Keyboard.KEY_A) || input.isControllerLeft(0)) {
 			newPlayerX = playerX + -delta * Player.WALK_SPEED;
 			if (!collided(newPlayerX, playerY)) {	
-				player.setPlayerX(newPlayerX);
+				player.setPosX(newPlayerX);
 				player.setAnimation(Player.ANIM_LEFT);
 			}
 		}
@@ -95,7 +95,7 @@ public class CollisionManager {
 		if(input.isKeyDown(Keyboard.KEY_D) || input.isControllerRight(0)) {	
 			newPlayerX = playerX + delta * Player.WALK_SPEED;
 			if (!collided(newPlayerX, playerY)) {		
-				player.setPlayerX(newPlayerX);
+				player.setPosX(newPlayerX);
 				player.setAnimation(Player.ANIM_RIGHT);
 			}
 		}
@@ -103,7 +103,7 @@ public class CollisionManager {
 		if(input.isKeyDown(Keyboard.KEY_W) || input.isControllerUp(0)){
 			newPlayerY = playerY + -delta * Player.WALK_SPEED;
 			if (!collided(playerX, newPlayerY)) {	
-				player.setPlayerY(newPlayerY);
+				player.setPosY(newPlayerY);
 				player.setAnimation(Player.ANIM_UP);
 			}
 		}
@@ -111,7 +111,7 @@ public class CollisionManager {
 		if(input.isKeyDown(Keyboard.KEY_S) || input.isControllerDown(0)){
 			newPlayerY = playerY + delta * Player.WALK_SPEED;
 			if (!collided(playerX, newPlayerY)) {
-				player.setPlayerY(newPlayerY);
+				player.setPosY(newPlayerY);
 				player.setAnimation(Player.ANIM_DOWN);
 			}
 		}

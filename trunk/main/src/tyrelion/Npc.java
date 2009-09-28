@@ -3,7 +3,6 @@
  */
 package tyrelion;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -13,33 +12,39 @@ import org.newdawn.slick.SlickException;
  * @author jahudi
  *
  */
-public class Npc {
-	
-	private Animation animation;
+public class Npc extends Avatar{
 	
 	private String helloText;
 	private Boolean isShowingHello = false;
 	
-	private int posX;
-	private int posY;
-	
-	public Npc(int posX, int posY) throws SlickException {
-		this.posX = posX;
-		this.posY = posY;
+	public Npc(int x, int y) throws SlickException {
+		super(x, y);
+		
 		helloText = "Seyd gegrüßt!";
-		animation = new Animation();
-		animation.addFrame(new Image("res/anim/test_anim/up/up.png", new Color(0x00cc00ff)), 1);
+		
+		animations[ANIM_UP].addFrame(new Image("res/anim/test_anim/up/up.png", new Color(0x00cc00ff)), 1);
+		animations[ANIM_DOWN].addFrame(new Image("res/anim/test_anim/down/down.png", new Color(0x00cc00ff)), 1);
+		animations[ANIM_LEFT].addFrame(new Image("res/anim/test_anim/left/left.png", new Color(0x00cc00ff)), 1);
+		animations[ANIM_RIGHT].addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
+		setAnimation(ANIM_RIGHT);
 	}
 	
-	public void render(Graphics g) throws SlickException {
-		animation.draw(posX * 48 - 36, posY * 48 - 48);
+	public void render(Graphics g) {
+		super.render(g);
 		if (isShowingHello) {
-			drawHelloText(g);
+			try {
+				drawHelloText(g);
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public void drawHelloText(Graphics g) throws SlickException {
-		FontManager.getInstance().drawString(g, posX*48 -  60, posY*48 - 70, helloText, FontManager.SIMPLE, FontManager.LARGE , Color.white);
+		FontManager.getInstance().drawString(g, tileX*TyrelionMap.TILE_SIZE-60,
+				tileY*TyrelionMap.TILE_SIZE-70, helloText, FontManager.SIMPLE,
+				FontManager.LARGE , Color.white);
 	}
 	
 	public void toggleShowHello() {
@@ -49,34 +54,6 @@ public class Npc {
 			isShowingHello = true;
 		}
 	}
-	
-	/**
-	 * @return the animation
-	 */
-	public Animation getAnimation() {
-		return animation;
-	}
-
-	/**
-	 * @return the posX
-	 */
-	public int getPosX() {
-		return posX;
-	}
-
-	/**
-	 * @return the posY
-	 */
-	public int getPosY() {
-		return posY;
-	}
-
-	/**
-	 * @param animation the animation to set
-	 */
-	public void setAnimation(Animation animation) {
-		this.animation = animation;
-	}
 
 	/**
 	 * @return the isShowingHello
@@ -84,12 +61,4 @@ public class Npc {
 	public Boolean getIsShowingHello() {
 		return isShowingHello;
 	}
-
-	/**
-	 * @param isShowingHello the isShowingHello to set
-	 */
-	public void setIsShowingHello(Boolean isShowingHello) {
-		this.isShowingHello = isShowingHello;
-	}
-	
 }

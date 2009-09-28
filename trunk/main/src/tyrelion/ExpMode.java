@@ -6,8 +6,9 @@ package tyrelion;
 
 
 import java.awt.Point;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -22,6 +23,7 @@ import tyrelion.gui.GUILayer;
 import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
 import tyrelion.gui.Minimap;
+import tyrelion.itemsystem.Food;
 import tyrelion.music.MusicManager;
 import tyrelion.sfx.SoundManager;
 
@@ -46,8 +48,11 @@ public class ExpMode extends BasicGameState {
 	private Minimap minimap;
 
 	private boolean debug = false;
+	
+	private GameContainer container;
 
-	Npc npc;
+	private Npc npc;
+	private Food apple;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -62,6 +67,7 @@ public class ExpMode extends BasicGameState {
 	 */
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
+		this.container = container;
 		
 		player = new Player(2, 14);
 		
@@ -87,6 +93,8 @@ public class ExpMode extends BasicGameState {
 		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
 		
 		npc = new Npc(2, 16);
+		apple = new Food(6, 17, 1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
+				new Image("res/img/items/apple_inv.png"));
 		
 	}
 
@@ -105,8 +113,9 @@ public class ExpMode extends BasicGameState {
 		infobox.render(container, g, 15, 716);
 		
 		// draw entities relative to the player that must appear in the centre of the screen
-		g.translate(576 - (int) (player.getX() * 48), 432 - (int) (player.getY() * 48));
+		g.translate(576 - (int) (player.getPosX() * 48), 432 - (int) (player.getPosY() * 48));
 		
+		apple.render(g);
 		npc.render(g);
 		
 		player.render(g);
@@ -126,8 +135,8 @@ public class ExpMode extends BasicGameState {
 			g.resetTransform();
 			g.setColor(Color.red);
 			
-			g.drawString("playerX: " + Float.toString(player.getX()), 25, 532);
-			g.drawString("playerY: " + Float.toString(player.getY()), 25, 547);
+			g.drawString("playerX: " + Float.toString(player.getPosX()), 25, 532);
+			g.drawString("playerY: " + Float.toString(player.getPosY()), 25, 547);
 			g.drawString("playerTileX: " + Integer.toString(player.getTileX()), 25, 562);
 			g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 577);
 			g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 592);
@@ -161,9 +170,32 @@ public class ExpMode extends BasicGameState {
 		Point p = translateCoordinates(x, y);
 		
 		if (button == Input.MOUSE_RIGHT_BUTTON && player.inRange(npc)) {
-			if (p.x == npc.getPosX() && p.y == npc.getPosY()) {
+			if (p.x == npc.getPosX() && (p.y == npc.getPosY() || p.y == npc.getPosY() - 1)) {
 				npc.toggleShowHello();
 			}
+		}
+	}
+	
+	public void mouseMoved(int oldx, int oldy, int newx, int newy){
+		if (mouseOverObject(newx, newy)) {
+			try {
+				container.setMouseCursor("res/img/mouse/cursor_bubble.png", 13, 28);
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public boolean mouseOverObject(int x, int y) {
+		Point p = translateCoordinates(x, y);
+		
+		if(p.x == npc.getTileX() && (p.y == npc.getTileY() || p.y == npc.getTileY()-1)) {
+			return true;
+		} else if (p.x == npc.getTileX() && p.y == npc.getTileY()) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
