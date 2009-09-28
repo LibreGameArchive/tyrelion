@@ -14,8 +14,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 
-import tyrelion.Player;
 import tyrelion.itemsystem.Food;
+import tyrelion.objects.Player;
 
 /**
  * @author daennart

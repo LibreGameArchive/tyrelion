@@ -6,8 +6,8 @@ package tyrelion.itemsystem;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
-import tyrelion.TyrelionMap;
-import tyrelion.WorldObject;
+import tyrelion.map.TyrelionMap;
+import tyrelion.objects.WorldObject;
 
 /**
  * @author Basti

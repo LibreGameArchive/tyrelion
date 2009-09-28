@@ -1,11 +1,12 @@
 /**
  * 
  */
-package tyrelion;
+package tyrelion.objects;
 
 import org.newdawn.slick.Graphics;
 
 import tyrelion.itemsystem.Item;
+import tyrelion.map.TyrelionMap;
 
 /**
  * @author jahudi

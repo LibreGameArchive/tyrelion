@@ -24,7 +24,11 @@ import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
 import tyrelion.gui.Minimap;
 import tyrelion.itemsystem.Food;
+import tyrelion.map.TyrelionMap;
 import tyrelion.music.MusicManager;
+import tyrelion.objects.Npc;
+import tyrelion.objects.Player;
+import tyrelion.objects.WorldItem;
 import tyrelion.sfx.SoundManager;
 
 /**

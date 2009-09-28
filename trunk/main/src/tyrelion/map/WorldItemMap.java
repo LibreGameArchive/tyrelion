@@ -1,5 +1,7 @@
-package tyrelion;
+package tyrelion.map;
 import org.newdawn.slick.Graphics;
+
+import tyrelion.objects.WorldItem;
 
 
 /**
@@ -10,11 +12,11 @@ import org.newdawn.slick.Graphics;
  * @author jahudi
  *
  */
-public class WorldItemContainer {
+public class WorldItemMap {
 
 	private WorldItem[][] items;
 	
-	public WorldItemContainer(int x, int y) {
+	public WorldItemMap(int x, int y) {
 		items = new WorldItem[x][y];
 	}
 	
