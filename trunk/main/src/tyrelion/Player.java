@@ -38,8 +38,6 @@ public class Player extends Avatar{
 		animations[ANIM_RIGHT].addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
 		setAnimation(ANIM_RIGHT);
 		
-		CollisionManager.getInstance().setPlayer(this);
-		
 		character = new Character();
 	}
 	
