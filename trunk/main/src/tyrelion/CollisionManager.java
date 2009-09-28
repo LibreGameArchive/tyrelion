@@ -3,6 +3,7 @@ package tyrelion;
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
 
 /**
@@ -23,7 +24,15 @@ public class CollisionManager {
 		}
 		return instance;
 	}
-
+	
+	public CollisionManager() {
+		try {
+			player = Player.getInstance();
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public boolean collided(float x, float y) {
 		player.getShape().setCenterX(x*48);
@@ -125,13 +134,6 @@ public class CollisionManager {
 	 */
 	public void setTiles(Shape[][] tiles) {
 		this.tiles = tiles;
-	}
-
-	/**
-	 * @param player the player to set
-	 */
-	public void setPlayer(Player player) {
-		this.player = player;
 	}
 
 	/**
