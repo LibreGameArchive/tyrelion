@@ -3,14 +3,20 @@
  */
 package tyrelion.itemsystem;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+
+import tyrelion.TyrelionMap;
+import tyrelion.WorldObject;
 
 /**
  * @author Basti
  *
  */
-public abstract class Item {
+public abstract class Item extends WorldObject{
 
+	public static final int SIZE = 48;
+	
 	/** the unique ID of the Item */
 	private final int uid;
 	
@@ -31,12 +37,16 @@ public abstract class Item {
 	 * @param imageWorld
 	 * @param imageInv
 	 */
-	public Item(int uid, String name, Image image_world, Image image_inv) {
-		super();
+	public Item(int x, int y, int uid, String name, Image image_world, Image image_inv) {
+		super(x, y);
 		this.uid = uid;
 		this.name = name;
 		this.image_world = image_world;
 		this.image_inv = image_inv;
+	}
+	
+	public void render(Graphics g) {
+		image_world.draw(tileX*TyrelionMap.TILE_SIZE-SIZE/2, tileY*TyrelionMap.TILE_SIZE-SIZE/2);
 	}
 	
 	/**
