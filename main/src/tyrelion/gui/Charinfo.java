@@ -49,7 +49,7 @@ public class Charinfo implements ComponentListener{
 		//Render images
 		g.drawImage(background, posX, posY);
 		
-		Player.getInstance().getCharacter().getInventory().render(g, posX+570, posY+230);
+		Player.getInstance().getCharacter().getInventory().render(g, posX+577, posY+236);
 	}
 	
 	
