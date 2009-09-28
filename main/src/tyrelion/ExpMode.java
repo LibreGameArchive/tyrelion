@@ -105,8 +105,6 @@ public class ExpMode extends BasicGameState {
 				new Image("res/img/items/apple_inv.png"), true);
 		worldApple = new WorldItem(6, 17, apple);
 		
-		player.getCharacter().getInventory().addItem(apple);
-		
 	}
 
 	/* (non-Javadoc)
@@ -117,11 +115,7 @@ public class ExpMode extends BasicGameState {
 		
 		map.render(player);
 		
-		minimap.render(g);
 		
-		guiLayer.render(container, g);
-		
-		infobox.render(container, g, 15, 716);
 		
 		// draw entities relative to the player that must appear in the centre of the screen
 		g.translate(576 - (int) (player.getPosX() * 48), 432 - (int) (player.getPosY() * 48));
@@ -131,7 +125,7 @@ public class ExpMode extends BasicGameState {
 		
 		player.render(g);
 		
-		if (showCharinfo) charinfo.render(container, g, 100, 100);
+		
 		
 		if (debug) {
 			Shape[][] tiles = CollisionManager.getInstance().getTiles();
@@ -154,9 +148,19 @@ public class ExpMode extends BasicGameState {
 			g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 577);
 			g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 592);
 			g.drawString("playerTileOffsetY: " + Integer.toString(player.getTileOffsetY()), 25, 607);
+			
 		}
 		g.resetTransform();
 
+		
+		
+		minimap.render(g);
+		
+		guiLayer.render(container, g);
+		
+		infobox.render(container, g, 15, 716);
+		
+		if (showCharinfo) charinfo.render(container, g, 100, 100);
 	}
 
 	/* (non-Javadoc)
@@ -178,8 +182,18 @@ public class ExpMode extends BasicGameState {
 			SoundManager.getInstance().play("ambience", "thunder");
 		}
 		
-		if (c == Input.KEY_C) {
+		if (i == Input.KEY_C) {
 			showCharinfo = !showCharinfo;
+		}
+		
+		if (i == Input.KEY_M) {
+			try {
+				Player.getInstance().getCharacter().getInventory().addItem(new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
+						new Image("res/img/items/apple_inv.png"), true));
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

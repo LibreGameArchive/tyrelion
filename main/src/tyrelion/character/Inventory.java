@@ -6,7 +6,10 @@ package tyrelion.character;
 import java.awt.Point;
 
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
+import tyrelion.itemsystem.Food;
 import tyrelion.itemsystem.Item;
 
 /**
@@ -22,6 +25,7 @@ public class Inventory {
 		
 		public InventoryField(FieldContent content){
 			this.content = content;
+			
 		}
 		
 		/** puts an item into this field */
@@ -113,8 +117,17 @@ public class Inventory {
 	
 	private InventoryField[][] fields;
 	
-	public Inventory(){
+	public Inventory() throws SlickException{
 		fields = new InventoryField[invWidth][invHeight];
+		
+
+		
+		Food apple = new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
+				new Image("res/img/items/apple_inv.png"), true);
+		
+		fields[0][0] = new InventoryField(new InventoryItem(apple));
+		fields[1][1] = new InventoryField(new InventoryItem(apple));
+		fields[1][2] = new InventoryField(new InventoryItem(apple));
 	}
 	
 	public boolean addItem(Item item){
@@ -127,16 +140,22 @@ public class Inventory {
 		if (freeField == null) {
 			return false;
 		} else {
-			fields[freeField.x][freeField.y].put(item);
+			if (fields[freeField.x][freeField.y] != null){
+				fields[freeField.x][freeField.y].put(item);
+			} else {
+				fields[freeField.x][freeField.y] = new InventoryField(new InventoryItem(item));
+			}
 			return true;
 		}
 		
 	}
 	
 	private Point getPossibleField(Item item){
-		for (int i = 0; i == invWidth-1; i++){
-			for (int j = 0; j == invWidth-1; j++){
-				if (fields[i][j].getItem() == item) return new Point(i, j);
+		for (int i = 0; i < invWidth; i++){
+			for (int j = 0; j < invWidth; j++){
+				if (fields[i][j]!=null){
+					if (fields[i][j].getItem() == item) return new Point(i, j);
+				}
 			}
 		}
 		
@@ -146,8 +165,8 @@ public class Inventory {
 	private Point getFreeField(){
 		Point field = null;
 		
-		for (int i = 0; i == invWidth-1; i++){
-			for (int j = 0; j == invWidth-1; j++){
+		for (int i = 0; i < invWidth; i++){
+			for (int j = 0; j < invWidth; j++){
 				if (fields[i][j] == null) return new Point(i, j);
 			}
 		}
@@ -156,8 +175,11 @@ public class Inventory {
 	}
 	
 	public void render(Graphics g, int x, int y){
-		for (int i = 0; i == invWidth-1; i++){
-			for (int j = 0; j == invWidth-1; j++){
+		
+		
+		
+		for (int i = 0; i < invWidth; i++){
+			for (int j = 0; j < invWidth; j++){
 				InventoryField field = fields[i][j];
 				if (field != null){
 					g.drawImage(field.getItem().getImage_inv(), x+i*50, y+j*50);
