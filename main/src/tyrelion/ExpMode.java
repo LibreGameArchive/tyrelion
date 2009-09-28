@@ -6,8 +6,6 @@ package tyrelion;
 
 
 import java.awt.Point;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -69,7 +67,9 @@ public class ExpMode extends BasicGameState {
 			throws SlickException {
 		this.container = container;
 		
-		player = new Player(2, 14);
+		player = Player.getInstance();
+		player.setPosX(2);
+		player.setPosY(14);
 		
 		map = new TyrelionMap("res/maps/arthlet.tmx", container);
 		
@@ -177,26 +177,40 @@ public class ExpMode extends BasicGameState {
 	}
 	
 	public void mouseMoved(int oldx, int oldy, int newx, int newy){
-		if (mouseOverObject(newx, newy)) {
+		Point p = translateCoordinates(newx, newy);
+
+		if(p.x == npc.getTileX() && (p.y == npc.getTileY() || p.y == npc.getTileY()-1)) {
+			if (player.inRange(npc)) {
+				try {
+					container.setMouseCursor("res/img/mouse/cursor_bubble.png", 13, 28);
+				} catch (SlickException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				try {
+					container.setMouseCursor("res/img/mouse/cursor_bubble_locked.png", 13, 28);
+				} catch (SlickException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} else if(p.x == apple.getTileX() && p.y == apple.getTileY()) {
+				try {
+					container.setMouseCursor("res/img/mouse/cursor_hand_locked.png", 12, 20);
+				} catch (SlickException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		} else {
 			try {
-				container.setMouseCursor("res/img/mouse/cursor_bubble.png", 13, 28);
+				container.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	public boolean mouseOverObject(int x, int y) {
-		Point p = translateCoordinates(x, y);
-		
-		if(p.x == npc.getTileX() && (p.y == npc.getTileY() || p.y == npc.getTileY()-1)) {
-			return true;
-		} else if (p.x == npc.getTileX() && p.y == npc.getTileY()) {
-			return true;
-		} else {
-			return false;
-		}
+
 	}
 	
 	public Point translateCoordinates(int x, int y) {
