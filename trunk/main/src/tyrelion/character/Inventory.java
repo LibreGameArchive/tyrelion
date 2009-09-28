@@ -56,6 +56,14 @@ public class Inventory {
 			}
 		}
 		
+		public boolean isFull(){
+			return !(content.getCount()<5);
+		}
+		
+		public int getCount(){
+			return content.getCount();
+		}
+		
 		/** returns the item stored in this field */
 		public Item getItem(){
 			return content.getItem();
@@ -124,10 +132,6 @@ public class Inventory {
 		
 		Food apple = new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
 				new Image("res/img/items/apple_inv.png"), true);
-		
-		fields[0][0] = new InventoryField(new InventoryItem(apple));
-		fields[1][1] = new InventoryField(new InventoryItem(apple));
-		fields[1][2] = new InventoryField(new InventoryItem(apple));
 	}
 	
 	public boolean addItem(Item item){
@@ -151,10 +155,11 @@ public class Inventory {
 	}
 	
 	private Point getPossibleField(Item item){
-		for (int i = 0; i < invWidth; i++){
-			for (int j = 0; j < invWidth; j++){
+		for (int j = 0; j < invHeight; j++){
+			for (int i = 0; i < invWidth; i++){
 				if (fields[i][j]!=null){
-					if (fields[i][j].getItem() == item) return new Point(i, j);
+					if (fields[i][j].getItem().getUid() == item.getUid()) 
+						if (!fields[i][j].isFull()) return new Point(i, j);
 				}
 			}
 		}
@@ -165,8 +170,8 @@ public class Inventory {
 	private Point getFreeField(){
 		Point field = null;
 		
-		for (int i = 0; i < invWidth; i++){
-			for (int j = 0; j < invWidth; j++){
+		for (int j = 0; j < invHeight; j++){
+			for (int i = 0; i < invWidth; i++){
 				if (fields[i][j] == null) return new Point(i, j);
 			}
 		}
@@ -178,11 +183,12 @@ public class Inventory {
 		
 		
 		
-		for (int i = 0; i < invWidth; i++){
-			for (int j = 0; j < invWidth; j++){
+		for (int j = 0; j < invHeight; j++){
+			for (int i = 0; i < invWidth; i++){
 				InventoryField field = fields[i][j];
 				if (field != null){
-					g.drawImage(field.getItem().getImage_inv(), x+i*50, y+j*50);
+					g.drawImage(field.getItem().getImage_inv(), x+i*57, y+j*55);
+					if (field.getCount()>1) g.drawString(Integer.toString(field.getCount()), x+i*57+30, y+j*55+2);
 				}
 			}
 		}
