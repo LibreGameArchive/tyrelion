@@ -105,6 +105,12 @@ public class ExpMode extends BasicGameState {
 				new Image("res/img/items/apple_inv.png"), true);
 		worldApple = new WorldItem(6, 17, apple);
 		
+		map.getNpcs().addNpc(npc);
+		map.getNpcs().addNpc(new Npc(4, 18));
+		
+		map.getItems().addItem(worldApple);
+		map.getItems().addItem(new WorldItem(6, 18, apple));
+		
 	}
 
 	/* (non-Javadoc)
@@ -113,15 +119,15 @@ public class ExpMode extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
 		
-		map.render(player);
+		map.render(player, g);
 		
 		
 		
 		// draw entities relative to the player that must appear in the centre of the screen
 		g.translate(576 - (int) (player.getPosX() * 48), 432 - (int) (player.getPosY() * 48));
 		
-		npc.render(g);
-		worldApple.render(g);
+		map.renderNpcs(player, g);
+		map.renderItems(player, g);
 		
 		player.render(g);
 		
@@ -201,8 +207,14 @@ public class ExpMode extends BasicGameState {
 		Point p = translateCoordinates(x, y);
 		
 		if (button == Input.MOUSE_RIGHT_BUTTON && player.inRange(npc)) {
-			if (p.x == npc.getPosX() && (p.y == npc.getPosY() || p.y == npc.getPosY() - 1)) {
+			if (p.x == npc.getTileX() && (p.y == npc.getTileY() || p.y == npc.getTileY() - 1)) {
 				npc.toggleShowHello();
+			}
+		}
+		if (button == Input.MOUSE_RIGHT_BUTTON && player.inRange(worldApple)) {
+			if (p.x == worldApple.getTileX() && p.y == worldApple.getTileY()) {
+				player.getCharacter().getInventory().addItem(worldApple.getItem());
+				map.getItems().removeItem(worldApple);
 			}
 		}
 	}

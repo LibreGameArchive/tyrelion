@@ -4,6 +4,7 @@
 package tyrelion;
 
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
@@ -28,6 +29,9 @@ public class TyrelionMap extends TiledMap {
 	/** The offset from the centre of the screen to the left edge in tiles */
 	private int leftOffsetInTiles;
 	
+	private NpcContainer npcs;
+	private WorldItemContainer items;
+	
 	/**
 	 * @param ref
 	 * @param container
@@ -41,16 +45,17 @@ public class TyrelionMap extends TiledMap {
 		topOffsetInTiles = heightInTiles / 2;
 		leftOffsetInTiles = widthInTiles / 2;
 		initCollisionBoxes();
+		npcs = new NpcContainer(width, height);
+		items = new WorldItemContainer(width, height);
 	}
 	
-	public void render(Player player) {
+	public void render(Player player, Graphics g) {
 		
 		this.render(player.getTileOffsetX() - (Player.SIZE / 2),
 				player.getTileOffsetY() - (Player.SIZE / 2), 
 				player.getTileX() - leftOffsetInTiles, 
 				player.getTileY() - topOffsetInTiles,
 				widthInTiles + 3, heightInTiles + 3);
-
 	}
 	
 	public void initCollisionBoxes(){
@@ -71,6 +76,34 @@ public class TyrelionMap extends TiledMap {
 		
 		CollisionManager.getInstance().setTiles(tiles);
 		
+	}
+	
+	public void renderNpcs(Player player, Graphics g) {
+		int startX = player.getTileX() - leftOffsetInTiles;
+		int startY = player.getTileY() - topOffsetInTiles;
+		int endX = player.getTileX() + leftOffsetInTiles;
+		int endY = player.getTileY() + topOffsetInTiles;
+		
+		if (startX < 0) { startX = 0; }
+		if (startY < 0) { startY = 0; }
+		if (endX > width) { endX = width; }
+		if (endY > height) { endY = height; }
+		
+		npcs.drawNpcs(startX, startY, endX, endY, g);
+	}
+	
+	public void renderItems(Player player, Graphics g) {
+		int startX = player.getTileX() - leftOffsetInTiles;
+		int startY = player.getTileY() - topOffsetInTiles;
+		int endX = player.getTileX() + leftOffsetInTiles;
+		int endY = player.getTileY() + topOffsetInTiles;
+		
+		if (startX < 0) { startX = 0; }
+		if (startY < 0) { startY = 0; }
+		if (endX > width) { endX = width; }
+		if (endY > height) { endY = height; }
+		
+		items.drawItems(startX, startY, endX, endY, g);
 	}
 
 	/**
@@ -106,6 +139,20 @@ public class TyrelionMap extends TiledMap {
 	 */
 	public int getLeftOffsetInTiles() {
 		return leftOffsetInTiles;
+	}
+
+	/**
+	 * @return the npcs
+	 */
+	public NpcContainer getNpcs() {
+		return npcs;
+	}
+
+	/**
+	 * @return the items
+	 */
+	public WorldItemContainer getItems() {
+		return items;
 	}
 
 }

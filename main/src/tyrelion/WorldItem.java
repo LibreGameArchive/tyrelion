@@ -25,5 +25,9 @@ public class WorldItem extends WorldObject {
 	public void render(Graphics g) {
 		item.getImage_world().draw(tileX*TyrelionMap.TILE_SIZE-SIZE/2, tileY*TyrelionMap.TILE_SIZE-SIZE/2);
 	}
+	
+	public Item getItem	() {
+		return item;
+	}
 
 }
