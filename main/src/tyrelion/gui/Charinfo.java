@@ -14,6 +14,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 
+import tyrelion.Player;
+
 /**
  * @author daennart
  *
@@ -33,6 +35,7 @@ public class Charinfo implements ComponentListener{
 		
 		this.gameContainer = container;	
 		
+		background = new Image("res/img/gui/gui_charinfo.png");
 		}
       
 
@@ -43,6 +46,7 @@ public class Charinfo implements ComponentListener{
 		//Render images
 		g.drawImage(background, posX, posY);
 		
+		Player.getInstance().getCharacter().getInventory().render(g, posX+400, posY+100);
 	}
 	
 	
