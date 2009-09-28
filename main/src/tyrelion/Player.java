@@ -21,6 +21,9 @@ import tyrelion.sfx.SoundManager;
  *
  */
 public class Player {
+	
+	/** Role-playing charakter of this player */
+	public Character character;
 
 	public static final int ANIM_UP = 0;
 	public static final int ANIM_DOWN = 1;
@@ -185,6 +188,20 @@ public class Player {
 	 */
 	public void setPlayerY(float playerY) {
 		this.playerY = playerY;
+	}
+
+	/**
+	 * @return the character
+	 */
+	public Character getCharacter() {
+		return character;
+	}
+
+	/**
+	 * @param character the character to set
+	 */
+	public void setCharacter(Character character) {
+		this.character = character;
 	}
 
 }
