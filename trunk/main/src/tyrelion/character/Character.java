@@ -3,6 +3,8 @@
  */
 package tyrelion.character;
 
+import org.newdawn.slick.SlickException;
+
 /**
  * @author imladriel
  *
@@ -11,7 +13,7 @@ public class Character {
 
 	private Inventory inventory;
 	
-	public Character(){
+	public Character() throws SlickException{
 		inventory = new Inventory();
 	}
 	

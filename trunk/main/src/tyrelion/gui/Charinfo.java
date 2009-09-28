@@ -15,6 +15,7 @@ import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 
 import tyrelion.Player;
+import tyrelion.itemsystem.Food;
 
 /**
  * @author daennart
@@ -26,6 +27,8 @@ public class Charinfo implements ComponentListener{
 	
 	/** Background for the infobox */
 	private Image background;
+	
+	private Food apple;
 	
 	private int posX = 0;
 	private int posY = 0;
@@ -46,7 +49,7 @@ public class Charinfo implements ComponentListener{
 		//Render images
 		g.drawImage(background, posX, posY);
 		
-		Player.getInstance().getCharacter().getInventory().render(g, posX+400, posY+100);
+		Player.getInstance().getCharacter().getInventory().render(g, posX+570, posY+230);
 	}
 	
 	
