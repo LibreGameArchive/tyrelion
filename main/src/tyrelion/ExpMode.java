@@ -17,6 +17,8 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.sun.xml.internal.fastinfoset.algorithm.BuiltInEncodingAlgorithm.WordListener;
+
 import tyrelion.gui.GUILayer;
 import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
@@ -51,6 +53,7 @@ public class ExpMode extends BasicGameState {
 
 	private Npc npc;
 	private Food apple;
+	private WorldItem worldApple;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -95,6 +98,7 @@ public class ExpMode extends BasicGameState {
 		npc = new Npc(2, 16);
 		apple = new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
 				new Image("res/img/items/apple_inv.png"), true);
+		worldApple = new WorldItem(6, 17, apple);
 		
 	}
 
@@ -116,6 +120,7 @@ public class ExpMode extends BasicGameState {
 		g.translate(576 - (int) (player.getPosX() * 48), 432 - (int) (player.getPosY() * 48));
 		
 		npc.render(g);
+		worldApple.render(g);
 		
 		player.render(g);
 		
@@ -194,8 +199,8 @@ public class ExpMode extends BasicGameState {
 					e.printStackTrace();
 				}
 			}
-		} else if(p.x == apple.getTileX() && p.y == apple.getTileY()) {
-			if (player.inRange(apple)) {
+		} else if(p.x == worldApple.getTileX() && p.y == worldApple.getTileY()) {
+			if (player.inRange(worldApple)) {
 				try {
 					container.setMouseCursor("res/img/mouse/cursor_hand.png", 12, 20);
 				} catch (SlickException e) {
