@@ -5,9 +5,13 @@ package tyrelion;
 
 
 
+import java.awt.Point;
+
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
@@ -43,6 +47,7 @@ public class ExpMode extends BasicGameState {
 
 	private boolean debug = false;
 
+	Npc npc;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -81,6 +86,8 @@ public class ExpMode extends BasicGameState {
 		infobox.print("Du hast einen rostigen Dolch gefunden!", Message.ITEM);
 		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
 		
+		npc = new Npc(2, 16);
+		
 	}
 
 	/* (non-Javadoc)
@@ -99,6 +106,8 @@ public class ExpMode extends BasicGameState {
 		
 		// draw entities relative to the player that must appear in the centre of the screen
 		g.translate(576 - (int) (player.getX() * 48), 432 - (int) (player.getY() * 48));
+		
+		npc.render(g);
 		
 		player.render(g);
 		
@@ -146,6 +155,42 @@ public class ExpMode extends BasicGameState {
 		if (i == Input.KEY_T) {
 			SoundManager.getInstance().play("ambience", "thunder");
 		}
+	}
+	
+	public void mouseClicked(int button, int x, int y, int clickCount) {
+		Point p = translateCoordinates(x, y);
+		
+		if (button == Input.MOUSE_RIGHT_BUTTON && player.inRange(npc)) {
+			if (p.x == npc.getPosX() && p.y == npc.getPosY()) {
+				npc.toggleShowHello();
+			}
+		}
+	}
+	
+	public Point translateCoordinates(int x, int y) {
+		float mouseX;
+		float mouseY;
+		float targetX;
+		float targetY;
+		float tempX = x / (new Float(map.getTileSize()));
+		float tempY = y / (new Float(map.getTileSize()));
+		int offsetX = (int)(((int)tempX - tempX) * map.getTileSize());
+		int offsetY = (int)(((int)tempY - tempY) * map.getTileSize());
+		mouseX = (x-offsetX) / (new Float(map.getTileSize()));
+		mouseY = (y-offsetY) / (new Float(map.getTileSize()));
+		
+		// absolute in relative Position und Ziel-Tile berechnen
+		if (mouseX < player.getTileX()) {
+			targetX = player.getTileX() - new Float(map.getLeftOffsetInTiles()) + mouseX;
+		} else {
+			targetX = player.getTileX() + mouseX - new Float(map.getLeftOffsetInTiles());
+		}
+		if (mouseY < player.getTileY()) {
+			targetY = player.getTileY() - new Float(map.getTopOffsetInTiles()) + mouseY;
+		} else {
+			targetY = player.getTileY() + mouseY - new Float(map.getTopOffsetInTiles());
+		}
+		return new Point((int)targetX, (int)targetY);
 	}
 
 	/**

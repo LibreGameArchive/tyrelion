@@ -73,4 +73,39 @@ public class TyrelionMap extends TiledMap {
 		
 	}
 
+	/**
+	 * @return the tileSize
+	 */
+	public static int getTileSize() {
+		return TILE_SIZE;
+	}
+
+	/**
+	 * @return the widthInTiles
+	 */
+	public int getWidthInTiles() {
+		return widthInTiles;
+	}
+
+	/**
+	 * @return the heightInTiles
+	 */
+	public int getHeightInTiles() {
+		return heightInTiles;
+	}
+
+	/**
+	 * @return the topOffsetInTiles
+	 */
+	public int getTopOffsetInTiles() {
+		return topOffsetInTiles;
+	}
+
+	/**
+	 * @return the leftOffsetInTiles
+	 */
+	public int getLeftOffsetInTiles() {
+		return leftOffsetInTiles;
+	}
+
 }
