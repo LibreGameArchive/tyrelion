@@ -12,6 +12,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 
+import tyrelion.character.Character;
 import tyrelion.sfx.SoundManager;
 
 
@@ -36,6 +37,8 @@ public class Player extends Avatar{
 		setAnimation(ANIM_RIGHT);
 		
 		CollisionManager.getInstance().setPlayer(this);
+		
+		character = new Character();
 	}
 	
 	public void update(GameContainer container) {

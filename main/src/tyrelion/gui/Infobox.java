@@ -109,7 +109,7 @@ public class Infobox implements ComponentListener{
 				default:	// everything else
 					color = Color.magenta;
 				}
-				FontManager.getInstance().drawString(g, (float) posX+20,(float) posY+15*(pos), output.get(i-1).getText(), FontManager.SMALL, color);
+				FontManager.getInstance().drawString(g, (float) posX+20,(float) posY+15*(pos), output.get(i-1).getText(), FontManager.SIMPLE, FontManager.SMALL, color);
 			}
 			pos--;
 		}
