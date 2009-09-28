@@ -26,8 +26,8 @@ public class CollisionManager {
 
 	
 	public boolean collided(float x, float y) {
-		player.getShape().setCenterX(x*48+10);
-		player.getShape().setCenterY(y*48+20);
+		player.getShape().setCenterX(x*48);
+		player.getShape().setCenterY(y*48+10);
 		boolean collided = false;
 		int tileX;
 		int tileY;

@@ -48,7 +48,7 @@ public class Player {
 	
 	public Player(float x, float y) throws SlickException{
 		//shape = new Circle(x*48, y*48, 24);
-		shape = new Rectangle(x*48+10, y*48+20, 40, 40);
+		shape = new Rectangle(x*48-20, y*48-10, 40, 40);
 		this.playerX = x;
 		this.playerY = y;
 		animations = new Animation[4];
@@ -71,8 +71,7 @@ public class Player {
 	}
 	
 	public void render(Graphics g) {
-		animations[currentAnimation].draw(playerX*48-24, playerY*48-24);
-		g.setColor(Color.red);
+		animations[currentAnimation].draw(playerX*48-35, playerY*48-35);
 	}
 	
 	public void update(GameContainer container) {
@@ -91,6 +90,16 @@ public class Player {
 
 		}
 		
+	}
+	
+	public Boolean inRange(Npc npc) {
+		int x = Math.abs(this.tileX - npc.getPosX());
+		int y = Math.abs(this.tileY - npc.getPosY());
+		if (Math.max(x, y) <= 2 ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public void renderShape(Graphics g) {
