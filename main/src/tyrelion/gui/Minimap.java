@@ -9,8 +9,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.util.BufferedImageUtil;
 
-import tyrelion.Player;
-import tyrelion.TyrelionMap;
+import tyrelion.map.TyrelionMap;
+import tyrelion.objects.Player;
 
 /**
  * @author imladriel

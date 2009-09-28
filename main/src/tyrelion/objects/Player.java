@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tyrelion;
+package tyrelion.objects;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;

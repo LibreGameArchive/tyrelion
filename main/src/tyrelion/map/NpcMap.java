@@ -1,19 +1,21 @@
 /**
  * 
  */
-package tyrelion;
+package tyrelion.map;
 
 import org.newdawn.slick.Graphics;
+
+import tyrelion.objects.Npc;
 
 /**
  * @author jahudi
  *
  */
-public class NpcContainer {
+public class NpcMap {
 	
 	private Npc[][] npcs;
 	
-	public NpcContainer(int x, int y) {
+	public NpcMap(int x, int y) {
 		npcs = new Npc[x][y];
 	}
 	

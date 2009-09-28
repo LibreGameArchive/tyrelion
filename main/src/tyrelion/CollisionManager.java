@@ -6,6 +6,9 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
 
+import tyrelion.map.TyrelionMap;
+import tyrelion.objects.Player;
+
 /**
  * @author jahudi
  *

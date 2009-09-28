@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tyrelion;
+package tyrelion.map;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -9,6 +9,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.tiled.TiledMap;
+
+import tyrelion.CollisionManager;
+import tyrelion.objects.Player;
 
 
 /**
@@ -29,8 +32,8 @@ public class TyrelionMap extends TiledMap {
 	/** The offset from the centre of the screen to the left edge in tiles */
 	private int leftOffsetInTiles;
 	
-	private NpcContainer npcs;
-	private WorldItemContainer items;
+	private NpcMap npcs;
+	private WorldItemMap items;
 	
 	/**
 	 * @param ref
@@ -45,8 +48,8 @@ public class TyrelionMap extends TiledMap {
 		topOffsetInTiles = heightInTiles / 2;
 		leftOffsetInTiles = widthInTiles / 2;
 		initCollisionBoxes();
-		npcs = new NpcContainer(width, height);
-		items = new WorldItemContainer(width, height);
+		npcs = new NpcMap(width, height);
+		items = new WorldItemMap(width, height);
 	}
 	
 	public void render(Player player, Graphics g) {
@@ -144,14 +147,14 @@ public class TyrelionMap extends TiledMap {
 	/**
 	 * @return the npcs
 	 */
-	public NpcContainer getNpcs() {
+	public NpcMap getNpcs() {
 		return npcs;
 	}
 
 	/**
 	 * @return the items
 	 */
-	public WorldItemContainer getItems() {
+	public WorldItemMap getItems() {
 		return items;
 	}
 

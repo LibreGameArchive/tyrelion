@@ -1,12 +1,15 @@
 /**
  * 
  */
-package tyrelion;
+package tyrelion.objects;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+
+import tyrelion.FontManager;
+import tyrelion.map.TyrelionMap;
 
 /**
  * @author jahudi
@@ -22,10 +25,10 @@ public class Npc extends Avatar{
 		
 		helloText = "Seyd gegrüßt!";
 		
-		animations[ANIM_UP].addFrame(new Image("res/anim/test_anim/up/up.png", new Color(0x00cc00ff)), 1);
-		animations[ANIM_DOWN].addFrame(new Image("res/anim/test_anim/down/down.png", new Color(0x00cc00ff)), 1);
-		animations[ANIM_LEFT].addFrame(new Image("res/anim/test_anim/left/left.png", new Color(0x00cc00ff)), 1);
-		animations[ANIM_RIGHT].addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
+		animations[ANIM_UP].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
+		animations[ANIM_DOWN].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
+		animations[ANIM_LEFT].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
+		animations[ANIM_RIGHT].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
 		setAnimation(ANIM_RIGHT);
 	}
 	
