@@ -22,6 +22,8 @@ import tyrelion.sfx.SoundManager;
  */
 public class Player extends Avatar{
 	
+	private static Player instance = null;
+	
 	/** Role-playing charakter of this player */
 	public Character character;
 	
@@ -39,6 +41,13 @@ public class Player extends Avatar{
 		CollisionManager.getInstance().setPlayer(this);
 		
 		character = new Character();
+	}
+	
+	public static Player getInstance() throws SlickException{
+		if (instance == null) {
+			instance = new Player(0, 0);
+		}
+		return instance;
 	}
 	
 	public void update(GameContainer container) {
