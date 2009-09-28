@@ -93,7 +93,7 @@ public class ExpMode extends BasicGameState {
 		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
 		
 		npc = new Npc(2, 16);
-		apple = new Food(6, 17, 1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
+		apple = new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
 				new Image("res/img/items/apple_inv.png"), true);
 		
 	}
@@ -115,7 +115,6 @@ public class ExpMode extends BasicGameState {
 		// draw entities relative to the player that must appear in the centre of the screen
 		g.translate(576 - (int) (player.getPosX() * 48), 432 - (int) (player.getPosY() * 48));
 		
-		apple.render(g);
 		npc.render(g);
 		
 		player.render(g);
@@ -196,12 +195,21 @@ public class ExpMode extends BasicGameState {
 				}
 			}
 		} else if(p.x == apple.getTileX() && p.y == apple.getTileY()) {
+			if (player.inRange(apple)) {
+				try {
+					container.setMouseCursor("res/img/mouse/cursor_hand.png", 12, 20);
+				} catch (SlickException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
 				try {
 					container.setMouseCursor("res/img/mouse/cursor_hand_locked.png", 12, 20);
 				} catch (SlickException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}
 		} else {
 			try {
 				container.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
