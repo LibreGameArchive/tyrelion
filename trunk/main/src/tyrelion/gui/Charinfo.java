@@ -71,14 +71,16 @@ public class Charinfo implements Observer{
 	/* (non-Javadoc)
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
-	public void update(Observable arg0, Object arg1) {
-		InteractionManager im = (InteractionManager) arg0;
+	public void update(Observable observable, Object input) {
+		InteractionManager im = (InteractionManager) observable;
 		
-		if ("keyReleased".equals(arg1)){
+		if ("keyReleased".equals(input)){
 			if (im.getKeyReleased_key() == Input.KEY_C) {
 				showCharinfo = !showCharinfo;
 			}
 		}
+		
+		
 	}
 
 }
