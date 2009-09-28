@@ -18,14 +18,14 @@ public class Character {
 	/**
 	 * @return the inventar
 	 */
-	public Inventory getInventar() {
+	public Inventory getInventory() {
 		return inventory;
 	}
 
 	/**
 	 * @param inventar the inventar to set
 	 */
-	public void setInventar(Inventory inventar) {
+	public void setInventory(Inventory inventar) {
 		this.inventory = inventar;
 	}
 	

@@ -17,8 +17,8 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import com.sun.xml.internal.fastinfoset.algorithm.BuiltInEncodingAlgorithm.WordListener;
 
+import tyrelion.gui.Charinfo;
 import tyrelion.gui.GUILayer;
 import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
@@ -46,6 +46,9 @@ public class ExpMode extends BasicGameState {
 	private Infobox infobox;
 	
 	private Minimap minimap;
+	
+	private Charinfo charinfo;
+	private boolean showCharinfo = false;
 
 	private boolean debug = false;
 	
@@ -95,10 +98,14 @@ public class ExpMode extends BasicGameState {
 		infobox.print("Du hast einen rostigen Dolch gefunden!", Message.ITEM);
 		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
 		
+		charinfo = new Charinfo(container);
+		
 		npc = new Npc(2, 16);
 		apple = new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
 				new Image("res/img/items/apple_inv.png"), true);
 		worldApple = new WorldItem(6, 17, apple);
+		
+		player.getCharacter().getInventory().addItem(apple);
 		
 	}
 
@@ -123,6 +130,8 @@ public class ExpMode extends BasicGameState {
 		worldApple.render(g);
 		
 		player.render(g);
+		
+		if (showCharinfo) charinfo.render(container, g, 100, 100);
 		
 		if (debug) {
 			Shape[][] tiles = CollisionManager.getInstance().getTiles();
@@ -168,6 +177,10 @@ public class ExpMode extends BasicGameState {
 		if (i == Input.KEY_T) {
 			SoundManager.getInstance().play("ambience", "thunder");
 		}
+		
+		if (c == Input.KEY_C) {
+			showCharinfo = !showCharinfo;
+		}
 	}
 	
 	public void mouseClicked(int button, int x, int y, int clickCount) {
@@ -182,7 +195,7 @@ public class ExpMode extends BasicGameState {
 	
 	public void mouseMoved(int oldx, int oldy, int newx, int newy){
 		Point p = translateCoordinates(newx, newy);
-
+		
 		if(p.x == npc.getTileX() && (p.y == npc.getTileY() || p.y == npc.getTileY()-1)) {
 			if (player.inRange(npc)) {
 				try {

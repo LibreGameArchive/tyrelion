@@ -111,9 +111,6 @@ public class Inventory {
 	private int invWidth = 4;
 	private int invHeight = 6;
 	
-	private int renderPosX = 400;
-	private int renderPosY = 600;
-	
 	private InventoryField[][] fields;
 	
 	public Inventory(){
@@ -158,15 +155,12 @@ public class Inventory {
 		return field;
 	}
 	
-	private void render(Graphics g){
-		int startX = renderPosX;
-		int startY = renderPosY;
-		
+	public void render(Graphics g, int x, int y){
 		for (int i = 0; i == invWidth-1; i++){
 			for (int j = 0; j == invWidth-1; j++){
 				InventoryField field = fields[i][j];
 				if (field != null){
-					g.drawImage(field.getItem().getImage_inv(), startX+i*50, startY+j*50);
+					g.drawImage(field.getItem().getImage_inv(), x+i*50, y+j*50);
 				}
 			}
 		}
