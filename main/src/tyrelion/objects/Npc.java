@@ -78,7 +78,6 @@ public class Npc extends Avatar{
 	/* (non-Javadoc)
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
-	@Override
 	public void update(Observable arg0, Object arg1) {
 		InteractionManager im = (InteractionManager) arg0;
 		
