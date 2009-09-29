@@ -223,6 +223,14 @@ public class ExpMode extends BasicGameState {
 		}
 	}
 	
+	public void mousePressed(int button, int x, int y){
+		InteractionManager.getInstance().mousePressed(button, x, y);
+	}
+	
+	public void mouseReleased(int button, int x, int y){
+		InteractionManager.getInstance().mouseReleased(button, x, y);
+	}
+	
 	public void mouseMoved(int oldx, int oldy, int newx, int newy){
 		InteractionManager.getInstance().mouseMoved(oldx, oldy, newy, newy);
 		
