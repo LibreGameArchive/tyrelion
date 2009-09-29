@@ -5,6 +5,7 @@ package tyrelion.objects;
 
 import java.awt.Point;
 import java.util.Observable;
+import java.util.Random;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -27,15 +28,15 @@ import tyrelion.map.TyrelionMap;
  */
 public class Npc extends Avatar{
 	
-	private String helloText;
+	private String[] helloText = { "Seyd gegrüßt!", "Hallo, wie geht es Euch?", "Wisst Ihr schon das" +
+			"Neueste?", "Schöner Tag oder?" } ;
+	private int activeText;
 	private Boolean isShowingHello = false;
 	
 	public Npc(int x, int y) throws SlickException {
 		super(x, y);
 		
 		shape = new Rectangle(x*48-24, y*48-24, 48, 48);
-		
-		helloText = "Seyd gegrüßt!";
 		
 		animations[ANIM_UP].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
 		animations[ANIM_DOWN].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
@@ -53,14 +54,16 @@ public class Npc extends Avatar{
 	
 	public void drawHelloText(Graphics g) {
 		FontManager.getInstance().drawString(g, tileX*TyrelionMap.TILE_SIZE-60,
-				tileY*TyrelionMap.TILE_SIZE-70, helloText, FontManager.SIMPLE,
+				tileY*TyrelionMap.TILE_SIZE-70, helloText[activeText], FontManager.SIMPLE,
 				FontManager.LARGE , Color.white);
 	}
 	
 	public void toggleShowHello() {
+		Random r = new Random();
 		if (isShowingHello) {
 			isShowingHello = false;
 		} else {
+			activeText = r.nextInt(helloText.length);
 			isShowingHello = true;
 		}
 	}
