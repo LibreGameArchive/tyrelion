@@ -99,7 +99,7 @@ public class ExpMode extends BasicGameState {
 		infobox.print("Du hast einen rostigen Dolch gefunden!", Message.ITEM);
 		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
 		
-		charinfo = new Charinfo(container);
+		charinfo = new Charinfo();
 		
 		map.getNpcs().addNpc(new Npc(0, 14));
 		map.getNpcs().addNpc(new Npc(2, 16));

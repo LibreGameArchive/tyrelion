@@ -6,10 +6,8 @@ package tyrelion.character;
 import java.awt.Point;
 
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import tyrelion.itemsystem.Food;
 import tyrelion.itemsystem.Item;
 
 /**
@@ -159,20 +157,19 @@ public class Inventory {
 	private int invWidth = 4;
 	private int invHeight = 6;
 	
+	/** the old place of the item, flying with the cursor at the moment */
 	private int flyingX = -1;
+	
+	/** the old place of the item, flying with the cursor at the moment */
 	private int flyingY = -1;
 	
 	private InventoryField[][] fields;
 	
 	public Inventory() throws SlickException{
 		fields = new InventoryField[invWidth][invHeight];
-		
-
-		
-		Food apple = new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
-				new Image("res/img/items/apple_inv.png"), true);
 	}
 	
+	/** adds the item to the the inventory. */
 	public boolean addItem(Item item){
 		
 		Point freeField; 
@@ -193,6 +190,7 @@ public class Inventory {
 		
 	}
 	
+	/** tries to find a stack, which is not full yet. otherwise returns the next free field. */
 	private Point getPossibleField(Item item){
 		for (int j = 0; j < invHeight; j++){
 			for (int i = 0; i < invWidth; i++){
@@ -206,6 +204,7 @@ public class Inventory {
 		return getFreeField();
 	}
 	
+	/** returns the first empty field in the inventory (left to right, top to bottom) */
 	private Point getFreeField(){
 		Point field = null;
 		
@@ -218,6 +217,7 @@ public class Inventory {
 		return field;
 	}
 	
+	/** renders contained items to the screen */
 	public void render(Graphics g, int x, int y){
 		for (int j = 0; j < invHeight; j++){
 			for (int i = 0; i < invWidth; i++){
@@ -234,12 +234,15 @@ public class Inventory {
 	}
 	
 	public InventoryField isOverItem(int x, int y){
+		//calculate inventory field
 		int fieldX = x / 56;
 		int fieldY = y / 55;
 		
+		//save source koordinates
 		if (fields[fieldX][fieldY]!=null){
 			flyingX=fieldX; flyingY=fieldY;
 		}
+		
 		return fields[fieldX][fieldY];
 	}
 	
@@ -247,25 +250,37 @@ public class Inventory {
 		int fieldX = x / 56;
 		int fieldY = y / 55;
 		
-		if (fields[fieldX][fieldY]!=null){
-			if (fields[fieldX][fieldY].getItem().getUid() == content.getItem().getUid()) {
-				if (!fields[fieldX][fieldY].isFull()) {
-					int stack1 = fields[fieldX][fieldY].getCount();
-					int stack2 = fields[flyingX][flyingY].getCount();
-					if ((stack1+stack2)>5) {
-						fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), 5));
-						fields[flyingX][flyingY].decreaseCountBy(stack2-stack1);
-					} else {
-						fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), stack1+stack2));
+		//not the same field 
+		if (fieldX!=flyingX || fieldY!=flyingY){
+			
+			//new field not null
+			if (fields[fieldX][fieldY]!=null){
+				//same item? (if not same, but not stackable it snaps back)
+				if (fields[fieldX][fieldY].getItem().getUid() == content.getItem().getUid()) {
+					//full stack
+					if (!fields[fieldX][fieldY].isFull()) {
+						//count of the source stack
+						int stack1 = fields[fieldX][fieldY].getCount();
+						//count of the new stack
+						int stack2 = fields[flyingX][flyingY].getCount();
+						//fillup the new stack and decrease the old one
+						if ((stack1+stack2)>5) {
+							fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), 5));
+							fields[flyingX][flyingY].decreaseCountBy(stack2-stack1);
+						} else {
+							fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), stack1+stack2));
+						}
 					}
+				} else { 
+					//flip old and new item
+					fields[flyingX][flyingY] = fields[fieldX][fieldY];
+					fields[fieldX][fieldY] = new InventoryField(content);
 				}
-			} else { 
-				fields[flyingX][flyingY] = fields[fieldX][fieldY];
+			} else {
+				//just move item
 				fields[fieldX][fieldY] = new InventoryField(content);
+				fields[flyingX][flyingY] = null;
 			}
-		} else {
-			fields[fieldX][fieldY] = new InventoryField(content);
-			fields[flyingX][flyingY] = null;
 		}
 		
 	}
