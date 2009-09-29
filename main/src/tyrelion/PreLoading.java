@@ -48,8 +48,6 @@ public class PreLoading extends BasicGameState {
 		gameContainer.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
 		MusicManager.getInstance();
 		SoundManager.getInstance();
-		CollisionManager.getInstance();
-
 	}
 
 	/* (non-Javadoc)

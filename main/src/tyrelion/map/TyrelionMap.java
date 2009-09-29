@@ -3,6 +3,11 @@
  */
 package tyrelion.map;
 
+import java.util.List;
+
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.input.SAXBuilder;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -11,7 +16,9 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.tiled.TiledMap;
 
 import tyrelion.CollisionManager;
+import tyrelion.ItemLoader;
 import tyrelion.objects.Player;
+import tyrelion.objects.WorldItem;
 
 
 /**
@@ -50,6 +57,7 @@ public class TyrelionMap extends TiledMap {
 		initCollisionBoxes();
 		npcs = new NpcMap(width, height);
 		items = new WorldItemMap(width, height);
+		loadItems("res/xml/itemMap.xml");
 	}
 	
 	public void render(Player player, Graphics g) {
@@ -107,6 +115,31 @@ public class TyrelionMap extends TiledMap {
 		if (endY > height) { endY = height; }
 		
 		items.drawItems(startX, startY, endX, endY, g);
+	}
+	
+	public void loadItems(String ref) {
+		ItemLoader itemLoader = new ItemLoader("res/xml/items.xml");
+		
+		try {
+			Document itemMap = new SAXBuilder().build(ref);
+			List<?> childs = itemMap.getRootElement().getChildren();
+			
+			for (int i = 0; i < childs.size(); i++) {
+				Element e = (Element) childs.get(i);
+				int id = e.getAttribute("id").getIntValue();
+				int posX = e.getAttribute("posX").getIntValue();
+				int posY = e.getAttribute("posY").getIntValue();
+				
+				items.addItem(new WorldItem(posX, posY, itemLoader.getItem(id)));
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
 
 	/**
