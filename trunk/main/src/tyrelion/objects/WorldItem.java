@@ -57,6 +57,9 @@ public class WorldItem extends WorldObject {
 			if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
 				if (p.x == getTileX() && p.y == getTileY()) {
 					Player.getInstance().getCharacter().getInventory().addItem(getItem());
+					delete();
+					CursorManager.getInstance().setCursor(CursorManager.SWORD,
+							TyrelionContainer.getInstance().getContainer());
 				}
 			}
 		}
@@ -80,9 +83,12 @@ public class WorldItem extends WorldObject {
 			} else if (oldP.x == tileX && oldP.y == tileY) {
 				CursorManager.getInstance().setCursor(CursorManager.SWORD, container);
 			}
-
-
 		}
+	}
+	
+	public void delete() {
+		TyrelionContainer.getInstance().getMap().getItems().removeItem(this);
+		InteractionManager.getInstance().deleteObserver(this);
 	}
 
 }

@@ -114,4 +114,10 @@ public class Npc extends Avatar{
 			}
 		}
 	}
+	
+	public void delete() {
+		TyrelionContainer.getInstance().getMap().getNpcs().removeNpc(this);
+		InteractionManager.getInstance().deleteObserver(this);
+	}
+	
 }

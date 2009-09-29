@@ -5,8 +5,6 @@ package tyrelion;
 
 
 
-import java.awt.Point;
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -16,7 +14,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-
 
 import tyrelion.gui.Charinfo;
 import tyrelion.gui.GUILayer;
@@ -54,9 +51,6 @@ public class ExpMode extends BasicGameState {
 	private Charinfo charinfo;
 
 	private boolean debug = false;
-
-	private Npc npc;
-	private Food apple;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -105,15 +99,14 @@ public class ExpMode extends BasicGameState {
 		
 		charinfo = new Charinfo(container);
 		
-		apple = new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
-				new Image("res/img/items/apple_inv.png"), true);
-		
 		map.getNpcs().addNpc(new Npc(0, 14));
 		map.getNpcs().addNpc(new Npc(2, 16));
 		map.getNpcs().addNpc(new Npc(4, 18));
 		
-		map.getItems().addItem(new WorldItem(6, 18, apple));
-		map.getItems().addItem(new WorldItem(8, 19, apple));
+		map.getItems().addItem(new WorldItem(6, 18, new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
+				new Image("res/img/items/apple_inv.png"), true)));
+		map.getItems().addItem(new WorldItem(8, 19, new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
+				new Image("res/img/items/apple_inv.png"), true)));
 		
 	}
 
