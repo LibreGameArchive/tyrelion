@@ -23,6 +23,9 @@ public abstract class WorldObject implements Observer {
 		InteractionManager.getInstance().addObserver(this);
 	}
 	
+	public abstract void rightClickAction();
+	public abstract void leftClickAction();
+	
 	public Boolean inRange(WorldObject object) {
 		int dist;
 		if (object instanceof Avatar) {
@@ -55,6 +58,6 @@ public abstract class WorldObject implements Observer {
 	public int getTileY() {
 		return tileY;
 	}
-
-
+	
+	
 }

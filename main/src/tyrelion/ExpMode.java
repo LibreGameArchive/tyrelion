@@ -107,7 +107,7 @@ public class ExpMode extends BasicGameState {
 		
 		map.getItems().addItem(new WorldItem(6, 18, new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
 				new Image("res/img/items/apple_inv.png"), true)));
-		map.getItems().addItem(new WorldItem(8, 19, new Food(1213, "Noch krasserer Apfel", new Image("res/img/items/apple_world.png"),
+		map.getItems().addItem(new WorldItem(8, 19, new Food(1233, "Noch krasserer Apfel", new Image("res/img/items/apple_world.png"),
 				new Image("res/img/items/apple_inv.png"), true)));
 		map.getItems().addItem(new WorldItem(10, 20, new Weapon(1231, "Heftiges Schwert des Todes",
 				new Image("res/img/items/sword_world.png"), new Image("res/img/items/sword_inv.png"), false)));
@@ -131,9 +131,7 @@ public class ExpMode extends BasicGameState {
 		map.renderItems(player, g);
 		
 		player.render(g);
-		
-		
-		
+
 		if (debug) {
 			Shape[][] tiles = CollisionManager.getInstance().getTiles();
 			for (int i = 0; i < map.getWidth(); i++) {

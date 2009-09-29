@@ -54,7 +54,7 @@ public class WorldItem extends WorldObject {
 
 			if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
 				if (isOver(x, y)) {
-					rightClicked();
+					rightClickAction();
 				}
 			}
 		}
@@ -88,19 +88,31 @@ public class WorldItem extends WorldObject {
 			return false;
 		}
 	}
-	
-	public void rightClicked() {
+		
+	public void delete() {
+		TyrelionContainer.getInstance().getMap().getItems().removeItem(this);
+		InteractionManager.getInstance().deleteObserver(this);
+	}
+
+	/* (non-Javadoc)
+	 * @see tyrelion.objects.WorldObject#leftClickAction()
+	 */
+	@Override
+	public void leftClickAction() {
+		// TODO Auto-generated method stub
+	}
+
+	/* (non-Javadoc)
+	 * @see tyrelion.objects.WorldObject#rightClickAction()
+	 */
+	@Override
+	public void rightClickAction() {
 		Player.getInstance().getCharacter().getInventory().addItem(getItem());
 		delete();
 		TyrelionContainer.getInstance().getInfobox().print("Du hast erhältst folgenden Gegenstand: "
 				+ item.getName(), Message.ITEM);
 		CursorManager.getInstance().setCursor(CursorManager.SWORD,
 				TyrelionContainer.getInstance().getContainer());
-	}
-	
-	public void delete() {
-		TyrelionContainer.getInstance().getMap().getItems().removeItem(this);
-		InteractionManager.getInstance().deleteObserver(this);
 	}
 
 }

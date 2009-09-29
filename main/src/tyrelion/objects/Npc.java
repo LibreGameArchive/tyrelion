@@ -90,7 +90,7 @@ public class Npc extends Avatar{
 
 			if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
 				if (isOver(x, y)) {
-					toggleShowHello();
+					rightClickAction();
 				}
 			}
 		}
@@ -128,6 +128,23 @@ public class Npc extends Avatar{
 	public void delete() {
 		TyrelionContainer.getInstance().getMap().getNpcs().removeNpc(this);
 		InteractionManager.getInstance().deleteObserver(this);
+	}
+
+	/* (non-Javadoc)
+	 * @see tyrelion.objects.WorldObject#leftClickAction()
+	 */
+	@Override
+	public void leftClickAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see tyrelion.objects.WorldObject#rightClickAction()
+	 */
+	@Override
+	public void rightClickAction() {
+		toggleShowHello();
 	}
 	
 }
