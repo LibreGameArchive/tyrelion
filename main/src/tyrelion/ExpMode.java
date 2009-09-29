@@ -21,6 +21,7 @@ import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
 import tyrelion.gui.Minimap;
 import tyrelion.itemsystem.Food;
+import tyrelion.itemsystem.Weapon;
 import tyrelion.map.TyrelionMap;
 import tyrelion.music.MusicManager;
 import tyrelion.objects.Npc;
@@ -107,6 +108,8 @@ public class ExpMode extends BasicGameState {
 				new Image("res/img/items/apple_inv.png"), true)));
 		map.getItems().addItem(new WorldItem(8, 19, new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
 				new Image("res/img/items/apple_inv.png"), true)));
+		map.getItems().addItem(new WorldItem(10, 20, new Weapon(1231, "Heftiges Schwert des Todes",
+				new Image("res/img/items/sword_world.png"), new Image("res/img/items/sword_inv.png"), false)));
 		
 	}
 
