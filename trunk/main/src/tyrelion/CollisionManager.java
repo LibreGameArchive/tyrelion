@@ -61,7 +61,7 @@ public class CollisionManager {
 						break;
 					}
 				}
-				if (map.getNpcs().getNpc(i, j) != null) {
+				if (map.getNpcs().getNpc(tileX, tileY) != null) {
 					if (player.getShape().intersects(map.getNpcs().getNpc(i, j).getShape())) {
 						collided = true;
 						break;
