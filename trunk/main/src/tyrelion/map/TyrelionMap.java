@@ -39,6 +39,15 @@ public class TyrelionMap extends TiledMap {
 	/** The offset from the centre of the screen to the left edge in tiles */
 	private int leftOffsetInTiles;
 	
+	/** Start of the displayed area (x-coord) */
+	private int displayStartX;
+	/** Start of the displayed area (y-coord) */
+	private int displayStartY;
+	/** End of the displayed area (x-coord) */
+	private int displayEndX;
+	/** End of the displayed area (y-coord) */
+	private int displayEndY;
+	
 	private NpcMap npcs;
 	private WorldItemMap items;
 	
@@ -89,32 +98,37 @@ public class TyrelionMap extends TiledMap {
 		
 	}
 	
-	public void renderNpcs(Player player, Graphics g) {
-		int startX = player.getTileX() - leftOffsetInTiles;
-		int startY = player.getTileY() - topOffsetInTiles;
-		int endX = player.getTileX() + leftOffsetInTiles;
-		int endY = player.getTileY() + topOffsetInTiles;
+	private void updateDisplayedArea(){
+		Player player = Player.getInstance();
+		displayStartX = player.getTileX() - leftOffsetInTiles;
+		displayStartY = player.getTileY() - topOffsetInTiles;
+		displayEndX = player.getTileX() + leftOffsetInTiles;
+		displayEndY = player.getTileY() + topOffsetInTiles;
 		
-		if (startX < 0) { startX = 0; }
-		if (startY < 0) { startY = 0; }
-		if (endX > width) { endX = width; }
-		if (endY > height) { endY = height; }
-		
-		npcs.drawNpcs(startX, startY, endX, endY, g);
+		if (displayStartX < 0) { displayStartX = 0; }
+		if (displayStartY < 0) { displayStartY = 0; }
+		if (displayEndX > width) { displayEndX = width; }
+		if (displayEndY > height) { displayEndY = height; }
 	}
 	
-	public void renderItems(Player player, Graphics g) {
-		int startX = player.getTileX() - leftOffsetInTiles;
-		int startY = player.getTileY() - topOffsetInTiles;
-		int endX = player.getTileX() + leftOffsetInTiles;
-		int endY = player.getTileY() + topOffsetInTiles;
-		
-		if (startX < 0) { startX = 0; }
-		if (startY < 0) { startY = 0; }
-		if (endX > width) { endX = width; }
-		if (endY > height) { endY = height; }
-		
-		items.drawItems(startX, startY, endX, endY, g);
+	public void renderNpcs(Graphics g) {
+		updateDisplayedArea();
+		npcs.drawNpcs(displayStartX, displayStartY, displayEndX, displayEndY, g);
+	}
+	
+	public void updateNpcs(){
+		updateDisplayedArea();
+		npcs.updateNpcs(displayStartX, displayStartY, displayEndX, displayEndY);
+	}
+	
+	public void renderNpcBubbles(Graphics g){
+		updateDisplayedArea();
+		npcs.drawNpcBubbles(displayStartX, displayStartY, displayEndX, displayEndY, g);
+	}
+	
+	public void renderItems(Graphics g) {
+		updateDisplayedArea();
+		items.drawItems(displayStartX, displayStartY, displayEndX, displayEndY, g);
 	}
 	
 	public void loadItems(String ref) {
@@ -137,9 +151,6 @@ public class TyrelionMap extends TiledMap {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
 	}
 
 	/**

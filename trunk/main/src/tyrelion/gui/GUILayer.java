@@ -4,18 +4,25 @@
 package tyrelion.gui;
 
 
+import java.util.Observable;
+import java.util.Observer;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.StateBasedGame;
 
+import tyrelion.CursorManager;
 import tyrelion.ExpMode;
 import tyrelion.FontManager;
+import tyrelion.InteractionManager;
+import tyrelion.TyrelionContainer;
 import tyrelion.menu.MenuLoad;
 import tyrelion.menu.MenuMain;
 import tyrelion.menu.MenuSettings;
@@ -24,7 +31,7 @@ import tyrelion.menu.MenuSettings;
  * @author jahudi, imladriel
  *
  */
-public class GUILayer implements ComponentListener{
+public class GUILayer implements ComponentListener, Observer{
 	
 	private StateBasedGame game;
 	private GameContainer gameContainer;	
@@ -68,6 +75,8 @@ public class GUILayer implements ComponentListener{
 		
 		initGUI();
 		
+		InteractionManager.getInstance().addObserver(this);
+		
       }
 
 	public void render(GameContainer container, Graphics g)
@@ -85,7 +94,9 @@ public class GUILayer implements ComponentListener{
 		FontManager.getInstance().drawString(g, 945, 650, "Arthlet", FontManager.FANCY, FontManager.LARGE, new Color(0x00762900));
 		
 		//Check if menu should be drawn and render it
-		if (isShowMenu) showMenu(container, g);
+		if (isShowMenu) {
+			showMenu(container, g);
+		} 
 		
 	}
 	
@@ -140,7 +151,14 @@ public class GUILayer implements ComponentListener{
 	 */
 	public void componentActivated(AbstractComponent source) {
 		//Abfrage des aktivierten Buttons und ausführen der zugehörigen Aktion
-		if (source == gui_btn_menu) isShowMenu=!isShowMenu;
+		if (source == gui_btn_menu) {
+			isShowMenu=!isShowMenu;
+			if (isShowMenu) {
+				TyrelionContainer.getInstance().getContainer().pause();
+			} else {
+				TyrelionContainer.getInstance().getContainer().resume();
+			}	
+		}
 		if (source == gui_btn_questlog) {
 			ExpMode expMode = (ExpMode)game.getState(ExpMode.ID);
 			if (!expMode.isDebug()) {
@@ -149,11 +167,31 @@ public class GUILayer implements ComponentListener{
 				expMode.setDebug(false);
 			}	
 		}
-		if (source == gui_btn_back) isShowMenu=false;
+		if (source == gui_btn_back) {
+			isShowMenu=false;
+			TyrelionContainer.getInstance().getContainer().resume();
+		}
 		//if (source == gui_btn_save) game.enterState(MenuCredits.ID);
 		if (source == gui_btn_load) game.enterState(MenuLoad.ID);
 		if (source == gui_btn_settings) game.enterState(MenuSettings.ID);
 		if (source == gui_btn_quit) game.enterState(MenuMain.ID);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
+	public void update(Observable observable, Object input) {
+		InteractionManager im = (InteractionManager) observable;
+		if ("keyReleased".equals(input)){
+			if (im.getKeyReleased_key() == Input.KEY_ESCAPE) {
+				CursorManager.getInstance().setCursor(CursorManager.SWORD, TyrelionContainer.getInstance().getContainer());
+				if (isShowMenu){
+					isShowMenu = false;
+					TyrelionContainer.getInstance().getContainer().resume();
+				}
+			}
+		}
+		
 	}
 
 }

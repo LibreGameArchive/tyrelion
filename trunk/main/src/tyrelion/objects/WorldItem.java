@@ -45,38 +45,40 @@ public class WorldItem extends WorldObject {
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(Observable interactionManager, Object listenerType) {
-		InteractionManager im = (InteractionManager) interactionManager;
-		
-		if("mouseClicked".equals(listenerType)) {
-			int button = im.getMouseClicked_button();
-			int x = im.getMouseClicked_x();
-			int y = im.getMouseClicked_y();
-
-			if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
-				if (isOver(x, y)) {
-					rightClickAction();
-				}
-			}
-		}
-		
-		if ("mouseMoved".equals(listenerType)) {
-			int newX = im.getMouseMoved_newx();
-			int newY = im.getMouseMoved_newy();
-			int oldX = im.getMouseMoved_oldx();
-			int oldY = im.getMouseMoved_oldy();
-
-			GameContainer container = TyrelionContainer.getInstance().getContainer();
+		if (!TyrelionContainer.getInstance().getContainer().isPaused()){
+			InteractionManager im = (InteractionManager) interactionManager;
 			
-			if (isOver(newX, newY)) {
-				if (Player.getInstance().inRange(this)) {
-					CursorManager.getInstance().setCursor(CursorManager.HAND, container);
-				} else {
-					CursorManager.getInstance().setCursor(CursorManager.HAND_LOCKED, container);
+			if("mouseClicked".equals(listenerType)) {
+				int button = im.getMouseClicked_button();
+				int x = im.getMouseClicked_x();
+				int y = im.getMouseClicked_y();
+	
+				if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
+					if (isOver(x, y)) {
+						rightClickAction();
+					}
 				}
-			} else if (isOver(oldX, oldY)) {
-				CursorManager.getInstance().setCursor(CursorManager.SWORD, container);
 			}
-		}
+			
+			if ("mouseMoved".equals(listenerType)) {
+				int newX = im.getMouseMoved_newx();
+				int newY = im.getMouseMoved_newy();
+				int oldX = im.getMouseMoved_oldx();
+				int oldY = im.getMouseMoved_oldy();
+	
+				GameContainer container = TyrelionContainer.getInstance().getContainer();
+				
+				if (isOver(newX, newY)) {
+					if (Player.getInstance().inRange(this)) {
+						CursorManager.getInstance().setCursor(CursorManager.HAND, container);
+					} else {
+						CursorManager.getInstance().setCursor(CursorManager.HAND_LOCKED, container);
+					}
+				} else if (isOver(oldX, oldY)) {
+					CursorManager.getInstance().setCursor(CursorManager.SWORD, container);
+				}
+			}
+		}	
 	}
 	
 	public boolean isOver(int x, int y) {
