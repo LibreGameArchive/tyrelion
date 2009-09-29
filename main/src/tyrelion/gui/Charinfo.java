@@ -71,12 +71,7 @@ public class Charinfo implements Observer{
 			//Render images
 			g.drawImage(background, posX, posY);
 			
-			g.drawRect(posX+577, posY+236, 56*4, 54*6);
-			
 			inventory.render(g, posX+577, posY+236);
-
-			if (gedrückt) graphics.drawString("X: "+Integer.toString(tempx-posX-577)+" Y: "+Integer.toString(tempy-posX-236), 500, 500);
-			if (gedrückt) graphics.drawString("X: "+Integer.toString((tempx-posX-577) / 56)+" Y: "+Integer.toString((tempy-posX-236) / 54), 500, 550);
 			if (itemAtCursor!=null) itemAtCursor.render(graphics, tempx-25, tempy-25);
 			
 			graphics = g;
