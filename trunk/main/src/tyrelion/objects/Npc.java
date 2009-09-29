@@ -43,6 +43,8 @@ public class Npc extends Avatar{
 		animations[ANIM_LEFT].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
 		animations[ANIM_RIGHT].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
 		setAnimation(ANIM_RIGHT);
+		
+		activeText = new Random().nextInt(helloText.length);
 	}
 	
 	public void render(Graphics g) {
@@ -85,11 +87,9 @@ public class Npc extends Avatar{
 			int button = im.getMouseClicked_button();
 			int x = im.getMouseClicked_x();
 			int y = im.getMouseClicked_y();
-			
-			Point p = CoordinatesTranslator.getInstance().translateCoordinates(x, y);
 
 			if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
-				if (p.x == tileX && (p.y == tileY || p.y == tileY-1)) {
+				if (isOver(x, y)) {
 					toggleShowHello();
 				}
 			}
@@ -100,20 +100,28 @@ public class Npc extends Avatar{
 			int newY = im.getMouseMoved_newy();
 			int oldX = im.getMouseMoved_oldx();
 			int oldY = im.getMouseMoved_oldy();
-			
-			Point newP = CoordinatesTranslator.getInstance().translateCoordinates(newX, newY);
-			Point oldP = CoordinatesTranslator.getInstance().translateCoordinates(oldX, oldY);
+
 			GameContainer container = TyrelionContainer.getInstance().getContainer();
 			
-			if (newP.x == tileX && (newP.y == tileY || newP.y == tileY-1)) {
+			if (isOver(newX, newY)) {
 				if (Player.getInstance().inRange(this)) {
 					CursorManager.getInstance().setCursor(CursorManager.BUBBLE, container);
 				} else {
 					CursorManager.getInstance().setCursor(CursorManager.BUBBLE_LOCKED, container);
 				}
-			} else if (oldP.x == tileX && (oldP.y == tileY || oldP.y == tileY-1)) {
+			} else if (isOver(oldX, oldY)) {
 				CursorManager.getInstance().setCursor(CursorManager.SWORD, container);
 			}
+		}
+	}
+	
+	public boolean isOver(int x, int y) {
+		Point p = CoordinatesTranslator.getInstance().translateCoordinates(x, y);
+		
+		if (p.x == tileX && (p.y == tileY || p.y == tileY-1)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 	

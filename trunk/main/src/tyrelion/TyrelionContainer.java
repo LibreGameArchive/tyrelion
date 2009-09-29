@@ -4,8 +4,8 @@
 package tyrelion;
 
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 
+import tyrelion.gui.Infobox;
 import tyrelion.map.TyrelionMap;
 
 /**
@@ -18,6 +18,7 @@ public class TyrelionContainer {
 	
 	private GameContainer container;
 	private TyrelionMap map;
+	private Infobox infobox;
 	
 	public static TyrelionContainer getInstance() {
 		if (instance == null) {
@@ -52,6 +53,20 @@ public class TyrelionContainer {
 	 */
 	public void setMap(TyrelionMap map) {
 		this.map = map;
+	}
+
+	/**
+	 * @return the infobox
+	 */
+	public Infobox getInfobox() {
+		return infobox;
+	}
+
+	/**
+	 * @param infobox the infobox to set
+	 */
+	public void setInfobox(Infobox infobox) {
+		this.infobox = infobox;
 	}
 
 }
