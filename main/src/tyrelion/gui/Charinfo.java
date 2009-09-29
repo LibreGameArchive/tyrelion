@@ -19,7 +19,6 @@ import org.newdawn.slick.SlickException;
 import tyrelion.InteractionManager;
 import tyrelion.character.Inventory;
 import tyrelion.character.Inventory.InventoryField;
-import tyrelion.itemsystem.Food;
 import tyrelion.objects.Player;
 
 /**
@@ -28,7 +27,6 @@ import tyrelion.objects.Player;
  */
 public class Charinfo implements Observer{
 	
-	private GameContainer gameContainer;
 	private Graphics graphics;
 	
 	/** Background for the infobox */
@@ -36,24 +34,22 @@ public class Charinfo implements Observer{
 	
 	Inventory inventory;
 	
-	private Food apple;
-	
 	private int posX = 0;
 	private int posY = 0;
 	
-	int tempx;
-	int tempy;
+	int mouseX;
+	int mouseY;
 	
 	boolean showCharinfo = false;
 	
-	boolean gedrückt = false;
+	boolean mousePressed = false;
+	/** Item which flies with the cursor, if any */
 	InventoryField itemAtCursor = null;
+	/** Given item from dragging the inventory */
 	InventoryField item = null;
 
-	public Charinfo(GameContainer container)
+	public Charinfo()
 			throws SlickException {
-		
-		this.gameContainer = container;	
 		
 		background = new Image("res/img/gui/gui_charinfo.png");
 		
@@ -72,7 +68,7 @@ public class Charinfo implements Observer{
 			g.drawImage(background, posX, posY);
 			
 			inventory.render(g, posX+577, posY+236);
-			if (itemAtCursor!=null) itemAtCursor.render(graphics, tempx-25, tempy-25);
+			if (itemAtCursor!=null) itemAtCursor.render(graphics, mouseX-25, mouseY-25);
 			
 			graphics = g;
 		}
@@ -102,11 +98,11 @@ public class Charinfo implements Observer{
 			
 			int x = im.getMousePressed_x(); int y = im.getMousePressed_y();
 			
-			if ((x >= posX+577) && (x <= posX+577+56*4-3)	&& (y >= posY+236) && (y <= posY+236+54*6-3)){
+			if (isMouseOverInventory(x, y)){
 				
 				item = inventory.isOverItem(x-posX-577, y-posY-236);
 				
-				gedrückt = true;
+				mousePressed = true;
 				if (item != null) {
 					item.toggleShow();
 					itemAtCursor = item;
@@ -115,16 +111,17 @@ public class Charinfo implements Observer{
 		}
 		
 		if ("mouseMoved".equals(input)){
-			tempx = im.getMouseMoved_newx();
-			tempy = im.getMouseMoved_newy();
+			//get current mouse position
+			mouseX = im.getMouseMoved_newx();
+			mouseY = im.getMouseMoved_newy();
 		}
 		
 		if ("mouseReleased".equals(input)){
 			int x = im.getMouseReleased_x(); int y = im.getMouseReleased_y();
-			gedrückt = false;
+			mousePressed = false;
 				if (item != null) {
 					item.toggleShow();
-					if ((x >= posX+577) && (x <= posX+577+56*4-3)	&& (y >= posY+236) && (y <= posY+236+54*6-3)){
+					if (isMouseOverInventory(x, y)){
 						inventory.drop(itemAtCursor.getContent(), x-posX-577, y-posY-236);
 					}
 					itemAtCursor = null;
@@ -132,7 +129,12 @@ public class Charinfo implements Observer{
 				}
 			}
 		
-	}	
+	}
+	
+	/** returns true if mouse position is over the inventory */
+	private boolean isMouseOverInventory(int x, int y){
+		return ((x >= posX+577) && (x <= posX+577+56*4-3)	&& (y >= posY+236) && (y <= posY+236+54*6-3));
+	}
 
 }
 	
