@@ -216,7 +216,6 @@ public class ExpMode extends BasicGameState {
 	
 	public void mouseMoved(int oldx, int oldy, int newx, int newy){
 		InteractionManager.getInstance().mouseMoved(oldx, oldy, newx, newy);
-
 	}
 
 	/**

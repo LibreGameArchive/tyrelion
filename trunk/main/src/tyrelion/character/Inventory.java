@@ -18,13 +18,19 @@ import tyrelion.itemsystem.Item;
  */
 public class Inventory {
 	
-	class InventoryField{
+	public class InventoryField{
 		
 		/** Item stored in this inventory field */
-		private FieldContent content;
+		private FieldContent content = null;
+		
+		private boolean show = true;
 		
 		public InventoryField(FieldContent content){
 			this.content = content;
+			
+		}
+		
+		public InventoryField(){
 			
 		}
 		
@@ -47,13 +53,22 @@ public class Inventory {
 			FieldContent old_field = this.content;
 			
 			if (item.getItem().getUid() == this.content.getItem().getUid()) {
-				if (content.getItem().isStackable()){ 
-					this.content = new InventoryStack(content.getItem(), content.getCount()+1);
-					return null;
-				} else {this.content = item; return old_field;}
-			} else {
-				this.content = item; return old_field;
-			}
+					if (content.getItem().isStackable()){ 
+						this.content = new InventoryStack(content.getItem(), content.getCount()+1);
+						return null;
+					} else {this.content = item; return old_field;}
+				} else {
+					this.content = item; return old_field;
+			} 
+		}
+		
+		
+		public void toggleShow(){
+			show = !show;
+		}
+		
+		public boolean isShow(){
+			return show;
 		}
 		
 		public boolean isFull(){
@@ -69,6 +84,14 @@ public class Inventory {
 			return content.getItem();
 		}
 		
+		public FieldContent getContent(){
+			return content;
+		}
+		
+		public void render(Graphics g, int x, int y){
+			g.drawImage(content.getItem().getImage_inv(), x, y);
+			if (content.getCount()>1) g.drawString(Integer.toString(content.getCount()), x+30, y+2);
+		}
 	}
 	
 	interface FieldContent{
@@ -122,6 +145,9 @@ public class Inventory {
 	
 	private int invWidth = 4;
 	private int invHeight = 6;
+	
+	private int flyingX = -1;
+	private int flyingY = -1;
 	
 	private InventoryField[][] fields;
 	
@@ -180,21 +206,50 @@ public class Inventory {
 	}
 	
 	public void render(Graphics g, int x, int y){
-		
-		
-		
 		for (int j = 0; j < invHeight; j++){
 			for (int i = 0; i < invWidth; i++){
 				InventoryField field = fields[i][j];
-				if (field != null){
-					g.drawImage(field.getItem().getImage_inv(), x+i*57, y+j*55);
-					if (field.getCount()>1) g.drawString(Integer.toString(field.getCount()), x+i*57+30, y+j*55+2);
+				if (field != null && field.isShow()){
+					field.render(g, x+i*57, y+j*55);
 				}
 			}
 		}
 	}
 	
+	public InventoryField getField(int x, int y){
+		return fields[x][y];
+	}
 	
+	public InventoryField isOverItem(int x, int y){
+		int fieldX = x / 56;
+		int fieldY = y / 55;
+		
+		if (fields[fieldX][fieldY]!=null){
+			flyingX=fieldX; flyingY=fieldY;
+		}
+		return fields[fieldX][fieldY];
+	}
+	
+	public void drop(FieldContent content, int x, int y){
+		int fieldX = x / 56;
+		int fieldY = y / 55;
+		
+		if (fields[fieldX][fieldY]!=null){
+			if (fields[fieldX][fieldY].getItem().getUid() == content.getItem().getUid()) {
+				if (!fields[fieldX][fieldY].isFull()) {
+					fields[fieldX][fieldY].put(content);
+					//fields[flyingX][flyingY].getContent().
+				}
+			} else { 
+				fields[flyingX][flyingY] = fields[fieldX][fieldY];
+				fields[fieldX][fieldY] = new InventoryField(content);
+			}
+		} else {
+			fields[fieldX][fieldY] = new InventoryField(content);
+			fields[flyingX][flyingY] = null;
+		}
+		
+	}
 	
 	
 	
