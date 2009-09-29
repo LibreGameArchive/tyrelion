@@ -37,10 +37,8 @@ public class ExpMode extends BasicGameState {
 
 	public static final int ID = 6;
 	
-	/** The map that we're going to drive around */
 	private TyrelionMap map;
 	
-	/** The animation representing the player's tank */
 	private Player player;
 	
 	private GUILayer guiLayer;
@@ -104,14 +102,6 @@ public class ExpMode extends BasicGameState {
 		map.getNpcs().addNpc(new Npc(0, 14));
 		map.getNpcs().addNpc(new Npc(2, 16));
 		map.getNpcs().addNpc(new Npc(4, 18));
-		
-		map.getItems().addItem(new WorldItem(6, 18, new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
-				new Image("res/img/items/apple_inv.png"), true)));
-		map.getItems().addItem(new WorldItem(8, 19, new Food(1233, "Noch krasserer Apfel", new Image("res/img/items/apple_world.png"),
-				new Image("res/img/items/apple_inv.png"), true)));
-		map.getItems().addItem(new WorldItem(10, 20, new Weapon(1231, "Heftiges Schwert des Todes",
-				new Image("res/img/items/sword_world.png"), new Image("res/img/items/sword_inv.png"), false)));
-		
 	}
 
 	/* (non-Javadoc)

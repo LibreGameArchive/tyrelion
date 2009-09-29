@@ -20,6 +20,7 @@
 			<attribute name="javadoc_location" value="file:/usr/lib/slickset/slickset-0.4/javadoc/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

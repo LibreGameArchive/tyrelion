@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<itemMap>
+	<item id="0" posX="6" posY="15" />
+	<item id="0" posX="7" posY="16" />
+	<item id="1" posX="9" posY="20" />
+	<item id="0" posX="15" posY="20" />
+	<item id="1" posX="23" posY="40" />
+	<item id="0" posX="20" posY="35" />
+	<item id="0" posX="26" posY="30" />
+	<item id="0" posX="22" posY="28" />
+</itemMap>
