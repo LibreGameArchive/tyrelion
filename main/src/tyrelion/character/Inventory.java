@@ -79,6 +79,10 @@ public class Inventory {
 			return content.getCount();
 		}
 		
+		public void decreaseCountBy(int count){
+			content.decreaseCountBy(count);
+		}
+		
 		/** returns the item stored in this field */
 		public Item getItem(){
 			return content.getItem();
@@ -102,7 +106,7 @@ public class Inventory {
 		
 		public int getCount();
 		
-		
+		public void decreaseCountBy(int count);
 	}
 	
 	private class InventoryItem implements FieldContent{
@@ -119,6 +123,10 @@ public class Inventory {
 		
 		public int getCount(){
 			return 1;
+		}
+		
+		public void decreaseCountBy(int count){
+			//
 		}
 		
 	}
@@ -139,6 +147,11 @@ public class Inventory {
 		
 		public int getCount(){
 			return count;
+		}
+		
+		public void decreaseCountBy(int count){
+			this.count= this.count-count;
+			if (count < 1) count = 1;
 		}
 		
 	}
@@ -237,8 +250,14 @@ public class Inventory {
 		if (fields[fieldX][fieldY]!=null){
 			if (fields[fieldX][fieldY].getItem().getUid() == content.getItem().getUid()) {
 				if (!fields[fieldX][fieldY].isFull()) {
-					fields[fieldX][fieldY].put(content);
-					//fields[flyingX][flyingY].getContent().
+					int stack1 = fields[fieldX][fieldY].getCount();
+					int stack2 = fields[flyingX][flyingY].getCount();
+					if ((stack1+stack2)>5) {
+						fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), 5));
+						fields[flyingX][flyingY].decreaseCountBy(stack2-stack1);
+					} else {
+						fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), stack1+stack2));
+					}
 				}
 			} else { 
 				fields[flyingX][flyingY] = fields[fieldX][fieldY];
