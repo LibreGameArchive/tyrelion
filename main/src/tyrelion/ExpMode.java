@@ -16,6 +16,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import tyrelion.gui.Charinfo;
+import tyrelion.gui.DisabledScreen;
 import tyrelion.gui.GUILayer;
 import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
@@ -48,6 +49,8 @@ public class ExpMode extends BasicGameState {
 	private Minimap minimap;
 	
 	private Charinfo charinfo;
+	
+	private DisabledScreen disabledScreen;
 
 	private boolean debug = false;
 	
@@ -81,6 +84,8 @@ public class ExpMode extends BasicGameState {
 		
 		guiLayer = new GUILayer(container, game);
 		
+		disabledScreen = new DisabledScreen();
+		
 		minimap = new Minimap(container, map, player);
 		
 		infobox = new Infobox(container);
@@ -97,7 +102,7 @@ public class ExpMode extends BasicGameState {
 		infobox.print("Du hast einen rostigen Dolch gefunden!", Message.ITEM);
 		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
 		
-		charinfo = new Charinfo();
+		charinfo = new Charinfo(container);
 		
 		map.getNpcs().addNpc(new Npc(0, 14));
 		map.getNpcs().addNpc(new Npc(2, 16));
@@ -117,10 +122,12 @@ public class ExpMode extends BasicGameState {
 		// draw entities relative to the player that must appear in the centre of the screen
 		g.translate(576 - (int) (player.getPosX() * 48), 432 - (int) (player.getPosY() * 48));
 		
-		map.renderNpcs(player, g);
-		map.renderItems(player, g);
+		map.renderNpcs(g);
+		map.renderItems(g);
 		
 		player.render(g);
+		
+		map.renderNpcBubbles(g);
 
 		if (debug) {
 			Shape[][] tiles = CollisionManager.getInstance().getTiles();
@@ -147,7 +154,7 @@ public class ExpMode extends BasicGameState {
 		}
 		g.resetTransform();
 
-		
+		if (container.isPaused()) disabledScreen.render(g);
 		
 		minimap.render(g);
 		
@@ -165,6 +172,8 @@ public class ExpMode extends BasicGameState {
 			throws SlickException {
 
 		player.update(container, delta);
+		
+		map.updateNpcs();
 				
 	}
 	
@@ -185,7 +194,6 @@ public class ExpMode extends BasicGameState {
 				Player.getInstance().getCharacter().getInventory().addItem(new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
 						new Image("res/img/items/apple_inv.png"), true));
 			} catch (SlickException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -16,7 +16,9 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import tyrelion.CursorManager;
 import tyrelion.InteractionManager;
+import tyrelion.TyrelionContainer;
 import tyrelion.character.Inventory;
 import tyrelion.character.Inventory.InventoryField;
 import tyrelion.objects.Player;
@@ -27,6 +29,7 @@ import tyrelion.objects.Player;
  */
 public class Charinfo implements Observer{
 	
+	private GameContainer conatainer;
 	private Graphics graphics;
 	
 	/** Background for the infobox */
@@ -48,8 +51,9 @@ public class Charinfo implements Observer{
 	/** Given item from dragging the inventory */
 	InventoryField item = null;
 
-	public Charinfo()
+	public Charinfo(GameContainer container)
 			throws SlickException {
+		this.conatainer = container;
 		
 		background = new Image("res/img/gui/gui_charinfo.png");
 		
@@ -60,10 +64,11 @@ public class Charinfo implements Observer{
       
 
 	public void render(GameContainer container, Graphics g, int x, int y)
-			throws SlickException {		
+			throws SlickException {	
 		if (showCharinfo){
 			posX = x;
 			posY = y;
+
 			//Render images
 			g.drawImage(background, posX, posY);
 			
@@ -74,14 +79,6 @@ public class Charinfo implements Observer{
 		}
 	}
 	
-	public void createClickableInventory(Inventory inventory){
-		
-	}
-	
-	
-	
-
-
 	/* (non-Javadoc)
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
@@ -90,7 +87,19 @@ public class Charinfo implements Observer{
 		
 		if ("keyReleased".equals(input)){
 			if (im.getKeyReleased_key() == Input.KEY_C) {
+				CursorManager.getInstance().setCursor(CursorManager.SWORD, TyrelionContainer.getInstance().getContainer());
 				showCharinfo = !showCharinfo;
+				if (showCharinfo){
+					TyrelionContainer.getInstance().getContainer().pause();
+				} else { TyrelionContainer.getInstance().getContainer().resume(); }
+			}
+			
+			if (im.getKeyReleased_key() == Input.KEY_ESCAPE) {
+				CursorManager.getInstance().setCursor(CursorManager.SWORD, TyrelionContainer.getInstance().getContainer());
+				if (showCharinfo){
+					showCharinfo = false;
+					TyrelionContainer.getInstance().getContainer().resume();
+				}
 			}
 		}
 		

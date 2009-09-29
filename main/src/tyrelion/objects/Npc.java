@@ -4,6 +4,7 @@
 package tyrelion.objects;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 
@@ -29,9 +30,11 @@ import tyrelion.map.TyrelionMap;
 public class Npc extends Avatar{
 	
 	private String[] helloText = { "Seyd gegrüßt!", "Hallo, wie geht es Euch?", "Wisst Ihr schon das" +
-			"Neueste?", "Schöner Tag oder?" } ;
+			" Neueste?", "Schöner Tag oder?" } ;
 	private int activeText;
 	private Boolean isShowingHello = false;
+	
+	private int bubbleLength = 15;
 	
 	public Npc(int x, int y) throws SlickException {
 		super(x, y);
@@ -49,15 +52,58 @@ public class Npc extends Avatar{
 	
 	public void render(Graphics g) {
 		super.render(g);
+	}
+	
+	public void drawBubble(Graphics g){
 		if (isShowingHello) {
+			try {
+				g.drawImage(new Image("res/img/interaction/bubble.png"), tileX*TyrelionMap.TILE_SIZE-35, tileY*TyrelionMap.TILE_SIZE-105);
+			} catch (SlickException e) {
+				e.printStackTrace();
+			}
 			drawHelloText(g);
 		}
 	}
 	
 	public void drawHelloText(Graphics g) {
-		FontManager.getInstance().drawString(g, tileX*TyrelionMap.TILE_SIZE-60,
-				tileY*TyrelionMap.TILE_SIZE-70, helloText[activeText], FontManager.SIMPLE,
-				FontManager.LARGE , Color.white);
+		int pos = 0;
+		for (String elem:breakLine(helloText[activeText])){
+		FontManager.getInstance().drawString(g, tileX*TyrelionMap.TILE_SIZE-20,
+				tileY*TyrelionMap.TILE_SIZE-95+(pos*20), elem, FontManager.SIMPLE,
+				FontManager.MEDIUM , Color.white);
+		pos++;
+		}
+	}
+	
+	private ArrayList<String> breakLine(String text){
+		String temp = "";
+		
+		char[] letters = text.toCharArray();
+		ArrayList<String> words = new ArrayList<String>();
+		for (int i=0; i<text.length();i++) {
+			if (letters[i]==(" ".charAt(0))) { words.add(temp); temp=""; } else { temp+=letters[i]; }
+		}
+		words.add(temp);
+		
+		ArrayList<String> broken = new ArrayList<String>();
+		String line = "";
+		int count = 0;
+		for (String elem: words) {
+			count += elem.length();
+			if (count<=bubbleLength) {
+				line += elem + " ";	
+				count += 1;
+			} else {
+				broken.add(line);
+				line=elem + " ";
+				count=elem.length()+1;
+			}
+		}
+		if (!line.equals("")) {
+			broken.add(line);
+		}
+		
+		return broken;
 	}
 	
 	public void toggleShowHello() {
@@ -67,6 +113,12 @@ public class Npc extends Avatar{
 		} else {
 			activeText = r.nextInt(helloText.length);
 			isShowingHello = true;
+		}
+	}
+	
+	public void update(){
+		if (!Player.getInstance().inRange(this)) {
+			isShowingHello = false;
 		}
 	}
 
@@ -81,36 +133,38 @@ public class Npc extends Avatar{
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(Observable arg0, Object arg1) {
-		InteractionManager im = (InteractionManager) arg0;
-		
-		if("mouseClicked".equals(arg1)) {
-			int button = im.getMouseClicked_button();
-			int x = im.getMouseClicked_x();
-			int y = im.getMouseClicked_y();
-
-			if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
-				if (isOver(x, y)) {
-					rightClickAction();
+		if (!TyrelionContainer.getInstance().getContainer().isPaused()){
+			InteractionManager im = (InteractionManager) arg0;
+			
+			if("mouseClicked".equals(arg1)) {
+				int button = im.getMouseClicked_button();
+				int x = im.getMouseClicked_x();
+				int y = im.getMouseClicked_y();
+	
+				if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
+					if (isOver(x, y)) {
+						rightClickAction();
+					}
 				}
 			}
-		}
-		
-		if ("mouseMoved".equals(arg1)) {
-			int newX = im.getMouseMoved_newx();
-			int newY = im.getMouseMoved_newy();
-			int oldX = im.getMouseMoved_oldx();
-			int oldY = im.getMouseMoved_oldy();
-
-			GameContainer container = TyrelionContainer.getInstance().getContainer();
 			
-			if (isOver(newX, newY)) {
-				if (Player.getInstance().inRange(this)) {
-					CursorManager.getInstance().setCursor(CursorManager.BUBBLE, container);
-				} else {
-					CursorManager.getInstance().setCursor(CursorManager.BUBBLE_LOCKED, container);
+			if ("mouseMoved".equals(arg1)) {
+				int newX = im.getMouseMoved_newx();
+				int newY = im.getMouseMoved_newy();
+				int oldX = im.getMouseMoved_oldx();
+				int oldY = im.getMouseMoved_oldy();
+	
+				GameContainer container = TyrelionContainer.getInstance().getContainer();
+				
+				if (isOver(newX, newY)) {
+					if (Player.getInstance().inRange(this)) {
+						CursorManager.getInstance().setCursor(CursorManager.BUBBLE, container);
+					} else {
+						CursorManager.getInstance().setCursor(CursorManager.BUBBLE_LOCKED, container);
+					}
+				} else if (isOver(oldX, oldY)) {
+					CursorManager.getInstance().setCursor(CursorManager.SWORD, container);
 				}
-			} else if (isOver(oldX, oldY)) {
-				CursorManager.getInstance().setCursor(CursorManager.SWORD, container);
 			}
 		}
 	}

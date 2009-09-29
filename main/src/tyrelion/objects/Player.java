@@ -62,49 +62,51 @@ public class Player extends Avatar{
 	public void update(GameContainer container, int delta) {
 		super.update(container);
 		
-		Input input = container.getInput();
-		CollisionManager col = CollisionManager.getInstance();
+		if (!container.isPaused()){
+			Input input = container.getInput();
+			CollisionManager col = CollisionManager.getInstance();
+			
+			if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) ||
+					input.isKeyDown(Input.KEY_A) ||input.isKeyDown(Input.KEY_D)) {
+				SoundManager.getInstance().playOnce("player", "walk");
+			}
+			
+			float newPlayerX;
+			float newPlayerY;
 		
-		if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) ||
-				input.isKeyDown(Input.KEY_A) ||input.isKeyDown(Input.KEY_D)) {
-			SoundManager.getInstance().playOnce("player", "walk");
-		}
 		
-		float newPlayerX;
-		float newPlayerY;
-		
-		if(input.isKeyDown(Keyboard.KEY_A)) {
-			newPlayerX = posX + -delta * WALK_SPEED;
-			if (!col.collided(newPlayerX, posY)) {	
-				setPosX(newPlayerX);
-				setAnimation(ANIM_LEFT);
+			if(input.isKeyDown(Keyboard.KEY_A)) {
+				newPlayerX = posX + -delta * WALK_SPEED;
+				if (!col.collided(newPlayerX, posY)) {	
+					setPosX(newPlayerX);
+					setAnimation(ANIM_LEFT);
+				}
+			}
+			  
+			if(input.isKeyDown(Keyboard.KEY_D)) {	
+				newPlayerX = posX + delta * WALK_SPEED;
+				if (!col.collided(newPlayerX, posY)) {		
+					setPosX(newPlayerX);
+					setAnimation(ANIM_RIGHT);
+				}
+			}
+			  
+			if(input.isKeyDown(Keyboard.KEY_W)){
+				newPlayerY = posY + -delta * WALK_SPEED;
+				if (!col.collided(posX, newPlayerY)) {	
+					setPosY(newPlayerY);
+					setAnimation(ANIM_UP);
+				}
+			}
+			  
+			if(input.isKeyDown(Keyboard.KEY_S)){
+				newPlayerY = posY + delta * WALK_SPEED;
+				if (!col.collided(posX, newPlayerY)) {
+					setPosY(newPlayerY);
+					setAnimation(Player.ANIM_DOWN);
+				}
 			}
 		}
-		  
-		if(input.isKeyDown(Keyboard.KEY_D)) {	
-			newPlayerX = posX + delta * WALK_SPEED;
-			if (!col.collided(newPlayerX, posY)) {		
-				setPosX(newPlayerX);
-				setAnimation(ANIM_RIGHT);
-			}
-		}
-		  
-		if(input.isKeyDown(Keyboard.KEY_W)){
-			newPlayerY = posY + -delta * WALK_SPEED;
-			if (!col.collided(posX, newPlayerY)) {	
-				setPosY(newPlayerY);
-				setAnimation(ANIM_UP);
-			}
-		}
-		  
-		if(input.isKeyDown(Keyboard.KEY_S)){
-			newPlayerY = posY + delta * WALK_SPEED;
-			if (!col.collided(posX, newPlayerY)) {
-				setPosY(newPlayerY);
-				setAnimation(Player.ANIM_DOWN);
-			}
-		}
-		
 	}
 	
 	public void renderShape(Graphics g) {
