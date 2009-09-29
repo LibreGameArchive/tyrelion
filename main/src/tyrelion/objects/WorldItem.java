@@ -14,6 +14,7 @@ import tyrelion.CoordinatesTranslator;
 import tyrelion.CursorManager;
 import tyrelion.InteractionManager;
 import tyrelion.TyrelionContainer;
+import tyrelion.gui.Message;
 import tyrelion.itemsystem.Item;
 import tyrelion.map.TyrelionMap;
 
@@ -43,46 +44,58 @@ public class WorldItem extends WorldObject {
 	/* (non-Javadoc)
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
-	public void update(Observable arg0, Object arg1) {
-		InteractionManager im = (InteractionManager) arg0;
+	public void update(Observable interactionManager, Object listenerType) {
+		InteractionManager im = (InteractionManager) interactionManager;
 		
-		if("mouseClicked".equals(arg1)) {
+		if("mouseClicked".equals(listenerType)) {
 			int button = im.getMouseClicked_button();
 			int x = im.getMouseClicked_x();
 			int y = im.getMouseClicked_y();
-			
-			Point p = CoordinatesTranslator.getInstance().translateCoordinates(x, y);
 
 			if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
-				if (p.x == getTileX() && p.y == getTileY()) {
-					Player.getInstance().getCharacter().getInventory().addItem(getItem());
-					delete();
-					CursorManager.getInstance().setCursor(CursorManager.SWORD,
-							TyrelionContainer.getInstance().getContainer());
+				if (isOver(x, y)) {
+					rightClicked();
 				}
 			}
 		}
 		
-		if ("mouseMoved".equals(arg1)) {
+		if ("mouseMoved".equals(listenerType)) {
 			int newX = im.getMouseMoved_newx();
 			int newY = im.getMouseMoved_newy();
 			int oldX = im.getMouseMoved_oldx();
 			int oldY = im.getMouseMoved_oldy();
-			
-			Point newP = CoordinatesTranslator.getInstance().translateCoordinates(newX, newY);
-			Point oldP = CoordinatesTranslator.getInstance().translateCoordinates(oldX, oldY);
+
 			GameContainer container = TyrelionContainer.getInstance().getContainer();
 			
-			if (newP.x == tileX && newP.y == tileY) {
+			if (isOver(newX, newY)) {
 				if (Player.getInstance().inRange(this)) {
 					CursorManager.getInstance().setCursor(CursorManager.HAND, container);
 				} else {
 					CursorManager.getInstance().setCursor(CursorManager.HAND_LOCKED, container);
 				}
-			} else if (oldP.x == tileX && oldP.y == tileY) {
+			} else if (isOver(oldX, oldY)) {
 				CursorManager.getInstance().setCursor(CursorManager.SWORD, container);
 			}
 		}
+	}
+	
+	public boolean isOver(int x, int y) {
+		Point p = CoordinatesTranslator.getInstance().translateCoordinates(x, y);
+		
+		if (p.x == tileX && p.y == tileY) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void rightClicked() {
+		Player.getInstance().getCharacter().getInventory().addItem(getItem());
+		delete();
+		TyrelionContainer.getInstance().getInfobox().print("Du hast erhältst folgenden Gegenstand: "
+				+ item.getName(), Message.ITEM);
+		CursorManager.getInstance().setCursor(CursorManager.SWORD,
+				TyrelionContainer.getInstance().getContainer());
 	}
 	
 	public void delete() {
