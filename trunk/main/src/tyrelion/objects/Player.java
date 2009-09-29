@@ -3,6 +3,8 @@
  */
 package tyrelion.objects;
 
+import java.util.Observable;
+
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -14,6 +16,7 @@ import org.newdawn.slick.geom.Rectangle;
 
 import tyrelion.CollisionManager;
 import tyrelion.character.Character;
+import tyrelion.map.TyrelionMap;
 import tyrelion.sfx.SoundManager;
 
 
@@ -27,6 +30,8 @@ public class Player extends Avatar{
 	
 	/** Role-playing charakter of this player */
 	public Character character;
+	
+	private TyrelionMap map;
 	
 	public Player(int x, int y) throws SlickException{
 		super(x, y);
@@ -42,9 +47,14 @@ public class Player extends Avatar{
 		character = new Character();
 	}
 	
-	public static Player getInstance() throws SlickException{
+	public static Player getInstance() {
 		if (instance == null) {
-			instance = new Player(0, 0);
+			try {
+				instance = new Player(0, 0);
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return instance;
 	}
@@ -113,6 +123,29 @@ public class Player extends Avatar{
 	 */
 	public void setCharacter(Character character) {
 		this.character = character;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @return the map
+	 */
+	public TyrelionMap getMap() {
+		return map;
+	}
+
+	/**
+	 * @param map the map to set
+	 */
+	public void setMap(TyrelionMap map) {
+		this.map = map;
 	}
 
 }

@@ -54,12 +54,9 @@ public class ExpMode extends BasicGameState {
 	private Charinfo charinfo;
 
 	private boolean debug = false;
-	
-	private GameContainer container;
 
 	private Npc npc;
 	private Food apple;
-	private WorldItem worldApple;
 	
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.BasicGameState#getID()
@@ -73,16 +70,21 @@ public class ExpMode extends BasicGameState {
 	 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
 	 */
 	public void init(GameContainer container, StateBasedGame game)
-			throws SlickException {
-		this.container = container;
-		
+			throws SlickException {	
 		player = Player.getInstance();
 		player.setPosX(2);
 		player.setPosY(14);
 		
 		map = new TyrelionMap("res/maps/arthlet.tmx", container);
 		
+		TyrelionContainer.getInstance().setContainer(container);
+		TyrelionContainer.getInstance().setMap(map);
+		
+		CoordinatesTranslator.getInstance().setMap(map);
+		CoordinatesTranslator.getInstance().setPlayer(player);
+		
 		CollisionManager.getInstance().setMap(map);
+		CollisionManager.getInstance().setPlayer(player);
 		
 		guiLayer = new GUILayer(container, game);
 		
@@ -103,16 +105,15 @@ public class ExpMode extends BasicGameState {
 		
 		charinfo = new Charinfo(container);
 		
-		npc = new Npc(2, 16);
 		apple = new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
 				new Image("res/img/items/apple_inv.png"), true);
-		worldApple = new WorldItem(6, 17, apple);
 		
-		map.getNpcs().addNpc(npc);
+		map.getNpcs().addNpc(new Npc(0, 14));
+		map.getNpcs().addNpc(new Npc(2, 16));
 		map.getNpcs().addNpc(new Npc(4, 18));
 		
-		map.getItems().addItem(worldApple);
 		map.getItems().addItem(new WorldItem(6, 18, apple));
+		map.getItems().addItem(new WorldItem(8, 19, apple));
 		
 	}
 
@@ -207,20 +208,6 @@ public class ExpMode extends BasicGameState {
 	
 	public void mouseClicked(int button, int x, int y, int clickCount) {
 		InteractionManager.getInstance().mouseClicked(button, x, y, clickCount);
-		
-		Point p = translateCoordinates(x, y);
-		
-		if (button == Input.MOUSE_RIGHT_BUTTON && player.inRange(npc)) {
-			if (p.x == npc.getTileX() && (p.y == npc.getTileY() || p.y == npc.getTileY() - 1)) {
-				npc.toggleShowHello();
-			}
-		}
-		if (button == Input.MOUSE_RIGHT_BUTTON && player.inRange(worldApple)) {
-			if (p.x == worldApple.getTileX() && p.y == worldApple.getTileY()) {
-				player.getCharacter().getInventory().addItem(worldApple.getItem());
-				map.getItems().removeItem(worldApple);
-			}
-		}
 	}
 	
 	public void mousePressed(int button, int x, int y){
@@ -232,53 +219,8 @@ public class ExpMode extends BasicGameState {
 	}
 	
 	public void mouseMoved(int oldx, int oldy, int newx, int newy){
-		InteractionManager.getInstance().mouseMoved(oldx, oldy, newy, newy);
-		
-		Point p = translateCoordinates(newx, newy);
-		CursorManager cursorManager = CursorManager.getInstance();
-		
-		if(p.x == npc.getTileX() && (p.y == npc.getTileY() || p.y == npc.getTileY()-1)) {
-			if (player.inRange(npc)) {
-				cursorManager.setCursor(CursorManager.BUBBLE, container);
-			} else {
-				cursorManager.setCursor(CursorManager.BUBBLE_LOCKED, container);
-			}
-		} else if(p.x == worldApple.getTileX() && p.y == worldApple.getTileY()) {
-			if (player.inRange(worldApple)) {
-				cursorManager.setCursor(CursorManager.HAND, container);
-			} else {
-				cursorManager.setCursor(CursorManager.HAND_LOCKED, container);
-			}
-		} else {
-			cursorManager.setCursor(CursorManager.SWORD, container);
-		}
+		InteractionManager.getInstance().mouseMoved(oldx, oldy, newx, newy);
 
-	}
-	
-	public Point translateCoordinates(int x, int y) {
-		float mouseX;
-		float mouseY;
-		float targetX;
-		float targetY;
-		float tempX = x / (new Float(map.getTileSize()));
-		float tempY = y / (new Float(map.getTileSize()));
-		int offsetX = (int)(((int)tempX - tempX) * map.getTileSize());
-		int offsetY = (int)(((int)tempY - tempY) * map.getTileSize());
-		mouseX = (x-offsetX) / (new Float(map.getTileSize()));
-		mouseY = (y-offsetY) / (new Float(map.getTileSize()));
-		
-		// absolute in relative Position und Ziel-Tile berechnen
-		if (mouseX < player.getTileX()) {
-			targetX = player.getTileX() - new Float(map.getLeftOffsetInTiles()) + mouseX;
-		} else {
-			targetX = player.getTileX() + mouseX - new Float(map.getLeftOffsetInTiles());
-		}
-		if (mouseY < player.getTileY()) {
-			targetY = player.getTileY() - new Float(map.getTopOffsetInTiles()) + mouseY;
-		} else {
-			targetY = player.getTileY() + mouseY - new Float(map.getTopOffsetInTiles());
-		}
-		return new Point((int)targetX, (int)targetY);
 	}
 
 	/**

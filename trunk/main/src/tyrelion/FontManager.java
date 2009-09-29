@@ -44,9 +44,14 @@ public class FontManager{
 		initFonts();
 	}
 	
-	public static FontManager getInstance() throws SlickException{
+	public static FontManager getInstance() {
 		if (instance == null) {
-			instance = new FontManager();
+			try {
+				instance = new FontManager();
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return instance;
 	}

@@ -3,12 +3,16 @@
  */
 package tyrelion.objects;
 
+import java.util.Observer;
+
+import tyrelion.InteractionManager;
+
 
 /**
  * @author jahudi
  *
  */
-public abstract class WorldObject {
+public abstract class WorldObject implements Observer {
 	
 	protected int tileX;
 	protected int tileY;
@@ -16,6 +20,7 @@ public abstract class WorldObject {
 	public WorldObject(int x, int y) {
 		tileX = x;
 		tileY = y;
+		InteractionManager.getInstance().addObserver(this);
 	}
 	
 	public Boolean inRange(WorldObject object) {
@@ -34,6 +39,8 @@ public abstract class WorldObject {
 			return false;
 		}
 	}
+	
+	
 
 	/**
 	 * @return the tileX
