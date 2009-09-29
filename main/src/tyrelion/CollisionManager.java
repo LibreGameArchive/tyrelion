@@ -25,15 +25,6 @@ public class CollisionManager {
 		return instance;
 	}
 	
-	public CollisionManager() {
-		try {
-			player = Player.getInstance();
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 	public boolean collided(float x, float y) {
 		player.getShape().setCenterX(x*48);
 		player.getShape().setCenterY(y*48+10);
@@ -108,6 +99,13 @@ public class CollisionManager {
 	 */
 	public void setMap(TyrelionMap map) {
 		this.map = map;
+	}
+
+	/**
+	 * @param player the player to set
+	 */
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 	
 }

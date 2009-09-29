@@ -25,6 +25,8 @@ public class CursorManager {
 	public static final int HAND = 3;
 	public static final int HAND_LOCKED = 4;
 	
+	private int currentCursor;
+	
 	private Cursor sword;
 	private Cursor bubble;
 	private Cursor bubble_locked;
@@ -90,7 +92,8 @@ public class CursorManager {
 		switch (cursor) {
 		case SWORD:
 			try {
-				container.setMouseCursor(sword, 2, 2);
+			 	container.setMouseCursor(sword, 2, 2);
+			 	currentCursor = SWORD;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -100,6 +103,7 @@ public class CursorManager {
 		case BUBBLE:
 			try {
 				container.setMouseCursor(bubble, 13, 28);
+				currentCursor = BUBBLE;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -109,6 +113,7 @@ public class CursorManager {
 		case BUBBLE_LOCKED:
 			try {
 				container.setMouseCursor(bubble_locked, 13, 28);
+				currentCursor = BUBBLE_LOCKED;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -118,6 +123,7 @@ public class CursorManager {
 		case HAND:
 			try {
 				container.setMouseCursor(hand, 12, 20);
+				currentCursor = HAND;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -127,6 +133,7 @@ public class CursorManager {
 		case HAND_LOCKED:
 			try {
 				container.setMouseCursor(hand_locked, 12, 20);
+				currentCursor = HAND_LOCKED;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -136,12 +143,20 @@ public class CursorManager {
 		default:
 			try {
 				container.setMouseCursor(sword, 2, 2);
+				currentCursor = SWORD;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
 		}
+	}
+
+	/**
+	 * @return the currentCursor
+	 */
+	public int getCurrentCursor() {
+		return currentCursor;
 	}
 	
 }
