@@ -147,4 +147,22 @@ public class Player extends Avatar{
 		this.map = map;
 	}
 
+	/* (non-Javadoc)
+	 * @see tyrelion.objects.WorldObject#leftClickAction()
+	 */
+	@Override
+	public void leftClickAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see tyrelion.objects.WorldObject#rightClickAction()
+	 */
+	@Override
+	public void rightClickAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
