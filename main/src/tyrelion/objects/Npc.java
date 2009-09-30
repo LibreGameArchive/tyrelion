@@ -44,7 +44,7 @@ public class Npc extends Avatar{
 		
 		this.helloText = helloText;
 		
-		shape = new Rectangle(x*48-24, y*48-24, 48, 48);
+		shape = new Rectangle(x*48-24, y*48-32, 48, 62);
 		
 		activeText = new Random().nextInt(helloText.length);
 		
@@ -53,7 +53,6 @@ public class Npc extends Avatar{
 	
 	public void render(Graphics g) {
 		super.render(g);
-		g.draw(shape);
 	}
 	
 	public void drawBubble(Graphics g){

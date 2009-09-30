@@ -86,16 +86,16 @@ public abstract class Avatar extends WorldObject {
 							if (image.isFile() && !elem.isHidden()) {
 								try {
 									if ("up".equals(elem.getName())) {
-										up.addFrame(new Image(image.getAbsolutePath()), 1);
+										up.addFrame(new Image(image.getAbsolutePath()), 10);
 									}
 									if ("down".equals(elem.getName())) {
-										down.addFrame(new Image(image.getAbsolutePath()), 1);
+										down.addFrame(new Image(image.getAbsolutePath()), 10);
 									}
 									if ("left".equals(elem.getName())) {
-										left.addFrame(new Image(image.getAbsolutePath()), 1);
+										left.addFrame(new Image(image.getAbsolutePath()), 10);
 									}
 									if ("right".equals(elem.getName())) {
-										right.addFrame(new Image(image.getAbsolutePath()), 1);
+										right.addFrame(new Image(image.getAbsolutePath()), 10);
 									}
 								} catch (SlickException e) {
 									e.printStackTrace();
