@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tyrelion.music;
+package tyrelion.loaders;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.newdawn.slick.SlickException;
+
+import tyrelion.music.TyrelionMusic;
 
 /**
  * This class checks the "music" folder for its contents. It creates a list of categories and a map

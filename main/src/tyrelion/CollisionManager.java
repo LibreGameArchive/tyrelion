@@ -1,6 +1,5 @@
 package tyrelion;
 
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
 
 import tyrelion.map.TyrelionMap;

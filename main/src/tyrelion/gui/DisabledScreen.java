@@ -7,21 +7,10 @@ package tyrelion.gui;
 
 
 
-import java.util.Observable;
-import java.util.Observer;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-
-import tyrelion.CursorManager;
-import tyrelion.InteractionManager;
-import tyrelion.TyrelionContainer;
-import tyrelion.character.Inventory;
-import tyrelion.character.Inventory.InventoryField;
-import tyrelion.objects.Player;
 
 /**
  * @author imladriel

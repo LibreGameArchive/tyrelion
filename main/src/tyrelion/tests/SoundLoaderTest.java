@@ -9,7 +9,7 @@ import junit.framework.JUnit4TestAdapter;
 import org.junit.Before;
 import org.junit.Test;
 
-import tyrelion.sfx.SoundLoader;
+import tyrelion.loaders.SoundLoader;
 
 
 /**

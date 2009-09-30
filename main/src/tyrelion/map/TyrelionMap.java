@@ -16,8 +16,8 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.tiled.TiledMap;
 
 import tyrelion.CollisionManager;
-import tyrelion.ItemLoader;
-import tyrelion.NpcLoader;
+import tyrelion.loaders.ItemLoader;
+import tyrelion.loaders.NpcLoader;
 import tyrelion.objects.Npc;
 import tyrelion.objects.Player;
 import tyrelion.objects.WorldItem;

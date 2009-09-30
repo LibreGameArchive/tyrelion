@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tyrelion;
+package tyrelion.loaders;
 
 import java.util.List;
 
