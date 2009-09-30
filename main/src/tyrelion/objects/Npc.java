@@ -29,23 +29,21 @@ import tyrelion.map.TyrelionMap;
  */
 public class Npc extends Avatar{
 	
-	private String[] helloText = { "Seyd gegrüßt!", "Hallo, wie geht es Euch?", "Wisst Ihr schon das" +
-			" Neueste?", "Schöner Tag oder?" } ;
+	private String[] helloText;
 	private int activeText;
 	private Boolean isShowingHello = false;
+	private final int uid;
 	
 	private int bubbleLength = 15;
 	
-	public Npc(int x, int y) throws SlickException {
-		super(x, y);
+	public Npc(int id, int x, int y, String animation, String[] helloText) throws SlickException {
+		super(x, y, animation);
+		
+		uid = id;
+		
+		this.helloText = helloText;
 		
 		shape = new Rectangle(x*48-24, y*48-24, 48, 48);
-		
-		animations[ANIM_UP].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
-		animations[ANIM_DOWN].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
-		animations[ANIM_LEFT].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
-		animations[ANIM_RIGHT].addFrame(new Image("res/anim/priest_anim/priest_se.png", new Color(0x00cc00ff)), 1);
-		setAnimation(ANIM_RIGHT);
 		
 		activeText = new Random().nextInt(helloText.length);
 	}
@@ -199,6 +197,13 @@ public class Npc extends Avatar{
 	@Override
 	public void rightClickAction() {
 		toggleShowHello();
+	}
+
+	/**
+	 * @return the uid
+	 */
+	public int getUid() {
+		return uid;
 	}
 	
 }

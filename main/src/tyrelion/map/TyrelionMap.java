@@ -17,6 +17,8 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import tyrelion.CollisionManager;
 import tyrelion.ItemLoader;
+import tyrelion.NpcLoader;
+import tyrelion.objects.Npc;
 import tyrelion.objects.Player;
 import tyrelion.objects.WorldItem;
 
@@ -67,6 +69,7 @@ public class TyrelionMap extends TiledMap {
 		npcs = new NpcMap(width, height);
 		items = new WorldItemMap(width, height);
 		loadItems("res/xml/itemMap.xml");
+		loadNpcs("res/xml/npcMap.xml");
 	}
 	
 	public void render(Player player, Graphics g) {
@@ -131,11 +134,11 @@ public class TyrelionMap extends TiledMap {
 		items.drawItems(displayStartX, displayStartY, displayEndX, displayEndY, g);
 	}
 	
-	public void loadItems(String ref) {
+	public void loadItems(String filename) {
 		ItemLoader itemLoader = new ItemLoader("res/xml/items.xml");
 		
 		try {
-			Document itemMap = new SAXBuilder().build(ref);
+			Document itemMap = new SAXBuilder().build(filename);
 			List<?> childs = itemMap.getRootElement().getChildren();
 			
 			for (int i = 0; i < childs.size(); i++) {
@@ -149,6 +152,30 @@ public class TyrelionMap extends TiledMap {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadNpcs(String filename) {
+		NpcLoader npcLoader = new NpcLoader("res/xml/npcs.xml");
+		
+		try {
+			Document npcMap = new SAXBuilder().build(filename);
+			List<?> childs = npcMap.getRootElement().getChildren();
+			
+			for (int i = 0; i < childs.size(); i++) {
+				Element e = (Element) childs.get(i);
+				int id = e.getAttribute("id").getIntValue();
+				int posX = e.getAttribute("posX").getIntValue();
+				int posY = e.getAttribute("posY").getIntValue();
+				
+				Npc npc = npcLoader.getNpc(id);
+				npc.setX(posX);
+				npc.setY(posY);
+				
+				npcs.addNpc(npc);
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

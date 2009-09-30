@@ -3,9 +3,13 @@
  */
 package tyrelion.objects;
 
+import java.io.File;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
 
 import tyrelion.map.TyrelionMap;
@@ -35,22 +39,13 @@ public abstract class Avatar extends WorldObject {
 	
 	protected Shape shape;
 	
-	public Avatar(int x, int y) {
+	public Avatar(int x, int y, String animation) throws SlickException {
 		super(x, y);
 		
 		posX = x;
 		posY = y;
 		
-		animations = new Animation[4];
-		Animation up = new Animation();
-		Animation down = new Animation();
-		Animation left = new Animation();
-		Animation right = new Animation();
-		animations[ANIM_UP] = up;
-		animations[ANIM_DOWN] = down;
-		animations[ANIM_LEFT] = left;
-		animations[ANIM_RIGHT] = right;
-		setAnimation(ANIM_RIGHT);
+		loadAnimations(animation);
 	}
 	
 	public void render(Graphics g) {
@@ -64,6 +59,52 @@ public abstract class Avatar extends WorldObject {
 		
 		tileOffsetX = (int) ((tileX - posX) * TyrelionMap.TILE_SIZE);
 		tileOffsetY = (int) ((tileY - posY) * TyrelionMap.TILE_SIZE);		
+	}
+	
+	public void loadAnimations(String animation) {
+		animations = new Animation[4];
+		Animation up = new Animation();
+		Animation down = new Animation();
+		Animation left = new Animation();
+		Animation right = new Animation();
+		animations[ANIM_UP] = up;
+		animations[ANIM_DOWN] = down;
+		animations[ANIM_LEFT] = left;
+		animations[ANIM_RIGHT] = right;
+		setAnimation(ANIM_RIGHT);
+		
+		File root = new File("res/anim/"+animation);
+		File[] anims = root.listFiles();
+		
+		if (anims != null){
+			for (File elem : anims) {
+				if (elem.isDirectory() && !elem.isHidden()) {
+					File[] images = elem.listFiles();
+					if (images != null) {
+						for (File image : images) {
+							if (image.isFile() && !elem.isHidden()) {
+								try {
+									if ("up".equals(elem.getName())) {
+										up.addFrame(new Image(image.getAbsolutePath()), 1);
+									}
+									if ("down".equals(elem.getName())) {
+										down.addFrame(new Image(image.getAbsolutePath()), 1);
+									}
+									if ("left".equals(elem.getName())) {
+										left.addFrame(new Image(image.getAbsolutePath()), 1);
+									}
+									if ("right".equals(elem.getName())) {
+										right.addFrame(new Image(image.getAbsolutePath()), 1);
+									}
+								} catch (SlickException e) {
+									e.printStackTrace();
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	public void setAnimation(int i) {
@@ -117,6 +158,16 @@ public abstract class Avatar extends WorldObject {
 	 */
 	public void setPosY(float posY) {
 		this.posY = posY;
+	}
+	
+	public void setX(int x) {
+		posX = x;
+		tileX = x;
+	}
+	
+	public void setY(int y) {
+		posY = y;
+		tileY = y;
 	}
 
 	/**

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <items>
-	<item id="0" name="Krasser Apfel" class="food">
+	<item id="0" name="Leckerer Apfel" class="food" stackable="true">
 		<imageWorld>res/img/items/apple_world.png</imageWorld>
 		<imageInv>res/img/items/apple_inv.png</imageInv>
-		<stackable>true</stackable>
 	</item>
-	<item id="1" name="Heftiges Schwer des Todes" class="weapon">
+	<item id="1" name="Heftiges Schwert des Todes" class="weapon" stackable="false">
 		<imageWorld>res/img/items/sword_world.png</imageWorld>
 		<imageInv>res/img/items/sword_inv.png</imageInv>
-		<stackable>false</stackable>
 	</item>
 </items>

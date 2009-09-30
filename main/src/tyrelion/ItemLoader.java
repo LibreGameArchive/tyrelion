@@ -3,12 +3,10 @@
  */
 package tyrelion;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.jdom.Document;
 import org.jdom.Element;
-import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.newdawn.slick.Image;
 
@@ -35,7 +33,7 @@ public class ItemLoader {
 		}
 	}
 	
-	public Item[] makeItems() throws Exception {
+	public void makeItems() throws Exception {
 		List<?> childs = itemsXml.getRootElement().getChildren();
 		items = new Item[childs.size()];
 		
@@ -44,19 +42,11 @@ public class ItemLoader {
 			Item item = null;
 			
 			int id = e.getAttribute("id").getIntValue();
-			String name = e.getAttribute("name").getValue();
-			String type = e.getAttribute("class").getValue();
-			String imageWorld = e.getChild("imageWorld").getTextNormalize();
-			String imageInv = e.getChild("imageInv").getTextNormalize();
-			String stackableStr = e.getChild("stackable").getTextNormalize();
-			
-			boolean stackable;
-			
-			if ("true".equals(stackableStr)) {
-				stackable = true;
-			} else {
-				stackable = false;
-			}
+			String name = e.getAttributeValue("name");
+			String type = e.getAttributeValue("class");
+			boolean stackable = e.getAttribute("stackable").getBooleanValue();
+			String imageWorld = e.getChildTextNormalize("imageWorld");
+			String imageInv = e.getChildTextNormalize("imageInv");
 			
 			if ("food".equals(type)) {
 				item = new Food(id, name, new Image(imageWorld), new Image(imageInv), stackable);
@@ -65,7 +55,6 @@ public class ItemLoader {
 			}
 			items[i] = item;
 		}
-		return items;
 	}
 	
 	public Item getItem(int id) {
