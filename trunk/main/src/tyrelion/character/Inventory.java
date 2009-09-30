@@ -8,7 +8,11 @@ import java.awt.Point;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
+import tyrelion.TyrelionContainer;
 import tyrelion.itemsystem.Item;
+import tyrelion.objects.Player;
+import tyrelion.objects.WorldItem;
+import tyrelion.sfx.SoundManager;
 
 /**
  * @author Basti
@@ -23,13 +27,14 @@ public class Inventory {
 		
 		private boolean show = true;
 		
+		private InventoryField splittedDummy = null;
+		
 		public InventoryField(FieldContent content){
 			this.content = content;
-			
 		}
 		
-		public InventoryField(){
-			
+		public InventoryField(Item item){
+			this.content = new InventoryItem(item);
 		}
 		
 		/** puts an item into this field */
@@ -61,8 +66,26 @@ public class Inventory {
 		}
 		
 		
-		public void toggleShow(){
-			show = !show;
+		public void toggleShow(boolean split){
+			if (show){
+				if (split && this.getCount()>1) {
+					splittedDummy = new InventoryField(new InventoryStack(this.getItem(), this.getCount()-1));
+				} else { 
+					splittedDummy = null; 
+					show = false;
+				}
+			} else {
+				splittedDummy = null;
+				show = true;
+			}
+		}
+		
+		public void showIt(){
+			show = true;
+		}
+		
+		public InventoryField getSplittedDummy(){
+			return splittedDummy;
 		}
 		
 		public boolean isShow(){
@@ -81,6 +104,16 @@ public class Inventory {
 			content.decreaseCountBy(count);
 		}
 		
+		public void increaseCountBy(int count){
+			if (content instanceof InventoryItem){
+				content = new InventoryStack(content.getItem(), 2);
+			} else {
+				content.increaseCountBy(count);
+			}
+			
+			
+		}
+		
 		/** returns the item stored in this field */
 		public Item getItem(){
 			return content.getItem();
@@ -91,8 +124,10 @@ public class Inventory {
 		}
 		
 		public void render(Graphics g, int x, int y){
-			g.drawImage(content.getItem().getImage_inv(), x, y);
-			if (content.getCount()>1) g.drawString(Integer.toString(content.getCount()), x+30, y+2);
+			FieldContent renderedContent;
+			if (splittedDummy == null) { renderedContent = this.getContent(); } else { renderedContent = splittedDummy.getContent(); }
+			g.drawImage(renderedContent.getItem().getImage_inv(), x, y);
+			if (renderedContent.getCount()>1) g.drawString(Integer.toString(renderedContent.getCount()), x+30, y+2);
 		}
 	}
 	
@@ -105,9 +140,10 @@ public class Inventory {
 		public int getCount();
 		
 		public void decreaseCountBy(int count);
+		public void increaseCountBy(int count);
 	}
 	
-	private class InventoryItem implements FieldContent{
+	class InventoryItem implements FieldContent{
 		
 		private Item item;
 		
@@ -127,9 +163,13 @@ public class Inventory {
 			//
 		}
 		
+		public void increaseCountBy(int count){
+			//
+		}
+		
 	}
 	
-	private class InventoryStack implements FieldContent{
+	class InventoryStack implements FieldContent{
 		
 		private Item item;
 		private int count;
@@ -150,6 +190,11 @@ public class Inventory {
 		public void decreaseCountBy(int count){
 			this.count= this.count-count;
 			if (count < 1) count = 1;
+		}
+		
+		public void increaseCountBy(int count){
+			if ((this.count+count) < 6)
+				this.count= this.count+count;
 		}
 		
 	}
@@ -246,45 +291,86 @@ public class Inventory {
 		return fields[fieldX][fieldY];
 	}
 	
-	public void drop(FieldContent content, int x, int y){
-		int fieldX = x / 56;
-		int fieldY = y / 55;
-		
-		//not the same field 
-		if (fieldX!=flyingX || fieldY!=flyingY){
+	public void drop(FieldContent content, int fieldX, int fieldY, boolean splitted){
+		if ((fieldX < 0) || (fieldY < 0)){
 			
-			//new field not null
-			if (fields[fieldX][fieldY]!=null){
-				//same item? (if not same, but not stackable it snaps back)
-				if (fields[fieldX][fieldY].getItem().getUid() == content.getItem().getUid()) {
-					//full stack
-					if (!fields[fieldX][fieldY].isFull()) {
-						//count of the source stack
-						int stack1 = fields[fieldX][fieldY].getCount();
-						//count of the new stack
-						int stack2 = fields[flyingX][flyingY].getCount();
-						//fillup the new stack and decrease the old one
-						if ((stack1+stack2)>5) {
-							fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), 5));
-							fields[flyingX][flyingY].decreaseCountBy(stack2-stack1);
-						} else {
-							fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), stack1+stack2));
-						}
-					}
-				} else { 
-					//flip old and new item
-					fields[flyingX][flyingY] = fields[fieldX][fieldY];
-					fields[fieldX][fieldY] = new InventoryField(content);
-				}
+			if (fields[flyingX][flyingY].getCount()>1){
+				fields[flyingX][flyingY].decreaseCountBy(1);
 			} else {
-				//just move item
-				fields[fieldX][fieldY] = new InventoryField(content);
 				fields[flyingX][flyingY] = null;
 			}
+			
+			WorldItem droppedItem = new WorldItem(Player.getInstance().getTileX(), Player.getInstance().getTileY(), content.getItem());
+			
+			TyrelionContainer.getInstance().getMap().getItems().addItem(droppedItem);
+			
+			SoundManager.getInstance().play("ambience", "thunder");
+			
+		} else {
+			
+			//not the same field 
+			if (fieldX!=flyingX || fieldY!=flyingY){
+				if (splitted){
+					
+					if (fields[fieldX][fieldY]!=null){
+						//same item? (if not same, but not stackable it snaps back)
+						if (fields[fieldX][fieldY].getItem().getUid() == content.getItem().getUid()) {
+							//full stack?
+							if (!fields[fieldX][fieldY].isFull()) {
+									fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), fields[fieldX][fieldY].getCount()+1));
+									if (fields[flyingX][flyingY].getCount()>1){
+										fields[flyingX][flyingY].decreaseCountBy(1);
+									} else {
+										fields[flyingX][flyingY] = null;
+									}
+							}
+						}
+					} else {
+						//just move item
+						fields[fieldX][fieldY] = new InventoryField(content);
+						if (fields[flyingX][flyingY].getCount()>1){
+							fields[flyingX][flyingY].decreaseCountBy(1);
+						} else {
+							fields[flyingX][flyingY] = null;
+						}
+					}
+					
+				} else {
+				
+					//new field not null
+					if (fields[fieldX][fieldY]!=null){
+						//same item? (if not same, but not stackable it snaps back)
+						if (fields[fieldX][fieldY].getItem().getUid() == content.getItem().getUid()) {
+							//full stack?
+							if (!fields[fieldX][fieldY].isFull()) {
+								//count of the source stack
+								int stack1 = fields[fieldX][fieldY].getCount();
+								//count of the new stack
+								int stack2 = fields[flyingX][flyingY].getCount();
+								//fillup the new stack and decrease the old one
+								if ((stack1+stack2)>5) {
+									fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), 5));
+									fields[flyingX][flyingY]= new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), stack1+stack2-5));
+								} else {
+									fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), stack1+stack2));
+									fields[flyingX][flyingY] = null;
+								}
+							}
+						} else { 
+							//flip old and new item
+							fields[flyingX][flyingY] = fields[fieldX][fieldY];
+							fields[fieldX][fieldY] = new InventoryField(content);
+						}
+					} else {
+						//just move item
+						fields[fieldX][fieldY] = new InventoryField(content);
+						fields[flyingX][flyingY] = null;
+					}
+				}	
+			}
+			
 		}
-		
+	
 	}
-	
-	
 	
 }

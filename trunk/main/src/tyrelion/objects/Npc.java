@@ -34,6 +34,7 @@ public class Npc extends Avatar{
 	private Boolean isShowingHello = false;
 	private final int uid;
 	
+	private Image bubbleImg;
 	private int bubbleLength = 15;
 	
 	public Npc(int id, int x, int y, String animation, String[] helloText) throws SlickException {
@@ -46,6 +47,8 @@ public class Npc extends Avatar{
 		shape = new Rectangle(x*48-24, y*48-24, 48, 48);
 		
 		activeText = new Random().nextInt(helloText.length);
+		
+		bubbleImg = new Image("res/img/interaction/bubble.png");
 	}
 	
 	public void render(Graphics g) {
@@ -55,11 +58,7 @@ public class Npc extends Avatar{
 	
 	public void drawBubble(Graphics g){
 		if (isShowingHello) {
-			try {
-				g.drawImage(new Image("res/img/interaction/bubble.png"), tileX*TyrelionMap.TILE_SIZE-35, tileY*TyrelionMap.TILE_SIZE-105);
-			} catch (SlickException e) {
-				e.printStackTrace();
-			}
+			g.drawImage(bubbleImg, tileX*TyrelionMap.TILE_SIZE-35, tileY*TyrelionMap.TILE_SIZE-105);
 			drawHelloText(g);
 		}
 	}

@@ -17,6 +17,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 import tyrelion.CursorManager;
+import tyrelion.FontManager;
 import tyrelion.InteractionManager;
 import tyrelion.TyrelionContainer;
 import tyrelion.character.Inventory;
@@ -29,9 +30,6 @@ import tyrelion.objects.Player;
  */
 public class Charinfo implements Observer{
 	
-	private GameContainer conatainer;
-	private Graphics graphics;
-	
 	/** Background for the infobox */
 	private Image background;
 	
@@ -43,6 +41,9 @@ public class Charinfo implements Observer{
 	int mouseX;
 	int mouseY;
 	
+	/** defines if a stack should be splitted when dragged */
+	boolean split = false;
+	
 	boolean showCharinfo = false;
 	
 	boolean mousePressed = false;
@@ -53,7 +54,6 @@ public class Charinfo implements Observer{
 
 	public Charinfo(GameContainer container)
 			throws SlickException {
-		this.conatainer = container;
 		
 		background = new Image("res/img/gui/gui_charinfo.png");
 		
@@ -73,9 +73,8 @@ public class Charinfo implements Observer{
 			g.drawImage(background, posX, posY);
 			
 			inventory.render(g, posX+577, posY+236);
-			if (itemAtCursor!=null) itemAtCursor.render(graphics, mouseX-25, mouseY-25);
+			if (itemAtCursor!=null) itemAtCursor.render(g, mouseX-25, mouseY-25);
 			
-			graphics = g;
 		}
 	}
 	
@@ -101,6 +100,16 @@ public class Charinfo implements Observer{
 					TyrelionContainer.getInstance().getContainer().resume();
 				}
 			}
+			
+			if (im.getKeyReleased_key() == Input.KEY_LSHIFT || im.getKeyReleased_key() == Input.KEY_RSHIFT) {
+				split = false;
+			}
+		}
+		
+		if ("keyPressed".equals(input)){
+			if (im.getKeyPressed_key() == Input.KEY_LSHIFT || im.getKeyPressed_key() == Input.KEY_RSHIFT) {
+				split = true;
+			}
 		}
 		
 		if ("mousePressed".equals(input)){
@@ -113,8 +122,13 @@ public class Charinfo implements Observer{
 				
 				mousePressed = true;
 				if (item != null) {
-					item.toggleShow();
-					itemAtCursor = item;
+					if(split && item.getCount()>1){
+						item.toggleShow(split);
+						itemAtCursor = inventory.new InventoryField(item.getItem());
+					} else{
+						item.toggleShow(false);
+						itemAtCursor = item;
+					}
 				}
 			}
 		}
@@ -129,9 +143,15 @@ public class Charinfo implements Observer{
 			int x = im.getMouseReleased_x(); int y = im.getMouseReleased_y();
 			mousePressed = false;
 				if (item != null) {
-					item.toggleShow();
+					item.showIt();
 					if (isMouseOverInventory(x, y)){
-						inventory.drop(itemAtCursor.getContent(), x-posX-577, y-posY-236);
+						int fieldX = (x-posX-577) / 56;
+						int fieldY = (y-posY-236) / 55;
+						inventory.drop(itemAtCursor.getContent(), fieldX, fieldY, split);
+					} else {
+						if (isMouseOutOfScreen(x, y)){
+							inventory.drop(itemAtCursor.getContent(), -1, -1, split);
+						}
 					}
 					itemAtCursor = null;
 					item = null;
@@ -143,6 +163,10 @@ public class Charinfo implements Observer{
 	/** returns true if mouse position is over the inventory */
 	private boolean isMouseOverInventory(int x, int y){
 		return ((x >= posX+577) && (x <= posX+577+56*4-3)	&& (y >= posY+236) && (y <= posY+236+54*6-3));
+	}
+	
+	private boolean isMouseOutOfScreen(int x, int y){
+		return ((x < posX+20) || (x > posX+780)	|| (y < posY+50) || (y > posY+610));
 	}
 
 }
