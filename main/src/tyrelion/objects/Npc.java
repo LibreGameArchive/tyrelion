@@ -50,6 +50,7 @@ public class Npc extends Avatar{
 	
 	public void render(Graphics g) {
 		super.render(g);
+		g.draw(shape);
 	}
 	
 	public void drawBubble(Graphics g){
@@ -131,6 +132,8 @@ public class Npc extends Avatar{
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(Observable arg0, Object arg1) {
+		shape.setCenterX(tileX*48);
+		shape.setCenterY(tileY*48);
 		if (!TyrelionContainer.getInstance().getContainer().isPaused()){
 			InteractionManager im = (InteractionManager) arg0;
 			

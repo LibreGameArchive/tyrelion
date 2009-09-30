@@ -54,11 +54,12 @@ public abstract class Avatar extends WorldObject {
 	}
 	
 	public void update(GameContainer container) {
+		
 		tileX = Math.round(posX);
 		tileY = Math.round(posY);
 		
 		tileOffsetX = (int) ((tileX - posX) * TyrelionMap.TILE_SIZE);
-		tileOffsetY = (int) ((tileY - posY) * TyrelionMap.TILE_SIZE);		
+		tileOffsetY = (int) ((tileY - posY) * TyrelionMap.TILE_SIZE);	
 	}
 	
 	public void loadAnimations(String animation) {
