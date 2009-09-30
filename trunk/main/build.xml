@@ -8,8 +8,8 @@
 	<property name="build" value="build"/>
 	<property name="dist" value="dist"/>
 	<property name="doc" value="doc"/>
-	<property name="classpath" value="${lib}/slick.jar; ${lib}/lwjgl.jar; ${lib}/jogg-0.0.7.jar; ${lib}/jorbis-0.0.15.jar; ${lib}/sui.jar"/>
-	<property name="classpathJar" value="${lib}/slick.jar ${lib}/lwjgl.jar ${lib}/jogg-0.0.7.jar ${lib}/jorbis-0.0.15.jar ${lib}/sui.jar"/>
+	<property name="classpath" value="${lib}/slick.jar; ${lib}/lwjgl.jar; ${lib}/jogg-0.0.7.jar; ${lib}/jorbis-0.0.15.jar; ${lib}/sui.jar; ${lib}/jdom.jar" />
+	<property name="classpathJar" value="${lib}/slick.jar ${lib}/lwjgl.jar ${lib}/jogg-0.0.7.jar ${lib}/jorbis-0.0.15.jar ${lib}/sui.jar ${lib}/jdom.jar" />
 	
 	<!-- Create all needed directories -->
 	<target name="mkdir">
