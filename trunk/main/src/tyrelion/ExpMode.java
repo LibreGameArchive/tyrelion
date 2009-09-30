@@ -103,10 +103,6 @@ public class ExpMode extends BasicGameState {
 		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
 		
 		charinfo = new Charinfo(container);
-		
-		map.getNpcs().addNpc(new Npc(0, 14));
-		map.getNpcs().addNpc(new Npc(2, 16));
-		map.getNpcs().addNpc(new Npc(4, 18));
 	}
 
 	/* (non-Javadoc)

@@ -6,10 +6,8 @@ package tyrelion.objects;
 import java.util.Observable;
 
 import org.lwjgl.input.Keyboard;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
@@ -34,15 +32,9 @@ public class Player extends Avatar{
 	private TyrelionMap map;
 	
 	public Player(int x, int y) throws SlickException{
-		super(x, y);
+		super(x, y, "player");
 
 		shape = new Rectangle(x*48-20, y*48-10, 40, 40);
-		
-		animations[ANIM_UP].addFrame(new Image("res/anim/test_anim/up/up.png", new Color(0x00cc00ff)), 1);
-		animations[ANIM_DOWN].addFrame(new Image("res/anim/test_anim/down/down.png", new Color(0x00cc00ff)), 1);
-		animations[ANIM_LEFT].addFrame(new Image("res/anim/test_anim/left/left.png", new Color(0x00cc00ff)), 1);
-		animations[ANIM_RIGHT].addFrame(new Image("res/anim/test_anim/right/right.png", new Color(0x00cc00ff)), 1);
-		setAnimation(ANIM_RIGHT);
 		
 		character = new Character();
 	}

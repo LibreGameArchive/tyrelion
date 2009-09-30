@@ -58,6 +58,20 @@ public abstract class WorldObject implements Observer {
 	public int getTileY() {
 		return tileY;
 	}
+
+	/**
+	 * @param tileX the tileX to set
+	 */
+	public void setTileX(int tileX) {
+		this.tileX = tileX;
+	}
+
+	/**
+	 * @param tileY the tileY to set
+	 */
+	public void setTileY(int tileY) {
+		this.tileY = tileY;
+	}
 	
 	
 }
