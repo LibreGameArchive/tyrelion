@@ -7,6 +7,8 @@ import java.util.HashMap;
 
 import org.newdawn.slick.Sound;
 
+import tyrelion.loaders.SoundLoader;
+
 /**
  * @author jahudi
  *

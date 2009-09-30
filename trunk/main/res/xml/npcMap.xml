@@ -2,6 +2,6 @@
 <npcMap>
 	<npc id="0" posX="5" posY="16" />
 	<npc id="1" posX="7" posY="18" />
-	<npc id="2" posX="9" posY="20" />
+	<npc id="2" posX="11" posY="20" />
 	<npc id="1" posX="13" posY="21" />
 </npcMap>

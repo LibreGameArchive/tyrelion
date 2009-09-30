@@ -3,11 +3,7 @@
  */
 package tyrelion.itemsystem;
 
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-
-import tyrelion.map.TyrelionMap;
-import tyrelion.objects.WorldObject;
 
 /**
  * @author Basti

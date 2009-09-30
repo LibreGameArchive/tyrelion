@@ -5,8 +5,6 @@ package tyrelion;
 
 import java.awt.Point;
 
-import org.newdawn.slick.SlickException;
-
 import tyrelion.map.TyrelionMap;
 import tyrelion.objects.Player;
 

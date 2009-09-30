@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import tyrelion.loaders.MusicLoader;
+
 /**
  * The MusicManager controls music playback, looping and the playback volume.
  * @author jahudi
