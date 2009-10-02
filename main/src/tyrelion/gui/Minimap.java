@@ -30,8 +30,6 @@ public class Minimap {
 	private int partSize = 5;
 
 	private String[][] types;
-	private Color[][] minimap;
-	private static org.newdawn.slick.Color PLAYER = new org.newdawn.slick.Color(200,10,10);
 	private static Color NOTHING = Color.black;
 	private static Color GRASS = new Color(0x00125804);
 	private static Color TREE = new Color(0x0065280b);
