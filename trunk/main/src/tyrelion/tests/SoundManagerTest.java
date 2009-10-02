@@ -26,7 +26,7 @@ public class SoundManagerTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		manager = new SoundManager();
+		manager = SoundManager.getInstance();
 	}
 
 	/**
@@ -34,8 +34,8 @@ public class SoundManagerTest {
 	 */
 	@Test
 	public void testGetInstance() {
-		assertNotNull(manager.getInstance());
-		assertEquals(manager.getInstance(), manager.getInstance());
+		assertNotNull(SoundManager.getInstance());
+		assertEquals(SoundManager.getInstance(), manager);
 	}
 
 	/**

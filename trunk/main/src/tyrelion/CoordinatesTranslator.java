@@ -31,12 +31,12 @@ public class CoordinatesTranslator {
 		float mouseY;
 		float targetX;
 		float targetY;
-		float tempX = x / (new Float(map.getTileSize()));
-		float tempY = y / (new Float(map.getTileSize()));
-		int offsetX = (int)(((int)tempX - tempX) * map.getTileSize());
-		int offsetY = (int)(((int)tempY - tempY) * map.getTileSize());
-		mouseX = (x-offsetX) / (new Float(map.getTileSize()));
-		mouseY = (y-offsetY) / (new Float(map.getTileSize()));
+		float tempX = x / (new Float(TyrelionMap.getTileSize()));
+		float tempY = y / (new Float(TyrelionMap.getTileSize()));
+		int offsetX = (int)(((int)tempX - tempX) * TyrelionMap.getTileSize());
+		int offsetY = (int)(((int)tempY - tempY) * TyrelionMap.getTileSize());
+		mouseX = (x-offsetX) / (new Float(TyrelionMap.getTileSize()));
+		mouseY = (y-offsetY) / (new Float(TyrelionMap.getTileSize()));
 		
 		// absolute in relative Position und Ziel-Tile berechnen
 		if (mouseX < player.getTileX()) {

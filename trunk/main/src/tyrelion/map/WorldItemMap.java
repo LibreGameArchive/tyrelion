@@ -45,4 +45,11 @@ public class WorldItemMap {
 			}
 		}
 	}
+
+	/**
+	 * @return the items
+	 */
+	public WorldItem[][] getItems() {
+		return items;
+	}
 }

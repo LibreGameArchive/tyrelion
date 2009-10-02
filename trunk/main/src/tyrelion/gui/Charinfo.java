@@ -3,10 +3,6 @@
  */
 package tyrelion.gui;
 
-
-
-
-
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,7 +13,6 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 import tyrelion.CursorManager;
-import tyrelion.FontManager;
 import tyrelion.InteractionManager;
 import tyrelion.TyrelionContainer;
 import tyrelion.character.Inventory;

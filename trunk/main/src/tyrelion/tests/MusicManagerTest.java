@@ -26,7 +26,7 @@ public class MusicManagerTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		manager = new MusicManager();
+		manager = MusicManager.getInstance();
 	}
 
 	/**
@@ -34,8 +34,8 @@ public class MusicManagerTest {
 	 */
 	@Test
 	public void testGetInstance() {
-		assertNotNull(manager.getInstance());
-		assertEquals(manager.getInstance(), manager.getInstance());
+		assertNotNull(MusicManager.getInstance());
+		assertEquals(MusicManager.getInstance(), manager);
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class MusicManagerTest {
 	 */
 	@Test
 	public void testPickRandom() {
-		assertNotNull(manager.getInstance().pickRandom("menu"));
+		assertNotNull(MusicManager.getInstance().pickRandom("menu"));
 	}
 
 	/**
