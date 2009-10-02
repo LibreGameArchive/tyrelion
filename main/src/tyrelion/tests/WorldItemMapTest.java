@@ -4,7 +4,7 @@
 package tyrelion.tests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotSame;
 import junit.framework.JUnit4TestAdapter;
 
 import org.junit.Before;
@@ -39,7 +39,7 @@ public class WorldItemMapTest {
 	@Test
 	public void testAddItem() {
 		map.addItem(item);
-		assertEquals(item, map.getItems()[1][2]);
+		assertEquals(item, map.getFirstItem(1, 2));
 	}
 
 	/**
@@ -48,20 +48,9 @@ public class WorldItemMapTest {
 	@Test
 	public void testRemoveItemWorldItem() {
 		map.addItem(item);
-		assertEquals(item, map.getItems()[1][2]);
+		assertEquals(item, map.getFirstItem(1, 2));
 		map.removeItem(item);
-		assertNull(map.getItems()[1][2]);
-	}
-
-	/**
-	 * Test method for {@link tyrelion.map.WorldItemMap#removeItem(int, int)}.
-	 */
-	@Test
-	public void testRemoveItemIntInt() {
-		map.addItem(item);
-		assertEquals(item, map.getItems()[1][2]);
-		map.removeItem(1, 2);
-		assertNull(map.getItems()[1][2]);
+		assertNotSame(map.getFirstItem(1, 2), item);
 	}
 
 	/**
@@ -70,8 +59,8 @@ public class WorldItemMapTest {
 	@Test
 	public void testGetItem() {
 		map.addItem(item);
-		assertEquals(item, map.getItems()[1][2]);
-		assertEquals(item, map.getItem(1, 2));
+		assertEquals(item, map.getItems()[1][2].get(0));
+		assertEquals(item, map.getFirstItem(1, 2));
 	}
 	
 	public static junit.framework.Test suite() {
