@@ -293,16 +293,24 @@ public class Inventory {
 	
 	public void drop(FieldContent content, int fieldX, int fieldY, boolean splitted){
 		if ((fieldX < 0) || (fieldY < 0)){
+			int dropCount = content.getCount();
 			
-			if (fields[flyingX][flyingY].getCount()>1){
-				fields[flyingX][flyingY].decreaseCountBy(1);
-			} else {
+			if (splitted){
+				if (fields[flyingX][flyingY].getCount()>1){
+					fields[flyingX][flyingY].decreaseCountBy(1);
+				} else {
+					fields[flyingX][flyingY] = null;
+				}
+			} else{
 				fields[flyingX][flyingY] = null;
 			}
 			
-			WorldItem droppedItem = new WorldItem(Player.getInstance().getTileX(), Player.getInstance().getTileY(), content.getItem());
+			for (int i = dropCount; i>0; i=i-1){
+				WorldItem droppedItem = new WorldItem(Player.getInstance().getTileX(), Player.getInstance().getTileY(), content.getItem());
+				TyrelionContainer.getInstance().getMap().getItems().addItem(droppedItem);
+			}
+				
 			
-			TyrelionContainer.getInstance().getMap().getItems().addItem(droppedItem);
 			
 			SoundManager.getInstance().play("ambience", "thunder");
 			

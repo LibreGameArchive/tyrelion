@@ -145,9 +145,7 @@ public class Charinfo implements Observer{
 						inventory.drop(itemAtCursor.getContent(), fieldX, fieldY, split);
 					} else {
 						if (isMouseOutOfScreen(x, y)){
-							for (int i = 0; i<=item.getCount(); i++){
 								inventory.drop(itemAtCursor.getContent(), -1, -1, split);
-							}
 						}
 					}
 					itemAtCursor = null;
