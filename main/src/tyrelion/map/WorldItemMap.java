@@ -54,8 +54,11 @@ public class WorldItemMap {
 	public void drawItems(int startX, int startY, int endX, int endY, Graphics g) {
 		for (int i = startX; i < endX; i++) {
 			for (int j = startY; j < endY; j++) {
-				if (getFirstItem(i, j) != null) {
-					getFirstItem(i, j).render(g);
+				ArrayList<WorldItem> list = getItems(i, j);
+				if (list != null && !list.isEmpty()) {
+					for (WorldItem e : list) {
+						e.render(g);
+					}
 				}
 			}
 		}
