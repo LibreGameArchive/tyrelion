@@ -20,6 +20,7 @@ import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
 import tyrelion.gui.Minimap;
 import tyrelion.itemsystem.Food;
+import tyrelion.loaders.ItemLoader;
 import tyrelion.map.TyrelionMap;
 import tyrelion.music.MusicManager;
 import tyrelion.objects.Player;
@@ -181,12 +182,9 @@ public class ExpMode extends BasicGameState {
 		}
 		
 		if (i == Input.KEY_M) {
-			try {
-				Player.getInstance().getCharacter().getInventory().addItem(new Food(1233, "Krasser Apfel", new Image("res/img/items/apple_world.png"),
-						new Image("res/img/items/apple_inv.png"), true));
-			} catch (SlickException e) {
-				e.printStackTrace();
-			}
+				ItemLoader il = new ItemLoader("res/xml/items.xml");
+				
+				Player.getInstance().getCharacter().getInventory().addItem(il.getItem(0));
 		}
 	}
 	

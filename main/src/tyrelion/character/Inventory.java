@@ -15,7 +15,7 @@ import tyrelion.objects.WorldItem;
 import tyrelion.sfx.SoundManager;
 
 /**
- * @author Basti
+ * @author imladriel
  *
  */
 public class Inventory {
@@ -110,8 +110,6 @@ public class Inventory {
 			} else {
 				content.increaseCountBy(count);
 			}
-			
-			
 		}
 		
 		/** returns the item stored in this field */
