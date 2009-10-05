@@ -71,7 +71,7 @@ public class Player extends Avatar{
 				newPlayerX = posX + -delta * WALK_SPEED;
 				if (!col.collided(newPlayerX, posY)) {	
 					setPosX(newPlayerX);
-					setAnimation(ANIM_LEFT);
+					setAnimation(ANIM_RUNNING_LEFT);
 				}
 			}
 			  
@@ -79,7 +79,7 @@ public class Player extends Avatar{
 				newPlayerX = posX + delta * WALK_SPEED;
 				if (!col.collided(newPlayerX, posY)) {		
 					setPosX(newPlayerX);
-					setAnimation(ANIM_RIGHT);
+					setAnimation(ANIM_RUNNING_RIGHT);
 				}
 			}
 			  
@@ -87,7 +87,7 @@ public class Player extends Avatar{
 				newPlayerY = posY + -delta * WALK_SPEED;
 				if (!col.collided(posX, newPlayerY)) {	
 					setPosY(newPlayerY);
-					setAnimation(ANIM_UP);
+					setAnimation(ANIM_RUNNING_UP);
 				}
 			}
 			  
@@ -95,7 +95,7 @@ public class Player extends Avatar{
 				newPlayerY = posY + delta * WALK_SPEED;
 				if (!col.collided(posX, newPlayerY)) {
 					setPosY(newPlayerY);
-					setAnimation(Player.ANIM_DOWN);
+					setAnimation(Player.ANIM_RUNNING_DOWN);
 				}
 			}
 		}
