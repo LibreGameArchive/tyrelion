@@ -74,8 +74,8 @@ public class TyrelionMap extends TiledMap {
 	
 	public void render(Player player, Graphics g) {
 		
-		this.render(player.getTileOffsetX() - (Player.SIZE / 2),
-				player.getTileOffsetY() - (Player.SIZE / 2), 
+		this.render(player.getTileOffsetX() - (TILE_SIZE / 2),
+				player.getTileOffsetY() - (TILE_SIZE / 2), 
 				player.getTileX() - leftOffsetInTiles, 
 				player.getTileY() - topOffsetInTiles,
 				widthInTiles + 3, heightInTiles + 3);

@@ -72,7 +72,7 @@ public class CollisionManager {
 	}
 	
 	public boolean playerOutOfMap(float x, float y) {
-		if (x + 1 < 0 || y + 1.3 < 0 || x + 0.7 > 63 || y + 1.1 > 63) {
+		if (x < 0 || y < 0 || x > 63 || y > 63) {
 			return true;
 		} else {
 			return false;
