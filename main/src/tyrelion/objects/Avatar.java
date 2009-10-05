@@ -88,18 +88,18 @@ public abstract class Avatar extends WorldObject {
 		setAnimation(ANIM_STANDING_DOWN);
 		
 		File root = new File("res/anim/"+animation);
-		File[] anims = root.listFiles();
+		File[] categories = root.listFiles();
 		
-		if (anims != null){
-			for (File elem : anims) {
-				if (elem.isDirectory() && !elem.isHidden()) {
-					File[] categories = elem.listFiles();
-					for (File cat : categories) {
-						File[] images = cat.listFiles();
+		if (categories != null){
+			for (File category : categories) {
+				if (category.isDirectory() && !category.isHidden()) {
+					File[] anims = category.listFiles();
+					for (File elem : anims) {
+						File[] images = elem.listFiles();
 						if (images != null) {
 							for (File image : images) {
-								if (image.isFile() && !elem.isHidden()) {
-									if ("running".equals(cat.getName())) {
+								if (image.isFile() && !image.isHidden()) {
+									if ("running".equals(category.getName())) {
 										try {
 											if ("up".equals(elem.getName())) {
 												running_up.addFrame(new Image(image.getAbsolutePath()), 10);
@@ -116,7 +116,7 @@ public abstract class Avatar extends WorldObject {
 										} catch (SlickException e) {
 											e.printStackTrace();
 										}
-									} else if ("standing".equals(cat.getName())) {
+									} else if ("standing".equals(category.getName())) {
 										try {
 											if ("up".equals(elem.getName())) {
 												standing_up.addFrame(new Image(image.getAbsolutePath()), 10);

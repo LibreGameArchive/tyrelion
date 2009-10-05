@@ -13,6 +13,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 
 import tyrelion.CollisionManager;
+import tyrelion.InteractionManager;
 import tyrelion.character.Character;
 import tyrelion.map.TyrelionMap;
 import tyrelion.sfx.SoundManager;
@@ -123,8 +124,28 @@ public class Player extends Avatar{
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		InteractionManager im = InteractionManager.getInstance();
 		
+		if("keyReleased".equals(arg)) {
+			int key = im.getKeyReleased_key();
+			switch (key) {
+			case Input.KEY_W:	
+				setAnimation(ANIM_STANDING_UP);
+				break;
+			
+			case Input.KEY_D:
+				setAnimation(ANIM_STANDING_RIGHT);
+				break;
+				
+			case Input.KEY_S:
+				setAnimation(ANIM_STANDING_DOWN);
+				break;
+				
+			case Input.KEY_A:
+				setAnimation(ANIM_STANDING_LEFT);
+				break;
+			}
+		}
 	}
 
 	/**
