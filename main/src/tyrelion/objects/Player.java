@@ -61,7 +61,7 @@ public class Player extends Avatar{
 			
 			if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) ||
 					input.isKeyDown(Input.KEY_A) ||input.isKeyDown(Input.KEY_D)) {
-				SoundManager.getInstance().playOnce("player", "walk");
+				SoundManager.getInstance().playOnce("player", "walk", 1f, 2f);
 			}
 			
 			float newPlayerX;

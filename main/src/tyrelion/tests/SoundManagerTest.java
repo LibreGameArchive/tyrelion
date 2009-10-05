@@ -44,7 +44,7 @@ public class SoundManagerTest {
 	@Test
 	public void testPlayOnce() {
 		manager.setVolume(0f);
-		manager.playOnce("ambience", "thunder");
+		manager.playOnce("ambience", "thunder", 1f, 1f);
 		assertTrue(manager.getPlayOnce().playing());
 	}
 	
