@@ -88,9 +88,7 @@ public class MusicManager {
 	 * @param category The category to loop.
 	 */
 	public void loop(String category) {
-		if (activeTrack != null && activeTrack.playing()) {
-			activeTrack.stop();
-		}
+		activeTrack = null;
 		activeTrack = pickRandom(category);
 		activeTrack.addListener(new MusicListener());
 		activeTrack.play();

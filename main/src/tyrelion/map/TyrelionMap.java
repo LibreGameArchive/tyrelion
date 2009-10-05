@@ -134,9 +134,7 @@ public class TyrelionMap extends TiledMap {
 		items.drawItems(displayStartX, displayStartY, displayEndX, displayEndY, g);
 	}
 	
-	public void loadItems(String filename) {
-		ItemLoader itemLoader = new ItemLoader("res/xml/items.xml");
-		
+	public void loadItems(String filename) {		
 		try {
 			Document itemMap = new SAXBuilder().build(filename);
 			List<?> childs = itemMap.getRootElement().getChildren();
@@ -147,7 +145,7 @@ public class TyrelionMap extends TiledMap {
 				int posX = e.getAttribute("posX").getIntValue();
 				int posY = e.getAttribute("posY").getIntValue();
 				
-				items.addItem(new WorldItem(posX, posY, itemLoader.getItem(id)));
+				items.addItem(new WorldItem(posX, posY, ItemLoader.getInstance().getItem(id)));
 			}
 			
 		} catch (Exception e) {
@@ -157,8 +155,6 @@ public class TyrelionMap extends TiledMap {
 	}
 	
 	public void loadNpcs(String filename) {
-		NpcLoader npcLoader = new NpcLoader("res/xml/npcs.xml");
-		
 		try {
 			Document npcMap = new SAXBuilder().build(filename);
 			List<?> childs = npcMap.getRootElement().getChildren();
@@ -169,7 +165,7 @@ public class TyrelionMap extends TiledMap {
 				int posX = e.getAttribute("posX").getIntValue();
 				int posY = e.getAttribute("posY").getIntValue();
 				
-				Npc npc = npcLoader.getNpc(id);
+				Npc npc = NpcLoader.getInstance().getNpc(id);
 				npc.setX(posX);
 				npc.setY(posY);
 				

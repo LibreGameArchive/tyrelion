@@ -19,6 +19,8 @@ public class MusicListener implements org.newdawn.slick.MusicListener {
 	public void musicEnded(Music music) {
 		
 		TyrelionMusic tMusic = (TyrelionMusic) music;
+		music.removeListener(this);
+		music.stop();
 		MusicManager.getInstance().loop(tMusic.getCategory());
 
 	}

@@ -20,12 +20,21 @@ import tyrelion.itemsystem.Weapon;
  */
 public class ItemLoader {
 	
+	private static ItemLoader instance = null;
+	
 	Document itemsXml;
 	Item[] items;
 	
-	public ItemLoader(String filename) {
+	public static ItemLoader getInstance() {
+		if (instance == null) {
+			instance = new ItemLoader();
+		}
+		return instance;
+	}
+	
+	public ItemLoader() {
 		try {
-			itemsXml = new SAXBuilder().build(filename);
+			itemsXml = new SAXBuilder().build("res/xml/items.xml");
 			makeItems();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

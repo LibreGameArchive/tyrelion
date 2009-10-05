@@ -6,7 +6,6 @@ package tyrelion;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
@@ -19,7 +18,6 @@ import tyrelion.gui.GUILayer;
 import tyrelion.gui.Infobox;
 import tyrelion.gui.Message;
 import tyrelion.gui.Minimap;
-import tyrelion.itemsystem.Food;
 import tyrelion.loaders.ItemLoader;
 import tyrelion.map.TyrelionMap;
 import tyrelion.music.MusicManager;
@@ -181,10 +179,8 @@ public class ExpMode extends BasicGameState {
 			SoundManager.getInstance().play("ambience", "thunder");
 		}
 		
-		if (i == Input.KEY_M) {
-				ItemLoader il = new ItemLoader("res/xml/items.xml");
-				
-				Player.getInstance().getCharacter().getInventory().addItem(il.getItem(0));
+		if (i == Input.KEY_M) {				
+				Player.getInstance().getCharacter().getInventory().addItem(ItemLoader.getInstance().getItem(0));
 		}
 	}
 	

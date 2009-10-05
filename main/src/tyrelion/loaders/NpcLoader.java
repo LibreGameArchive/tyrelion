@@ -16,13 +16,22 @@ import tyrelion.objects.Npc;
  *
  */
 public class NpcLoader {
+	
+	private static NpcLoader instance = null;
 
 	Document npcXml;
 	Npc[] npcs;
 	
-	public NpcLoader(String filename) {
+	public static NpcLoader getInstance() {
+		if (instance == null) {
+			instance = new NpcLoader();
+		}
+		return instance;
+	}
+	
+	public NpcLoader() {
 		try {
-			npcXml = new SAXBuilder().build(filename);
+			npcXml = new SAXBuilder().build("res/xml/npcs.xml");
 			makeNpcs();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
