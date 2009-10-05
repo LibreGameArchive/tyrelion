@@ -20,7 +20,7 @@ import tyrelion.map.TyrelionMap;
  */
 public abstract class Avatar extends WorldObject {
 	
-	public static final int SIZE = 70;
+	public static final int SIZE = 128;
 	public static final float WALK_SPEED = 0.003f;
 	
 	public static final int ANIM_RUNNING_UP = 0;
@@ -102,16 +102,16 @@ public abstract class Avatar extends WorldObject {
 									if ("running".equals(category.getName())) {
 										try {
 											if ("up".equals(elem.getName())) {
-												running_up.addFrame(new Image(image.getAbsolutePath()), 10);
+												running_up.addFrame(new Image(image.getAbsolutePath()), 90);
 											}
 											if ("down".equals(elem.getName())) {
-												running_down.addFrame(new Image(image.getAbsolutePath()), 10);
+												running_down.addFrame(new Image(image.getAbsolutePath()), 90);
 											}
 											if ("left".equals(elem.getName())) {
-												running_left.addFrame(new Image(image.getAbsolutePath()), 10);
+												running_left.addFrame(new Image(image.getAbsolutePath()), 90);
 											}
 											if ("right".equals(elem.getName())) {
-												running_right.addFrame(new Image(image.getAbsolutePath()), 10);
+												running_right.addFrame(new Image(image.getAbsolutePath()), 90);
 											}
 										} catch (SlickException e) {
 											e.printStackTrace();
@@ -119,16 +119,16 @@ public abstract class Avatar extends WorldObject {
 									} else if ("standing".equals(category.getName())) {
 										try {
 											if ("up".equals(elem.getName())) {
-												standing_up.addFrame(new Image(image.getAbsolutePath()), 10);
+												standing_up.addFrame(new Image(image.getAbsolutePath()), 90);
 											}
 											if ("down".equals(elem.getName())) {
-												standing_down.addFrame(new Image(image.getAbsolutePath()), 10);
+												standing_down.addFrame(new Image(image.getAbsolutePath()), 90);
 											}
 											if ("left".equals(elem.getName())) {
-												standing_left.addFrame(new Image(image.getAbsolutePath()), 10);
+												standing_left.addFrame(new Image(image.getAbsolutePath()), 90);
 											}
 											if ("right".equals(elem.getName())) {
-												standing_right.addFrame(new Image(image.getAbsolutePath()), 10);
+												standing_right.addFrame(new Image(image.getAbsolutePath()), 90);
 											}
 										} catch (SlickException e) {
 											e.printStackTrace();

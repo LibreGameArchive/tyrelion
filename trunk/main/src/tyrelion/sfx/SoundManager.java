@@ -50,10 +50,10 @@ public class SoundManager {
 		getSFX(category, name).play(pitch, volume);
 	}
 	
-	public void playOnce(String category, String name) {
+	public void playOnce(String category, String name, float vol, float pit) {
 		if (playOnce == null || !playOnce.playing()) {
 			playOnce = getSFX(category, name);
-			playOnce.play(pitch, volume);
+			playOnce.play(pit, vol);
 		}		
 	}
 
