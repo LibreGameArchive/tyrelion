@@ -23,10 +23,15 @@ public abstract class Avatar extends WorldObject {
 	public static final int SIZE = 70;
 	public static final float WALK_SPEED = 0.003f;
 	
-	public static final int ANIM_UP = 0;
-	public static final int ANIM_DOWN = 1;
-	public static final int ANIM_LEFT = 2;
-	public static final int ANIM_RIGHT = 3;
+	public static final int ANIM_RUNNING_UP = 0;
+	public static final int ANIM_RUNNING_DOWN = 1;
+	public static final int ANIM_RUNNING_LEFT = 2;
+	public static final int ANIM_RUNNING_RIGHT = 3;
+	public static final int ANIM_STANDING_UP = 4;
+	public static final int ANIM_STANDING_DOWN = 5;
+	public static final int ANIM_STANDING_LEFT = 6;
+	public static final int ANIM_STANDING_RIGHT = 7;
+	
 	
 	protected int currentAnimation;
 	
@@ -63,16 +68,24 @@ public abstract class Avatar extends WorldObject {
 	}
 	
 	public void loadAnimations(String animation) {
-		animations = new Animation[4];
-		Animation up = new Animation();
-		Animation down = new Animation();
-		Animation left = new Animation();
-		Animation right = new Animation();
-		animations[ANIM_UP] = up;
-		animations[ANIM_DOWN] = down;
-		animations[ANIM_LEFT] = left;
-		animations[ANIM_RIGHT] = right;
-		setAnimation(ANIM_RIGHT);
+		animations = new Animation[8];
+		Animation running_up = new Animation();
+		Animation running_down = new Animation();
+		Animation running_left = new Animation();
+		Animation running_right = new Animation();
+		Animation standing_up = new Animation();
+		Animation standing_down= new Animation();
+		Animation standing_left = new Animation();
+		Animation standing_right = new Animation();
+		animations[ANIM_RUNNING_UP] = running_up;
+		animations[ANIM_RUNNING_DOWN] = running_down;
+		animations[ANIM_RUNNING_LEFT] = running_left;
+		animations[ANIM_RUNNING_RIGHT] = running_right;
+		animations[ANIM_STANDING_UP] = standing_up;
+		animations[ANIM_STANDING_DOWN] = standing_down;
+		animations[ANIM_STANDING_LEFT] = standing_left;
+		animations[ANIM_STANDING_RIGHT] = standing_right;
+		setAnimation(ANIM_STANDING_DOWN);
 		
 		File root = new File("res/anim/"+animation);
 		File[] anims = root.listFiles();
@@ -80,25 +93,47 @@ public abstract class Avatar extends WorldObject {
 		if (anims != null){
 			for (File elem : anims) {
 				if (elem.isDirectory() && !elem.isHidden()) {
-					File[] images = elem.listFiles();
-					if (images != null) {
-						for (File image : images) {
-							if (image.isFile() && !elem.isHidden()) {
-								try {
-									if ("up".equals(elem.getName())) {
-										up.addFrame(new Image(image.getAbsolutePath()), 10);
+					File[] categories = elem.listFiles();
+					for (File cat : categories) {
+						File[] images = cat.listFiles();
+						if (images != null) {
+							for (File image : images) {
+								if (image.isFile() && !elem.isHidden()) {
+									if ("running".equals(cat.getName())) {
+										try {
+											if ("up".equals(elem.getName())) {
+												running_up.addFrame(new Image(image.getAbsolutePath()), 10);
+											}
+											if ("down".equals(elem.getName())) {
+												running_down.addFrame(new Image(image.getAbsolutePath()), 10);
+											}
+											if ("left".equals(elem.getName())) {
+												running_left.addFrame(new Image(image.getAbsolutePath()), 10);
+											}
+											if ("right".equals(elem.getName())) {
+												running_right.addFrame(new Image(image.getAbsolutePath()), 10);
+											}
+										} catch (SlickException e) {
+											e.printStackTrace();
+										}
+									} else if ("standing".equals(cat.getName())) {
+										try {
+											if ("up".equals(elem.getName())) {
+												standing_up.addFrame(new Image(image.getAbsolutePath()), 10);
+											}
+											if ("down".equals(elem.getName())) {
+												standing_down.addFrame(new Image(image.getAbsolutePath()), 10);
+											}
+											if ("left".equals(elem.getName())) {
+												standing_left.addFrame(new Image(image.getAbsolutePath()), 10);
+											}
+											if ("right".equals(elem.getName())) {
+												standing_right.addFrame(new Image(image.getAbsolutePath()), 10);
+											}
+										} catch (SlickException e) {
+											e.printStackTrace();
+										}
 									}
-									if ("down".equals(elem.getName())) {
-										down.addFrame(new Image(image.getAbsolutePath()), 10);
-									}
-									if ("left".equals(elem.getName())) {
-										left.addFrame(new Image(image.getAbsolutePath()), 10);
-									}
-									if ("right".equals(elem.getName())) {
-										right.addFrame(new Image(image.getAbsolutePath()), 10);
-									}
-								} catch (SlickException e) {
-									e.printStackTrace();
 								}
 							}
 						}
