@@ -198,6 +198,7 @@ public class Npc extends Avatar{
 	@Override
 	public void rightClickAction() {
 		toggleShowHello();
+		turnToPlayer(calcAngleToPlayer());
 	}
 
 	/**
