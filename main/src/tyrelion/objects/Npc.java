@@ -107,15 +107,20 @@ public class Npc extends Avatar{
 		Random r = new Random();
 		if (isShowingHello) {
 			isShowingHello = false;
+			stopTalking();
 		} else {
 			activeText = r.nextInt(helloText.length);
 			isShowingHello = true;
+			talkToPlayer(calcAngleToPlayer());
 		}
 	}
 	
 	public void update(){
 		if (!Player.getInstance().inRange(this)) {
-			isShowingHello = false;
+			if (isShowingHello) {
+				isShowingHello = false;
+				stopTalking();
+			}
 		}
 	}
 
@@ -192,13 +197,48 @@ public class Npc extends Avatar{
 		
 	}
 
+	public void talkToPlayer(int angle) {
+		if (angle >= 0 && angle < 45 || angle > 315 && angle <= 360) {
+			setAnimation(ANIM_TALKING_UP);
+		} else if (angle >= 45 && angle <= 135) {
+			setAnimation(ANIM_TALKING_RIGHT);
+		} else if (angle > 135 && angle < 225) {
+			setAnimation(ANIM_TALKING_DOWN);
+		} else if (angle >= 225 && angle <= 315) {
+			setAnimation(ANIM_TALKING_LEFT);
+		}
+	}
+	
+	public void stopTalking() {
+		switch (currentAnimation) {
+			case ANIM_TALKING_DOWN:
+				setAnimation(ANIM_STANDING_DOWN);
+				break;
+				
+			case ANIM_TALKING_LEFT:
+				setAnimation(ANIM_STANDING_LEFT);
+				break;
+				
+			case ANIM_TALKING_RIGHT:
+				setAnimation(ANIM_STANDING_RIGHT);
+				break;
+				
+			case ANIM_TALKING_UP:
+				setAnimation(ANIM_STANDING_UP);
+				break;
+	
+			default:
+				setAnimation(ANIM_STANDING_DOWN);
+				break;
+		}
+	}
+	
 	/* (non-Javadoc)
 	 * @see tyrelion.objects.WorldObject#rightClickAction()
 	 */
 	@Override
 	public void rightClickAction() {
 		toggleShowHello();
-		turnToPlayer(calcAngleToPlayer());
 	}
 
 	/**

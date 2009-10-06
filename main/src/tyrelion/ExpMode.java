@@ -64,7 +64,7 @@ public class ExpMode extends BasicGameState {
 		player = Player.getInstance();
 		player.setPosX(2);
 		player.setPosY(14);
-		
+
 		map = new TyrelionMap("res/maps/arthlet.tmx", container);
 		
 		TyrelionContainer.getInstance().setContainer(container);

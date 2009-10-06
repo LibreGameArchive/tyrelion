@@ -18,7 +18,6 @@ import tyrelion.character.Character;
 import tyrelion.map.TyrelionMap;
 import tyrelion.sfx.SoundManager;
 
-
 /**
  * @author jahudi
  *
