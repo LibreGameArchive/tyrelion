@@ -20,7 +20,7 @@ import tyrelion.character.Inventory.InventoryField;
 import tyrelion.objects.Player;
 
 /**
- * @author daennart
+ * @author imladriel
  *
  */
 public class Charinfo implements Observer{
@@ -138,7 +138,7 @@ public class Charinfo implements Observer{
 			int x = im.getMouseReleased_x(); int y = im.getMouseReleased_y();
 			mousePressed = false;
 				if (item != null) {
-					item.showIt();
+					
 					if (isMouseOverInventory(x, y)){
 						int fieldX = (x-posX-577) / 56;
 						int fieldY = (y-posY-236) / 55;
@@ -148,6 +148,8 @@ public class Charinfo implements Observer{
 							inventory.drop(itemAtCursor.getContent(), -1, -1, split);
 						}
 					}
+					
+					item.showOriginal();
 					itemAtCursor = null;
 					item = null;
 				}
