@@ -80,7 +80,8 @@ public class Inventory {
 			}
 		}
 		
-		public void showIt(){
+		public void showOriginal(){
+			splittedDummy = null;
 			show = true;
 		}
 		
@@ -361,6 +362,9 @@ public class Inventory {
 									fields[fieldX][fieldY] = new InventoryField(new InventoryStack(fields[fieldX][fieldY].getItem(), stack1+stack2));
 									fields[flyingX][flyingY] = null;
 								}
+							} else {
+								fields[flyingX][flyingY] = fields[fieldX][fieldY];
+								fields[fieldX][fieldY] = new InventoryField(content);
 							}
 						} else { 
 							//flip old and new item
