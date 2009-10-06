@@ -45,9 +45,9 @@ public class PreLoading extends BasicGameState {
 	public void init(GameContainer gameContainer, StateBasedGame game)
 			throws SlickException {loading = new Image("res/img/splashscreens/loadingscreen.png");
 		LoadingList.setDeferredLoading(true);
-		gameContainer.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
 		MusicManager.getInstance();
 		SoundManager.getInstance();
+		CursorManager.getInstance().setCursor(CursorManager.ARROW, gameContainer);
 	}
 
 	/* (non-Javadoc)

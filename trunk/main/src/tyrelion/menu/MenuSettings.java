@@ -76,8 +76,6 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 		this.game = game;
 		this.gameContainer = container;
 		
-		gameContainer.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
-		
 		background = new Image("res/img/menu/settings/settings_bg.png");
 	
 		display = new Display(container);

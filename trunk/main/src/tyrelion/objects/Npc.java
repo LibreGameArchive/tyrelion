@@ -167,7 +167,7 @@ public class Npc extends Avatar{
 						CursorManager.getInstance().setCursor(CursorManager.BUBBLE_LOCKED, container);
 					}
 				} else if (isOver(oldX, oldY)) {
-					CursorManager.getInstance().setCursor(CursorManager.SWORD, container);
+					CursorManager.getInstance().setCursor(CursorManager.ARROW, container);
 				}
 			}
 		}

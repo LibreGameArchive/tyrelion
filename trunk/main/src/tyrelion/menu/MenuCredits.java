@@ -46,8 +46,6 @@ public class MenuCredits extends BasicGameState implements ComponentListener{
 		this.game = game;
 		this.gameContainer = container;
 		
-		gameContainer.setMouseCursor("res/img/mouse/cursor_sword.png", 2, 2);
-		
 		background = new Image("res/img/menu/credits/credits_bg.png");
 	
 		initGUI();
