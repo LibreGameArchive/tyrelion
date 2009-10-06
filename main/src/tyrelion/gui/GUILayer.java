@@ -184,7 +184,7 @@ public class GUILayer implements ComponentListener, Observer{
 		InteractionManager im = (InteractionManager) observable;
 		if ("keyReleased".equals(input)){
 			if (im.getKeyReleased_key() == Input.KEY_ESCAPE) {
-				CursorManager.getInstance().setCursor(CursorManager.SWORD, TyrelionContainer.getInstance().getContainer());
+				CursorManager.getInstance().setCursor(CursorManager.ARROW, TyrelionContainer.getInstance().getContainer());
 				if (isShowMenu){
 					isShowMenu = false;
 					TyrelionContainer.getInstance().getContainer().resume();

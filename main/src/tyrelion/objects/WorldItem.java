@@ -75,7 +75,7 @@ public class WorldItem extends WorldObject {
 						CursorManager.getInstance().setCursor(CursorManager.HAND_LOCKED, container);
 					}
 				} else if (isOver(oldX, oldY)) {
-					CursorManager.getInstance().setCursor(CursorManager.SWORD, container);
+					CursorManager.getInstance().setCursor(CursorManager.ARROW, container);
 				}
 			}
 		}	
@@ -113,7 +113,7 @@ public class WorldItem extends WorldObject {
 		delete();
 		TyrelionContainer.getInstance().getInfobox().print("Du hast erhältst folgenden Gegenstand: "
 				+ item.getName(), Message.ITEM);
-		CursorManager.getInstance().setCursor(CursorManager.SWORD,
+		CursorManager.getInstance().setCursor(CursorManager.ARROW,
 				TyrelionContainer.getInstance().getContainer());
 	}
 

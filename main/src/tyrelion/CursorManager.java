@@ -3,9 +3,6 @@
  */
 package tyrelion;
 
-import java.io.IOException;
-
-import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Cursor;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -19,15 +16,17 @@ public class CursorManager {
 	
 	private static CursorManager instance = null;
 
-	public static final int SWORD = 0;
+	public static final int SWORD = 5;
 	public static final int BUBBLE = 1;
 	public static final int BUBBLE_LOCKED = 2;
 	public static final int HAND = 3;
 	public static final int HAND_LOCKED = 4;
+	public static final int ARROW = 0;
 	
 	private int currentCursor;
 	
 	private Cursor sword;
+	private Cursor arrow;
 	private Cursor bubble;
 	private Cursor bubble_locked;
 	private Cursor hand;
@@ -42,47 +41,42 @@ public class CursorManager {
 	
 	public CursorManager() {
 		try {
-			sword = CursorLoader.get().getCursor("res/img/mouse/cursor_sword.png", 2, 2);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LWJGLException e) {
+			arrow = CursorLoader.get().getCursor("res/img/mouse/cursor_arrow.png", 1, 1);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			sword = CursorLoader.get().getCursor("res/img/mouse/cursor_sword.png", 2, 2);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		try {
 			bubble = CursorLoader.get().getCursor("res/img/mouse/cursor_bubble.png", 13, 28);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LWJGLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		try {
 			bubble_locked = CursorLoader.get().getCursor("res/img/mouse/cursor_bubble_locked.png", 13, 28);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LWJGLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			hand = CursorLoader.get().getCursor("res/img/mouse/cursor_hand.png", 12, 20);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LWJGLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		try {
 			hand_locked = CursorLoader.get().getCursor("res/img/mouse/cursor_hand_locked.png", 12, 20);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LWJGLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -139,11 +133,21 @@ public class CursorManager {
 				e.printStackTrace();
 			}
 			break;
+			
+		case ARROW:
+			try {
+				container.setMouseCursor(arrow, 1, 1);
+				currentCursor = ARROW;
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
 
 		default:
 			try {
-				container.setMouseCursor(sword, 2, 2);
-				currentCursor = SWORD;
+				container.setMouseCursor(arrow, 1, 1);
+				currentCursor = ARROW;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
