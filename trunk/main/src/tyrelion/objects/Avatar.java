@@ -31,6 +31,10 @@ public abstract class Avatar extends WorldObject {
 	public static final int ANIM_STANDING_DOWN = 5;
 	public static final int ANIM_STANDING_LEFT = 6;
 	public static final int ANIM_STANDING_RIGHT = 7;
+	public static final int ANIM_TALKING_RIGHT = 8;
+	public static final int ANIM_TALKING_UP = 9;
+	public static final int ANIM_TALKING_DOWN = 10;
+	public static final int ANIM_TALKING_LEFT = 11;
 	
 	
 	protected int currentAnimation;
@@ -68,7 +72,7 @@ public abstract class Avatar extends WorldObject {
 	}
 	
 	public void loadAnimations(String animation) {
-		animations = new Animation[8];
+		animations = new Animation[12];
 		Animation running_up = new Animation();
 		Animation running_down = new Animation();
 		Animation running_left = new Animation();
@@ -77,6 +81,10 @@ public abstract class Avatar extends WorldObject {
 		Animation standing_down= new Animation();
 		Animation standing_left = new Animation();
 		Animation standing_right = new Animation();
+		Animation talking_up = new Animation();
+		Animation talking_down= new Animation();
+		Animation talking_left = new Animation();
+		Animation talking_right = new Animation();
 		animations[ANIM_RUNNING_UP] = running_up;
 		animations[ANIM_RUNNING_DOWN] = running_down;
 		animations[ANIM_RUNNING_LEFT] = running_left;
@@ -85,6 +93,10 @@ public abstract class Avatar extends WorldObject {
 		animations[ANIM_STANDING_DOWN] = standing_down;
 		animations[ANIM_STANDING_LEFT] = standing_left;
 		animations[ANIM_STANDING_RIGHT] = standing_right;
+		animations[ANIM_TALKING_UP] = talking_up;
+		animations[ANIM_TALKING_DOWN] = talking_down;
+		animations[ANIM_TALKING_LEFT] = talking_left;
+		animations[ANIM_TALKING_RIGHT] = talking_right;
 		setAnimation(ANIM_STANDING_DOWN);
 		
 		File root = new File("res/anim/"+animation);
@@ -133,6 +145,23 @@ public abstract class Avatar extends WorldObject {
 										} catch (SlickException e) {
 											e.printStackTrace();
 										}
+									} else if ("talking".equals(category.getName())) {
+										try {
+											if ("up".equals(elem.getName())) {
+												talking_up.addFrame(new Image(image.getAbsolutePath()), 180);
+											}
+											if ("down".equals(elem.getName())) {
+												talking_down.addFrame(new Image(image.getAbsolutePath()), 180);
+											}
+											if ("left".equals(elem.getName())) {
+												talking_left.addFrame(new Image(image.getAbsolutePath()), 180);
+											}
+											if ("right".equals(elem.getName())) {
+												talking_right.addFrame(new Image(image.getAbsolutePath()), 180);
+											}
+										} catch (SlickException e) {
+											e.printStackTrace();
+										}
 									}
 								}
 							}
@@ -155,7 +184,7 @@ public abstract class Avatar extends WorldObject {
 		
 		if (px <= nx && py <= ny) {
 			a = ny - py;
-			b = nx -px;
+			b = nx - px;
 			alpha = Math.toDegrees(Math.atan(a/b));
 			angle = (int)(270 + alpha);
 		} else if (px <= nx && py >= ny) {
@@ -176,18 +205,6 @@ public abstract class Avatar extends WorldObject {
 		}
 		
 		return angle;
-	}
-	
-	public void turnToPlayer(int angle) {
-		if (angle >= 0 && angle < 45 || angle > 315 && angle <= 360) {
-			setAnimation(ANIM_STANDING_UP);
-		} else if (angle >= 45 && angle <= 135) {
-			setAnimation(ANIM_STANDING_RIGHT);
-		} else if (angle > 135 && angle < 225) {
-			setAnimation(ANIM_STANDING_DOWN);
-		} else if (angle >= 225 && angle <= 315) {
-			setAnimation(ANIM_STANDING_LEFT);
-		}
 	}
 	
 	public void setAnimation(int i) {
