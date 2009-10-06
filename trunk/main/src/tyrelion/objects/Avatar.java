@@ -143,6 +143,53 @@ public abstract class Avatar extends WorldObject {
 		}
 	}
 	
+	public int calcAngleToPlayer() {
+		float px = Player.getInstance().getPosX();
+		float py = Player.getInstance().getPosY();
+		float nx = posX;
+		float ny = posY;
+		float a;
+		float b;
+		double alpha;
+		int angle = 0;
+		
+		if (px <= nx && py <= ny) {
+			a = ny - py;
+			b = nx -px;
+			alpha = Math.toDegrees(Math.atan(a/b));
+			angle = (int)(270 + alpha);
+		} else if (px <= nx && py >= ny) {
+			a = py -ny;
+			b = nx -px;
+			alpha = Math.toDegrees(Math.atan(a/b));
+			angle = (int)(270 - alpha);
+		} else if (px >= nx && py <= ny) {
+			a = ny - py;
+			b = px - nx;
+			alpha = Math.toDegrees(Math.atan(a/b));
+			angle = (int)(90 - alpha);
+		} else if (px >= nx && py >= ny) {
+			a = py - ny;
+			b = px - nx;
+			alpha = Math.toDegrees(Math.atan(a/b));
+			angle = (int)(90 + alpha);
+		}
+		
+		return angle;
+	}
+	
+	public void turnToPlayer(int angle) {
+		if (angle >= 0 && angle < 45 || angle > 315 && angle <= 360) {
+			setAnimation(ANIM_STANDING_UP);
+		} else if (angle >= 45 && angle <= 135) {
+			setAnimation(ANIM_STANDING_RIGHT);
+		} else if (angle > 135 && angle < 225) {
+			setAnimation(ANIM_STANDING_DOWN);
+		} else if (angle >= 225 && angle <= 315) {
+			setAnimation(ANIM_STANDING_LEFT);
+		}
+	}
+	
 	public void setAnimation(int i) {
 		currentAnimation = i;
 	}
