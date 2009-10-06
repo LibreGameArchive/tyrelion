@@ -1,5 +1,0 @@
-<!ELEMENT fertigkeiten (fertigkeit)*>
-<!ELEMENT fertigkeit (name,text)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT text (#PCDATA)>
-<!ATTLIST attribut codename CDATA #REQUIRED>

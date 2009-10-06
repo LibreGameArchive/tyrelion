@@ -1,9 +1,0 @@
-<!ELEMENT abgAttribute (abgAttribut)*>
-<!ELEMENT abgAttribut (name,att1,att2,att3,div,be,text)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT text (#PCDATA)>
-<!ELEMENT att1 (BI|CH|KL|FF|GW|KK|KO|SI|WI)>
-<!ELEMENT att2 (BI|CH|KL|FF|GW|KK|KO|SI|WI)>
-<!ELEMENT att3 (BI|CH|KL|FF|GW|KK|KO|SI|WI)>
-<!ELEMENT div (#PCDATA)>
-<!ELEMENT be (#PCDATA)>

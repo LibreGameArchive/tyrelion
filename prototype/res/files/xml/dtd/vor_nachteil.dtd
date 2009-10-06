@@ -1,6 +1,0 @@
-<!ELEMENT vor_nachteile (vor_nachteil)*>
-<!ELEMENT vor_nachteil (name,text)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT typ (Vorteil|Nachteil)>
-<!ELEMENT text (#PCDATA)>
-<!ATTLIST attribut kuerzel CDATA #REQUIRED>
