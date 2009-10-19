@@ -188,8 +188,8 @@ public abstract class Avatar extends WorldObject {
 			alpha = Math.toDegrees(Math.atan(a/b));
 			angle = (int)(270 + alpha);
 		} else if (px <= nx && py >= ny) {
-			a = py -ny;
-			b = nx -px;
+			a = py - ny;
+			b = nx - px;
 			alpha = Math.toDegrees(Math.atan(a/b));
 			angle = (int)(270 - alpha);
 		} else if (px >= nx && py <= ny) {
