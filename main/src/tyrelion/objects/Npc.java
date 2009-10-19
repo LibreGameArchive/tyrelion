@@ -144,9 +144,8 @@ public class Npc extends Avatar{
 				int button = im.getMouseClicked_button();
 				int x = im.getMouseClicked_x();
 				int y = im.getMouseClicked_y();
-	
-				if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
-					if (isOver(x, y)) {
+				if (isOver(x, y)) {
+					if (button == Input.MOUSE_RIGHT_BUTTON && Player.getInstance().inRange(this)) {
 						rightClickAction();
 					}
 				}

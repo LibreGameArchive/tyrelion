@@ -24,7 +24,7 @@ public class WorldItemMap {
 		
 		for (int i = 0; i < x; i++) {
 			for (int j = 0; j < y; j++) {
-				items[i][j] = new ArrayList<WorldItem>(5);
+				items[i][j] = new ArrayList<WorldItem>();
 			}
 		}
 	}
