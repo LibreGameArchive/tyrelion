@@ -49,7 +49,6 @@ public class FontManager{
 			try {
 				instance = new FontManager();
 			} catch (SlickException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -26,6 +26,7 @@ import tyrelion.TyrelionContainer;
 import tyrelion.menu.MenuLoad;
 import tyrelion.menu.MenuMain;
 import tyrelion.menu.MenuSettings;
+import tyrelion.objects.Player;
 
 /**
  * @author jahudi, imladriel
@@ -63,6 +64,12 @@ public class GUILayer implements ComponentListener, Observer{
 	
 	/** Should the menu be drawn */
 	private boolean isShowMenu = false;
+	
+	private Infobox infobox;
+	
+	private Minimap minimap;
+	
+	private Charinfo charinfo;
 
 	public GUILayer(GameContainer container, StateBasedGame game)
 			throws SlickException {
@@ -81,6 +88,9 @@ public class GUILayer implements ComponentListener, Observer{
 
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
+		minimap.render(g);
+		
+		
 		//Render images
 		g.drawImage(gui_avatar, 10, 0);
 		g.drawImage(gui_quickslots, 578, 795);
@@ -97,6 +107,10 @@ public class GUILayer implements ComponentListener, Observer{
 		if (isShowMenu) {
 			showMenu(container, g);
 		} 
+		
+		infobox.render(container, g, 15, 716);
+		
+		charinfo.render(container, g, 100, 100);
 		
 	}
 	
@@ -116,6 +130,13 @@ public class GUILayer implements ComponentListener, Observer{
 		gui_btn_questlog.setMouseOverImage(new Image("res/img/gui/gui_btn_questlog_2.png"));
 		
 		initMenu();
+		
+		minimap = new Minimap(TyrelionContainer.getInstance().getContainer(), TyrelionContainer.getInstance().getMap(), Player.getInstance());
+		
+		infobox = new Infobox(TyrelionContainer.getInstance().getContainer());
+		TyrelionContainer.getInstance().setInfobox(infobox);
+		
+		charinfo = new Charinfo(TyrelionContainer.getInstance().getContainer());
 	}
 	
 	private void initMenu() throws SlickException{
