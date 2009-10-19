@@ -38,12 +38,6 @@ public class ExpMode extends BasicGameState {
 	
 	private GUILayer guiLayer;
 	
-	private Infobox infobox;
-	
-	private Minimap minimap;
-	
-	private Charinfo charinfo;
-	
 	private DisabledScreen disabledScreen;
 
 	private boolean debug = false;
@@ -80,23 +74,6 @@ public class ExpMode extends BasicGameState {
 		
 		disabledScreen = new DisabledScreen();
 		
-		minimap = new Minimap(container, map, player);
-		
-		infobox = new Infobox(container);
-		TyrelionContainer.getInstance().setInfobox(infobox);
-		
-		infobox.print("Dies ist eine Systemmeldung!", Message.SYSTEM);
-		infobox.print("Du hast ein Item erhalten!", Message.ITEM);
-		infobox.print("Du hast eine Quest bestanden!", Message.QUEST);
-		infobox.print("Du hast für einem Ork 50 Schadenspunkte zugefügt und ihn damit getötet!", Message.FIGHT);
-		infobox.print("Du hast 250 EP erhalten!", Message.EXPERIENCE);
-		infobox.print("Enim ad minim veniam quis nostrud exerci tation. Me lius quod ii legunt saepius claritas est etiam processus dynamicus qui sequitur mutationem consuetudium lectorum.", Message.SYSTEM);
-		infobox.print("Leider konntest du die Quest nicht beenden...", Message.QUEST);
-		infobox.print("Das ist eine Meldung die nirgend wo hinein passte!", Message.MISC);
-		infobox.print("Du hast einen rostigen Dolch gefunden!", Message.ITEM);
-		infobox.print("Du hast gegen die Schildkröte verloren!", Message.FIGHT);
-		
-		charinfo = new Charinfo(container);
 	}
 
 	/* (non-Javadoc)
@@ -146,13 +123,8 @@ public class ExpMode extends BasicGameState {
 
 		if (container.isPaused()) disabledScreen.render(g);
 		
-		minimap.render(g);
-		
 		guiLayer.render(container, g);
 		
-		infobox.render(container, g, 15, 716);
-		
-		charinfo.render(container, g, 100, 100);
 	}
 
 	/* (non-Javadoc)
