@@ -12,12 +12,8 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import tyrelion.gui.Charinfo;
 import tyrelion.gui.DisabledScreen;
 import tyrelion.gui.GUILayer;
-import tyrelion.gui.Infobox;
-import tyrelion.gui.Message;
-import tyrelion.gui.Minimap;
 import tyrelion.loaders.ItemLoader;
 import tyrelion.map.TyrelionMap;
 import tyrelion.music.MusicManager;

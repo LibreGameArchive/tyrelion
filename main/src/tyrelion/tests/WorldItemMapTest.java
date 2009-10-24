@@ -21,8 +21,7 @@ public class WorldItemMapTest {
 
 	WorldItemMap map;
 	WorldItem item;
-	WorldItem item2;
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -30,7 +29,6 @@ public class WorldItemMapTest {
 	public void setUp() throws Exception {
 		map = new WorldItemMap(5, 5);
 		item = new WorldItem(1, 2, null);
-		item2 = new WorldItem(4, 4, null);
 	}
 
 	/**
@@ -46,9 +44,8 @@ public class WorldItemMapTest {
 	 * Test method for {@link tyrelion.map.WorldItemMap#removeItem(tyrelion.objects.WorldItem)}.
 	 */
 	@Test
-	public void testRemoveItemWorldItem() {
+	public void testRemoveItem() {
 		map.addItem(item);
-		assertEquals(item, map.getFirstItem(1, 2));
 		map.removeItem(item);
 		assertNotSame(map.getFirstItem(1, 2), item);
 	}
