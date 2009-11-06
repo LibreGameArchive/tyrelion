@@ -28,6 +28,9 @@
 		<copy todir="${dist}/${res}">
 			<fileset dir="${res}"/>
 		</copy>
+		<copy todir="${dist}">
+			<fileset dir="." includes="GPLv3.txt CC-BY-SA.txt license.txt"/>
+		</copy>
 		<chmod file="${dist}/${lib}/start.sh" perm="+x"/>
 		<chmod file="${dist}/${lib}/start.bat" perm="+x"/>
 		<move file="${dist}/${lib}/start.sh" todir="${dist}"/>
