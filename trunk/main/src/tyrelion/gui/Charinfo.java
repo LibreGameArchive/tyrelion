@@ -81,7 +81,7 @@ public class Charinfo implements Observer{
 		
 		if ("keyReleased".equals(input)){
 			if (im.getKeyReleased_key() == Input.KEY_C) {
-				CursorManager.getInstance().setCursor(CursorManager.ARROW, TyrelionContainer.getInstance().getContainer());
+				CursorManager.getInstance().setCursor(CursorManager.SWORD, TyrelionContainer.getInstance().getContainer());
 				showCharinfo = !showCharinfo;
 				if (showCharinfo){
 					TyrelionContainer.getInstance().getContainer().pause();
@@ -89,7 +89,7 @@ public class Charinfo implements Observer{
 			}
 			
 			if (im.getKeyReleased_key() == Input.KEY_ESCAPE) {
-				CursorManager.getInstance().setCursor(CursorManager.ARROW, TyrelionContainer.getInstance().getContainer());
+				CursorManager.getInstance().setCursor(CursorManager.SWORD, TyrelionContainer.getInstance().getContainer());
 				if (showCharinfo){
 					showCharinfo = false;
 					TyrelionContainer.getInstance().getContainer().resume();

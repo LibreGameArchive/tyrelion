@@ -6,12 +6,12 @@
 	</npc>
 	<npc id="1" animation="priest">
 		<helloText>Seid gegrüßt!</helloText>
-		<helloText>Habt Ihr schon von den Orks gehört?</helloText>
-		<helloText>In diesen Zeiten solltet ihr auf euch Acht geben...</helloText>
+		<helloText>Habt Ihr von Orks gehört?</helloText>
+		<helloText>Gebt gut auf Euch acht.</helloText>
 	</npc>
 	<npc id="2" animation="player">
 		<helloText>Schöner Tag oder?</helloText>
-		<helloText>Ich glaube der alte Ruwen wird langsam verrückt...</helloText>
-		<helloText>Die Ernte wird gut sein dieses Jahr.</helloText>
+		<helloText>Ruwen wird verrückt...</helloText>
+		<helloText>Die Ernte wird gut sein.</helloText>
 	</npc>
 </npcs>

@@ -47,7 +47,7 @@ public class PreLoading extends BasicGameState {
 		LoadingList.setDeferredLoading(true);
 		MusicManager.getInstance();
 		SoundManager.getInstance();
-		CursorManager.getInstance().setCursor(CursorManager.ARROW, gameContainer);
+		CursorManager.getInstance().setCursor(CursorManager.SWORD, gameContainer);
 	}
 
 	/* (non-Javadoc)
