@@ -166,5 +166,21 @@ public class Charinfo implements Observer{
 		return ((x < posX+20) || (x > posX+780)	|| (y < posY+50) || (y > posY+610));
 	}
 
+
+	/**
+	 * @return the showCharinfo
+	 */
+	public boolean isShowCharinfo() {
+		return showCharinfo;
+	}
+
+
+	/**
+	 * @param showCharinfo the showCharinfo to set
+	 */
+	public void setShowCharinfo(boolean showCharinfo) {
+		this.showCharinfo = showCharinfo;
+	}
+
 }
 	
