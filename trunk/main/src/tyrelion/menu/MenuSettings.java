@@ -178,7 +178,7 @@ public class MenuSettings extends BasicGameState implements ComponentListener{
 	public void componentActivated(AbstractComponent source) {
 		//Abfrage des aktivierten Buttons und ausführen der zugehörigen Aktion
 		if (source == btn_fs_on || source == btn_fs_off) try{toggleFS();} catch (SlickException e) {}
-		if (source == btn_keys) game.enterState(MenuControls.ID);
+		//if (source == btn_keys) game.enterState(MenuControls.ID);
 		if (source == btn_back) game.enterState(MenuMain.ID);
 	}
 	

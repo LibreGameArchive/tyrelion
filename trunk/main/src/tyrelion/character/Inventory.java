@@ -307,12 +307,7 @@ public class Inventory {
 			for (int i = dropCount; i>0; i=i-1){
 				WorldItem droppedItem = new WorldItem(Player.getInstance().getTileX(), Player.getInstance().getTileY(), content.getItem());
 				TyrelionContainer.getInstance().getMap().getItems().addItem(droppedItem);
-			}
-				
-			
-			
-			SoundManager.getInstance().play("ambience", "thunder");
-			
+			}		
 		} else {
 			
 			//not the same field 

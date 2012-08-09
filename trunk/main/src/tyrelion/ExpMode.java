@@ -107,8 +107,8 @@ public class ExpMode extends BasicGameState {
 			g.resetTransform();
 			g.setColor(Color.red);
 			
-			g.drawString("playerX: " + Float.toString(player.getPosX()), 25, 532);
-			g.drawString("playerY: " + Float.toString(player.getPosY()), 25, 547);
+			g.drawString("playerX: " + Float.toString(InteractionManager.getInstance().getMouseMoved_newx()), 25, 532);
+			g.drawString("playerY: " + Float.toString(InteractionManager.getInstance().getMouseMoved_newy()), 25, 547);
 			g.drawString("playerTileX: " + Integer.toString(player.getTileX()), 25, 562);
 			g.drawString("playerTileY: " + Integer.toString(player.getTileY()), 25, 577);
 			g.drawString("playerTileOffsetX: " + Integer.toString(player.getTileOffsetX()), 25, 592);

@@ -80,7 +80,7 @@ public class Charinfo implements Observer{
 		InteractionManager im = (InteractionManager) observable;
 		
 		if ("keyReleased".equals(input)){
-			if (im.getKeyReleased_key() == Input.KEY_C) {
+			if (im.getKeyReleased_key() == Input.KEY_C || im.getKeyReleased_key() == Input.KEY_I) {
 				CursorManager.getInstance().setCursor(CursorManager.SWORD, TyrelionContainer.getInstance().getContainer());
 				showCharinfo = !showCharinfo;
 				if (showCharinfo){
@@ -126,6 +126,14 @@ public class Charinfo implements Observer{
 					}
 				}
 			}
+			
+			if (isMouseOverCharacterIcon(x, y)) {
+				CursorManager.getInstance().setCursor(CursorManager.SWORD, TyrelionContainer.getInstance().getContainer());
+				showCharinfo = !showCharinfo;
+				if (showCharinfo){
+					TyrelionContainer.getInstance().getContainer().pause();
+				} else { TyrelionContainer.getInstance().getContainer().resume(); }
+			}
 		}
 		
 		if ("mouseMoved".equals(input)){
@@ -160,6 +168,11 @@ public class Charinfo implements Observer{
 	/** returns true if mouse position is over the inventory */
 	private boolean isMouseOverInventory(int x, int y){
 		return ((x >= posX+577) && (x <= posX+577+56*4-3)	&& (y >= posY+236) && (y <= posY+236+54*6-3));
+	}
+	
+	/** returns true if mouse position is over the character icon */
+	private boolean isMouseOverCharacterIcon(int x, int y){
+		return ((x >= 80) && (x <= 150) && (y >= 10) && (y <= 80));
 	}
 	
 	private boolean isMouseOutOfScreen(int x, int y){
