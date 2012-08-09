@@ -193,8 +193,8 @@ public class GUILayer implements ComponentListener, Observer{
 			TyrelionContainer.getInstance().getContainer().resume();
 		}
 		//if (source == gui_btn_save) game.enterState(MenuCredits.ID);
-		if (source == gui_btn_load) game.enterState(MenuLoad.ID);
-		if (source == gui_btn_settings) game.enterState(MenuSettings.ID);
+		//if (source == gui_btn_load) game.enterState(MenuLoad.ID);
+		//if (source == gui_btn_settings) game.enterState(MenuSettings.ID);
 		if (source == gui_btn_quit) game.enterState(MenuMain.ID);
 	}
 
@@ -209,6 +209,9 @@ public class GUILayer implements ComponentListener, Observer{
 				if (isShowMenu){
 					isShowMenu = false;
 					TyrelionContainer.getInstance().getContainer().resume();
+				} else {
+					isShowMenu = true;
+					TyrelionContainer.getInstance().getContainer().pause();
 				}
 			}
 		}
